@@ -1,10 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-
+import { openCartModal } from '../services/cartServices';
 const cartItemsCount = ref(0);
-
-// const route = useRoute
-// const isActive = (path) => route.path === path
 </script>
 
 <template>
@@ -32,6 +29,7 @@ const cartItemsCount = ref(0);
       </ul>
       <button
         class="bg-black p-3 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover"
+        @click="openCartModal"
       >
         Cart ({{ cartItemsCount }})
       </button>

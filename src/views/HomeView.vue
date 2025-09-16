@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import cartModal from '../components/cartModal.vue';
+import { isCartOpen } from '../services/cartServices';
+</script>
 
 <template>
   <div class="bg-[#f5f5f5] w-full">
@@ -16,7 +19,7 @@
     </div>
     <section class="min-h-96 w-full bg-[#fff] px-3 py-5 md:py-16">
       <div class="center flex-col h-full md:p-5 md:py-0 px-0 py-5 space-y-13">
-        <h2 class="text-4xl font-light">Why Choose Us?</h2>
+        <h2 class="text-[2.5rem] font-extralight">Why Choose Us?</h2>
         <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
             <div class="h-20 w-20 rounded-full bg-[#333]"></div>
@@ -46,7 +49,7 @@
 
     <section class="min-h-96 w-full px-3 py-5 md:py-10">
       <div class="flex flex-col h-full space-y-5 p-2">
-        <h3 class="text-[1.4rem] text-center">Featured Products</h3>
+        <h3 class="text-[2.5rem] font-extralight text-center">Featured Products</h3>
         <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 w-full">
           <div class="border border-[#e5e5e5] prod-cards hover w-full">
             <div class="min-h-60 w-full bg-[#ddd] p-2">Product Image</div>
@@ -84,6 +87,7 @@
       </div>
     </section>
   </div>
+  <cartModal :class="isCartOpen ? 'fixed top-0 ' : ' hidden'" />
 </template>
 
 <style scoped>

@@ -5,7 +5,7 @@ import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-  <div><NavBar /> <RouterView /><Footer /></div>
+  <div class="font-kanit"><NavBar /> <RouterView /><Footer /></div>
 </template>
 
 <style scoped></style>
