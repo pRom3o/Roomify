@@ -14,39 +14,13 @@ import { isCartOpen, openCartModal } from '../services/cartServices';
             <h1 class="text-5xl font-light">Your Cart:</h1>
             <div class="min-h-80 w-full center">
               <transition-group name="items" tag="ul" v-if="isCartOpen" class="w-full p-3">
-                <li class="flex items-center justify-between w-full border-b py-3 inner">
+                <li
+                  v-for="n in 4"
+                  :key="n"
+                  class="flex items-center justify-between w-full border-b py-3"
+                >
                   <div class="flex flex-col space-y-3">
-                    <h3 class="">Product Name</h3>
-                    <p class="price">product price</p>
-                  </div>
-                  <div class="flex flex-col items-center space-y-3">
-                    <button @click="deleteFromCart" class="w-4 h-4 border rounded-full"></button>
-                    <p class="font-normal">item amount</p>
-                  </div>
-                </li>
-                <li class="flex items-center justify-between w-full border-b py-3 inner">
-                  <div class="flex flex-col space-y-3">
-                    <h3 class="">Product Name</h3>
-                    <p class="price">product price</p>
-                  </div>
-                  <div class="flex flex-col items-center space-y-3">
-                    <button @click="deleteFromCart" class="w-4 h-4 border rounded-full"></button>
-                    <p class="font-normal">item amount</p>
-                  </div>
-                </li>
-                <li class="flex items-center justify-between w-full border-b py-3 inner">
-                  <div class="flex flex-col space-y-3">
-                    <h3 class="">Product Name</h3>
-                    <p class="price">product price</p>
-                  </div>
-                  <div class="flex flex-col items-center space-y-3">
-                    <button @click="deleteFromCart" class="w-4 h-4 border rounded-full"></button>
-                    <p class="font-normal">item amount</p>
-                  </div>
-                </li>
-                <li class="flex items-center justify-between w-full border-b py-3 inner">
-                  <div class="flex flex-col space-y-3">
-                    <h3 class="">Product Name</h3>
+                    <h3>Product Name</h3>
                     <p class="price">product price</p>
                   </div>
                   <div class="flex flex-col items-center space-y-3">
@@ -86,14 +60,14 @@ h3 {
   font-size: small;
 }
 
-.items-enter-from .inner,
-.items-leave-to .inner {
-  transform: translateY(-500px);
+.items-enter-from,
+.items-leave-to {
+  transform: translateY(-20px);
   opacity: 0;
 }
 
-.items-enter-active .inner,
-.items-leave-active .inner {
+.items-enter-active,
+.items-leave-active {
   transition: all 0.4s ease-in-out 0.1s;
 }
 </style>
