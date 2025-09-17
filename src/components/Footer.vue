@@ -34,7 +34,7 @@
     </div>
     <hr class="text-[#e5e5e5]" />
     <div class="center w-full min-h-20 font-light">
-      <p>&copy; 2025 STORE. All rights reserved.</p>
+      <p>&copy; 2025 ROOMIFY. All rights reserved.</p>
     </div>
   </footer>
 </template>

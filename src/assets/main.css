@@ -18,3 +18,15 @@ button {
 .hover {
   transition: all 0.3s ease-in-out 0.1s;
 }
+
+.main-bg {
+  @apply bg-[#f5f1ec];
+}
+
+.nav-bg {
+  @apply bg-[#f5f5f5];
+}
+
+.section-bg {
+  @apply bg-[#fcfcfc];
+}

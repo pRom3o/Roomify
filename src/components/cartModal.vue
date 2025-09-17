@@ -16,6 +16,7 @@ const deleteFromCart = (id) => {
 const clearCart = () => {
   cartItems.value = [];
 };
+// const rangeVal = ref(0);
 </script>
 
 <template>
@@ -53,6 +54,18 @@ const clearCart = () => {
               <h4 class="text-4xl font-light"><i>Cart is empty...</i></h4>
             </div>
           </div>
+          <!-- <label for="rangeVal">Range: {{ rangeVal }}</label>
+          <input
+            type="range"
+            name="rangeVal"
+            id="rangeVal"
+            min="0"
+            max="100"
+            v-model="rangeVal"
+            step="10"
+            class="w-full"
+          /> -->
+
           <div class="flex items-center justify-end w-full">
             <button
               @click="clearCart"

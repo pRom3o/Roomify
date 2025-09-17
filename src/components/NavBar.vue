@@ -5,10 +5,10 @@ import { openCartModal } from '../services/cartServices';
 
 <template>
   <div
-    class="w-full min-h-10 p-2 border border-b-[#dcdddd] shadow-xs font-kanit sticky top-0 z-100 bg-[#fff]"
+    class="w-full min-h-10 p-2 border border-b-[#dcdddd] shadow-xs font-kanit sticky top-0 z-100 nav-bg"
   >
     <div class="flex items-center justify-between w-full px-4">
-      <h2 class="font-bold text-xl">STORE</h2>
+      <h2 class="font-bold text-xl"><RouterLink to="/">ROOMIFY</RouterLink></h2>
       <ul class="md:flex items-center md:space-x-5 hidden">
         <li class="">
           <RouterLink to="/" class="px-3 py-2 hover:bg-[#e5e5e5] rounded-2xl hover"
