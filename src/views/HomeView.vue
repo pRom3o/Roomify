@@ -57,32 +57,40 @@ import { isCartOpen } from '../services/cartServices';
       <div class="flex flex-col h-full space-y-5 p-2">
         <h3 class="text-[2.5rem] font-extralight text-center">Featured Products</h3>
         <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 w-full">
-          <div class="section-bg prod-cards hover w-full">
-            <div class="min-h-60 w-full bg-[#ddd] p-2">Product Image</div>
+          <div class="section-bg prod-cards hover w-full rounded-xl p-2">
+            <div class="min-h-60 flex items-center justify-center w-full bg-[#ddd] p-2 rounded-xl">
+              Product Image
+            </div>
             <div class="p-4">
               <p>Product Name</p>
               <p class="text-xs">product synopsis</p>
               <p>product price</p>
             </div>
           </div>
-          <div class="section-bg prod-cards hover w-full">
-            <div class="min-h-60 w-full bg-[#ddd] p-2">Product Image</div>
+          <div class="section-bg prod-cards hover w-full rounded-xl p-2">
+            <div class="min-h-60 flex items-center justify-center w-full bg-[#ddd] p-2 rounded-xl">
+              Product Image
+            </div>
             <div class="p-4">
               <p>Product Name</p>
               <p class="text-xs">product synopsis</p>
               <p>product price</p>
             </div>
           </div>
-          <div class="section-bg prod-cards hover w-full">
-            <div class="min-h-60 w-full bg-[#ddd] p-2">Product Image</div>
+          <div class="section-bg prod-cards hover w-full rounded-xl p-2">
+            <div class="min-h-60 flex items-center justify-center w-full bg-[#ddd] p-2 rounded-xl">
+              Product Image
+            </div>
             <div class="p-4">
               <p>Product Name</p>
               <p class="text-xs">product synopsis</p>
               <p>product price</p>
             </div>
           </div>
-          <div class="section-bg prod-cards hover w-full">
-            <div class="min-h-60 w-full bg-[#ddd] p-2">Product Image</div>
+          <div class="section-bg prod-cards hover w-full rounded-xl p-2">
+            <div class="min-h-60 flex items-center justify-center w-full bg-[#ddd] p-2 rounded-xl">
+              Product Image
+            </div>
             <div class="p-4">
               <p>Product Name</p>
               <p class="text-xs">product synopsis</p>

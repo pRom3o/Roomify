@@ -11,6 +11,10 @@ button {
   @apply flex items-center justify-center;
 }
 
+.col-center {
+  @apply flex flex-col items-center justify-center;
+}
+
 .router-link-active {
   @apply bg-[#e5e5e5];
 }

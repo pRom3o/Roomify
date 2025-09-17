@@ -4,14 +4,13 @@ import { isCartOpen } from '../services/cartServices';
 </script>
 
 <template>
-  <div class="w-full min-h-screen center flex-col main-bg px-20">
+  <div class="w-full min-h-screen center flex-col main-bg">
     <cartModal :class="isCartOpen ? 'fixed top-0 ' : ' hidden'" />
-    <div class="center w-full h-[600px] p-6 section-bg shadow rounded-xl">
-      <div class="h-full w-[50%] col-center">
-        <h1 class="text-4xl font-light">Roomify?</h1>
-        <p><i>Send us an email.....</i></p>
-      </div>
-      <form class="col-center space-y-5 pb-10 min-h-full md:w-[50%] w-full p-6">
+    <div class="center w-full h-[600px] p-6">
+      <form
+        class="flex flex-col items-center space-y-5 pb-10 shadow min-h-full md:w-lg w-full p-6 section-bg rounded-xl"
+      >
+        <h1 class="text-4xl">Welcome to Roomify</h1>
         <div class="flex flex-col w-full">
           <label for="userEmail">Email</label><input type="email" name="userEmail" id="userEmail" />
         </div>
@@ -20,8 +19,8 @@ import { isCartOpen } from '../services/cartServices';
           ><input type="password" name="userPassword" id="userPassword" />
         </div>
         <div class="flex flex-col w-full">
-          <label for="userMessage">Message</label>
-          <textarea name="userMessage" id="userMessage" class="resize-none"></textarea>
+          <label for="userPassword">Password</label
+          ><input type="password" name="userPassword" id="userPassword" />
         </div>
       </form>
     </div>
