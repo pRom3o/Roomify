@@ -14,3 +14,7 @@ button {
 .router-link-active {
   @apply bg-[#e5e5e5];
 }
+
+.hover {
+  transition: all 0.3s ease-in-out 0.1s;
+}

@@ -1,41 +1,68 @@
 <script setup>
+import { ref } from 'vue';
 import { isCartOpen, openCartModal } from '../services/cartServices';
+
+const cartItems = ref([
+  { id: 0, name: 'Product A', price: '$20', qty: 1 },
+  { id: 1, name: 'Product B', price: '$20', qty: 1 },
+  { id: 2, name: 'Product C', price: '$20', qty: 1 },
+  { id: 3, name: 'Product D', price: '$20', qty: 1 },
+]);
+
+const deleteFromCart = (id) => {
+  cartItems.value = cartItems.value.filter((item) => item.id !== id);
+};
+
+const clearCart = () => {
+  cartItems.value = [];
+};
 </script>
 
 <template>
-  <div class="w-full h-full bg-black/50">
+  <div class="w-full h-full bg-[#666666]/50">
     <div
       class="h-full w-full backdrop-blur-xs flex items-center justify-end"
       @click.self="openCartModal"
     >
       <transition name="cart"
-        ><div v-if="isCartOpen" class="md:w-[35%] w-full h-full bg-[#e5e5e5] pt-20 pb-10 px-5">
-          <div class="flex flex-col items-center justify-between h-full space-y-10">
-            <h1 class="text-5xl font-light">Your Cart:</h1>
-            <div class="min-h-80 w-full center">
-              <transition-group name="items" tag="ul" v-if="isCartOpen" class="w-full p-3">
+        ><div v-if="isCartOpen" class="md:w-[35%] w-full h-full bg-[#fffffc] pt-20 pb-20 px-5">
+          <div class="flex flex-col items-center h-full space-y-10">
+            <h1 v-if="cartItems.length > 0" class="text-5xl font-light">Your Cart:</h1>
+            <div class="min-h-80 w-full center" v-if="cartItems.length > 0">
+              <transition-group name="items" tag="ul" class="w-full p-3">
                 <li
-                  v-for="n in 4"
-                  :key="n"
+                  v-for="items in cartItems"
+                  :key="items.id"
                   class="flex items-center justify-between w-full border-b py-3"
                 >
                   <div class="flex flex-col space-y-3">
-                    <h3>Product Name</h3>
-                    <p class="price">product price</p>
+                    <h3>{{ items.name }}</h3>
+                    <p class="price">{{ items.price }}</p>
                   </div>
                   <div class="flex flex-col items-center space-y-3">
-                    <button @click="deleteFromCart" class="w-4 h-4 border rounded-full"></button>
-                    <p class="font-normal">item amount</p>
+                    <button
+                      @click="deleteFromCart(items.id)"
+                      class="w-4 h-4 border rounded-full"
+                    ></button>
+                    <p class="font-normal">{{ items.qty }}</p>
                   </div>
                 </li>
               </transition-group>
             </div>
-            <div class="flex items-center justify-end w-full">
-              <button class="p-3">Clear cart</button>
+            <div v-else class="flex items-center justify-center h-full w-full bg-[#fffffc]">
+              <h4 class="text-4xl font-light"><i>Cart is empty...</i></h4>
             </div>
           </div>
-        </div></transition
-      >
+          <div class="flex items-center justify-end w-full">
+            <button
+              @click="clearCart"
+              class="bg-black p-3 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover"
+            >
+              Clear cart
+            </button>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>

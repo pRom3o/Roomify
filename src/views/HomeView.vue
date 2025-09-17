@@ -22,14 +22,18 @@ import { isCartOpen } from '../services/cartServices';
         <h2 class="text-[2.5rem] font-extralight">Why Choose Us?</h2>
         <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
-            <div class="h-20 w-20 rounded-full bg-[#333]"></div>
+            <div class="h-20 w-20 rounded-full bg-[#efefef] flex items-center justify-center">
+              <i class="fi fi-rr-arrow-left text-4xl"></i>
+            </div>
             <h3 class="text-[1.6rem]">Easy Returns</h3>
             <p class="text-[0.9rem] text-[#666666]">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, vitae praesentium!
             </p>
           </div>
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
-            <div class="h-20 w-20 rounded-full bg-[#333]"></div>
+            <div class="h-20 w-20 rounded-full bg-[#efefef] flex items-center justify-center">
+              <i class="fi fi-rr-trophy text-4xl"></i>
+            </div>
             <h3 class="text-[1.6rem]">Quality First</h3>
             <p class="text-[0.9rem] text-[#666666]">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur, maiores
@@ -37,7 +41,9 @@ import { isCartOpen } from '../services/cartServices';
             </p>
           </div>
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
-            <div class="h-20 w-20 rounded-full bg-[#333]"></div>
+            <div class="h-20 w-20 rounded-full bg-[#efefef] flex items-center justify-center">
+              <i class="fi fi-rr-headset text-4xl"></i>
+            </div>
             <h3 class="text-[1.6rem]">Support</h3>
             <p class="text-[0.9rem] text-[#666666]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, accusantium deserunt.
@@ -91,10 +97,6 @@ import { isCartOpen } from '../services/cartServices';
 </template>
 
 <style scoped>
-.hover {
-  transition: all 0.3s ease-in-out 0.1s;
-}
-
 .prod-cards:hover {
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

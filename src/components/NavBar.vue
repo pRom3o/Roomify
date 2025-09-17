@@ -1,7 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { openCartModal } from '../services/cartServices';
-const cartItemsCount = ref(0);
 </script>
 
 <template>
@@ -28,17 +27,13 @@ const cartItemsCount = ref(0);
         </li>
       </ul>
       <button
-        class="bg-black p-3 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover"
+        class="bg-black py-2 px-4 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover flex items-center text-[1em]"
         @click="openCartModal"
       >
-        Cart ({{ cartItemsCount }})
+        <i class="fi fi-rr-shopping-cart-notification px-2"></i>
       </button>
     </div>
   </div>
 </template>
 
-<style scoped>
-.hover {
-  transition: all 0.3s ease-in-out 0.1s;
-}
-</style>
+<style scoped></style>
