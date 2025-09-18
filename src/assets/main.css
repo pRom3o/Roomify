@@ -15,8 +15,9 @@ button {
   @apply flex flex-col items-center justify-center;
 }
 
-.router-link-active {
-  @apply bg-[#e5e5e5];
+.router-link-active,
+.cart {
+  @apply bg-[#f0e3d4];
 }
 
 .hover {
@@ -33,4 +34,12 @@ button {
 
 .section-bg {
   @apply bg-[#fcfcfc];
+}
+
+.submit {
+  @apply bg-[#e9d4bc];
+}
+
+.lg-center {
+  @apply lg:flex lg:items-center lg:justify-center;
 }

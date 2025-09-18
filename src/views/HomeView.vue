@@ -12,8 +12,10 @@ import { isCartOpen } from '../services/cartServices';
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cum tempore in quos
           distinctio non impedit illum architecto magnam perferendis.
         </p>
-        <button class="px-5 py-2 bg-black text-[#ededed] text-sm hover hover:rounded-xl">
-          SHOP NOW
+        <button
+          class="px-5 py-2 bg-[#ecdac6] text-[#000000] text-center text-sm hover hover:rounded-xl rounded-md"
+        >
+          <span>SHOP NOW</span>
         </button>
       </div>
     </div>
