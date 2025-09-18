@@ -43,3 +43,12 @@ button {
 .lg-center {
   @apply lg:flex lg:items-center lg:justify-center;
 }
+
+.why,
+.shop {
+  @apply bg-[#ecdac6];
+}
+
+.btn-red {
+  @apply bg-red-500;
+}

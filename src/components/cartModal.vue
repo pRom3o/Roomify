@@ -69,7 +69,7 @@ const clearCart = () => {
           <div class="flex items-center justify-end w-full">
             <button
               @click="clearCart"
-              class="bg-black p-3 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover"
+              class="btn-red hover p-3 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover"
             >
               Clear cart
             </button>

@@ -13,7 +13,7 @@ import { isCartOpen } from '../services/cartServices';
           distinctio non impedit illum architecto magnam perferendis.
         </p>
         <button
-          class="px-5 py-2 bg-[#ecdac6] text-[#000000] text-center text-sm hover hover:rounded-xl rounded-md"
+          class="px-5 py-2 shop text-[#000000] text-center text-sm hover hover:rounded-xl rounded-md"
         >
           <span>SHOP NOW</span>
         </button>
@@ -24,7 +24,7 @@ import { isCartOpen } from '../services/cartServices';
         <h2 class="text-[2.5rem] font-extralight">Why Choose Us?</h2>
         <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
-            <div class="h-20 w-20 rounded-full main-bg flex items-center justify-center">
+            <div class="h-20 w-20 rounded-full shop flex items-center justify-center">
               <i class="fi fi-rr-arrow-left text-4xl"></i>
             </div>
             <h3 class="text-[1.6rem]">Easy Returns</h3>
@@ -33,7 +33,7 @@ import { isCartOpen } from '../services/cartServices';
             </p>
           </div>
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
-            <div class="h-20 w-20 rounded-full main-bg flex items-center justify-center">
+            <div class="h-20 w-20 rounded-full shop flex items-center justify-center">
               <i class="fi fi-rr-trophy text-4xl"></i>
             </div>
             <h3 class="text-[1.6rem]">Quality First</h3>
@@ -43,7 +43,7 @@ import { isCartOpen } from '../services/cartServices';
             </p>
           </div>
           <div class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center">
-            <div class="h-20 w-20 rounded-full main-bg flex items-center justify-center">
+            <div class="h-20 w-20 rounded-full shop flex items-center justify-center">
               <i class="fi fi-rr-headset text-4xl"></i>
             </div>
             <h3 class="text-[1.6rem]">Support</h3>

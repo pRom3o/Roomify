@@ -12,7 +12,7 @@ import { isCartOpen } from '../services/cartServices';
           class="md:h-[30%] h-[30%] flex flex-col items-center justify-center text-center w-full lg:w-[50%]"
         >
           <h1 class="md:text-4xl lg:text-5xl text-3xl mb-3 text-[#e7c9a6]">
-            <i>Get in Touch with Roomify</i>
+            <i>Get in Touch with Roomify.</i>
           </h1>
           <p class="md:text-sm text-xs font-light">
             <i>If you have any inquires, please use the contact form...</i>
