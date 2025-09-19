@@ -6,9 +6,9 @@ import { isCartOpen } from '../services/cartServices';
 <template>
   <div class="main-bg w-full">
     <div class="center h-[400px] p-6 w-full">
-      <div class="w-[800px] text-center space-y-10 px-4">
-        <h1 class="md:text-6xl text-5xl font-light">Simple. Quality. Essential</h1>
-        <p class="text-[0.9rem] md:text-base font-light text-[#666666]">
+      <div class="w-[800px] text-center md:space-y-10 space-y-5 px-4">
+        <h1 class="md:text-6xl text-4xl font-light">Simple. Quality. Essential</h1>
+        <p class="text-[0.7rem] md:text-base font-light text-[#666666]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda cum tempore in quos
           distinctio non impedit illum architecto magnam perferendis.
         </p>

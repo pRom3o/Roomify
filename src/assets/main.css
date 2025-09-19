@@ -43,6 +43,9 @@ button {
 .lg-center {
   @apply lg:flex lg:items-center lg:justify-center;
 }
+.md-center {
+  @apply md:flex md:items-center md:justify-center;
+}
 
 .why,
 .shop {
@@ -51,4 +54,7 @@ button {
 
 .btn-red {
   @apply bg-red-500;
+}
+.headers {
+  @apply text-[#e7c9a6];
 }

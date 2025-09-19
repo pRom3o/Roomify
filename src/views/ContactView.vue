@@ -8,10 +8,8 @@ import { isCartOpen } from '../services/cartServices';
   <div class="w-full min-h-[700px] center flex-col main-bg md:px-16 px-8">
     <div class="center w-full h-[580px] p-6 section-bg shadow rounded-xl">
       <div class="lg:w-[75%] h-full w-full lg-center sm:col-center p-3 lg:space-x-5">
-        <div
-          class="md:h-[30%] h-[30%] flex flex-col items-center justify-center text-center w-full lg:w-[50%]"
-        >
-          <h1 class="md:text-4xl lg:text-5xl text-3xl mb-3 text-[#e7c9a6]">
+        <div class="md:h-[30%] h-[30%] justify-center text-center w-full lg:w-[50%]">
+          <h1 class="md:text-4xl lg:text-5xl text-3xl mb-3 headers">
             <i>Get in Touch with Roomify.</i>
           </h1>
           <p class="md:text-sm text-xs font-light">
