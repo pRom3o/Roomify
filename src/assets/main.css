@@ -1,60 +1,64 @@
 @import 'tailwindcss';
 @theme {
-  --font-kanit: Kanit, sans-serif;
+    --font-kanit: Kanit, sans-serif;
 }
 
 button {
-  @apply cursor-pointer;
+    @apply cursor-pointer;
 }
 
 .center {
-  @apply flex items-center justify-center;
+    @apply flex items-center justify-center;
 }
 
 .col-center {
-  @apply flex flex-col items-center justify-center;
+    @apply flex flex-col items-center justify-center;
 }
 
 .router-link-active,
 .cart {
-  @apply bg-[#f0e3d4];
+    @apply bg-[#f0e3d4];
 }
 
 .hover {
-  transition: all 0.3s ease-in-out 0.1s;
+    transition: all 0.3s ease-in-out 0.1s;
 }
 
 .main-bg {
-  @apply bg-[#f5f1ec];
+    @apply bg-[#f5f1ec];
 }
 
 .nav-bg {
-  @apply bg-[#f5f5f5];
+    @apply bg-[#f5f5f5];
 }
 
 .section-bg {
-  @apply bg-[#fcfcfc];
+    @apply bg-[#fcfcfc];
 }
 
 .submit {
-  @apply bg-[#e9d4bc];
+    @apply bg-[#e9d4bc];
 }
 
 .lg-center {
-  @apply lg:flex lg:items-center lg:justify-center;
+    @apply lg:flex lg:items-center lg:justify-center;
 }
 .md-center {
-  @apply md:flex md:items-center md:justify-center;
+    @apply md:flex md:items-center md:justify-center;
 }
 
 .why,
 .shop {
-  @apply bg-[#ecdac6];
+    @apply bg-[#ecdac6];
 }
 
 .btn-red {
-  @apply bg-red-500;
+    @apply bg-red-500;
 }
 .headers {
-  @apply text-[#e7c9a6];
+    @apply text-[#e7c9a6];
+}
+
+.p-text {
+    @apply text-[#666666];
 }

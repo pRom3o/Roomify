@@ -9,7 +9,7 @@ const currentForm = ref('signup');
 <!-- <template><component :is="route.params.type === 'login' ? LoginForm : SignupForm" /></template> -->
 
 <template>
-  <div class="scroll-hide">
+  <div>
     <Transition name="switch-form"
       ><SignupForm v-if="currentForm === 'signup'" @switch-form="currentForm = $event" />
       <LoginForm v-else @switch-form="currentForm = $event"
@@ -29,9 +29,5 @@ const currentForm = ref('signup');
   transition:
     opacity 0.7s ease-in-out,
     transform 0.7s ease-in-out;
-}
-
-.scroll-hide::-webkit-scrollbar {
-  display: none;
 }
 </style>

@@ -6,13 +6,17 @@ import Footer from '@/components/Footer.vue';
 
 const route = useRoute();
 
-const hideLayout = computed(() => route.path !== '/auth/login' || route.path !== '/auth/signup');
+const hideLayout = computed(() => route.path !== '/auth/login' && route.path !== '/auth/signup' && route.path !== '/confirmation');
+console.log(hideLayout.value);
 </script>
 
 <template>
-  <div class="font-kanit">
-    <NavBar v-if="!hideLayout" />
-    <RouterView /><Footer v-if="!hideLayout" />
+  <div class="font-kanit" v-if="hideLayout">
+    <NavBar />
+    <RouterView /><Footer />
+  </div>
+  <div class="font-kanit" v-if="!hideLayout">
+    <RouterView />
   </div>
   <!-- Drop this anywhere (like bottom of App.vue) -->
   <div class="fixed bottom-2 right-2 bg-black text-white text-xs px-2 py-1 rounded z-[9999]">
