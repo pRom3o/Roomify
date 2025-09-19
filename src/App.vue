@@ -1,15 +1,18 @@
 <script setup>
 import { RouterView, useRoute } from 'vue-router';
+import { computed } from 'vue';
 import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 
 const route = useRoute();
-console.log(route.path);
+
+const hideLayout = computed(() => route.path !== '/auth/login' || route.path !== '/auth/signup');
 </script>
 
 <template>
   <div class="font-kanit">
-    <NavBar v-if="route.path !== '/auth'" /> <RouterView /><Footer v-if="route.path !== '/auth'" />
+    <NavBar v-if="!hideLayout" />
+    <RouterView /><Footer v-if="!hideLayout" />
   </div>
   <!-- Drop this anywhere (like bottom of App.vue) -->
   <div class="fixed bottom-2 right-2 bg-black text-white text-xs px-2 py-1 rounded z-[9999]">

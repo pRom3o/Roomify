@@ -1,5 +1,5 @@
 <script setup>
-const emit = defineEmits(['switchform']);
+const emit = defineEmits(['switch-form']);
 </script>
 
 <template>
@@ -30,7 +30,9 @@ const emit = defineEmits(['switchform']);
           <button class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover">
             Signup
           </button>
-          <button @click="emit('switchform')"><i>Already a user?</i> Login here..</button>
+          <button @click.prevent="emit('switch-form', 'login')">
+            <i>Already a user?</i> Login here..
+          </button>
         </div>
       </form>
     </div>
