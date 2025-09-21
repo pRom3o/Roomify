@@ -1,15 +1,44 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 
-const router = useRouter();
-
+import { showToast } from '../../services/toastServices';
+import LoadingIcon from '/public/icons/LoadingIcon.vue';
+import {
+    userEmail,
+    userPassword,
+    signUpUser,
+    userName,
+    userNumber,
+} from '../../services/authServices';
+import EmailIcon from '/public/icons/EmailIcon.vue';
 const emit = defineEmits(['switch-form']);
+
+const loading = ref(false);
+const loadingicon = ref(false);
+
+const handleSignup = async () => {
+    loading.value = true;
+    loadingicon.value = true;
+    try {
+        const { user } = await signUpUser(userEmail.value, userPassword.value);
+
+        if (user) {
+            showToast('Signup successful', 'success');
+        }
+    } catch (error) {
+        showToast('error signing up: ', error.message);
+    } finally {
+        loadingicon.value = false;
+        setTimeout((loading.value = false), 5000);
+    }
+};
 </script>
 
 <template>
     <div class="w-full min-h-screen center flex-col main-bg px-4">
         <div
             class="md-center md:w-[90%] w-full lg:h-[650px] md:h-[450px] p-6 section-bg shadow rounded-xl"
+            v-if="loading == false"
         >
             <div class="text-center col-center md:w-[40%] space-y-2 h-[20%] lg:h-full">
                 <h1 class="lg:text-5xl text-3xl headers">New to Roomify?</h1>
@@ -20,31 +49,64 @@ const emit = defineEmits(['switch-form']);
                 <div class="lg:w-2/3 w-full h-full col-center space-y-5">
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userName">Name *</label
-                        ><input type="text" name="userName" id="userName" />
+                        ><input type="text" name="userName" id="userName" v-model="userName" />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userEmail">Email *</label
-                        ><input type="email" name="userEmail" id="userEmail" />
+                        ><input type="email" name="userEmail" id="userEmail" v-model="userEmail" />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userPassword">Password *</label
-                        ><input type="password" name="userPassword" id="userPassword" />
+                        ><input
+                            type="password"
+                            name="userPassword"
+                            id="userPassword"
+                            v-model="userPassword"
+                        />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userNumber">Phone Number *</label
-                        ><input type="text" name="userNumber" id="userNumber" />
+                        ><input
+                            type="text"
+                            name="userNumber"
+                            id="userNumber"
+                            v-model="userNumber"
+                        />
                     </div>
                     <button
-                        @click.prevent="router.push('/confirmation')"
                         class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover"
+                        v-if="loadingicon == false"
+                        @click="handleSignup"
                     >
                         Signup
+                    </button>
+                    <button
+                        class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover center"
+                        v-else
+                    >
+                        <LoadingIcon />
                     </button>
                     <button @click.prevent="emit('switch-form', 'login')">
                         <i>Already a user?</i> Login here..
                     </button>
                 </div>
             </form>
+        </div>
+
+        <div
+            id="form"
+            class="col-center w-full md:w-xl py-6 section-bg shadow-xl rounded-xl text-center space-y-4"
+            v-else
+        >
+            <div class="col-center space-y-1">
+                <div class="mb-3"><EmailIcon /></div>
+                <h1 class="md:text-4xl text-3xl headers font-light">Please check your email</h1>
+                <p class="leading-5 font-light text-xs md:text-base p-text">
+                    click the link sent to <strong>{{ userEmail }} to confirm signup</strong>
+                </p>
+            </div>
+
+            <p class="font-light p-text">Can't find the email?Check your spam folder</p>
         </div>
     </div>
 </template>

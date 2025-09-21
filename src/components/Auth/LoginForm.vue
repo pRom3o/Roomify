@@ -1,5 +1,29 @@
 <script setup>
+import { showToast } from '../../services/toastServices';
+import { useRouter } from 'vue-router';
+import { userEmail, userPassword, signinUser } from '../../services/authServices';
+import LoadingIcon from '/public/icons/LoadingIcon.vue';
+import { ref } from 'vue';
 const emit = defineEmits(['switch-form']);
+
+const router = useRouter();
+
+const loading = ref(false);
+const handleSignin = async () => {
+    loading.value = true;
+    try {
+        const data = await signinUser(userEmail.value, userPassword.value);
+
+        if (data?.user) {
+            showToast(`Welcome back ${data?.user.email}`, 'success');
+            console.log(data.user);
+            console.log('pushed');
+            router.push('/');
+        }
+    } catch (error) {
+        showToast(`${error.message}`, 'failed');
+    }
+};
 </script>
 
 <template>
@@ -16,15 +40,30 @@ const emit = defineEmits(['switch-form']);
                 <div class="xl:w-2/3 w-full h-full col-center space-y-5">
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userEmail">Email *</label
-                        ><input type="email" name="userEmail" id="userEmail" />
+                        ><input type="email" name="userEmail" id="userEmail" v-model="userEmail" />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userPassword">Password *</label
-                        ><input type="password" name="userPassword" id="userPassword" />
+                        ><input
+                            type="password"
+                            name="userPassword"
+                            id="userPassword"
+                            v-model="userPassword"
+                        />
                     </div>
 
-                    <button class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover">
+                    <button
+                        class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover"
+                        @click.prevent="handleSignin"
+                        v-if="!loading"
+                    >
                         Login
+                    </button>
+                    <button
+                        class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover center"
+                        v-else
+                    >
+                        <LoadingIcon />
                     </button>
                     <button @click.prevent="emit('switch-form', 'signup')">
                         <i>New user?</i> Signup here..
