@@ -5,7 +5,7 @@ export const userName = ref('');
 
 export const userEmail = ref('');
 
-export const userNumber = ref(null);
+export const userPhone = ref(null);
 
 export const userPassword = ref('');
 
@@ -15,6 +15,10 @@ export const signUpUser = async (email, password) => {
         password,
         options: {
             emailRedirectTo: 'http://localhost:5173/auth/confirmation',
+            data: {
+                name: userName.value,
+                phone: userPhone.value,
+            },
         },
     });
     if (error) throw error;

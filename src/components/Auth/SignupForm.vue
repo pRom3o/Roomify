@@ -8,7 +8,7 @@ import {
     userPassword,
     signUpUser,
     userName,
-    userNumber,
+    userPhone,
 } from '../../services/authServices';
 import EmailIcon from '/public/icons/EmailIcon.vue';
 const emit = defineEmits(['switch-form']);
@@ -65,13 +65,8 @@ const handleSignup = async () => {
                         />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
-                        <label for="userNumber">Phone Number *</label
-                        ><input
-                            type="text"
-                            name="userNumber"
-                            id="userNumber"
-                            v-model="userNumber"
-                        />
+                        <label for="userPhone">Phone Number *</label
+                        ><input type="text" name="userPhone" id="userPhone" v-model="userPhone" />
                     </div>
                     <button
                         class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover"

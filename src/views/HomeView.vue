@@ -8,7 +8,7 @@ const auth = inject('auth');
 const user = auth.user;
 
 onMounted(() => {
-    console.log(user.value);
+    console.log(user.value.email);
 });
 </script>
 

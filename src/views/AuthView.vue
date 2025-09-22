@@ -9,9 +9,9 @@ const currentForm = ref('login');
 
 <template>
     <div class="main-bg h-screen w-full">
-        <Transition name="switch-form"
-            ><SignupForm v-if="currentForm === 'signup'" @switch-form="currentForm = $event" />
-            <LoginForm v-else @switch-form="currentForm = $event" />
+        <Transition name="switch-form" mode="out-in">
+            <LoginForm v-if="currentForm === 'login'" @switch-form="currentForm = $event" />
+            <SignupForm v-else @switch-form="currentForm = $event" />
         </Transition>
     </div>
 </template>
@@ -25,8 +25,6 @@ const currentForm = ref('login');
 
 .switch-form-enter-active,
 .switch-form-leave-active {
-    transition:
-        opacity 0.7s ease-in-out,
-        transform 0.7s ease-in-out;
+    transition: all 0.4s ease-in-out 0.1s;
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView, useRoute } from 'vue-router';
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, onMounted, provide } from 'vue';
 import NavBar from '@/components/NavBar.vue';
 import Footer from '@/components/Footer.vue';
 import userProvider from './components/provider/userProvider.vue';
@@ -28,6 +28,8 @@ onMounted(async () => {
         user.value = session?.user || null;
     });
 });
+
+provide('auth', { user });
 </script>
 
 <template>

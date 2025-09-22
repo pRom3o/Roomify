@@ -1,7 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { onMounted, inject, ref } from 'vue';
-import { userEmail, userName, userNumber } from '../services/authServices';
 import { supabase } from '../lib/supabaseClient';
 import { showToast } from '../services/toastServices';
 import { useRouter } from 'vue-router';
@@ -25,29 +24,26 @@ onMounted(async () => {
 const handleConfirm = async () => {
     console.log(auth.user.id);
     try {
+        if (!user.value) {
+            throw new Error('No user available');
+        }
+
         // Insert profile
         const { error: insertError } = await supabase.from('roomify_profiles').insert([
             {
                 id: user.value.id,
-                userName: userName.value,
-                userNumber: userNumber.value,
-                userEmail: userEmail.value,
+                name: user.value.user_metadata.name,
+                phone: user.value.user_metadata.phone,
+                email: user.value.user_metadata.email,
             },
         ]);
 
+        console.log(user.value.user_metadata.email);
         if (insertError) throw insertError;
 
         showToast('inserted', 'success');
 
-        const {
-            data: { user },
-            error,
-        } = await supabase.auth.getUser();
-        if (error) throw error;
-
-        console.log('user', user);
-
-        // Redirect
+        // Redirect to homepage
         router.push('/');
     } catch (err) {
         console.error('Error:', err.message);
@@ -64,7 +60,7 @@ const handleConfirm = async () => {
             <div class="col-center space-y-1">
                 <h1 class="md:text-4xl text-3xl headers font-light">Welcome to Roomify</h1>
                 <p class="leading-5 font-light text-xs md:text-base p-text">
-                    Please enjoy your stay, <strong>{{ userEmail }}</strong>
+                    Please enjoy your stay, <strong>{{ user.email }}</strong>
                 </p>
             </div>
 

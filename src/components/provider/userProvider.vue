@@ -17,8 +17,8 @@ const router = useRouter();
 
 const logout = () => {
     supabase.auth.signOut();
-    router.push('/auth/login');
     user.value = null;
+    router.push('/auth/login');
     console.log(user.value);
 };
 
@@ -27,8 +27,7 @@ onMounted(async () => {
     if (data && data.session) {
         user.value = data.session.user;
         userDetails.email = data.session.user.email;
-        userDetails.name = data.session.user.name;
-        userDetails.bio = data.session.user.bio;
+        userDetails.name = data.session.user.user_metadata.name;
         userDetails.id = data.session.user.id;
         console.log(user.value);
     } else {

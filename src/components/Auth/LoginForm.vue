@@ -15,9 +15,8 @@ const handleSignin = async () => {
         const data = await signinUser(userEmail.value, userPassword.value);
 
         if (data?.user) {
-            showToast(`Welcome back ${data?.user.email}`, 'success');
-            console.log(data.user);
-            console.log('pushed');
+            showToast(`Welcome back ${data.user.user_metadata.name}`, 'success');
+
             router.push('/');
         }
     } catch (error) {
