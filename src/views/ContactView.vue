@@ -1,10 +1,6 @@
-<script setup>
-import cartModal from '../components/cartModal.vue';
-import { isCartOpen } from '../services/cartServices';
-</script>
+<script setup></script>
 
 <template>
-    <cartModal :class="isCartOpen ? 'fixed top-0 ' : ' hidden'" />
     <div class="w-full min-h-[700px] center flex-col main-bg md:px-16 px-8">
         <div class="center w-full h-[580px] p-6 section-bg shadow rounded-xl">
             <div class="lg:w-[75%] h-full w-full lg-center sm:col-center p-3 lg:space-x-5">

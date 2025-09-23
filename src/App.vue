@@ -35,7 +35,7 @@ provide('auth', { user });
 <template>
     <Toast class="z-101" />
     <div class="font-kanit" v-if="hideLayout">
-        <userProvider><NavBar /> <RouterView /><Footer /></userProvider>
+        <userProvider><NavBar /> <RouterView class="z-10" /><Footer /></userProvider>
     </div>
     <div class="font-kanit" v-if="!hideLayout">
         <userProvider><RouterView /></userProvider>

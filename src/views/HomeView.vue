@@ -1,7 +1,5 @@
 <script setup>
 import { inject, onMounted } from 'vue';
-import cartModal from '../components/cartModal.vue';
-import { isCartOpen } from '../services/cartServices';
 
 const auth = inject('auth');
 
@@ -128,7 +126,6 @@ onMounted(() => {
             </div>
         </section>
     </div>
-    <cartModal :class="isCartOpen ? 'fixed top-0 ' : ' hidden'" />
 </template>
 
 <style scoped>
