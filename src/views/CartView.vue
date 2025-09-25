@@ -18,47 +18,63 @@ const clearCart = () => {
 </script>
 
 <template>
-    <div class="w-full min-h-screen center">
-        <div class="md:center md:w-[80%]">
-            <div class="md:w-1/2 w-full h-full bg-[#fffffc] pt-20 pb-20 px-5">
-                <div class="flex flex-col items-center h-full space-y-10">
-                    <h1 v-if="cartItems.length > 0" class="text-5xl font-light">Your Cart:</h1>
-                    <div class="min-h-80 w-full center" v-if="cartItems.length > 0">
-                        <transition-group name="items" tag="ul" class="w-full p-3">
-                            <li
-                                v-for="items in cartItems"
-                                :key="items.id"
-                                class="flex items-center justify-between w-full border-b py-3"
-                            >
-                                <div class="flex flex-col space-y-3">
-                                    <h3>{{ items.name }}</h3>
-                                    <p class="price">{{ items.price }}</p>
-                                </div>
-                                <div class="flex flex-col items-center space-y-3">
-                                    <button
-                                        @click="deleteFromCart(items.id)"
-                                        class="w-4 h-4 border rounded-full"
-                                    ></button>
-                                    <p class="font-normal">{{ items.qty }}</p>
-                                </div>
-                            </li>
-                        </transition-group>
-                    </div>
-                    <div v-else class="flex items-center justify-center h-full w-full bg-[#fffffc]">
-                        <h4 class="text-4xl font-light"><i>Cart is empty...</i></h4>
+    <div class="min-h-screen flex flex-col items-center w-full p-4 space-y-10 nav-bg">
+        <div class="w-full h-40 col-center border p-4">
+            <h1>Shopping Cart</h1>
+        </div>
+        <div class="flex justify-center w-full border p-4 gap-5 px-10">
+            <div class="flex flex-col gap-5 items-center md:w-[70%]">
+                <div
+                    class="px-8 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#f6dab7]"
+                >
+                    <p>Product</p>
+                    <div class="flex w-1/2 justify-between">
+                        <p>Price</p>
+                        <p>Quantity</p>
+                        <p>Subtotal</p>
                     </div>
                 </div>
-
-                <div class="flex items-center justify-end w-full">
+            </div>
+            <div class="flex flex-col gap-5 items-center md:w-[30%]">
+                <div
+                    class="p-3 border border-gray-400/30 flex flex-col nav-bg rounded-xl w-full space-y-4"
+                >
+                    <h3>Order Summary</h3>
+                    <hr class="text-gray-400/30" />
+                    <div class="space-y-3">
+                        <div class="flex w-full justify-between">
+                            <p>Items</p>
+                            <strong>9</strong>
+                        </div>
+                        <div class="flex w-full justify-between">
+                            <p>Sub Total</p>
+                            <strong>$740.00</strong>
+                        </div>
+                        <div class="flex w-full justify-between">
+                            <p>Shipping</p>
+                            <strong>$00.00</strong>
+                        </div>
+                        <div class="flex w-full justify-between">
+                            <p>Taxes</p>
+                            <strong>$00.00</strong>
+                        </div>
+                        <div class="flex w-full justify-between">
+                            <p>Cupon Discount</p>
+                            <strong>-$100.00</strong>
+                        </div>
+                        <hr class="text-gray-400/30" />
+                        <div class="flex w-full justify-between">
+                            <p>Total</p>
+                            <strong>$640.00</strong>
+                        </div>
+                    </div>
                     <button
-                        @click="clearCart"
-                        class="btn-red hover p-3 rounded-2xl text-[#ededed] hover:bg-[#333333] hover:text-[#ffffff] hover"
+                        class="text-center px-6 py-3 rounded-4xl cart hover:bg-[#e7ccae] hover hover:rounded-full"
                     >
-                        Clear cart
+                        Proceed to Checkout
                     </button>
                 </div>
             </div>
-            <div class="w-1/2"></div>
         </div>
     </div>
 </template>
