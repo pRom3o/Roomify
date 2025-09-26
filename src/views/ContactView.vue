@@ -2,16 +2,21 @@
 
 <template>
     <div class="w-full min-h-[700px] center flex-col main-bg md:px-16 px-8">
-        <div class="center w-full h-[580px] p-6 section-bg shadow rounded-xl">
-            <div class="lg:w-[75%] h-full w-full lg-center sm:col-center p-3 lg:space-x-5">
-                <div class="md:h-[30%] h-[30%] justify-center text-center w-full lg:w-[50%]">
+        <div class="center w-full lg:w-[95%] h-[580px] p-6 section-bg shadow rounded-xl">
+            <div
+                class="lg:w-[70%] h-full w-full flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
+            >
+                <div class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%]">
                     <h1 class="md:text-4xl lg:text-5xl text-3xl mb-3 headers">
                         <i>Get in Touch with Roomify.</i>
                     </h1>
                     <p class="md:text-sm text-xs font-light">
                         <i>If you have any inquires, please use the contact form...</i>
                     </p>
+                    <img src="../assets/img/Contact-us.png" alt="" class="lg:flex hidden h-[80%]" />
                 </div>
+
+                <div class="vertical-line md:block hidden"></div>
                 <form
                     class="flex flex-col items-center space-y-5 md:h-[70%] h-[70%] lg:w-[50%] md:w-full w-full"
                 >
@@ -56,6 +61,11 @@
 </template>
 
 <style scoped>
+.vertical-line {
+    border-left: 2px solid #fff1e0; /* Adjust thickness, style, and color */
+    height: 100%; /* Adjust height as needed */
+}
+
 input,
 textarea {
     border: 1px solid #e9d4bc;

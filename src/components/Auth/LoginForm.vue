@@ -28,14 +28,15 @@ const handleSignin = async () => {
 <template>
     <div class="w-full min-h-screen center flex-col main-bg px-4">
         <div
-            class="md-center w-full md:w-[90%] lg:h-[650px] md:h-[400px] p-6 section-bg shadow rounded-xl"
+            class="md-center w-full md:w-[90%] md:h-[550px] p-6 lg:gap-6 gap-4 xl:gap-0 section-bg shadow rounded-xl"
         >
-            <div class="text-center col-center md:w-[50%] h-[20%] lg:h-full">
-                <h1 class="lg:text-5xl text-3xl headers">Welcome back to Roomify</h1>
+            <div class="text-center col-center md:w-[50%] h-[20%] md:h-full">
+                <h1 class="lg:text-4xl text-3xl headers">Welcome back to Roomify</h1>
                 <p class="font-light"><i>we're happy to have you back...</i></p>
+                <img src="../../assets/img/login-bro.png" alt="" class="md:flex hidden h-[80%]" />
             </div>
             <div class="vertical-line md:block hidden"></div>
-            <form class="center pb-10 md:w-[50%] h-[80%] lg:h-full w-full p-6">
+            <form class="center pb-10 md:w-1/2 h-[80%] lg:h-full w-full p-6 md:px-0">
                 <div class="xl:w-2/3 w-full h-full col-center space-y-5">
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userEmail">Email *</label
@@ -64,7 +65,7 @@ const handleSignin = async () => {
                     >
                         <LoadingIcon />
                     </button>
-                    <button @click.prevent="emit('switch-form', 'signup')">
+                    <button @click.prevent="emit('switch-form', 'signup')" class="underline">
                         <i>New user?</i> Signup here..
                     </button>
                 </div>

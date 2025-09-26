@@ -37,16 +37,25 @@ const handleSignup = async () => {
 <template>
     <div class="w-full min-h-screen center flex-col main-bg px-4">
         <div
-            class="md-center md:w-[90%] w-full lg:h-[650px] md:h-[450px] p-6 section-bg shadow rounded-xl"
+            class="md-center md:w-[90%] w-full md:h-[550px] p-6 section-bg shadow rounded-xl"
             v-if="loading == false"
         >
-            <div class="text-center col-center md:w-[40%] space-y-2 h-[20%] lg:h-full">
-                <h1 class="lg:text-5xl text-3xl headers">New to Roomify?</h1>
-                <p class="font-light"><i>Fill in the details to become a customer...</i></p>
+            <div class="text-center col-center md:w-1/2 xl:w-[40%] space-y-2 md:h-full">
+                <h1 class="md:text-4xl text-3xl headers">New to Roomify?</h1>
+                <p class="font-light md:text-[10px] lg:text-base">
+                    <i>Fill in the details to become a customer...</i>
+                </p>
+                <img
+                    src="../../assets/img/Signup-rafiki.png"
+                    alt=""
+                    class="md:flex hidden lg:h-[80%] md:h-[60%]"
+                />
             </div>
             <div class="vertical-line md:block hidden"></div>
-            <form class="center pb-10 md:w-[50%] h-[80%] lg:h-full w-full p-6">
-                <div class="lg:w-2/3 w-full h-full col-center space-y-5">
+            <form
+                class="center pb-10 md:w-1/2 h-[80%] xl:px-10 2xl:px-20 lg:h-full w-full p-6 md:px-0"
+            >
+                <div class="md:w-5/6 w-full h-full col-center space-y-5">
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userName">Name *</label
                         ><input type="text" name="userName" id="userName" v-model="userName" />
@@ -81,7 +90,7 @@ const handleSignup = async () => {
                     >
                         <LoadingIcon />
                     </button>
-                    <button @click.prevent="emit('switch-form', 'login')">
+                    <button @click.prevent="emit('switch-form', 'login')" class="underline">
                         <i>Already a user?</i> Login here..
                     </button>
                 </div>
