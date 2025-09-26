@@ -4,7 +4,7 @@
     <div class="w-full min-h-[700px] center flex-col main-bg md:px-16 px-8">
         <div class="center w-full lg:w-[95%] h-[580px] p-6 section-bg shadow rounded-xl">
             <div
-                class="lg:w-[70%] h-full w-full flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
+                class="lg:w-[70%] h-full w-full md:flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
             >
                 <div class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%]">
                     <h1 class="md:text-4xl lg:text-5xl text-3xl mb-3 headers">
