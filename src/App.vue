@@ -1,20 +1,9 @@
 <script setup>
-import { RouterView, useRoute } from 'vue-router';
-import { computed, ref, onMounted, provide } from 'vue';
-import NavBar from '@/components/NavBar.vue';
-import Footer from '@/components/Footer.vue';
+import { RouterView } from 'vue-router';
+import { ref, onMounted, provide } from 'vue';
 import userProvider from './components/provider/userProvider.vue';
 import Toast from './components/Toast.vue';
 import { supabase } from './lib/supabaseClient';
-
-const route = useRoute();
-
-const hideLayout = computed(
-    () =>
-        route.path !== '/auth/login' &&
-        route.path !== '/auth/signup' &&
-        route.path !== '/auth/confirmation',
-);
 
 const user = ref(null);
 
@@ -34,12 +23,10 @@ provide('auth', { user });
 
 <template>
     <Toast class="z-101" />
-    <div class="font-kanit" v-if="hideLayout">
-        <userProvider><NavBar /> <RouterView class="z-10" /><Footer /></userProvider>
+    <div class="font-kanit">
+        <userProvider> <RouterView class="z-10" /></userProvider>
     </div>
-    <div class="font-kanit" v-if="!hideLayout">
-        <userProvider><RouterView /></userProvider>
-    </div>
+
     <!-- Drop this anywhere (like bottom of App.vue) -->
     <div class="fixed bottom-2 right-2 bg-black text-white text-xs px-2 py-1 rounded z-[9999]">
         <span class="block sm:hidden">default (&lt;640px)</span>

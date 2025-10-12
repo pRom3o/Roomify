@@ -5,7 +5,6 @@ import IconX from '/public/icons/IconX.vue';
 import HamMenu from './HamMenu.vue';
 
 import { inject, onMounted } from 'vue';
-// import { useRouter } from 'vue-router';
 
 const auth = inject('auth');
 const user = auth.user;
@@ -17,9 +16,9 @@ onMounted(() => {
 
 <template>
     <div
-        class="w-full min-h-10 pr-2 py-2 border border-b-[#dcdddd] shadow-xs font-kanit sticky top-0 nav-bg"
+        class="w-full min-h-10 pr-2 py-2 border center border-b-[#dcdddd] shadow-xs font-kanit sticky top-0 nav-bg z-50"
     >
-        <div class="flex items-center justify-between w-full px-4">
+        <div class="flex items-center justify-between lg:w-[80%] w-full px-4">
             <button class="h-full w-[20px] md:hidden flex z-20" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
@@ -38,12 +37,12 @@ onMounted(() => {
                     >
                 </li>
                 <li>
-                    <RouterLink to="/shop" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
+                    <RouterLink to="shop" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
                         >Shop</RouterLink
                     >
                 </li>
                 <li>
-                    <RouterLink to="/contact" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
+                    <RouterLink to="contact" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
                         >Contact</RouterLink
                     >
                 </li>

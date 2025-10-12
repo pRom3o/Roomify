@@ -13,7 +13,11 @@
                     <p class="md:text-sm text-xs font-light">
                         <i>If you have any inquires, please use the contact form...</i>
                     </p>
-                    <img src="../assets/img/Contact-us.png" alt="" class="lg:flex hidden h-[80%]" />
+                    <img
+                        src="../assets/img/Contact-us.png"
+                        alt="contact"
+                        class="lg:flex hidden h-[80%]"
+                    />
                 </div>
 
                 <div class="vertical-line md:block hidden"></div>

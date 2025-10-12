@@ -1,10 +1,26 @@
 <script setup>
-import SignupForm from '../components/Auth/SignupForm.vue';
-import LoginForm from '../components/Auth/LoginForm.vue';
+import SignupForm from '../../components/SignupForm.vue';
+import LoginForm from '../../components/LoginForm.vue';
 
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
 const currentForm = ref('login');
+onMounted(() => {
+    if (route.query.form === 'signup') {
+        currentForm.value = 'signup';
+    }
+});
+
+// --- Reactively watches for URL changes ---
+watch(
+    () => route.query.form,
+    (form) => {
+        currentForm.value = form === 'signup' ? 'signup' : 'login';
+    },
+);
 </script>
 
 <template>

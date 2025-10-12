@@ -1,15 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 
-import { showToast } from '../../services/toastServices';
+import { showToast } from '../services/toastServices';
 import LoadingIcon from '/public/icons/LoadingIcon.vue';
-import {
-    userEmail,
-    userPassword,
-    signUpUser,
-    userName,
-    userPhone,
-} from '../../services/authServices';
+import { userEmail, userPassword, signUpUser, userName, userPhone } from '../services/authServices';
 import EmailIcon from '/public/icons/EmailIcon.vue';
 const emit = defineEmits(['switch-form']);
 

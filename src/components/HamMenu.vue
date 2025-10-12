@@ -4,19 +4,19 @@ import { openClose, switchIcon } from '../functions/functions';
 
 const routeLinks = ref([
     { id: 0, name: 'Home', path: '/' },
-    { id: 1, name: 'shop', path: '/shop' },
-    { id: 2, name: 'contact', path: '/contact' },
+    { id: 1, name: 'shop', path: 'shop' },
+    { id: 2, name: 'contact', path: 'contact' },
 ]);
 
 const auth = inject('auth');
 </script>
 
 <template>
-    <div class="fixed top-[44px] left-0 w-full">
+    <div class="fixed top-[44px] left-0 w-full z-9999 shadow">
         <transition name="nav"
             ><div
                 v-if="openClose"
-                class="w-full bg-[#fffffc] flex flex-col items-center justify-between p-4"
+                class="w-full bg-[#fffffc] flex flex-col items-center justify-between p-4 z-999"
                 :class="openClose ? 'h-screen' : 'h-0'"
             >
                 <div class="h-[90%] w-full col-center gap-5" v-if="routeLinks.length > 0">

@@ -18,7 +18,7 @@ const router = useRouter();
 const logout = () => {
     supabase.auth.signOut();
     user.value = null;
-    router.push('/auth/login');
+    router.push({ path: '/auth', query: { form: 'signup' } });
     console.log(user.value);
 };
 
