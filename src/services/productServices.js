@@ -4,10 +4,10 @@ import { supabase } from '../lib/supabaseClient';
 export const loadingScreen = ref(false);
 export const products = ref({});
 
-export const getProducts = async () => {
+export const getProducts = async (category) => {
     loadingScreen.value = true;
     try {
-        const { data, error } = await supabase.from('products').select();
+        const { data, error } = await supabase.from('products').select().eq('category', category);
         if (!error) {
             products.value = data;
             loadingScreen.value = false;

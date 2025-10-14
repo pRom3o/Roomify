@@ -16,7 +16,7 @@
                     <img
                         src="../assets/img/Contact-us.png"
                         alt="contact"
-                        class="lg:flex hidden h-[80%]"
+                        class="md:flex hidden h-[80%]"
                     />
                 </div>
 
