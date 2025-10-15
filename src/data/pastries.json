@@ -1,5 +1,5 @@
 {
-    "Doughnuts": [
+    "items": [
         {
             "id": 1,
             "name": "Chocolate doughnut",
@@ -8,42 +8,11 @@
         },
         {
             "id": 2,
-            "name": "Milky doughnut",
-            "price": "₦1200",
-            "img": "/Images/milky-doughnuts.jpg"
-        },
-        {
-            "id": 3,
-            "name": "Powdered sugar doughnut",
-            "price": "₦800",
-            "img": "/Images/powdered-sugar-doughnuts.jpg"
-        },
-        {
-            "id": 4,
-            "name": "Jam doughnut",
-            "price": "₦1200",
-            "img": "/Images/jam-doughnuts.jpg"
-        },
-        {
-            "id": 5,
-            "name": "Glazed doughnut",
-            "price": "₦1200",
-            "img": "/Images/glazed-doughnuts.jpg"
-        }
-    ],
-    "Cakes": [
-        {
-            "id": 1,
             "name": "Chocolate cake slice",
             "price": "₦2000",
             "img": "/Images/chocolate-cake-slice.jpg"
         },
-        {
-            "id": 2,
-            "name": "Mint cake slice",
-            "price": "₦2000",
-            "img": "/Images/mint-cake-slice.jpg"
-        },
+
         {
             "id": 3,
             "name": "Vanilla cake slice",
@@ -58,36 +27,15 @@
         },
         {
             "id": 5,
-            "name": "Flavour fusion (3 in 1)",
-            "price": "₦4000",
-            "img": "/Images/3-in-1.jpg"
-        }
-    ],
-    "Others": [
-        {
-            "id": 1,
             "name": "Meat pie",
             "price": "₦1200",
             "img": "/Images/meat-pie.jpg"
         },
         {
-            "id": 2,
-            "name": "Glazed puffs",
-            "price": "₦2500",
-            "img": "/Images/glazed-puffs.jpeg"
-        },
-        {
-            "id": 3,
+            "id": 6,
             "name": "Banana bread",
             "price": "₦2500",
             "img": "/Images/banana-bread.jpg"
-        },
-
-        {
-            "id": 4,
-            "name": "Cinnamon roll",
-            "price": "₦1500",
-            "img": "/Images/cinnamon-roll.jpeg"
         }
     ]
 }

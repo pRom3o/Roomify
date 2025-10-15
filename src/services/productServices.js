@@ -1,22 +1,25 @@
 import { ref } from 'vue';
 import { supabase } from '../lib/supabaseClient';
 
-export const loadingScreen = ref(false);
+export const isLoading = ref(false);
 export const products = ref({});
 
 export const getProducts = async (category) => {
-    loadingScreen.value = true;
+    isLoading.value = true;
     try {
         const { data, error } = await supabase.from('products').select().eq('category', category);
-        if (!error) {
-            products.value = data;
-            loadingScreen.value = false;
-        } else {
+
+        // Add a 3-second delay before updating
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        if (error) {
             console.log('error: ', error.message);
+        } else {
+            products.value = data;
         }
     } catch (error) {
         console.log(error);
     } finally {
-        loadingScreen.value = false;
+        isLoading.value = false;
     }
 };

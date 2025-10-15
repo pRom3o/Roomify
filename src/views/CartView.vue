@@ -6,16 +6,18 @@ import IconPlus from '../../public/icons/IconPlus.vue';
 </script>
 
 <template>
-    <div class="min-h-96 flex flex-col items-center w-full md:p-4 space-y-10 nav-bg">
-        <div class="lg:w-4/5 w-full h-20 col-center p-4">
+    <div class="min-h-screen flex flex-col items-center w-full md:p-4 space-y-5 bg-[#fef4f4]">
+        <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
             <h1 class="text-5xl font-light">Shopping Cart</h1>
         </div>
         <div
             class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 md:px-4"
         >
-            <div class="flex flex-col gap-5 items-center w-full lg:w-[70%] px-2">
+            <div
+                class="flex flex-col gap-5 items-center w-full lg:w-[70%] px-2 bg-[#fefefe] py-5 rounded-2xl shadow"
+            >
                 <div
-                    class="px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#f6dab7]"
+                    class="px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#fbd5d5]"
                 >
                     <p>Product</p>
                     <div class="flex w-1/2 justify-between text-[10px] mg:text-base">
@@ -175,69 +177,11 @@ import IconPlus from '../../public/icons/IconPlus.vue';
                             <p>$320</p>
                         </div>
                     </li>
-                    <li
-                        class="flex items-center justify-between w-full border-b border-gray-400/50 pb-2"
-                    >
-                        <div class="w-1/2 flex items-center justify-items-start md:gap-6 gap-3">
-                            <button><IconX2 /></button>
-                            <div class="h-12 w-10 rounded-xl bg-gray-400/50"></div>
-                            <div class="flex flex-col">
-                                <p class="md:text-base text-[9px]">Wooden Sofa Chair</p>
-                                <p class="text-[9px] text-gray-600/80">Color : Grey</p>
-                            </div>
-                        </div>
-                        <div
-                            class="w-1/2 flex items-center justify-between pr-8 md:text-base text-[9px]"
-                        >
-                            <p class="">$80</p>
-                            <div
-                                class="flex items-center gap-3 md:gap-5 md:px-3 border border-gray-400/50 rounded-2xl text-base"
-                            >
-                                <button class="border-r border-gray-400/50 p-1">
-                                    <IconDash />
-                                </button>
-                                <p class="">4</p>
-                                <button class="border-l border-gray-400/50 p-1">
-                                    <IconPlus />
-                                </button>
-                            </div>
-                            <p>$320</p>
-                        </div>
-                    </li>
-                    <li
-                        class="flex items-center justify-between w-full border-b border-gray-400/50 pb-2"
-                    >
-                        <div class="w-1/2 flex items-center justify-items-start md:gap-6 gap-3">
-                            <button><IconX2 /></button>
-                            <div class="h-12 w-10 rounded-xl bg-gray-400/50"></div>
-                            <div class="flex flex-col">
-                                <p class="md:text-base text-[9px]">Wooden Sofa Chair</p>
-                                <p class="text-[9px] text-gray-600/80">Color : Grey</p>
-                            </div>
-                        </div>
-                        <div
-                            class="w-1/2 flex items-center justify-between pr-8 md:text-base text-[9px]"
-                        >
-                            <p class="">$80</p>
-                            <div
-                                class="flex items-center gap-3 md:gap-5 md:px-3 border border-gray-400/50 rounded-2xl text-base"
-                            >
-                                <button class="border-r border-gray-400/50 p-1">
-                                    <IconDash />
-                                </button>
-                                <p class="">4</p>
-                                <button class="border-l border-gray-400/50 p-1">
-                                    <IconPlus />
-                                </button>
-                            </div>
-                            <p>$320</p>
-                        </div>
-                    </li>
                 </transition-group>
             </div>
             <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-4 lg:w-[30%]">
                 <div
-                    class="p-3 border border-gray-400/30 flex flex-col nav-bg rounded-xl w-full space-y-4"
+                    class="p-3 border border-gray-400/30 flex flex-col rounded-xl w-full space-y-4 bg-[#fefefe]"
                 >
                     <h3>Order Summary</h3>
                     <hr class="text-gray-400/30" />
@@ -269,7 +213,7 @@ import IconPlus from '../../public/icons/IconPlus.vue';
                         </div>
                     </div>
                     <button
-                        class="text-center px-6 py-3 rounded-4xl cart bg-[#f6dab7] hover:bg-[#e7ccae] hover hover:rounded-full"
+                        class="text-center px-6 py-3 rounded-4xl bg-[#ffd3d3] hover:bg-[#ffb1b1] hover hover:rounded-full"
                     >
                         Proceed to Checkout
                     </button>

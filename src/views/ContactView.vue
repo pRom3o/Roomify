@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-    <div class="w-full min-h-[700px] center flex-col main-bg md:px-16 px-8">
-        <div class="center w-full lg:w-[95%] h-[580px] p-6 section-bg shadow rounded-xl">
+    <div class="w-full min-h-screen center flex-col secondary-bg md:px-16 px-8">
+        <div class="center w-full lg:w-[95%] h-[580px] p-6 primary-bg shadow rounded-xl mt-10">
             <div
                 class="lg:w-[70%] h-full w-full md:flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
             >
@@ -14,7 +14,7 @@
                         <i>If you have any inquires, please use the contact form...</i>
                     </p>
                     <img
-                        src="../assets/img/Contact-us.png"
+                        src="/Images/contact-us.png"
                         alt="contact"
                         class="md:flex hidden h-[80%]"
                     />
@@ -53,7 +53,7 @@
                     </div>
                     <div class="w-full flex items-center justify-end py-3 h-[12%]">
                         <button
-                            class="px-8 py-2 text-black/70 hover submit rounded-lg hover:rounded-2xl"
+                            class="px-8 py-2 hover bg-[#ffd3d3] hover:bg-[#ffb1b1] rounded-lg hover:rounded-2xl"
                         >
                             submit
                         </button>
@@ -72,32 +72,26 @@
 
 input,
 textarea {
-    border: 1px solid #e9d4bc;
+    border: 1px solid #e9bcbc;
     border-radius: 3px;
-    outline: 1px solid #e9d4bc;
+    outline: 1px solid #e9bcbc;
     padding: 5px;
     font-weight: 300;
 }
 
 input:focus,
 textarea:focus {
-    caret-color: #e9d4bc;
-}
-
-input:focus {
-    outline: none; /* remove default blue glow */
-    border: 2px solid transparent;
-    border-image: linear-gradient(135deg, #f7ede3, #e9d4bc, #d2b08a) 1;
-    border-radius: 6px; /* optional */
+    caret-color: #ffa2a2;
 }
 
 input:focus,
 textarea:focus {
     outline: none;
-    border: 2px solid #e9d4bc;
+    border: 2px solid #e9bcbc;
+    border-radius: 7px;
     box-shadow:
-        0 0 8px 2px #e9d4bc66,
-        0 0 16px 4px #d2b08a55;
+        0 0 8px 2px #e9bcbc66,
+        0 0 16px 4px #d28a8a55;
 }
 
 label {

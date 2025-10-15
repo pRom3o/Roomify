@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
     <div
-        class="w-full min-h-10 pr-2 py-2 border center border-b-[#dcdddd] shadow-xs font-kanit sticky top-0 nav-bg z-50"
+        class="w-full min-h-8 pr-2 py-2 center shadow-xs font-kanit fixed top-0 z-50 backdrop-blur-lg"
     >
         <div class="flex items-center justify-between lg:w-[80%] w-full px-4">
             <button class="h-full w-[20px] md:hidden flex z-20" @click="switchIcon">
@@ -26,38 +26,33 @@ onMounted(() => {
             </button>
             <HamMenu :class="openClose ? 'h-screen' : 'h-0'" />
 
-            <h2 class="font-bold text-xl text-[#e4c199]">
-                <RouterLink to="/" class="bg-none">ROOMIFY</RouterLink>
-            </h2>
+            <h2 class="font-bold text-xl hero-text">SOMETHING</h2>
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
-                    <RouterLink to="/" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
+                    <RouterLink to="/" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Home</RouterLink
                     >
                 </li>
                 <li>
-                    <RouterLink to="shop" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
+                    <RouterLink to="shop" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Shop</RouterLink
                     >
                 </li>
                 <li>
-                    <RouterLink to="contact" class="px-3 py-2 hover:bg-[#e7c9a6] rounded-2xl hover"
+                    <RouterLink to="contact" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Contact</RouterLink
                     >
                 </li>
             </ul>
 
-            <button
-                class="bg-[#ecdac6] py-2 px-4 hover:rounded-2xl rounded-lg text-black hover:bg-[#e7ccae] hover center text-[1em]"
-                v-if="user"
-            >
-                <i class="fi fi-rr-shopping-cart-notification px-2"
-                    ><RouterLink to="/cart" class="bg-none">cart</RouterLink></i
+            <button class="cart hover" v-if="user">
+                <RouterLink to="/cart" class="bg-none"
+                    ><i class="fi fi-rr-shopping-cart-notification px-2"></i>cart</RouterLink
                 >
             </button>
             <button
-                class="bg-[#ecdac6] py-2 px-4 hover:rounded-2xl rounded-lg text-black hover:bg-[#e7ccae] hover center text-[1em]"
+                class="py-1 px-4 hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
                 v-else
             >
                 <RouterLink to="/auth/login"><i>Login/Signup</i></RouterLink>
@@ -68,7 +63,7 @@ onMounted(() => {
 
 <style scoped>
 .bg-none {
-    background-color: inherit;
+    background-color: none;
 }
 
 .fade-enter-from,
