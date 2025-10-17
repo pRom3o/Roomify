@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-    <div class="w-full min-h-screen center flex-col secondary-bg md:px-16 px-8">
+    <div class="w-full min-h-screen center flex-col secondary-bg md:px-16 px-8 text-[#424242]">
         <div class="center w-full lg:w-[95%] h-[580px] p-6 primary-bg shadow rounded-xl mt-10">
             <div
                 class="lg:w-[70%] h-full w-full md:flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
@@ -96,5 +96,6 @@ textarea:focus {
 
 label {
     font-weight: 300;
+    color: black;
 }
 </style>

@@ -63,7 +63,7 @@ onMounted(() => {
             </div>
         </div>
         <section class="min-h-96 w-full primary-bg px-3 py-5 md:py-16">
-            <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-13">
+            <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-8">
                 <h2 class="text-[2.5rem] font-light fade-in">Why Choose Us?</h2>
                 <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                     <div
@@ -73,7 +73,7 @@ onMounted(() => {
                             <i class="fi fi-rr-arrow-left text-4xl mt-2"></i>
                         </div>
                         <h3 class="text-[1.6rem]">Easy Returns</h3>
-                        <p class="text-[0.9rem] text-[#666666]">
+                        <p class="text-[0.8rem] text-[#666666]">
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, vitae
                             praesentium!
                         </p>
@@ -85,7 +85,7 @@ onMounted(() => {
                             <i class="fi fi-rr-trophy text-4xl mt-2"></i>
                         </div>
                         <h3 class="text-[1.6rem]">Quality First</h3>
-                        <p class="text-[0.9rem] text-[#666666]">
+                        <p class="text-[0.8rem] text-[#666666]">
                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur,
                             maiores corporis!
                         </p>
@@ -97,7 +97,7 @@ onMounted(() => {
                             <i class="fi fi-rr-headset text-4xl mt-2"></i>
                         </div>
                         <h3 class="text-[1.6rem]">Support</h3>
-                        <p class="text-[0.9rem] text-[#666666]">
+                        <p class="text-[0.8rem] text-[#666666]">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius,
                             accusantium deserunt.
                         </p>
@@ -107,13 +107,13 @@ onMounted(() => {
         </section>
 
         <section class="min-h-96 w-full px-3 center py-5 md:py-10 secondary-bg">
-            <div class="col-center w-full md:w-[80%] h-full space-y-5 p-2">
-                <h3 class="text-[2.5rem] font-extralight text-center">Featured Products</h3>
-                <div class="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 w-full fade-in">
+            <div class="col-center w-full lg:w-[80%] 2xl:w-[70%] h-full space-y-5 p-2">
+                <h3 class="text-[2.5rem] font-light text-center">Featured Products</h3>
+                <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 w-full fade-in">
                     <div
                         v-for="items in currentPasteries"
                         :key="items.id"
-                        class="section-bg prod-cards hover w-full rounded-xl p-2 shadow bg-[#fff0f0]"
+                        class="section-bg prod-cards hover w-full rounded-xl p-2 shadow cards"
                     >
                         <img :src="items.img" :alt="items.name" class="h-36 w-full rounded-t-xl" />
                         <div class="py-4">
@@ -159,5 +159,13 @@ onMounted(() => {
 .slide-in-right.show {
     opacity: 1;
     transform: translateX(0);
+}
+
+.cards {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 </style>

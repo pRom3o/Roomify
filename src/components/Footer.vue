@@ -21,8 +21,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <footer class="min-h-46 w-full px-3 pt-6">
-        <div class="footer-content w-full fade-in">
+    <footer class="min-h-46 w-full px-3 pt-6 bg-red-50">
+        <div class="grid md:grid-cols-4 grid-cols-2 w-full fade-in">
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
                 <h4>Shop</h4>
                 <p>All Products</p>

@@ -6,7 +6,7 @@ import IconPlus from '../../public/icons/IconPlus.vue';
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col items-center w-full md:p-4 space-y-5 bg-[#fef4f4]">
+    <div class="min-h-screen flex flex-col items-center w-full md:p-4 space-y-5 bg-[#fdf5f5]">
         <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
             <h1 class="text-5xl font-light">Shopping Cart</h1>
         </div>
