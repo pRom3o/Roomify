@@ -46,8 +46,8 @@ onMounted(() => {
             </div>
         </div>
         <div class="fade-in w-full">
-            <hr class="text-[#464545]" />
-            <div class="center w-full min-h-20 font-light">
+            <hr class="text-[#aaaaaa]" />
+            <div class="center w-full min-h-20">
                 <p>&copy; 2025 ROOMIFY. All rights reserved.</p>
             </div>
         </div>

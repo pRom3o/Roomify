@@ -12,11 +12,11 @@ const auth = inject('auth');
 </script>
 
 <template>
-    <div class="fixed top-[44px] left-0 w-full z-9999 shadow">
+    <div class="fixed top-0 left-0 w-full z-80 shadow">
         <transition name="nav"
             ><div
                 v-if="openClose"
-                class="w-full bg-[#fffffc] flex flex-col items-center justify-between p-4 z-999"
+                class="w-full bg-[#fffffc] flex flex-col items-center justify-between p-4"
                 :class="openClose ? 'h-screen' : 'h-0'"
             >
                 <div class="h-[90%] w-full col-center gap-5" v-if="routeLinks.length > 0">
@@ -32,7 +32,7 @@ const auth = inject('auth');
                         </li>
                     </transition-group>
                     <button
-                        class="bg-[#ecdac6] py-2 px-4 hover:rounded-2xl rounded-lg text-black hover:bg-[#e7ccae] hover center text-[1em]"
+                        class="py-2 px-4 hover:rounded-2xl rounded-lg text-black btn-2 hover center text-[1em]"
                         @click="auth.logout()"
                         v-if="auth.user"
                     >

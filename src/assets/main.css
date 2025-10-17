@@ -93,5 +93,5 @@ button {
 }
 
 .btn-2 {
-    @apply hover bg-[#ffd3d3] hover:bg-[#fbdcdc];
+    @apply bg-[#ffd3d3] hover:bg-[#fbdcdc];
 }

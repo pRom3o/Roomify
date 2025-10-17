@@ -19,14 +19,14 @@ onMounted(() => {
         class="w-full min-h-8 pr-2 py-2 center shadow font-kanit fixed top-0 z-50 backdrop-blur-lg"
     >
         <div class="flex items-center justify-between lg:w-[80%] w-full px-4">
-            <button class="h-full w-[20px] md:hidden flex z-20" @click="switchIcon">
+            <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
                 </Transition>
             </button>
             <HamMenu :class="openClose ? 'h-screen' : 'h-0'" />
 
-            <h2 class="font-bold text-xl text-[#cca3a3]">SOMETHING</h2>
+            <h2 class="font-bold text-xl text-[#cca3a3]">CELINE'S TREATS</h2>
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
