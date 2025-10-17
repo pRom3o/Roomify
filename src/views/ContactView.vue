@@ -52,9 +52,7 @@
                         </div>
                     </div>
                     <div class="w-full flex items-center justify-end py-3 h-[12%]">
-                        <button class="px-8 py-2 hover bg-[#ffd3d3] hover:bg-[#fbdcdc] rounded-md">
-                            submit
-                        </button>
+                        <button class="px-8 py-2 btn-2 rounded-md">submit</button>
                     </div>
                 </form>
             </div>

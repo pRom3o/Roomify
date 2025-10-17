@@ -183,7 +183,7 @@ import IconPlus from '../../public/icons/IconPlus.vue';
                 <div
                     class="p-3 border border-gray-400/30 flex flex-col rounded-xl w-full space-y-4 bg-[#fefefe]"
                 >
-                    <h3>Order Summary</h3>
+                    <h3 class="text-center">Order Summary</h3>
                     <hr class="text-gray-400/30" />
                     <div class="space-y-3">
                         <div class="flex w-full justify-between">
@@ -213,7 +213,7 @@ import IconPlus from '../../public/icons/IconPlus.vue';
                         </div>
                     </div>
                     <button
-                        class="text-center px-6 py-3 rounded-4xl bg-[#ffd3d3] hover:bg-[#ffb1b1] hover hover:rounded-full"
+                        class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl bg-[#ffd3d3] hover:bg-[#fbc1c1] hover"
                     >
                         Proceed to Checkout
                     </button>

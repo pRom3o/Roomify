@@ -91,3 +91,7 @@ button {
 .navs {
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
+
+.btn-2 {
+    @apply hover bg-[#ffd3d3] hover:bg-[#fbdcdc];
+}
