@@ -17,7 +17,7 @@ button {
 
 .nav,
 .cart {
-    @apply px-4 py-2 bg-[#87878753] text-center text-white  rounded-3xl hover:bg-[#d0cecedc] hover:text-[#333];
+    @apply px-4 py-2 bg-[#87878753] text-center text-white  rounded-3xl hover:bg-[#fbdcdc] hover:text-[#333];
 }
 
 .hover {
