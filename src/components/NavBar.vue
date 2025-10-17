@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
     <div
-        class="w-full min-h-8 pr-2 py-2 center shadow font-kanit fixed top-0 z-50 backdrop-blur-lg"
+        class="w-full min-h-8 pr-2 py-2 center shadow-lg font-kanit fixed top-0 z-50 backdrop-blur-lg"
     >
         <div class="flex items-center justify-between lg:w-[80%] w-full px-4">
             <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
