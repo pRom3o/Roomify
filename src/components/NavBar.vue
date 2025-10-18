@@ -26,7 +26,7 @@ onMounted(() => {
             </button>
             <HamMenu :class="openClose ? 'h-screen' : 'h-0'" />
 
-            <h2 class="font-bold text-xl text-[#cca3a3]">CELINE'S TREATS</h2>
+            <h2 class="font-bold md:text-xl text-[#cca3a3]">CELINE'S TREATS</h2>
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
@@ -45,14 +45,22 @@ onMounted(() => {
                     >
                 </li>
             </ul>
-
-            <button class="cart hover" v-if="user">
+            <button class="cart hover md:flex hidden" v-if="user">
                 <RouterLink to="/cart" class="bg-none"
                     ><i class="fi fi-rr-shopping-cart-notification px-2"></i>cart</RouterLink
                 >
             </button>
             <button
-                class="py-1 px-4 hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
+                class="px-3 py-1 bg-[#87878753] text-center flex md:hidden text-white rounded-3xl hover:bg-[#fbdcdc] hover:text-[#333] hover"
+                v-if="user"
+            >
+                <RouterLink to="/cart" class="bg-none"
+                    ><i class="fi fi-rr-shopping-cart-notification text-xs px-1"></i
+                    >cart</RouterLink
+                >
+            </button>
+            <button
+                class="cart py-1 px-4 hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
                 v-else
             >
                 <RouterLink to="/auth/login"><i>Login/Signup</i></RouterLink>

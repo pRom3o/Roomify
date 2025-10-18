@@ -95,3 +95,16 @@ button {
 .btn-2 {
     @apply bg-[#ffd3d3] hover:bg-[#fbdcdc];
 }
+
+.vertical-line {
+    border-left: 2px solid #ebd0d0;
+    height: 100%;
+}
+
+.under {
+    text-decoration-color: #e9bcbc;
+}
+
+.under:hover {
+    text-decoration-color: #eda1a1;
+}

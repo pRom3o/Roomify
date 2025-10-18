@@ -21,34 +21,33 @@ onMounted(() => {
 </script>
 
 <template>
-    <footer class="min-h-46 w-full px-3 pt-6 bg-red-50">
+    <footer class="min-h-32 w-full px-3 pt-6 bg-[#f5dede]">
         <div class="grid md:grid-cols-4 grid-cols-2 w-full fade-in">
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4>Shop</h4>
-                <p>All Products</p>
-                <p>New Arrivals</p>
+                <h4 class="md:font-medium text-sm md:text-md">Shop</h4>
+                <p class="text-xs md:font-normal font-light">All Products</p>
+                <p class="text-xs md:font-normal font-light">New Arrivals</p>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4>Contact</h4>
-                <p>Contact Us</p>
-                <p>FAQ</p>
+                <h4 class="md:font-medium text-sm md:text-md">Contact</h4>
+                <p class="text-xs md:font-normal font-light">Contact Us</p>
+                <p class="text-xs md:font-normal font-light">FAQ</p>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4>Company</h4>
-                <p>About Us</p>
-
-                <p>Blog</p>
+                <h4 class="md:font-medium text-sm md:text-md">Company</h4>
+                <p class="text-xs md:font-normal font-light">About Us</p>
+                <p class="text-xs md:font-normal font-light">Blog</p>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4>Legal</h4>
-                <p>Privacy Policy</p>
-                <p>Terms of Service</p>
+                <h4 class="md:font-medium text-sm md:text-md">Legal</h4>
+                <p class="text-xs md:font-normal font-light">Privacy Policy</p>
+                <p class="text-xs md:font-normal font-light">Terms of Service</p>
             </div>
         </div>
-        <div class="fade-in w-full">
+        <div class="fade-in w-full font-light text-[10px] lg:text-sm lg:font-normal">
             <hr class="text-[#aaaaaa]" />
-            <div class="center w-full min-h-20">
-                <p>&copy; 2025 ROOMIFY. All rights reserved.</p>
+            <div class="center w-full min-h-10">
+                <p>&copy; 2025 ROOMIFY. all rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -60,16 +59,5 @@ onMounted(() => {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
-}
-
-h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 1rem;
-}
-
-p {
-    font-size: smaller;
 }
 </style>

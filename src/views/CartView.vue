@@ -6,15 +6,15 @@ import IconPlus from '../../public/icons/IconPlus.vue';
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col items-center w-full md:p-4 space-y-5 bg-[#fdf5f5]">
+    <div class="min-h-screen flex flex-col items-center w-full md:p-4 space-y-5 bg-[#fff3f3]">
         <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
             <h1 class="text-5xl font-light">Shopping Cart</h1>
         </div>
         <div
-            class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 md:px-4"
+            class="flex md:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 px-4"
         >
             <div
-                class="flex flex-col gap-5 items-center w-full lg:w-[70%] px-2 bg-[#fefefe] py-5 rounded-2xl shadow"
+                class="flex flex-col gap-5 items-center w-full lg:w-[70%] px-2 bg-[#fff1f1] py-5 rounded-2xl shadow"
             >
                 <div
                     class="px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#fbd5d5]"
@@ -181,7 +181,7 @@ import IconPlus from '../../public/icons/IconPlus.vue';
             </div>
             <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-4 lg:w-[30%]">
                 <div
-                    class="p-3 border border-gray-400/30 flex flex-col rounded-xl w-full space-y-4 bg-[#fefefe]"
+                    class="p-3 border border-gray-400/30 flex flex-col rounded-xl w-full space-y-4 bg-[#fff1f1]"
                 >
                     <h3 class="text-center">Order Summary</h3>
                     <hr class="text-gray-400/30" />

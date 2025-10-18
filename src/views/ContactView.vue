@@ -1,16 +1,20 @@
 <script setup></script>
 
 <template>
-    <div class="w-full min-h-screen center flex-col secondary-bg md:px-16 px-8 text-[#424242]">
-        <div class="center w-full lg:w-[95%] h-[580px] p-6 primary-bg shadow rounded-xl mt-10">
+    <div class="w-full min-h-screen center bg-[#fff1f1] md:px-16 px-8 text-[#424242]">
+        <div
+            class="center w-full lg:w-[90%] min-h-[580px] p-6 bg-[#fff8f8] shadow rounded-xl mt-20 mb-10 md:mb-0 md:my-10"
+        >
             <div
-                class="lg:w-[70%] h-full w-full md:flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
+                class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
             >
-                <div class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%]">
-                    <h1 class="md:text-4xl lg:text-5xl text-3xl mb-3 headers">
+                <div
+                    class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%] md:mb-0 mb-5"
+                >
+                    <h1 class="lg:text-4xl text-2xl mb-1 headers">
                         <i>Get in Touch with Roomify.</i>
                     </h1>
-                    <p class="md:text-sm text-xs font-light">
+                    <p class="font-light text-[12px] lg:text-base">
                         <i>If you have any inquires, please use the contact form...</i>
                     </p>
                     <img
@@ -29,25 +33,30 @@
                             class="flex lg:flex-row flex-col items-center justify-center w-full space-x-0 lg:space-y-0 space-y-3 gap-x-2 p-1"
                         >
                             <div class="flex flex-col lg:w-1/2 w-full">
-                                <label for="firstName">First Name</label
+                                <label for="firstName" class="text-xs lg:text-sm xl:text-base"
+                                    >First Name *</label
                                 ><input type="text" name="firstName" id="firstName" />
                             </div>
                             <div class="flex flex-col lg:w-1/2 w-full">
-                                <label for="lastName">Last Name</label
+                                <label for="lastName" class="text-xs lg:text-sm xl:text-base"
+                                    >Last Name *</label
                                 ><input type="text" name="lastName" id="lastName" />
                             </div>
                         </div>
                         <div class="flex flex-col w-full">
-                            <label for="userEmail">Email</label
+                            <label for="userEmail" class="text-xs lg:text-sm xl:text-base"
+                                >Email *</label
                             ><input type="email" name="userEmail" id="userEmail" />
                         </div>
 
                         <div class="flex flex-col w-full">
-                            <label for="userMessage">Message</label>
+                            <label for="userMessage" class="text-xs lg:text-sm xl:text-base"
+                                >Message *</label
+                            >
                             <textarea
                                 name="userMessage"
                                 id="userMessage"
-                                class="resize-none h-30"
+                                class="resize-none h-24"
                             ></textarea>
                         </div>
                     </div>

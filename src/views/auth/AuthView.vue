@@ -18,7 +18,7 @@ onMounted(() => {
 watch(
     () => route.query.form,
     (form) => {
-        currentForm.value = form === 'signup' ? 'signup' : 'login';
+        currentForm.value = form === 'login' ? 'login' : 'signup';
     },
 );
 </script>

@@ -29,19 +29,19 @@ const handleSignup = async () => {
 </script>
 
 <template>
-    <div class="w-full min-h-screen center flex-col main-bg px-4">
+    <div class="w-full min-h-screen center flex-col primary-bg px-4">
         <div
-            class="md-center md:w-[90%] w-full md:h-[550px] p-6 section-bg shadow rounded-xl"
+            class="flex items-center justify-center md:flex-row flex-col md:w-[90%] w-full md:h-[550px] p-6 bg-[#fffcfc] shadow rounded-xl"
             v-if="loading == false"
         >
             <div class="text-center col-center md:w-1/2 xl:w-[40%] space-y-2 md:h-full">
-                <h1 class="md:text-4xl text-3xl headers">New to Roomify?</h1>
-                <p class="font-light md:text-[10px] lg:text-base">
+                <h1 class="md:text-4xl text-2xl headers">New to Roomify?</h1>
+                <p class="font-light text-[12px] lg:text-base">
                     <i>Fill in the details to become a customer...</i>
                 </p>
                 <img
-                    src="../../assets/img/Signup-rafiki.png"
-                    alt=""
+                    src="/Images/Signup-rafiki.png"
+                    alt="Signup img"
                     class="md:flex hidden lg:h-[80%] md:h-[60%]"
                 />
             </div>
@@ -51,15 +51,17 @@ const handleSignup = async () => {
             >
                 <div class="md:w-5/6 w-full h-full col-center space-y-5">
                     <div class="flex flex-col w-full space-y-3">
-                        <label for="userName">Name *</label
+                        <label for="userName" class="text-xs lg:text-sm xl:text-base">Name *</label
                         ><input type="text" name="userName" id="userName" v-model="userName" />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
-                        <label for="userEmail">Email *</label
+                        <label for="userEmail" class="text-xs lg:text-sm xl:text-base"
+                            >Email *</label
                         ><input type="email" name="userEmail" id="userEmail" v-model="userEmail" />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
-                        <label for="userPassword">Password *</label
+                        <label for="userPassword" class="text-xs lg:text-sm xl:text-base"
+                            >Password *</label
                         ><input
                             type="password"
                             name="userPassword"
@@ -68,23 +70,24 @@ const handleSignup = async () => {
                         />
                     </div>
                     <div class="flex flex-col w-full space-y-3">
-                        <label for="userPhone">Phone Number *</label
+                        <label for="userPhone" class="text-xs lg:text-sm xl:text-base"
+                            >Phone Number *</label
                         ><input type="text" name="userPhone" id="userPhone" v-model="userPhone" />
                     </div>
                     <button
-                        class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover"
+                        class="w-full px-4 py-2 rounded-lg btn-2 hover text-sm xl:text-base text-[#4b4b4b]"
                         v-if="loadingicon == false"
                         @click="handleSignup"
                     >
                         Signup
                     </button>
-                    <button
-                        class="w-full px-4 py-2 submit rounded-xl hover:bg-[#efe1d0] hover center"
-                        v-else
-                    >
+                    <button class="w-full px-4 py-2 btn-2 rounded-xl hover center" v-else>
                         <LoadingIcon />
                     </button>
-                    <button @click.prevent="emit('switch-form', 'login')" class="underline">
+                    <button
+                        @click.prevent="emit('switch-form', 'login')"
+                        class="text-[#e9bcbc] hover:text-[#eda1a1] hover under underline"
+                    >
                         <i>Already a user?</i> Login here..
                     </button>
                 </div>
@@ -110,23 +113,28 @@ const handleSignup = async () => {
 </template>
 
 <style scoped>
-.vertical-line {
-    border-left: 2px solid #fff1e0; /* Adjust thickness, style, and color */
-    height: 100%; /* Adjust height as needed */
-}
-
 input,
 textarea {
-    border: 1px solid #e9d4bc;
+    border: 1px solid #e9bcbc;
     border-radius: 3px;
-    outline: 1px solid #e9d4bc;
+    outline: 1px solid #e9bcbc;
     padding: 5px;
     font-weight: 300;
 }
 
 input:focus,
 textarea:focus {
-    caret-color: #e9d4bc;
+    caret-color: #ffa2a2;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #e9bcbc;
+    border-radius: 7px;
+    box-shadow:
+        0 0 8px 2px #e9bcbc66,
+        0 0 16px 4px #d28a8a55;
 }
 
 label {
