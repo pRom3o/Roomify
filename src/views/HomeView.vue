@@ -12,7 +12,7 @@ const currentPasteries = computed(() => {
 });
 
 onMounted(() => {
-    console.log(user.value.email);
+    console.log('user', user.value);
 });
 
 onMounted(() => {
@@ -69,9 +69,9 @@ onMounted(() => {
         </div>
         <section
             id="About"
-            class="fade-in min-h-[300px] w-full flex flex-col items-center gap-3 p-4 bg-[#ffeaea]"
+            class="fade-in min-h-[300px] w-full flex flex-col items-center gap-3 p-4 bg-[#fff3f3]"
         >
-            <h1 class="items-start text-3xl md:text-5xl lg:text-6xl py-4 fade-in">
+            <h1 class="items-start text-3xl md:text-5xl lg:text-6xl py-4 fade-in font-sans">
                 About Celine's treats
             </h1>
             <div
@@ -108,81 +108,95 @@ onMounted(() => {
                 </div>
             </div>
         </section>
-        <section class="min-h-96 w-full bg-[#fff3f3] px-3 py-5 md:py-16">
-            <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-8">
-                <h2 class="md:text-[2.5rem] text-2xl fade-in">Why Choose Us?</h2>
-                <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-                    <div
-                        class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
-                    >
+        <div class="col-center w-full min-h-96 primary-bg">
+            <section class="min-h-96 w-full px-3 py-5 md:py-16">
+                <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-8">
+                    <h2 class="md:text-[2.5rem] text-2xl fade-in font-sans">Why Choose Us?</h2>
+                    <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                         <div
-                            class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                            class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
-                            <i
-                                class="fi fi-rr-arrow-left text-4xl mt-2 transition-transform duration-700"
-                            ></i>
+                            <div
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                            >
+                                <i
+                                    class="fi fi-rr-arrow-left text-4xl mt-2 transition-transform duration-700"
+                                ></i>
+                            </div>
+                            <h3 class="text-[1.6rem]">Easy Returns</h3>
+                            <p class="text-[0.8rem] text-[#666666]">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora,
+                                vitae praesentium!
+                            </p>
                         </div>
-                        <h3 class="text-[1.6rem]">Easy Returns</h3>
-                        <p class="text-[0.8rem] text-[#666666]">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, vitae
-                            praesentium!
-                        </p>
-                    </div>
-                    <div
-                        class="center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
-                    >
                         <div
-                            class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                            class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
-                            <i
-                                class="fi fi-rr-trophy text-4xl mt-2 transition-transform duration-700"
-                            ></i>
+                            <div
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                            >
+                                <i
+                                    class="fi fi-rr-trophy text-4xl mt-2 transition-transform duration-700"
+                                ></i>
+                            </div>
+                            <h3 class="text-[1.6rem]">Quality First</h3>
+                            <p class="text-[0.8rem] text-[#666666]">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                Consequuntur, maiores corporis!
+                            </p>
                         </div>
-                        <h3 class="text-[1.6rem]">Quality First</h3>
-                        <p class="text-[0.8rem] text-[#666666]">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur,
-                            maiores corporis!
-                        </p>
-                    </div>
-                    <div
-                        class="prod-cards center flex-col justify-center space-y-5 max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in"
-                    >
                         <div
-                            class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                            class="prod-cards center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in"
                         >
-                            <i
-                                class="fi fi-rr-headset text-4xl mt-2 transition-transform duration-700"
-                            ></i>
+                            <div
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                            >
+                                <i
+                                    class="fi fi-rr-headset text-4xl mt-2 transition-transform duration-700"
+                                ></i>
+                            </div>
+                            <h3 class="text-[1.6rem]">Support</h3>
+                            <p class="text-[0.8rem] text-[#666666]">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius,
+                                accusantium deserunt.
+                            </p>
                         </div>
-                        <h3 class="text-[1.6rem]">Support</h3>
-                        <p class="text-[0.8rem] text-[#666666]">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius,
-                            accusantium deserunt.
-                        </p>
-                    </div>
-                </section>
-            </div>
-        </section>
+                    </section>
+                </div>
+            </section>
 
-        <section class="min-h-96 w-full px-3 center py-5 md:py-10 bg-[#ffe8e8]">
-            <div class="col-center w-full lg:w-[80%] 2xl:w-[70%] h-full space-y-5 p-2">
-                <h3 class="md:text-[2.5rem] text-2xl font-light text-center">Featured Products</h3>
-                <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 w-full">
-                    <div
-                        v-for="items in currentPasteries"
-                        :key="items.id"
-                        class="fade-in prod-cards hover w-full rounded-xl p-2 shadow"
-                    >
-                        <img :src="items.img" :alt="items.name" class="h-36 w-full rounded-t-xl" />
-                        <div class="py-4">
-                            <p class="text-[14px]">{{ items.name }}</p>
-                            <p class="text-[12px] font-light">product synopsis</p>
-                            <p class="text-xs font-light">{{ items.price }}</p>
+            <section class="min-h-92 w-full px-3 center py-5 md:py-10">
+                <div class="col-center w-[90%] lg:w-[80%] 2xl:w-[70%] h-full space-y-5 p-2">
+                    <h3 class="md:text-[2.5rem] text-2xl text-center font-sans">
+                        Featured Products
+                    </h3>
+                    <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 w-full">
+                        <div
+                            v-for="items in currentPasteries"
+                            :key="items.id"
+                            class="fade-in prod-cards hover w-full rounded-xl p-2 shadow"
+                        >
+                            <img
+                                :src="items.img"
+                                :alt="items.name"
+                                class="h-36 w-full rounded-t-xl"
+                            />
+                            <div class="pt-2 pb-1 flex items-center justify-between w-full">
+                                <div>
+                                    <p class="text-[14px]">{{ items.name }}</p>
+                                    <p class="text-sm font-light">{{ items.price }}</p>
+                                </div>
+                                <button
+                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] text-center hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
+                                >
+                                    <RouterLink to="/shop">Shop Now</RouterLink>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 </template>
 

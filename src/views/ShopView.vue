@@ -1,7 +1,14 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue';
-import { getProducts, isLoading, products } from '../services/productServices';
-import loadingScreen from '../components/loadingScreen.vue';
+import { onMounted, watch } from 'vue';
+import { getProducts, isLoading, products } from '@/services/productServices';
+import loadingScreen from '@/components/loadingScreen.vue';
+import { addToCart } from '@/services/cartServices';
+
+import { inject, ref } from 'vue';
+
+const auth = inject('auth');
+const user = auth.user;
+
 const filters = ['Cakes', 'Doughnuts', 'Others'];
 const filter = ref('Cakes');
 
@@ -45,20 +52,55 @@ onMounted(() => {
                 </select>
                 <loadingScreen v-if="isLoading" />
                 <div class="h-full md:w-[80%] w-full center p-6" v-else>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-6">
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-6"
+                    >
                         <div
                             v-for="items in products"
                             :key="items.id"
-                            class="section-bg rounded-xl prod-cards hover shadow"
+                            class="rounded-xl prod-cards hover shadow p-2"
                         >
                             <img
                                 :src="items.image_url"
                                 :alt="items.name"
                                 class="h-56 w-full rounded-t-xl"
                             />
-                            <div class="p-2">
-                                <p>{{ items.name }}</p>
-                                <p>{{ items.price }}</p>
+
+                            <div class="py-2 flex items-center justify-between w-full">
+                                <div>
+                                    <p class="">
+                                        {{ items.name }}
+                                    </p>
+                                    <p class="text-[14px] font-light">₦{{ items.price }}</p>
+                                </div>
+                                <button
+                                    @click="
+                                        addToCart(
+                                            items.name,
+                                            items.price,
+                                            items.image_url,
+                                            user.id,
+                                            user.email,
+                                        )
+                                    "
+                                    class="px-3 py-2 hover:bg-[#87878753] text-[12px] text-center hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] md:flex hidden hover"
+                                >
+                                    Add to cart
+                                </button>
+                                <button
+                                    @click="
+                                        addToCart(
+                                            items.name,
+                                            items.price,
+                                            items.image_url,
+                                            user.id,
+                                            user.email,
+                                        )
+                                    "
+                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] text-center flex md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
+                                >
+                                    Add to cart
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -69,9 +111,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.prod-cards {
+    background-color: #fff;
+}
+
 .prod-cards:hover {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #fd9696;
     transform: translateY(-8px);
 }
 </style>

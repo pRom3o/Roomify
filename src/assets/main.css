@@ -25,7 +25,13 @@ button {
 }
 
 .primary-bg {
-    @apply bg-red-50;
+    background: linear-gradient(
+        209deg,
+        rgba(237, 149, 152, 1) 0%,
+        rgba(235, 230, 230, 1) 32%,
+        rgba(235, 215, 216, 1) 75%,
+        rgba(237, 149, 152, 1) 100%
+    );
 }
 
 .secondary-bg {
@@ -107,4 +113,11 @@ button {
 
 .under:hover {
     text-decoration-color: #eda1a1;
+}
+
+.shop-btn {
+    @apply px-2 py-1 hover:bg-[#87878753] text-[12px] text-center flex md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333];
+}
+.shop-btn-2 {
+    @apply px-2 py-1 hover:bg-[#87878753] text-[12px] text-center md:flex hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333];
 }

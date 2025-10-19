@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
     <div
-        class="w-full min-h-8 pr-2 py-2 center shadow-lg font-kanit fixed top-0 z-50 backdrop-blur-lg"
+        class="w-full min-h-10 md:min-h-8 pr-2 py-2 center shadow-lg font-kanit fixed top-0 z-50 backdrop-blur-lg"
     >
         <div class="flex items-center justify-between lg:w-[80%] w-full px-4">
             <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
@@ -26,7 +26,7 @@ onMounted(() => {
             </button>
             <HamMenu :class="openClose ? 'h-screen' : 'h-0'" />
 
-            <h2 class="font-bold md:text-xl text-[#cca3a3]">CELINE'S TREATS</h2>
+            <h2 class="font-bold md:text-xl text-[#8d7575]">CELINE'S TREATS</h2>
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
@@ -63,7 +63,7 @@ onMounted(() => {
                 class="cart py-1 px-4 hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
                 v-else
             >
-                <RouterLink to="/auth/login"><i>Login/Signup</i></RouterLink>
+                <RouterLink to="/auth"><i>Login/Signup</i></RouterLink>
             </button>
         </div>
     </div>

@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <footer class="min-h-32 w-full px-3 pt-6 bg-[#f5dede]">
+    <footer class="min-h-32 w-full px-3 pt-6 backdrop-blur-lg">
         <div class="grid md:grid-cols-4 grid-cols-2 w-full fade-in">
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
                 <h4 class="md:font-medium text-sm md:text-md">Shop</h4>
@@ -59,5 +59,8 @@ onMounted(() => {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    box-shadow:
+        0 0 8px 2px #e9bcbc66,
+        0 0 16px 4px #d28a8a55;
 }
 </style>
