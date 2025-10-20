@@ -17,25 +17,55 @@ export const quantity = ref(0);
 
 export const adding = ref(false);
 
-export const addToCart = async (name, price, img, userId, email) => {
+export const addToCart = async (name, price, img, userId, email, qty = 1) => {
     adding.value = true;
-    const { error } = await supabase
-        .from('carts')
-        .insert([
-            {
-                email: email,
-                item_name: name,
-                item_price: price,
-                img,
-                user_id: userId,
-            },
-        ])
-        .select();
+    try {
+        // Check if this user already has this item in cart
+        const { data: existing, error: selectError } = await supabase
+            .from('carts')
+            .select('*')
+            .eq('user_id', userId)
+            .eq('item_name', name)
+            .single();
 
-    if (error) {
-        throw error;
-    } else {
-        showToast('added', 'success');
+        if (selectError && selectError.code !== 'PGRST116') {
+            throw selectError;
+        }
+
+        if (existing && existing.id) {
+            // 2) If it exists, update quantity (increment by qty)
+            const newQuantity = (existing.quantity || 0) + qty;
+            const { error: updateError } = await supabase
+                .from('carts')
+                .update({ quantity: newQuantity })
+                .eq('id', existing.id);
+
+            if (updateError) throw updateError;
+
+            showToast('Cart updated', 'success');
+        } else {
+            // 3) If it doesn't exist, insert new row with quantity = qty
+            const { error: insertError } = await supabase.from('carts').insert([
+                {
+                    email,
+                    item_name: name,
+                    item_price: price,
+                    img,
+                    user_id: userId,
+                    quantity: qty,
+                },
+            ]);
+
+            if (insertError) throw insertError;
+
+            showToast('Added to cart', 'success');
+        }
+    } catch (err) {
+        console.error('addToCart error:', err);
+        showToast(err.message || 'Could not add to cart', 'failed');
+        throw err;
+    } finally {
+        adding.value = false;
     }
 };
 
@@ -51,9 +81,18 @@ export const getUserCart = async (userId) => {
 };
 
 export const deleteItem = async (id) => {
-    const error = await supabase.from('carts').delete().eq('id', id).select();
+    const { error } = await supabase.from('carts').delete().eq('id', id).select();
 
     if (error) throw error;
+};
 
-    console.log('deleted');
+export const incrementItem = async (id, newQuantity) => {
+    const { error: updateError } = await supabase
+        .from('carts')
+        .update({ quantity: newQuantity })
+        .eq('id', id);
+
+    if (updateError) throw updateError;
+
+    showToast('Cart updated', 'success');
 };

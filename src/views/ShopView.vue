@@ -42,14 +42,27 @@ onMounted(() => {
 <template>
     <div class="w-full min-h-screen flex flex-col justify-between primary-bg">
         <div class="h-full w-full col-center space-y-5 mt-20">
-            <h1 class="text-6xl font-kanit">Shop</h1>
-            <div class="min-h-96 w-full flex flex-col items-center justify-evenly gap-6">
-                <select id="filter" v-model="filter">
-                    <option v-for="item in filters" :key="item" :value="item">{{ item }}</option>
+            <div class="w-full col-center space-y-3 relative">
+                <h1 class="text-6xl font-kanit">Shop</h1>
+                <select
+                    id="filter"
+                    v-model="filter"
+                    class="rounded-xl px-2 bg-red-50 text-[#333] focus:outline-none shadow-md border border-[#faa]"
+                >
+                    <option
+                        v-for="item in filters"
+                        :key="item"
+                        :value="item"
+                        class="border-none bg-red-50 font-sans hover:text-red-300 hover:bg-[#ffe8e8]"
+                    >
+                        {{ item }}
+                    </option>
                     {{
                         filter
                     }}
                 </select>
+            </div>
+            <div class="min-h-96 w-full flex flex-col items-center justify-evenly gap-6">
                 <loadingScreen v-if="isLoading" />
                 <div class="h-full md:w-[80%] w-full center p-6" v-else>
                     <div
@@ -111,6 +124,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
+select:focus {
+    outline: none;
+    border: 2px solid #e9bcbc;
+
+    box-shadow:
+        0 0 8px 2px #e9bcbc,
+        0 0 16px 4px #e9bcbc;
+}
 .prod-cards {
     background-color: #fff;
 }

@@ -1,10 +1,10 @@
 <script setup>
 // import { ref } from 'vue';
 import IconX2 from '../../public/icons/IconX2.vue';
-// import IconDash from '../../public/icons/IconDash.vue';
-// import IconPlus from '../../public/icons/IconPlus.vue';
+import IconDash from '../../public/icons/IconDash.vue';
+import IconPlus from '../../public/icons/IconPlus.vue';
 
-import { getUserCart, userCart } from '../services/cartServices';
+import { getUserCart, userCart, deleteItem, incrementItem } from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
 import { computed } from 'vue';
@@ -16,11 +16,24 @@ onMounted(async () => {
     await getUserCart(user.value.id);
 });
 
-// const handleDelete = () => {
-//   try {
-//     const
-//   }
-// };
+const handleDelete = async (id) => {
+    try {
+        await deleteItem(id);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        getUserCart(user.value.id);
+    }
+};
+const handleIncrement = async (id, qty) => {
+    try {
+        await incrementItem(id, qty);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        getUserCart(user.value.id);
+    }
+};
 
 const total = computed(() =>
     userCart.value.reduce((sum, item) => sum + item.item_price * item.quantity, 0),
@@ -44,7 +57,7 @@ const total = computed(() =>
                     <p class="w-1/2 text-center text-sm md:text-base">Product</p>
                     <div class="flex w-1/2 justify-evenly text-[10px] lg:text-base md:pr-5 pr-10">
                         <p>Price</p>
-                        <!-- <p>Quantity</p> -->
+                        <p>Quantity</p>
                         <p>Subtotal</p>
                     </div>
                 </div>
@@ -53,14 +66,15 @@ const total = computed(() =>
                     mode="out-in"
                     name="items"
                     class="w-full flex flex-col gap-2"
+                    v-if="userCart.length > 0"
                 >
                     <li
                         class="flex items-center justify-between w-full rounded-2xl bg-[#f5f5f5] h-14 gap-2 py-2 px-2"
                         v-for="items in userCart"
                         :key="items.id"
                     >
-                        <div class="w-1/2 flex items-center justify-items-start gap-3">
-                            <div class="h-12 w-12 rounded-xl items-center flex">
+                        <div class="md:w-1/2 flex items-center justify-items-start gap-3">
+                            <div class="h-12 w-12 rounded-xl items-center hidden md:flex">
                                 <img :src="items.img" alt="img" class="h-full w-full rounded-xl" />
                             </div>
                             <div class="flex flex-col">
@@ -70,33 +84,40 @@ const total = computed(() =>
                             </div>
                         </div>
                         <div
-                            class="w-1/2 flex items-center justify-evenly gap-3 md:text-base text-[9px]"
+                            class="md:w-1/2 flex items-center justify-evenly gap-3 md:text-base text-[9px]"
                         >
                             <p class="lg:text-base md:text-[12px] text-[10px]">
                                 ₦{{ items.item_price }}
                             </p>
-                            <!-- <div
+                            <div
                                 class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 border border-gray-400/50 rounded-2xl text-base"
                             >
                                 <button class="border-r border-gray-400/50 p-1">
                                     <IconDash />
                                 </button>
-                                <p class="">{{ items.quantity || 0 }}</p>
-                                <button class="border-l border-gray-400/50 p-1">
+                                <p class="">{{ items.quantity }}</p>
+                                <button
+                                    class="border-l border-gray-400/50 p-1"
+                                    @click="handleIncrement(items.id, items.quantity + 1)"
+                                >
                                     <IconPlus />
                                 </button>
-                            </div> -->
+                            </div>
                             <p class="lg:text-base md:text-[12px] text-[10px]">
-                                ₦{{ items.price * (items.quantity || 0) }}
+                                ₦{{ items.price * items.quantity }}
                             </p>
                         </div>
                         <button
                             class="text-red-400 p-1 rounded-full bg-red-200 hover hover:bg-red-100"
+                            @click="handleDelete(items.id)"
                         >
                             <IconX2 />
                         </button>
                     </li>
                 </transition-group>
+                <div v-else class="center">
+                    <h3><i>No items in cart</i></h3>
+                </div>
             </div>
             <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-4 lg:w-[30%]">
                 <div
