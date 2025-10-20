@@ -64,9 +64,9 @@ onMounted(() => {
             </div>
             <div class="min-h-96 w-full flex flex-col items-center justify-evenly gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="h-full md:w-[80%] w-full center p-6" v-else>
+                <div class="h-full md:w-[90%] xl:w-[80%] w-full center p-6" v-else>
                     <div
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-6"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-full gap-6"
                     >
                         <div
                             v-for="items in products"
@@ -79,12 +79,14 @@ onMounted(() => {
                                 class="h-56 w-full rounded-t-xl"
                             />
 
-                            <div class="py-2 flex items-center justify-between w-full">
+                            <div class="py-2 flex flex-col w-full">
                                 <div>
-                                    <p class="">
+                                    <p class="lg:text-base text-xs">
                                         {{ items.name }}
                                     </p>
-                                    <p class="text-[14px] font-light">₦{{ items.price }}</p>
+                                    <p class="text-[14px] md:text-[12px] lg:text-[14px] font-light">
+                                        ₦{{ items.price }}
+                                    </p>
                                 </div>
                                 <button
                                     @click="
@@ -96,7 +98,7 @@ onMounted(() => {
                                             user.email,
                                         )
                                     "
-                                    class="px-3 py-2 hover:bg-[#87878753] text-[12px] text-center hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] md:flex hidden hover"
+                                    class="px-3 py-2 hover:bg-[#87878753] text-[12px] hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] md:flex hidden hover"
                                 >
                                     Add to cart
                                 </button>
@@ -110,7 +112,7 @@ onMounted(() => {
                                             user.email,
                                         )
                                     "
-                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] text-center flex md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
+                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] flex md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
                                 >
                                     Add to cart
                                 </button>

@@ -9,6 +9,7 @@ const routeLinks = ref([
 ]);
 
 const auth = inject('auth');
+const user = auth.user;
 </script>
 
 <template>
@@ -34,7 +35,7 @@ const auth = inject('auth');
                     <button
                         class="py-2 px-4 hover:rounded-2xl rounded-lg text-black btn-2 hover center text-[1em]"
                         @click="auth.logout()"
-                        v-if="auth.user"
+                        v-if="user"
                     >
                         Logout
                     </button>

@@ -46,7 +46,7 @@ onMounted(() => {
                 class="col-center text-center text-[#f3f3f3] md:space-y-5 space-y-5 px-4 z-10 absolute md:left-10 md:top-[35%]"
             >
                 <div class="fade-in space-y-2 hero-text">
-                    <h1 class="sm:text-7xl lg:text-[115px] text-4xl font-medium mb-1">
+                    <h1 class="sm:text-7xl lg:text-[15px] text-5xl font-medium mb-1">
                         Celine's Treats
                     </h1>
                     <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>

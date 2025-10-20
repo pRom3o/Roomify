@@ -81,18 +81,22 @@ export const getUserCart = async (userId) => {
 };
 
 export const deleteItem = async (id) => {
-    const { error } = await supabase.from('carts').delete().eq('id', id).select();
+    const { error } = await supabase.from('carts').delete().eq('id', id);
 
     if (error) throw error;
 };
 
-export const incrementItem = async (id, newQuantity) => {
-    const { error: updateError } = await supabase
+export const updateQuantity = async (id, newQuantity) => {
+    if (newQuantity < 1) return;
+    const { error: error } = await supabase
         .from('carts')
         .update({ quantity: newQuantity })
         .eq('id', id);
 
-    if (updateError) throw updateError;
-
-    showToast('Cart updated', 'success');
+    if (error) {
+        console.log('error', error);
+        throw error;
+    } else {
+        showToast('Cart updated', 'success');
+    }
 };

@@ -4,7 +4,7 @@ import IconX2 from '../../public/icons/IconX2.vue';
 import IconDash from '../../public/icons/IconDash.vue';
 import IconPlus from '../../public/icons/IconPlus.vue';
 
-import { getUserCart, userCart, deleteItem, incrementItem } from '../services/cartServices';
+import { getUserCart, userCart, deleteItem, updateQuantity } from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
 import { computed } from 'vue';
@@ -25,9 +25,14 @@ const handleDelete = async (id) => {
         getUserCart(user.value.id);
     }
 };
-const handleIncrement = async (id, qty) => {
+
+const handleUpdate = async (id, qty) => {
     try {
-        await incrementItem(id, qty);
+        const item = userCart.value.find((i) => i.id === id);
+        if (item && item.quantity === 0) {
+            await handleDelete(item.id);
+        }
+        await updateQuantity(id, qty);
     } catch (error) {
         console.log(error);
     } finally {
@@ -38,6 +43,7 @@ const handleIncrement = async (id, qty) => {
 const total = computed(() =>
     userCart.value.reduce((sum, item) => sum + item.item_price * item.quantity, 0),
 );
+const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + item.quantity, 0));
 </script>
 
 <template>
@@ -78,7 +84,7 @@ const total = computed(() =>
                                 <img :src="items.img" alt="img" class="h-full w-full rounded-xl" />
                             </div>
                             <div class="flex flex-col">
-                                <p class="md:text-[12px] text-[12px] md:font-light">
+                                <p class="md:text-[12px] lg:text-base text-[12px] md:font-light">
                                     {{ items.item_name }}
                                 </p>
                             </div>
@@ -92,13 +98,16 @@ const total = computed(() =>
                             <div
                                 class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 border border-gray-400/50 rounded-2xl text-base"
                             >
-                                <button class="border-r border-gray-400/50 p-1">
+                                <button
+                                    class="border-r border-gray-400/50 p-1"
+                                    @click="handleUpdate(items.id, items.quantity - 1)"
+                                >
                                     <IconDash />
                                 </button>
                                 <p class="">{{ items.quantity }}</p>
                                 <button
                                     class="border-l border-gray-400/50 p-1"
-                                    @click="handleIncrement(items.id, items.quantity + 1)"
+                                    @click="handleUpdate(items.id, items.quantity + 1)"
                                 >
                                     <IconPlus />
                                 </button>
@@ -108,7 +117,7 @@ const total = computed(() =>
                             </p>
                         </div>
                         <button
-                            class="text-red-400 p-1 rounded-full bg-red-200 hover hover:bg-red-100"
+                            class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
                             @click="handleDelete(items.id)"
                         >
                             <IconX2 />
@@ -128,7 +137,7 @@ const total = computed(() =>
                     <div class="space-y-3">
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Items</p>
-                            <p>{{ userCart.length }}</p>
+                            <p>{{ totalQuantity }}</p>
                         </div>
                         <hr class="text-[#eccdcd]" />
                         <div class="flex w-full justify-between">
