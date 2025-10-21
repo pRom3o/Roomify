@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted, watch } from 'vue';
+import { onMounted, watch, reactive } from 'vue';
 import { getProducts, isLoading, products } from '@/services/productServices';
 import loadingScreen from '@/components/loadingScreen.vue';
 import { addToCart } from '@/services/cartServices';
+import LoadingIcon from '../../public/icons/LoadingIcon.vue';
 
 import { inject, ref } from 'vue';
 
@@ -20,6 +21,22 @@ watch(filter, (newCategory) => {
     getProducts(newCategory);
     console.log('Products', products.value);
 });
+
+const loadingStates = reactive({});
+const handleAddToCart = async (item) => {
+    // Start loading only for this item
+    loadingStates[item.id] = true;
+
+    try {
+        await addToCart(item.name, item.price, item.img, user.value.id, user.value.email);
+        console.log('Added to cart');
+    } catch (error) {
+        console.log(error);
+    } finally {
+        // Stop loading for this specific item
+        loadingStates[item.id] = false;
+    }
+};
 
 onMounted(() => {
     const observer = new IntersectionObserver(
@@ -79,42 +96,31 @@ onMounted(() => {
                                 class="h-56 w-full rounded-t-xl"
                             />
 
-                            <div class="py-2 flex flex-col w-full">
+                            <div
+                                class="py-2 flex md:flex-col flex-row justify-between w-full gap-2"
+                            >
                                 <div>
-                                    <p class="lg:text-base text-xs">
+                                    <p class="text-[14px]">
                                         {{ items.name }}
                                     </p>
-                                    <p class="text-[14px] md:text-[12px] lg:text-[14px] font-light">
+                                    <p class="text-[14px] md:text-[11px] font-light">
                                         ₦{{ items.price }}
                                     </p>
                                 </div>
                                 <button
-                                    @click="
-                                        addToCart(
-                                            items.name,
-                                            items.price,
-                                            items.image_url,
-                                            user.id,
-                                            user.email,
-                                        )
-                                    "
-                                    class="px-3 py-2 hover:bg-[#87878753] text-[12px] hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] md:flex hidden hover"
+                                    @click="handleAddToCart(items)"
+                                    class="px-3 py-2 hover:bg-[#ffc4c4] text-[12px] hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] md:flex items-center hidden hover"
                                 >
-                                    Add to cart
+                                    <p class="text-center">Add to cart</p>
                                 </button>
                                 <button
-                                    @click="
-                                        addToCart(
-                                            items.name,
-                                            items.price,
-                                            items.image_url,
-                                            user.id,
-                                            user.email,
-                                        )
-                                    "
-                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] flex md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
+                                    @click="handleAddToCart(items)"
+                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] flex items-center md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
                                 >
-                                    Add to cart
+                                    <p class="text-center" v-if="!loadingStates[items.id]">
+                                        Add to cart
+                                    </p>
+                                    <p v-else><LoadingIcon /></p>
                                 </button>
                             </div>
                         </div>

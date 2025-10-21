@@ -43,14 +43,14 @@ onMounted(() => {
         >
             <div class="inset-0 absolute bg-black/40"></div>
             <div
-                class="col-center text-center text-[#f3f3f3] md:space-y-5 space-y-5 px-4 z-10 absolute md:left-10 md:top-[35%]"
+                class="col-center text-center text-[#f3f3f3] md:space-y-5 space-y-5 px-4 z-10 absolute md:left-10 lg:left-30 md:top-[35%]"
             >
                 <div class="fade-in space-y-2 hero-text">
-                    <h1 class="sm:text-7xl lg:text-[15px] text-5xl font-medium mb-1">
+                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-medium mb-1">
                         Celine's Treats
                     </h1>
                     <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>
-                    <p class="md:text-base text-xs px-3 text-[#777777]">
+                    <p class="md:text-base text-xs md:px-3 px-6 text-[#777777]">
                         <i
                             >Turning simple beginings into timeless flavors, one pastry at a
                             time...</i
@@ -90,7 +90,7 @@ onMounted(() => {
                     ></div>
                 </div>
                 <div class="w-full lg:w-1/2 slide-in-right">
-                    <p class="md:text-base text-xs">
+                    <p class="md:text-base text-sm text-center">
                         <span class="text-xl">&quot;</span>I never actually planned on starting a
                         business. Most times when I get an idea, I focus too much on the big picture
                         — the finished product I imagine, that often made me stall, and many of my
@@ -111,7 +111,9 @@ onMounted(() => {
         <div class="col-center w-full min-h-96 primary-bg">
             <section class="min-h-96 w-full px-3 py-5 md:py-16">
                 <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-8">
-                    <h2 class="md:text-[2.5rem] text-2xl fade-in font-sans">Why Choose Us?</h2>
+                    <h2 class="md:text-[2.5rem] text-3xl fade-in font-sans font-medium">
+                        Why Choose Us?
+                    </h2>
                     <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                         <div
                             class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
@@ -167,7 +169,7 @@ onMounted(() => {
 
             <section class="min-h-92 w-full px-3 center py-5 md:py-10">
                 <div class="col-center w-[90%] lg:w-[80%] 2xl:w-[70%] h-full space-y-5 p-2">
-                    <h3 class="md:text-[2.5rem] text-2xl text-center font-sans">
+                    <h3 class="md:text-[2.5rem] text-3xl font-medium text-center font-sans">
                         Featured Products
                     </h3>
                     <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 w-full">

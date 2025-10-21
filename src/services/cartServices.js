@@ -18,7 +18,6 @@ export const quantity = ref(0);
 export const adding = ref(false);
 
 export const addToCart = async (name, price, img, userId, email, qty = 1) => {
-    adding.value = true;
     try {
         // Check if this user already has this item in cart
         const { data: existing, error: selectError } = await supabase
@@ -45,16 +44,19 @@ export const addToCart = async (name, price, img, userId, email, qty = 1) => {
             showToast('Cart updated', 'success');
         } else {
             // 3) If it doesn't exist, insert new row with quantity = qty
-            const { error: insertError } = await supabase.from('carts').insert([
-                {
-                    email,
-                    item_name: name,
-                    item_price: price,
-                    img,
-                    user_id: userId,
-                    quantity: qty,
-                },
-            ]);
+            const { error: insertError } = await supabase
+                .from('carts')
+                .insert([
+                    {
+                        email,
+                        item_name: name,
+                        item_price: price,
+                        img,
+                        user_id: userId,
+                        quantity: qty,
+                    },
+                ])
+                .select();
 
             if (insertError) throw insertError;
 
@@ -64,8 +66,6 @@ export const addToCart = async (name, price, img, userId, email, qty = 1) => {
         console.error('addToCart error:', err);
         showToast(err.message || 'Could not add to cart', 'failed');
         throw err;
-    } finally {
-        adding.value = false;
     }
 };
 
@@ -87,7 +87,7 @@ export const deleteItem = async (id) => {
 };
 
 export const updateQuantity = async (id, newQuantity) => {
-    if (newQuantity < 1) return;
+    if (newQuantity < 0) return;
     const { error: error } = await supabase
         .from('carts')
         .update({ quantity: newQuantity })

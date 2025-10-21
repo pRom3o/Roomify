@@ -26,17 +26,22 @@ const handleDelete = async (id) => {
     }
 };
 
+const refreshCart = async () => {
+    await getUserCart(user.value.id);
+};
+
 const handleUpdate = async (id, qty) => {
     try {
-        const item = userCart.value.find((i) => i.id === id);
-        if (item && item.quantity === 0) {
-            await handleDelete(item.id);
-        }
         await updateQuantity(id, qty);
+        await refreshCart();
+        const item = userCart.value.find((i) => i.id === id);
+        if (item.quantity === 0) {
+            console.log('deleting');
+            await handleDelete(item.id);
+            console.log('deleted');
+        }
     } catch (error) {
         console.log(error);
-    } finally {
-        getUserCart(user.value.id);
     }
 };
 
@@ -52,17 +57,19 @@ const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + 
             <h1 class="text-3xl md:text-5xl font-light">Shopping Cart</h1>
         </div>
         <div
-            class="flex md:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 px-4"
+            class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 px-4"
         >
             <div
-                class="flex flex-col gap-5 items-center w-full lg:w-[70%] px-2 border border-[#eccdcd] bg-[#ffffff] shadow py-5 rounded-2xl"
+                class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-[#eccdcd] bg-[#ffffff] shadow py-5 rounded-2xl"
             >
                 <div
-                    class="px-2 md:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#ffdcdc]"
+                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#ffdcdc] gap-2"
                 >
-                    <p class="w-1/2 text-center text-sm md:text-base">Product</p>
-                    <div class="flex w-1/2 justify-evenly text-[10px] lg:text-base md:pr-5 pr-10">
-                        <p>Price</p>
+                    <p class="md:w-1/2 w-[42%] text-sm md:text-base">Product</p>
+                    <div
+                        class="flex md:w-1/2 w-[58%] items-center justify-between text-[12px] lg:text-base pr-3"
+                    >
+                        <p class="">Price</p>
                         <p>Quantity</p>
                         <p>Subtotal</p>
                     </div>
@@ -79,9 +86,13 @@ const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + 
                         v-for="items in userCart"
                         :key="items.id"
                     >
-                        <div class="md:w-1/2 flex items-center justify-items-start gap-3">
-                            <div class="h-12 w-12 rounded-xl items-center hidden md:flex">
-                                <img :src="items.img" alt="img" class="h-full w-full rounded-xl" />
+                        <div class="w-1/2 flex items-center justify-items-start gap-3">
+                            <div class="md:h-12 md:w-12 h-8 w-8 rounded-full items-center relative">
+                                <img
+                                    :src="items.img"
+                                    alt="img"
+                                    class="h-full w-full rounded-full absolute inset-0"
+                                />
                             </div>
                             <div class="flex flex-col">
                                 <p class="md:text-[12px] lg:text-base text-[12px] md:font-light">
@@ -90,38 +101,44 @@ const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + 
                             </div>
                         </div>
                         <div
-                            class="md:w-1/2 flex items-center justify-evenly gap-3 md:text-base text-[9px]"
+                            class="md:w-1/2 flex items-center md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
                         >
                             <p class="lg:text-base md:text-[12px] text-[10px]">
                                 ₦{{ items.item_price }}
                             </p>
                             <div
-                                class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 border border-gray-400/50 rounded-2xl text-base"
+                                class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 rounded-2xl text-base"
                             >
                                 <button
-                                    class="border-r border-gray-400/50 p-1"
+                                    class="hover hover:bg-red-100 bg-red-200 text-red-400 p-1 rounded-full"
                                     @click="handleUpdate(items.id, items.quantity - 1)"
                                 >
                                     <IconDash />
                                 </button>
-                                <p class="">{{ items.quantity }}</p>
+                                <p
+                                    class="hover py-1 px-2 rounded-full bg-green-200 text-sm font-light text-green-800"
+                                >
+                                    {{ items.quantity }}
+                                </p>
                                 <button
-                                    class="border-l border-gray-400/50 p-1"
+                                    class="hover hover:bg-blue-100 bg-blue-200 text-blue-400 p-1 rounded-full"
                                     @click="handleUpdate(items.id, items.quantity + 1)"
                                 >
                                     <IconPlus />
                                 </button>
                             </div>
-                            <p class="lg:text-base md:text-[12px] text-[10px]">
-                                ₦{{ items.price * items.quantity }}
-                            </p>
                         </div>
-                        <button
-                            class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
-                            @click="handleDelete(items.id)"
-                        >
-                            <IconX2 />
-                        </button>
+                        <div class="flex items-center gap-2">
+                            <p class="lg:text-base md:text-[12px] text-[10px] px-1">
+                                ₦{{ items.item_price * items.quantity }}
+                            </p>
+                            <button
+                                class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
+                                @click="handleDelete(items.id)"
+                            >
+                                <IconX2 />
+                            </button>
+                        </div>
                     </li>
                 </transition-group>
                 <div v-else class="center">
@@ -142,7 +159,7 @@ const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + 
                         <hr class="text-[#eccdcd]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Sub Total</p>
-                            <p class="price">$740.00</p>
+                            <p class="price">₦{{ total }}</p>
                         </div>
                         <hr class="text-[#eccdcd]" />
                         <div class="flex w-full justify-between">
