@@ -1,7 +1,7 @@
 <script setup>
 import { showToast } from '../services/toastServices';
 import { useRouter } from 'vue-router';
-import { userEmail, userPassword, signinUser } from '../services/authServices';
+import { userEmail, userPassword, signinUser, insertProfiles } from '../services/authServices';
 import LoadingIcon from '/public/icons/LoadingIcon.vue';
 import { ref } from 'vue';
 const emit = defineEmits(['switch-form']);
@@ -16,7 +16,12 @@ const handleSignin = async () => {
 
         if (data?.user) {
             showToast(`Welcome back ${data.user.user_metadata.name}`, 'success');
-
+            await insertProfiles(
+                data.user.id,
+                data.user.user_metadata.name,
+                data.user.user_metadata.phone,
+                data.user.email,
+            );
             router.push('/');
         }
     } catch (error) {

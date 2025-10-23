@@ -7,23 +7,21 @@ import { userEmail, userPassword, signUpUser, userName, userPhone } from '../ser
 import EmailIcon from '/public/icons/EmailIcon.vue';
 const emit = defineEmits(['switch-form']);
 
-const loading = ref(false);
 const loadingicon = ref(false);
+const confirming = ref(false);
 
 const handleSignup = async () => {
-    loading.value = true;
     loadingicon.value = true;
     try {
         const { user } = await signUpUser(userEmail.value, userPassword.value);
 
         if (user) {
-            showToast('Signup successful', 'success');
+            confirming.value = true;
         }
     } catch (error) {
         showToast('error signing up: ', error.message);
     } finally {
         loadingicon.value = false;
-        setTimeout((loading.value = false), 5000);
     }
 };
 </script>
@@ -32,7 +30,7 @@ const handleSignup = async () => {
     <div class="w-full min-h-screen center flex-col primary-bg px-4">
         <div
             class="flex items-center justify-center md:flex-row flex-col md:w-[90%] w-full md:h-[550px] p-6 bg-[#fffcfc] shadow rounded-xl"
-            v-if="loading == false"
+            v-if="confirming == false"
         >
             <div class="text-center col-center md:w-1/2 xl:w-[40%] space-y-2 md:h-full">
                 <h1 class="md:text-4xl text-2xl headers">New to Roomify?</h1>
@@ -96,18 +94,18 @@ const handleSignup = async () => {
 
         <div
             id="form"
-            class="col-center w-full md:w-xl py-6 section-bg shadow-xl rounded-xl text-center space-y-4"
+            class="col-center w-full md:w-xl py-6 bg-[#ffebeb] my-10 shadow-xl rounded-xl text-center space-y-4"
             v-else
         >
             <div class="col-center space-y-1">
                 <div class="mb-3"><EmailIcon /></div>
-                <h1 class="md:text-4xl text-3xl headers font-light">Please check your email</h1>
+                <h1 class="md:text-4xl text-xl font-light">Please check your email</h1>
                 <p class="leading-5 font-light text-xs md:text-base p-text">
                     click the link sent to <strong>{{ userEmail }} to confirm signup</strong>
                 </p>
             </div>
 
-            <p class="font-light p-text">Can't find the email?Check your spam folder</p>
+            <p class="font-light text-xs">Can't find the email?Check your spam folder</p>
         </div>
     </div>
 </template>

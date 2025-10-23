@@ -1,5 +1,5 @@
 <template>
-    <p class="px-3 rounded-full bg-[#f5f1ec]">
+    <p class="px-3 border border-[#ffcdcd] rounded-full bg-[#ffdddd]">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="80"
@@ -11,10 +11,10 @@
             <title id="sentCheckTitle">Email sent</title>
             <!-- envelope -->
             <g fill="none" fill-rule="evenodd">
-                <rect x="8" y="18" width="124" height="64" rx="8" fill="#ffffff" stroke="#e7c9a6" />
-                <path d="M12 22 L70 54 L128 22" stroke="#e7c9a6" stroke-width="2" fill="none" />
+                <rect x="8" y="18" width="124" height="64" rx="8" fill="#ffffff" stroke="#ffcece" />
+                <path d="M12 22 L70 54 L128 22" stroke="#ffcece" stroke-width="2" fill="none" />
                 <!-- badge with check -->
-                <circle cx="110" cy="30" r="14" fill="#e7c9a6" />
+                <circle cx="110" cy="30" r="14" fill="#ffcece" />
                 <path
                     d="M104 30 l3.6 4 6-7.2"
                     stroke="#fff"

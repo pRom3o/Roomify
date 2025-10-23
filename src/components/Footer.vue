@@ -44,7 +44,7 @@ onMounted(() => {
                 <p class="text-xs md:font-normal font-light">Terms of Service</p>
             </div>
         </div>
-        <div class="fade-in w-full font-light text-[10px] lg:text-sm lg:font-normal">
+        <div class="w-full font-light text-[10px] lg:text-sm lg:font-normal">
             <hr class="text-[#aaaaaa]" />
             <div class="center w-full min-h-10">
                 <p>&copy; 2025 ROOMIFY. all rights reserved.</p>

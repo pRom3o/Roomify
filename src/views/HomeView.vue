@@ -75,7 +75,7 @@ onMounted(() => {
                 About Celine's treats
             </h1>
             <div
-                class="flex lg:flex-row flex-col items-center justify-evenly space-y-8 w-full lg:w-[80%] xl:w-[60%] p-4 h-full"
+                class="flex lg:flex-row flex-col items-center justify-evenly space-y-8 w-full lg:w-[80%] xl:w-[60%] py-4 px-2 h-full"
             >
                 <div
                     class="h-full flex justify-center md:w-[40%] lg:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
@@ -91,7 +91,7 @@ onMounted(() => {
                 </div>
                 <div class="w-full lg:w-1/2 slide-in-right">
                     <p class="md:text-base text-sm text-center">
-                        <span class="text-xl">&quot;</span>I never actually planned on starting a
+                        <span class="text-lg">&quot;</span>I never actually planned on starting a
                         business. Most times when I get an idea, I focus too much on the big picture
                         — the finished product I imagine, that often made me stall, and many of my
                         ideas ended up being set aside, but this time was different. When the idea

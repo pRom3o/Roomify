@@ -40,8 +40,6 @@ export const addToCart = async (name, price, img, userId, email, qty = 1) => {
                 .eq('id', existing.id);
 
             if (updateError) throw updateError;
-
-            showToast('Cart updated', 'success');
         } else {
             // 3) If it doesn't exist, insert new row with quantity = qty
             const { error: insertError } = await supabase
@@ -96,7 +94,5 @@ export const updateQuantity = async (id, newQuantity) => {
     if (error) {
         console.log('error', error);
         throw error;
-    } else {
-        showToast('Cart updated', 'success');
     }
 };

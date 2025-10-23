@@ -14,7 +14,7 @@ export const signUpUser = async (email, password) => {
         email,
         password,
         options: {
-            emailRedirectTo: 'http://localhost:5173/auth/confirmation',
+            emailRedirectTo: 'http://localhost:5174/auth',
             data: {
                 name: userName.value,
                 phone: userPhone.value,
@@ -32,4 +32,21 @@ export const signinUser = async (email, password) => {
     if (error) throw error;
 
     return data;
+};
+
+export const insertProfiles = async (id, name, phone, email) => {
+    const { error } = await supabase
+        .from('roomify_profiles')
+        .insert([
+            {
+                id,
+                name,
+                phone,
+                email,
+            },
+        ])
+        .select();
+    if (error) {
+        console.log(error.message);
+    }
 };
