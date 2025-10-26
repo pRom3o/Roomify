@@ -1,13 +1,9 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { showToast } from './toastServices';
 import { supabase } from '@/lib/supabaseClient';
-// import { inject } from 'vue';
 
 export const isCartOpen = ref(false);
 export const userCart = ref([]);
-
-// const auth = inject('auth');
-// const user = auth.user;
 
 export const openCartModal = () => {
     isCartOpen.value = !isCartOpen.value;
@@ -96,3 +92,10 @@ export const updateQuantity = async (id, newQuantity) => {
         throw error;
     }
 };
+
+export const total = computed(() =>
+    userCart.value.reduce((sum, item) => sum + item.item_price * item.quantity, 0),
+);
+export const totalQuantity = computed(() =>
+    userCart.value.reduce((sum, item) => sum + item.quantity, 0),
+);

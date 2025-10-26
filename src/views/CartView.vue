@@ -4,10 +4,17 @@ import IconX2 from '../../public/icons/IconX2.vue';
 import IconDash from '../../public/icons/IconDash.vue';
 import IconPlus from '../../public/icons/IconPlus.vue';
 
-import { getUserCart, userCart, deleteItem, updateQuantity } from '../services/cartServices';
+import {
+    getUserCart,
+    userCart,
+    deleteItem,
+    updateQuantity,
+    totalQuantity,
+    total,
+} from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
-import { computed } from 'vue';
+// import { computed } from 'vue';
 
 const auth = inject('auth');
 const user = auth.user;
@@ -44,11 +51,6 @@ const handleUpdate = async (id, qty) => {
         console.log(error);
     }
 };
-
-const total = computed(() =>
-    userCart.value.reduce((sum, item) => sum + item.item_price * item.quantity, 0),
-);
-const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + item.quantity, 0));
 </script>
 
 <template>
@@ -167,11 +169,12 @@ const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + 
                             <p class="price">= ₦{{ total }}</p>
                         </div>
                     </div>
-                    <button
+                    <RouterLink
                         class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl bg-[#ffd3d3] hover:bg-[#fbc1c1] hover"
+                        to="checkout"
                     >
                         Proceed to Checkout
-                    </button>
+                    </RouterLink>
                 </div>
             </div>
         </div>

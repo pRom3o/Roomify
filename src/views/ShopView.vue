@@ -24,16 +24,14 @@ watch(filter, (newCategory) => {
 
 const loadingStates = reactive({});
 const handleAddToCart = async (item) => {
-    // Start loading only for this item
     loadingStates[item.id] = true;
 
     try {
-        await addToCart(item.name, item.price, item.img, user.value.id, user.value.email);
+        await addToCart(item.name, item.price, item.image_url, user.value.id, user.value.email);
         console.log('Added to cart');
     } catch (error) {
         console.log(error);
     } finally {
-        // Stop loading for this specific item
         loadingStates[item.id] = false;
     }
 };
@@ -64,13 +62,13 @@ onMounted(() => {
                 <select
                     id="filter"
                     v-model="filter"
-                    class="rounded-xl px-2 bg-red-50 text-[#333] focus:outline-none shadow-md border border-[#faa]"
+                    class="rounded-xl px-2 bg-blue-100 text-[#333] focus:outline-none shadow-md border border-[#bdd2ff]"
                 >
                     <option
                         v-for="item in filters"
                         :key="item"
                         :value="item"
-                        class="border-none bg-red-50 font-sans hover:text-red-300 hover:bg-[#ffe8e8]"
+                        class="border-none bg-blue-50 font-sans hover:bg-[#bdd2ff]"
                     >
                         {{ item }}
                     </option>
@@ -79,7 +77,7 @@ onMounted(() => {
                     }}
                 </select>
             </div>
-            <div class="min-h-96 w-full flex flex-col items-center justify-evenly gap-6">
+            <div class="min-h-96 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
                 <div class="h-full md:w-[90%] xl:w-[80%] w-full center p-6" v-else>
                     <div
@@ -88,7 +86,7 @@ onMounted(() => {
                         <div
                             v-for="items in products"
                             :key="items.id"
-                            class="rounded-xl prod-cards hover shadow p-2"
+                            class="rounded-xl prod-cards transition-all border-none duration-300 ease-in-out delay-100 shadow p-2"
                         >
                             <img
                                 :src="items.image_url"
@@ -109,13 +107,13 @@ onMounted(() => {
                                 </div>
                                 <button
                                     @click="handleAddToCart(items)"
-                                    class="px-3 py-2 hover:bg-[#ffc4c4] text-[12px] hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] md:flex items-center hidden hover"
+                                    class="px-3 py-2 rounded-3xl btn-1 md:flex items-center justify-center hidden hover"
                                 >
                                     <p class="text-center">Add to cart</p>
                                 </button>
                                 <button
                                     @click="handleAddToCart(items)"
-                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] flex items-center md:hidden hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
+                                    class="px-3 py-2 text-[14px] flex items-center md:hidden rounded-3xl btn-1 hover"
                                 >
                                     <p class="text-center" v-if="!loadingStates[items.id]">
                                         Add to cart
@@ -134,11 +132,7 @@ onMounted(() => {
 <style scoped>
 select:focus {
     outline: none;
-    border: 2px solid #e9bcbc;
-
-    box-shadow:
-        0 0 8px 2px #e9bcbc,
-        0 0 16px 4px #e9bcbc;
+    border: 2px solid #bdd2ff;
 }
 .prod-cards {
     background-color: #fff;
@@ -147,7 +141,7 @@ select:focus {
 .prod-cards:hover {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #fd9696;
+    border: 1px solid #8091ff;
     transform: translateY(-8px);
 }
 </style>

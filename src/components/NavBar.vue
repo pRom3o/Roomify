@@ -1,12 +1,11 @@
 <script setup>
 import { openClose, switchIcon } from '../functions/functions';
-import { userCart } from '../services/cartServices';
+import { totalQuantity } from '../services/cartServices';
 import IconHam from '/public/icons/IconHam.vue';
 import IconX from '/public/icons/IconX.vue';
 import HamMenu from './HamMenu.vue';
 
 import { inject, onMounted } from 'vue';
-import { computed } from 'vue';
 
 const auth = inject('auth');
 const user = auth.user;
@@ -14,8 +13,6 @@ const user = auth.user;
 onMounted(() => {
     console.log(user.value.email);
 });
-
-const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + item.quantity, 0));
 </script>
 
 <template>
@@ -53,6 +50,7 @@ const totalQuantity = computed(() => userCart.value.reduce((sum, item) => sum + 
                 <RouterLink to="/cart" class="bg-none"
                     ><i class="fi fi-rr-shopping-cart-notification px-2"></i>cart</RouterLink
                 >
+                <p class="p-1 text-xs">({{ totalQuantity }})</p>
             </button>
             <button
                 class="px-3 py-1 bg-[#87878753] text-center flex md:hidden text-white rounded-3xl hover:bg-[#fbdcdc] hover:text-[#333] hover"

@@ -45,7 +45,7 @@ onMounted(() => {
             </div>
         </div>
         <div class="w-full font-light text-[10px] lg:text-sm lg:font-normal">
-            <hr class="text-[#aaaaaa]" />
+            <hr class="text-[#bdd2ff]" />
             <div class="center w-full min-h-10">
                 <p>&copy; 2025 ROOMIFY. all rights reserved.</p>
             </div>

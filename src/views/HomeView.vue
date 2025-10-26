@@ -69,7 +69,7 @@ onMounted(() => {
         </div>
         <section
             id="About"
-            class="fade-in min-h-[300px] w-full flex flex-col items-center gap-3 p-4 bg-[#fff3f3]"
+            class="fade-in min-h-[300px] w-full flex flex-col items-center gap-3 p-4 secondary-bg"
         >
             <h1 class="items-start text-3xl md:text-5xl lg:text-6xl py-4 fade-in font-sans">
                 About Celine's treats
@@ -119,7 +119,7 @@ onMounted(() => {
                             class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
                             <div
-                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#7183f8] transition-transform duration-700 hover:scale-x-[-1] text-[#7183f8] hover:text-blue-100"
                             >
                                 <i
                                     class="fi fi-rr-arrow-left text-4xl mt-2 transition-transform duration-700"
@@ -135,7 +135,7 @@ onMounted(() => {
                             class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
                             <div
-                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#7183f8] transition-transform duration-700 hover:scale-x-[-1] text-[#7183f8] hover:text-blue-100"
                             >
                                 <i
                                     class="fi fi-rr-trophy text-4xl mt-2 transition-transform duration-700"
@@ -151,7 +151,7 @@ onMounted(() => {
                             class="prod-cards center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in"
                         >
                             <div
-                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-why transition-transform duration-700 hover:scale-x-[-1] text-[#f87171] hover:text-[#333]"
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#8091ff] transition-transform duration-700 hover:scale-x-[-1] text-[#7183f8] hover:text-blue-100"
                             >
                                 <i
                                     class="fi fi-rr-headset text-4xl mt-2 transition-transform duration-700"
@@ -167,7 +167,7 @@ onMounted(() => {
                 </div>
             </section>
 
-            <section class="min-h-92 w-full px-3 center py-5 md:py-10">
+            <section class="min-h-92 w-full px-3 center py-5 md:py-10 secondary-bg">
                 <div class="col-center w-[90%] lg:w-[80%] 2xl:w-[70%] h-full space-y-5 p-2">
                     <h3 class="md:text-[2.5rem] text-3xl font-medium text-center font-sans">
                         Featured Products
@@ -186,11 +186,9 @@ onMounted(() => {
                             <div class="pt-2 pb-1 flex items-center justify-between w-full">
                                 <div>
                                     <p class="text-[14px]">{{ items.name }}</p>
-                                    <p class="text-sm font-light">{{ items.price }}</p>
+                                    <p class="text-xs font-light">{{ items.price }}</p>
                                 </div>
-                                <button
-                                    class="px-3 py-2 hover:bg-[#87878753] text-[14px] text-center hover:text-white rounded-3xl bg-[#fbdcdc] text-[#333] hover"
-                                >
+                                <button class="px-3 py-2 rounded-3xl btn-1 hover text-sm">
                                     <RouterLink to="/shop">Shop Now</RouterLink>
                                 </button>
                             </div>
@@ -204,13 +202,14 @@ onMounted(() => {
 
 <style scoped>
 .prod-cards {
-    background-color: #fffcfc;
+    background-color: #ffffff;
+    border: 1px solid #bdd2ff;
 }
 
 .prod-cards:hover {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #fd9696;
+    border: 1px solid #a3afff;
     transform: translateY(-8px);
 }
 
