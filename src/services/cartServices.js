@@ -99,5 +99,3 @@ export const total = computed(() =>
 export const totalQuantity = computed(() =>
     userCart.value.reduce((sum, item) => sum + item.quantity, 0),
 );
-
-export const initiatePayment = async (status, total) => {};

@@ -1,6 +1,7 @@
 <script setup>
 import { inject, onMounted } from 'vue';
 import { getUserCart, userCart, total } from '../services/cartServices';
+import { payWithPaystack, initiatePayment } from '@/services/paystackServices';
 
 const auth = inject('auth');
 const user = auth.user;
@@ -9,6 +10,23 @@ onMounted(async () => {
     await getUserCart(user.value.id);
     console.log('cart: ', userCart.value);
 });
+
+const handleCheckout = async () => {
+    // Insert order first
+    const { data } = await initiatePayment(
+        user.value.id,
+        user.value.email,
+        total.value,
+        userCart.value,
+        'pending',
+    );
+
+    if (data) {
+        console.log('order reference:', data.reference);
+        // Launch Paystack payment
+        payWithPaystack(user.email, total.value, data.reference);
+    }
+};
 </script>
 
 <template>
@@ -124,7 +142,9 @@ onMounted(async () => {
                         </div>
                     </div>
 
-                    <button class="w-full rounded-md p-2 btn-1 hover">Pay Now</button>
+                    <button class="w-full rounded-md p-2 btn-1 hover" @click="handleCheckout">
+                        Pay Now
+                    </button>
                     <div class="flex flex-col w-full">
                         <p class="flex items-center text-sm">Secure Checkout</p>
                         <p class="font-light text-xs">

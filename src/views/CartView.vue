@@ -3,6 +3,7 @@
 import IconX2 from '../../public/icons/IconX2.vue';
 import IconDash from '../../public/icons/IconDash.vue';
 import IconPlus from '../../public/icons/IconPlus.vue';
+import { initiatePayment } from '@/services/paystackServices';
 
 import {
     getUserCart,
@@ -14,6 +15,7 @@ import {
 } from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
+import { useRouter } from 'vue-router';
 // import { computed } from 'vue';
 
 const auth = inject('auth');
@@ -47,6 +49,22 @@ const handleUpdate = async (id, qty) => {
             await handleDelete(item.id);
             console.log('deleted');
         }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const router = useRouter();
+const handleProceedToCheckout = async () => {
+    try {
+        const reference = await initiatePayment(
+            user.value.id,
+            user.value.email,
+            total.value,
+            userCart.value,
+        );
+
+        router.push({ name: 'checkout', query: { ref: reference } });
     } catch (error) {
         console.log(error);
     }
@@ -169,12 +187,12 @@ const handleUpdate = async (id, qty) => {
                             <p class="price">= ₦{{ total.toLocaleString() }}</p>
                         </div>
                     </div>
-                    <RouterLink
+                    <button
                         class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
-                        to="checkout"
+                        @click="handleProceedToCheckout"
                     >
                         Proceed to Checkout
-                    </RouterLink>
+                    </button>
                 </div>
             </div>
         </div>
