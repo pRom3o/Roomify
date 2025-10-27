@@ -94,3 +94,10 @@ button {
 .btn-1 {
     @apply hover:bg-[#8bb0ff] text-[#fff] hover:text-gray-600 bg-blue-500/90;
 }
+.btn-2 {
+    @apply bg-[#bdd2ff] text-[#33] hover:text-gray-700 hover:bg-blue-300;
+}
+
+.home-bg {
+    background: linear-gradient(to right, #fffaf5, #f0f4ff);
+}

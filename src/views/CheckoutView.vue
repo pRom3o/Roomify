@@ -102,7 +102,9 @@ onMounted(async () => {
                                         >x{{ items.quantity }}</span
                                     >
                                 </p>
-                                <p class="text-xs font-light">₦{{ items.item_price }}</p>
+                                <p class="text-xs font-light">
+                                    ₦{{ items.item_price.toLocaleString() }}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -110,7 +112,7 @@ onMounted(async () => {
                     <div class="w-full flex flex-col justify-center text-xs space-y-1">
                         <div class="flex items-center justify-between w-full">
                             <p class="text-gray-400">Subtotal</p>
-                            <p>₦{{ total }}</p>
+                            <p>₦{{ total.toLocaleString() }}</p>
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-gray-400">Shipping</p>
@@ -118,11 +120,11 @@ onMounted(async () => {
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p>Total</p>
-                            <p>₦{{ total }}</p>
+                            <p>₦{{ total.toLocaleString() }}</p>
                         </div>
                     </div>
 
-                    <button class="w-full rounded-md border p-2">Pay Now</button>
+                    <button class="w-full rounded-md p-2 btn-1 hover">Pay Now</button>
                     <div class="flex flex-col w-full">
                         <p class="flex items-center text-sm">Secure Checkout</p>
                         <p class="font-light text-xs">

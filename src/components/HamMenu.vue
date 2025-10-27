@@ -17,7 +17,7 @@ const user = auth.user;
         <transition name="nav"
             ><div
                 v-if="openClose"
-                class="w-full bg-[#fff1f1] flex flex-col items-center justify-between p-4"
+                class="w-full bg-[#e8efff] flex flex-col items-center justify-between p-4"
                 :class="openClose ? 'h-screen' : 'h-0'"
             >
                 <div class="h-[90%] w-full col-center gap-5" v-if="routeLinks.length > 0">

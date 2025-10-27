@@ -37,34 +37,33 @@ onMounted(() => {
 
 <template>
     <div>
-        <div
-            class="center min-h-screen p-6 w-full bg-center bg-cover relative"
-            style="background-image: url('/Images/hero-6.jpg')"
-        >
-            <div class="inset-0 absolute bg-black/40"></div>
-            <div
-                class="col-center text-center text-[#f3f3f3] md:space-y-5 space-y-5 px-4 z-10 absolute md:left-10 lg:left-30 md:top-[35%]"
-            >
-                <div class="fade-in space-y-2 hero-text">
-                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-medium mb-1">
-                        Celine's Treats
-                    </h1>
-                    <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>
-                    <p class="md:text-base text-xs md:px-3 px-6 text-[#777777]">
-                        <i
-                            >Turning simple beginings into timeless flavors, one pastry at a
-                            time...</i
-                        >
-                    </p>
-                </div>
-                <button class="cart hover md:flex hidden">
-                    <RouterLink to="/shop">SHOP NOW</RouterLink>
-                </button>
-                <button
-                    class="px-3 py-1 bg-[#87878753] text-center flex md:hidden text-white rounded-3xl hover:bg-[#fbdcdc] hover:text-[#333] hover"
+        <div class="center min-h-screen p-6 w-full bg-center bg-cover relative home-bg">
+            <!-- <div class="inset-0 absolute bg-black/40"></div> -->
+            <div class="center w-full h-full">
+                <div
+                    class="col-center text-center text-[#f3f3f3] md:space-y-5 space-y-5 px-4 z-10 absolute md:left-10 lg:left-30 md:top-[35%]"
                 >
-                    <RouterLink to="/shop">SHOP NOW</RouterLink>
-                </button>
+                    <div class="fade-in space-y-2 text-gray-700">
+                        <h1 class="text-5xl sm:text-7xl lg:text-8xl font-medium mb-1">
+                            Celine's Treats
+                        </h1>
+                        <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>
+                        <p class="md:text-base text-xs md:px-3 px-6 text-[#777777]">
+                            <i
+                                >Turning simple beginings into timeless flavors, one pastry at a
+                                time...</i
+                            >
+                        </p>
+                    </div>
+                    <button class="cart hover md:flex hidden">
+                        <RouterLink to="/shop">SHOP NOW</RouterLink>
+                    </button>
+                    <button
+                        class="px-3 py-1 bg-[#87878753] text-center flex md:hidden text-white rounded-3xl hover:bg-[#fbdcdc] hover:text-[#333] hover"
+                    >
+                        <RouterLink to="/shop">SHOP NOW</RouterLink>
+                    </button>
+                </div>
             </div>
         </div>
         <section
@@ -186,7 +185,9 @@ onMounted(() => {
                             <div class="pt-2 pb-1 flex items-center justify-between w-full">
                                 <div>
                                     <p class="text-[14px]">{{ items.name }}</p>
-                                    <p class="text-xs font-light">{{ items.price }}</p>
+                                    <p class="text-xs font-light">
+                                        {{ items.price.toLocaleString() }}
+                                    </p>
                                 </div>
                                 <button class="px-3 py-2 rounded-3xl btn-1 hover text-sm">
                                     <RouterLink to="/shop">Shop Now</RouterLink>

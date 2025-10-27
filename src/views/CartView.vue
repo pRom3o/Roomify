@@ -62,10 +62,10 @@ const handleUpdate = async (id, qty) => {
             class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 px-4"
         >
             <div
-                class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-[#eccdcd] bg-[#ffffff] shadow py-5 rounded-2xl"
+                class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-gray-200 bg-[#ffffff] shadow py-5 rounded-2xl"
             >
                 <div
-                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#ffdcdc] gap-2"
+                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#bdd2ff] gap-2"
                 >
                     <p class="md:w-1/2 w-[42%] text-sm md:text-base">Product</p>
                     <div
@@ -84,7 +84,7 @@ const handleUpdate = async (id, qty) => {
                     v-if="userCart.length > 0"
                 >
                     <li
-                        class="flex items-center justify-between w-full rounded-2xl bg-[#f5f5f5] h-14 gap-2 py-2 px-2"
+                        class="flex items-center justify-between w-full rounded-2xl bg-[#f2f6ff] h-14 gap-2 py-2 px-2"
                         v-for="items in userCart"
                         :key="items.id"
                     >
@@ -106,7 +106,7 @@ const handleUpdate = async (id, qty) => {
                             class="md:w-1/2 flex items-center md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
                         >
                             <p class="lg:text-base md:text-[12px] text-[10px]">
-                                ₦{{ items.item_price }}
+                                ₦{{ items.item_price.toLocaleString() }}
                             </p>
                             <div
                                 class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 rounded-2xl text-base"
@@ -132,7 +132,7 @@ const handleUpdate = async (id, qty) => {
                         </div>
                         <div class="flex items-center gap-2">
                             <p class="lg:text-base md:text-[12px] text-[10px] px-1">
-                                ₦{{ items.item_price * items.quantity }}
+                                ₦{{ (items.item_price * items.quantity).toLocaleString() }}
                             </p>
                             <button
                                 class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
@@ -149,28 +149,28 @@ const handleUpdate = async (id, qty) => {
             </div>
             <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-4 lg:w-[30%]">
                 <div
-                    class="p-3 border border-[#eccdcd] flex flex-col rounded-xl w-full space-y-4 bg-[#fff6f6] shadow"
+                    class="p-3 flex flex-col rounded-xl w-full space-y-4 border border-gray-200 bg-[#ffffff] shadow"
                 >
                     <h3 class="text-center">Order Summary</h3>
-                    <hr class="text-[#eccdcd]" />
+                    <hr class="text-[#dae6ff]" />
                     <div class="space-y-3">
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Items</p>
                             <p>{{ totalQuantity }}</p>
                         </div>
-                        <hr class="text-[#eccdcd]" />
+                        <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Sub Total</p>
-                            <p class="price">₦{{ total }}</p>
+                            <p class="price">₦{{ total.toLocaleString() }}</p>
                         </div>
-                        <hr class="text-[#eccdcd]" />
+                        <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Total</p>
-                            <p class="price">= ₦{{ total }}</p>
+                            <p class="price">= ₦{{ total.toLocaleString() }}</p>
                         </div>
                     </div>
                     <RouterLink
-                        class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl bg-[#ffd3d3] hover:bg-[#fbc1c1] hover"
+                        class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
                         to="checkout"
                     >
                         Proceed to Checkout

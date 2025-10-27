@@ -102,7 +102,7 @@ onMounted(() => {
                                         {{ items.name }}
                                     </p>
                                     <p class="text-[14px] md:text-[11px] font-light">
-                                        ₦{{ items.price }}
+                                        ₦{{ items.price.toLocaleString() }}
                                     </p>
                                 </div>
                                 <button
@@ -136,12 +136,11 @@ select:focus {
 }
 .prod-cards {
     background-color: #fff;
+    border: 1px solid #bdd2ff;
 }
 
 .prod-cards:hover {
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #8091ff;
-    transform: translateY(-8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 </style>
