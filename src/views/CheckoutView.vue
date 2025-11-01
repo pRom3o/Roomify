@@ -1,7 +1,7 @@
 <script setup>
 import { inject, onMounted } from 'vue';
 import { getUserCart, userCart, total } from '../services/cartServices';
-import { payWithPaystack, initiatePayment } from '@/services/paystackServices';
+import { initiatePayment } from '@/services/paystackServices';
 
 const auth = inject('auth');
 const user = auth.user;
@@ -12,8 +12,9 @@ onMounted(async () => {
 });
 
 const handleCheckout = async () => {
+    console.log('handling');
     // Insert order first
-    const { data } = await initiatePayment(
+    const order = await initiatePayment(
         user.value.id,
         user.value.email,
         total.value,
@@ -21,10 +22,33 @@ const handleCheckout = async () => {
         'pending',
     );
 
-    if (data) {
-        console.log('order reference:', data.reference);
-        // Launch Paystack payment
-        payWithPaystack(user.email, total.value, data.reference);
+    // Supabase returns an array of inserted rows
+    const orderData = order?.data?.[0]; // first inserted row
+    console.log('orderData:', orderData);
+
+    if (orderData) {
+        try {
+            const response = await fetch('/api/paystack', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: user.value.email,
+                    amount: total.value * 100, // in kobo
+                    reference: orderData.reference, // correct reference
+                    callback_url: 'https://roomify-virid.vercel.app/payment-success',
+                }),
+            });
+
+            const paystackResponse = await response.json();
+
+            if (paystackResponse?.data?.authorization_url) {
+                window.location.href = paystackResponse.data.authorization_url;
+            } else {
+                console.error('Paystack init failed:', paystackResponse);
+            }
+        } catch (err) {
+            console.error('Error starting payment:', err);
+        }
     }
 };
 </script>
@@ -142,7 +166,7 @@ const handleCheckout = async () => {
                         </div>
                     </div>
 
-                    <button class="w-full rounded-md p-2 btn-1 hover" @click="handleCheckout">
+                    <button class="w-full rounded-md p-2 btn-1 hover" @click="handleCheckout()">
                         Pay Now
                     </button>
                     <div class="flex flex-col w-full">

@@ -18,45 +18,16 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
                     status,
                 },
             ])
-            .select();
-
+            .select()
+            .maybeSingle();
         if (error) {
             throw error;
         } else {
-            console.log('inserted:', data);
+            console.log('inserted:', data.reference);
         }
-        return data;
 
         // Return the reference for use in Paystack checkout
     } catch (err) {
         console.error('initiatePayment failed:', err);
-    }
-};
-
-export const payWithPaystack = async (email, amount, reference) => {
-    try {
-        console.log('trying');
-        const response = await fetch('https://api.paystack.co/transaction/initialize', {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_PAYSTACK_SECRET_KEY}`, // secret key
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email,
-                amount: amount * 100, // kobo
-                reference,
-                callback_url: 'http://localhost:5174/payment-success',
-            }),
-        });
-
-        const data = await response.json();
-        console.log('data', data);
-        if (!response.ok) throw new Error(data.message);
-
-        // Redirect user to Paystack checkout page
-        window.location.href = data.data.authorization_url;
-    } catch (err) {
-        console.error('Payment initialization failed:', err.message);
     }
 };
