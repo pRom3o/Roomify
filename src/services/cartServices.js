@@ -80,6 +80,21 @@ export const deleteItem = async (id) => {
     if (error) throw error;
 };
 
+export const deleteUserCart = async (userId) => {
+    try {
+        const { error } = await supabase.from('carts').delete().eq('user_id', userId);
+
+        if (error) {
+            // throw error;
+            console.log('error deleting', error);
+        } else {
+            console.log(`cart deleted for ${userId}`);
+        }
+    } catch (error) {
+        console.log('Unexpected error:', error);
+    }
+};
+
 export const updateQuantity = async (id, newQuantity) => {
     if (newQuantity < 0) return;
     const { error: error } = await supabase

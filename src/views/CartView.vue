@@ -12,6 +12,7 @@ import {
     updateQuantity,
     totalQuantity,
     total,
+    deleteUserCart,
 } from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
@@ -161,6 +162,12 @@ const handleProceedToCheckout = async () => {
                             </button>
                         </div>
                     </li>
+                    <button
+                        class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
+                        @click="deleteUserCart(user.value.id)"
+                    >
+                        <IconX2 />
+                    </button>
                 </transition-group>
                 <div v-else class="center">
                     <h3><i>No items in cart</i></h3>
