@@ -14,19 +14,17 @@ onMounted(async () => {
 const handleCheckout = async () => {
     console.log('handling');
     // Insert order first
-    const order = await initiatePayment(
+    const data = await initiatePayment(
         user.value.id,
         user.value.email,
         total.value,
         userCart.value,
         'pending',
-    );
+    ); // first inserted row
 
     // Supabase returns an array of inserted rows
-    const orderData = order?.data?.[0]; // first inserted row
-
-    if (orderData) {
-        console.log('orderData:', orderData);
+    if (data) {
+        console.log('data:', data);
         try {
             const response = await fetch('/api/paystack', {
                 method: 'POST',
@@ -34,7 +32,7 @@ const handleCheckout = async () => {
                 body: JSON.stringify({
                     email: user.value.email,
                     amount: total.value * 100, // in kobo
-                    reference: orderData.reference, // correct reference
+                    reference: data.reference, // correct reference
                     callback_url: 'https://roomify-virid.vercel.app/payment-success',
                 }),
             });
