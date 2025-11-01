@@ -11,6 +11,7 @@ export default async function handler(req, res) {
 
         const verifyRes = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
             headers: {
+                // eslint-disable-next-line no-undef
                 Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
             },
         });

@@ -1,17 +1,23 @@
 <script setup>
-import { inject, onMounted } from 'vue';
+import { inject, onMounted, ref } from 'vue';
 import { getUserCart, userCart, total } from '@/services/cartServices';
 import { initiatePayment } from '@/services/paystackServices';
 import { useRoute } from 'vue-router';
 import { supabase } from '@/lib/supabaseClient';
+import LoadingIcon from '../../public/icons/LoadingIcon.vue';
 
 const auth = inject('auth');
 const user = auth.user;
 const route = useRoute();
-const ref = route.params.ref;
+const reference = route.params.ref;
+const checking = ref(false);
 
 const getRef = async () => {
-    const { data, error } = await supabase.from('orders').select('*').eq('reference', ref).single();
+    const { data, error } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('reference', reference)
+        .single();
     if (error) console.log('error', error);
     else console.log('order by ref:', data);
     return data;
@@ -24,7 +30,7 @@ onMounted(async () => {
 });
 
 const handleCheckout = async () => {
-    console.log('handling');
+    checking.value = true;
     // Insert order first
     const data = await initiatePayment(
         user.value.id,
@@ -60,6 +66,8 @@ const handleCheckout = async () => {
             }
         } catch (err) {
             console.error('Error starting payment:', err);
+        } finally {
+            checking.value = false;
         }
     }
 };
@@ -178,8 +186,18 @@ const handleCheckout = async () => {
                         </div>
                     </div>
 
-                    <button class="w-full rounded-md p-2 btn-1 hover" @click="handleCheckout()">
+                    <button
+                        class="w-full rounded-md p-2 btn-1 hover"
+                        @click="handleCheckout()"
+                        v-if="!checking"
+                    >
                         Pay Now
+                    </button>
+                    <button
+                        class="w-full rounded-md p-2 btn-1 hover flex items-center justify-center"
+                        v-else
+                    >
+                        <LoadingIcon />
                     </button>
                     <div class="flex flex-col w-full">
                         <p class="flex items-center text-sm">Secure Checkout</p>

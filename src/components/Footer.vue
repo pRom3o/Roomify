@@ -24,27 +24,27 @@ onMounted(() => {
     <footer class="min-h-32 w-full px-3 pt-6 backdrop-blur-lg">
         <div class="grid md:grid-cols-4 grid-cols-2 w-full fade-in">
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4 class="md:font-medium text-sm md:text-md">Shop</h4>
+                <h4 class="md:font-medium md:text-md">Shop</h4>
                 <p class="text-xs md:font-normal font-light">All Products</p>
                 <p class="text-xs md:font-normal font-light">New Arrivals</p>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4 class="md:font-medium text-sm md:text-md">Contact</h4>
+                <h4 class="md:font-medium md:text-md">Contact</h4>
                 <p class="text-xs md:font-normal font-light">Contact Us</p>
                 <p class="text-xs md:font-normal font-light">FAQ</p>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4 class="md:font-medium text-sm md:text-md">Company</h4>
+                <h4 class="md:font-medium md:text-md">Company</h4>
                 <p class="text-xs md:font-normal font-light">About Us</p>
                 <p class="text-xs md:font-normal font-light">Blog</p>
             </div>
             <div class="flex flex-col items-center justify-center space-y-4 p-4">
-                <h4 class="md:font-medium text-sm md:text-md">Legal</h4>
+                <h4 class="md:font-medium md:text-md">Legal</h4>
                 <p class="text-xs md:font-normal font-light">Privacy Policy</p>
                 <p class="text-xs md:font-normal font-light">Terms of Service</p>
             </div>
         </div>
-        <div class="w-full font-light text-[10px] lg:text-sm lg:font-normal">
+        <div class="w-full font-light lg:text-sm lg:font-normal">
             <hr class="text-[#bdd2ff]" />
             <div class="center w-full min-h-10">
                 <p>&copy; 2025 Celine's Treats. all rights reserved.</p>

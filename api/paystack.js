@@ -11,6 +11,7 @@ export default async function handler(req, res) {
         const response = await fetch('https://api.paystack.co/transaction/initialize', {
             method: 'POST',
             headers: {
+                // eslint-disable-next-line no-undef
                 Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
                 'Content-Type': 'application/json',
             },

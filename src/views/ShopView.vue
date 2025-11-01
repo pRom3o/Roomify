@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-full min-h-screen flex flex-col justify-between primary-bg">
+    <div class="w-full min-h-screen flex flex-col justify-between bg-blue-50/50">
         <div class="h-full w-full col-center space-y-5 mt-20">
             <div class="w-full col-center space-y-3 relative">
                 <h1 class="text-6xl font-kanit">Shop</h1>
@@ -79,9 +79,9 @@ onMounted(() => {
             </div>
             <div class="min-h-96 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="h-full md:w-[90%] xl:w-[80%] w-full center p-6" v-else>
+                <div class="h-[full] md:w-[90%] w-full center md:p-6 p-4" v-else>
                     <div
-                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-full gap-6"
+                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-6"
                     >
                         <div
                             v-for="items in products"
@@ -91,12 +91,10 @@ onMounted(() => {
                             <img
                                 :src="items.image_url"
                                 :alt="items.name"
-                                class="h-56 w-full rounded-t-xl"
+                                class="h-44 w-full rounded-t-xl"
                             />
 
-                            <div
-                                class="py-2 flex md:flex-col flex-row justify-between w-full gap-2"
-                            >
+                            <div class="md:py-2 flex flex-col justify-between w-full gap-2">
                                 <div>
                                     <p class="text-[14px]">
                                         {{ items.name }}
@@ -107,17 +105,15 @@ onMounted(() => {
                                 </div>
                                 <button
                                     @click="handleAddToCart(items)"
-                                    class="px-3 py-2 rounded-3xl btn-1 md:flex items-center justify-center hidden hover"
+                                    class="px-3 py-2 rounded-xl btn-1 md:flex items-center justify-center hidden hover"
                                 >
                                     <p class="text-center">Add to cart</p>
                                 </button>
                                 <button
                                     @click="handleAddToCart(items)"
-                                    class="px-3 py-2 text-[14px] flex items-center md:hidden rounded-3xl btn-1 hover"
+                                    class="px-3 py-2 text-[14px] flex items-center justify-center md:hidden rounded-xl btn-1 hover"
                                 >
-                                    <p class="text-center" v-if="!loadingStates[items.id]">
-                                        Add to cart
-                                    </p>
+                                    <p v-if="!loadingStates[items.id]">Add to cart</p>
                                     <p v-else><LoadingIcon /></p>
                                 </button>
                             </div>

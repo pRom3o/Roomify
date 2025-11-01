@@ -58,9 +58,7 @@ onMounted(() => {
                     <button class="cart hover md:flex hidden">
                         <RouterLink to="/shop">SHOP NOW</RouterLink>
                     </button>
-                    <button
-                        class="px-3 py-1 bg-[#87878753] text-center flex md:hidden text-white rounded-3xl hover:bg-[#fbdcdc] hover:text-[#333] hover"
-                    >
+                    <button class="px-3 py-1 flex md:hidden cart hover">
                         <RouterLink to="/shop">SHOP NOW</RouterLink>
                     </button>
                 </div>
