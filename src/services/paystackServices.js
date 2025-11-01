@@ -1,12 +1,9 @@
 import { supabase } from '@/lib/supabaseClient';
-import { ref } from 'vue';
-
-export const reference = ref('');
 
 export const initiatePayment = async (user_id, email, total_amount, items, status = 'pending') => {
     try {
         // Generate unique reference
-        reference.value = `REF-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+        const reference = `REF-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
 
         // Insert order into Supabase
         const { data, error } = await supabase
@@ -15,7 +12,7 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
                 {
                     user_id,
                     email,
-                    reference: reference.value,
+                    reference,
                     total_amount,
                     items,
                     status,
