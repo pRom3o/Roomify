@@ -33,10 +33,9 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
     }
 };
 
-// paystackServices.js
-// paystackServices.js
 export const payWithPaystack = async (email, amount, reference) => {
     try {
+        console.log('trying');
         const response = await fetch('https://api.paystack.co/transaction/initialize', {
             method: 'POST',
             headers: {
@@ -52,6 +51,7 @@ export const payWithPaystack = async (email, amount, reference) => {
         });
 
         const data = await response.json();
+        console.log('data', data);
         if (!response.ok) throw new Error(data.message);
 
         // Redirect user to Paystack checkout page

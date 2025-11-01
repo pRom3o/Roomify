@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, provide, reactive } from 'vue';
-import { supabase } from '../../lib/supabaseClient.js';
+import { supabase } from '@/lib/supabaseClient.js';
 
 import { useRouter } from 'vue-router';
 
