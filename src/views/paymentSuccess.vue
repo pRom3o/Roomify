@@ -1,11 +1,13 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { supabase } from '../lib/supabaseClient';
 
 const paymentStatus = ref('Verifying...');
 const route = useRoute();
 const reference = route.query.reference;
+
+const router = useRouter();
 
 onMounted(async () => {
     try {
@@ -15,17 +17,23 @@ onMounted(async () => {
             body: JSON.stringify({ reference }),
         });
 
+        if (!response.ok) {
+            const err = response.text();
+            console.log('verification failed', err);
+            return;
+        }
         const data = await response.json();
         console.log('PAYSTACK VERIFY DATA:', data);
-        if (data.data.status && data.status === 'success') {
+        if (data.status === 'success') {
             paymentStatus.value = 'Payment successful!';
-
+            router.push('/payment-success');
             await supabase.from('orders').update({ status: 'paid' }).eq('reference', reference);
         } else {
             paymentStatus.value = 'Payment failed';
+            console.log('verification data failed', data);
         }
     } catch (error) {
-        console.log(error);
+        console.log('payment success error:', error);
         paymentStatus.value = 'verification error';
     } finally {
         console.log(paymentStatus.value);
