@@ -88,6 +88,7 @@ export const deleteUserCart = async (userId) => {
             // throw error;
             console.log('error deleting', error);
         } else {
+            getUserCart(userId);
             console.log(`cart deleted for ${userId}`);
         }
     } catch (error) {

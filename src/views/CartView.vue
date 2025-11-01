@@ -162,16 +162,17 @@ const handleProceedToCheckout = async () => {
                             </button>
                         </div>
                     </li>
-                    <button
-                        class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
-                        @click="deleteUserCart(user.value.id)"
-                    >
-                        <IconX2 />
-                    </button>
                 </transition-group>
                 <div v-else class="center">
                     <h3><i>No items in cart</i></h3>
                 </div>
+                <button
+                    class="text-red-400 p-1 px-2 rounded-full bg-red-200 hover hover:bg-red-200 flex items-center justify-center"
+                    @click="deleteUserCart(user.id)"
+                    v-if="userCart.length > 1"
+                >
+                    <span class="text-[#333]">Clear cart</span> <IconX2 />
+                </button>
             </div>
             <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-4 lg:w-[30%]">
                 <div
