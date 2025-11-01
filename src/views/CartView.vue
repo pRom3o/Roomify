@@ -3,7 +3,7 @@
 import IconX2 from '../../public/icons/IconX2.vue';
 import IconDash from '../../public/icons/IconDash.vue';
 import IconPlus from '../../public/icons/IconPlus.vue';
-import { initiatePayment } from '@/services/paystackServices';
+import { initiatePayment, reference } from '@/services/paystackServices';
 
 import {
     getUserCart,
@@ -63,6 +63,7 @@ const handleProceedToCheckout = async () => {
             total.value,
             userCart.value,
         );
+        console.log(reference);
 
         router.push({ name: 'checkout', query: { ref: reference } });
     } catch (error) {
