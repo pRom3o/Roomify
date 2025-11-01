@@ -12,7 +12,7 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
                 {
                     user_id,
                     email,
-                    reference,
+                    reference: reference,
                     total_amount,
                     items,
                     status,
