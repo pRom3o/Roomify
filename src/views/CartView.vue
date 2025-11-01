@@ -79,7 +79,7 @@ const handleProceedToCheckout = async () => {
             <h1 class="text-3xl md:text-5xl font-light">Shopping Cart</h1>
         </div>
         <div
-            class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 px-4"
+            class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 md:px-4 px-2"
         >
             <div
                 class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-gray-200 bg-[#ffffff] shadow py-5 rounded-2xl"
@@ -174,7 +174,7 @@ const handleProceedToCheckout = async () => {
                     <span class="text-[#333]">Clear cart</span> <IconX2 />
                 </button>
             </div>
-            <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-4 lg:w-[30%]">
+            <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-2 lg:w-[30%]">
                 <div
                     class="p-3 flex flex-col rounded-xl w-full space-y-4 border border-gray-200 bg-[#ffffff] shadow"
                 >
