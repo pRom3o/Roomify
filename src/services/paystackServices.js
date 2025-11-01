@@ -25,6 +25,7 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
         } else {
             console.log('inserted:', data.reference);
         }
+        return data;
 
         // Return the reference for use in Paystack checkout
     } catch (err) {
