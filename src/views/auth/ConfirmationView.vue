@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { onMounted, inject, ref } from 'vue';
-import { supabase } from '../lib/supabaseClient';
-import { showToast } from '../services/toastServices';
+import { supabase } from '@/lib/supabaseClient';
+import { showToast } from '@/services/toastServices';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
