@@ -17,7 +17,7 @@ onMounted(async () => {
 
         const data = await response.json();
         console.log('PAYSTACK VERIFY DATA:', data);
-        if (data.data.status === 'success') {
+        if (data.data.status && data.status === 'success') {
             paymentStatus.value = 'Payment successful!';
 
             await supabase.from('orders').update({ status: 'paid' }).eq('reference', reference);
