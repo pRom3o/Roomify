@@ -21,10 +21,11 @@ const handleCheckout = async () => {
         userCart.value,
         'pending',
     ); // first inserted row
+    console.log('before if data:', data);
 
     // Supabase returns an array of inserted rows
     if (data) {
-        console.log('data:', data);
+        console.log('after if data:', data);
         try {
             const response = await fetch('/api/paystack', {
                 method: 'POST',
