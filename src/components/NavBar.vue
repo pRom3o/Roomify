@@ -36,12 +36,12 @@ onMounted(() => {
                     >
                 </li>
                 <li>
-                    <RouterLink to="shop" class="px-3 py-1 text-sm rounded-2xl hover nav"
+                    <RouterLink to="/shop" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Shop</RouterLink
                     >
                 </li>
                 <li>
-                    <RouterLink to="contact" class="px-3 py-1 text-sm rounded-2xl hover nav"
+                    <RouterLink to="/contact" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Contact</RouterLink
                     >
                 </li>
