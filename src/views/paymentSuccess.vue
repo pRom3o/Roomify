@@ -16,6 +16,7 @@ onMounted(async () => {
         });
 
         const data = await response.json();
+        console.log('PAYSTACK VERIFY DATA:', data);
         if (data.data.status === 'success') {
             paymentStatus.value = 'Payment successful!';
 
