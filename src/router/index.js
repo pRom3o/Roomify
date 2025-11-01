@@ -20,7 +20,7 @@ const router = createRouter({
                     component: () => import('@/views/ContactView.vue'),
                 },
                 {
-                    path: 'checkout',
+                    path: 'checkout/:ref',
                     name: 'checkout',
                     component: () => import('@/views/CheckoutView.vue'),
                 },

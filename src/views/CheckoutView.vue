@@ -1,14 +1,26 @@
 <script setup>
 import { inject, onMounted } from 'vue';
-import { getUserCart, userCart, total } from '../services/cartServices';
+import { getUserCart, userCart, total } from '@/services/cartServices';
 import { initiatePayment } from '@/services/paystackServices';
+import { useRoute } from 'vue-router';
+import { supabase } from '@/lib/supabaseClient';
 
 const auth = inject('auth');
 const user = auth.user;
+const route = useRoute();
+const ref = route.params.ref;
+
+const getRef = async () => {
+    const { data, error } = await supabase.from('orders').select('*').eq('reference', ref).single();
+    if (error) console.log('error', error);
+    else console.log('order by ref:', data);
+    return data;
+};
 
 onMounted(async () => {
     await getUserCart(user.value.id);
     console.log('cart: ', userCart.value);
+    getRef();
 });
 
 const handleCheckout = async () => {
