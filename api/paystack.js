@@ -1,28 +1,26 @@
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+        return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const { email, amount, reference, callback_url } = await req.json();
-
     try {
+        // Parse request body
+        const { email, amount, reference, callback_url } = req.body;
+
+        // Initialize Paystack payment
         const response = await fetch('https://api.paystack.co/transaction/initialize', {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                email,
-                amount,
-                reference,
-                callback_url,
-            }),
+            body: JSON.stringify({ email, amount, reference, callback_url }),
         });
 
         const data = await response.json();
         return res.status(200).json(data);
-    } catch (error) {
-        return res.status(500).json({ error: error.message });
+    } catch (err) {
+        console.error('Paystack API error:', err);
+        return res.status(500).json({ message: 'Internal Server Error', error: err.message });
     }
 }
