@@ -57,13 +57,13 @@ const handleUpdate = async (id, qty) => {
 const router = useRouter();
 const handleProceedToCheckout = async () => {
     try {
-        const reference = await initiatePayment(
+        const { data } = await initiatePayment(
             user.value.id,
             user.value.email,
             total.value,
             userCart.value,
         );
-        console.log(reference);
+        console.log('reference', data.reference);
 
         router.push({ name: 'checkout', query: { ref: reference } });
     } catch (error) {
