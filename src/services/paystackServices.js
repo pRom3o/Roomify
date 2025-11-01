@@ -19,7 +19,7 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
                 },
             ])
             .select()
-            .maybeSingle();
+            .single();
         if (error) {
             throw error;
         } else {
