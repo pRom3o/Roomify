@@ -48,7 +48,7 @@ onMounted(async () => {
 <template>
     <div class="center h-screen w-full primary-bg pt-20 pb-10 px-3 gap-3">
         <div class="col-center h-full w-[95%] md:w-1/2">
-            <div class="bg-[#eaebee] rounded-3xl border border-gray-100 h-[90%] w-full pb-5">
+            <div class="bg-[#f2f2f2] rounded-3xl border border-gray-100 h-[90%] w-full p-1">
                 <img
                     src="/Images/payment-successful.gif"
                     alt="Payment success"
@@ -56,8 +56,10 @@ onMounted(async () => {
                     class="w-full h-full rounded-3xl"
                 />
             </div>
-            <h1 class>{{ paymentStatus }}</h1>
-            <router-link to="/" class="btn-3 hover text-sm">Home</router-link>
+            <div class="mt-3">
+                <h1 class>{{ paymentStatus }}</h1>
+                <router-link to="/" class="btn-3 hover text-sm">Home</router-link>
+            </div>
         </div>
     </div>
 </template>
