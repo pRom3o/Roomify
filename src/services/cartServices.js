@@ -35,6 +35,7 @@ export const addToCart = async (name, price, img, userId, email, qty = 1) => {
                 .update({ quantity: newQuantity })
                 .eq('id', existing.id);
 
+            showToast('Cart updated', 'success');
             if (updateError) throw updateError;
         } else {
             // 3) If it doesn't exist, insert new row with quantity = qty

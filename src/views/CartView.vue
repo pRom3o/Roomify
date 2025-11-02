@@ -79,17 +79,17 @@ const handleProceedToCheckout = async () => {
             <h1 class="text-3xl md:text-5xl font-light">Shopping Cart</h1>
         </div>
         <div
-            class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full py-4 gap-14 lg:px-10 md:px-4 px-2"
+            class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full gap-14 lg:px-10 md:px-4 px-2"
         >
             <div
-                class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-gray-200 bg-[#ffffff] shadow py-5 rounded-2xl"
+                class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-gray-200 bg-[#ffffff] shadow py-2 rounded-2xl"
             >
                 <div
                     class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#bdd2ff] gap-2"
                 >
-                    <p class="md:w-1/2 w-[42%] text-sm md:text-base">Product</p>
+                    <p class="sm:w-1/2 w-[42%] text-sm md:text-base">Product</p>
                     <div
-                        class="flex md:w-1/2 w-[58%] items-center justify-between text-[12px] lg:text-base pr-3"
+                        class="flex sm:w-1/2 w-[58%] items-center justify-between text-[12px] lg:text-base pr-3"
                     >
                         <p class="">Price</p>
                         <p>Quantity</p>
@@ -109,7 +109,9 @@ const handleProceedToCheckout = async () => {
                         :key="items.id"
                     >
                         <div class="w-1/2 flex items-center justify-items-start gap-3">
-                            <div class="md:h-12 md:w-12 h-8 w-8 rounded-full items-center relative">
+                            <div
+                                class="md:h-12 md:w-12 h-10 w-8 rounded-full items-center relative"
+                            >
                                 <img
                                     :src="items.img"
                                     alt="img"
@@ -123,7 +125,7 @@ const handleProceedToCheckout = async () => {
                             </div>
                         </div>
                         <div
-                            class="md:w-1/2 flex items-center md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
+                            class="w-1/2 flex items-center justify-evenly sm:justify-around md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
                         >
                             <p class="lg:text-base md:text-[12px] text-[10px]">
                                 ₦{{ items.item_price.toLocaleString() }}
@@ -174,9 +176,9 @@ const handleProceedToCheckout = async () => {
                     <span class="text-[#333]">Clear cart</span> <IconX2 />
                 </button>
             </div>
-            <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-2 lg:w-[30%]">
+            <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-2 lg:w-[30%] min-h-10">
                 <div
-                    class="p-3 flex flex-col rounded-xl w-full space-y-4 border border-gray-200 bg-[#ffffff] shadow"
+                    class="p-2 flex flex-col rounded-xl w-full space-y-4 border border-gray-200 bg-[#ffffff] shadow"
                 >
                     <h3 class="text-center">Order Summary</h3>
                     <hr class="text-[#dae6ff]" />

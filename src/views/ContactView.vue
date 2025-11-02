@@ -1,12 +1,12 @@
 <script setup></script>
 
 <template>
-    <div class="w-full min-h-screen center bg-[#fff1f1] md:px-16 px-8 text-[#424242]">
+    <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
         <div
-            class="center w-full lg:w-[90%] min-h-[580px] p-6 bg-[#fff8f8] shadow rounded-xl mt-20 mb-10 md:mb-0 md:my-10"
+            class="center w-full lg:w-[90%] min-h-[580px] p-6 bg-[#fff] shadow rounded-xl mt-20 mb-10 md:mb-0 md:my-10"
         >
             <div
-                class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-6 lg:space-x-5 gap-4"
+                class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-2 lg:space-x-5 gap-4"
             >
                 <div
                     class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%] md:mb-0 mb-5"
@@ -33,62 +33,26 @@
                             class="flex lg:flex-row flex-col items-center justify-center w-full space-x-0 lg:space-y-0 space-y-3 gap-x-2"
                         >
                             <div class="flex flex-col w-full">
-                                <label for="name" class="text-xs lg:text-sm xl:text-base"
-                                    >Name *</label
-                                >
-                                <div class="relative w-full">
+                                <label for="name" class="text-sm xl:text-base">Name *</label>
+                                <div class="w-full">
                                     <input type="text" name="name" id="name" class="w-full" />
-                                    <p class="absolute top-3 left-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="16"
-                                            height="16"
-                                            fill="#ffa2a2"
-                                            class="bi bi-person-circle"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
-                                            />
-                                        </svg>
-                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col w-full">
-                            <label for="userEmail" class="text-xs lg:text-sm xl:text-base"
-                                >Email *</label
-                            >
-                            <div class="relative w-full">
+                            <label for="userEmail" class="text-sm xl:text-base">Email *</label>
+                            <div class="w-full">
                                 <input
                                     type="email"
                                     name="userEmail"
                                     id="userEmail"
                                     class="w-full"
                                 />
-                                <p class="absolute top-3 left-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="#ffa2a2"
-                                        class="bi bi-envelope"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path
-                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
-                                        />
-                                    </svg>
-                                </p>
                             </div>
                         </div>
 
                         <div class="flex flex-col w-full">
-                            <label for="userMessage" class="text-xs lg:text-sm xl:text-base"
-                                >Message *</label
-                            >
+                            <label for="userMessage" class="text-sm xl:text-base">Message *</label>
                             <textarea
                                 name="userMessage"
                                 id="userMessage"
@@ -148,36 +112,36 @@
 
 <style scoped>
 .vertical-line {
-    border-left: 2px solid #ffc8c8; /* Adjust thickness, style, and color */
-    height: 100%; /* Adjust height as needed */
+    border-left: 2px solid #bdd2ff;
 }
 
 input,
 textarea {
-    border: 1px solid #e9bcbc;
+    border: 1px solid #bdd2ff;
     border-radius: 3px;
-    outline: 1px solid #e9bcbc;
+    outline: 1px solid #bdd2ff;
     padding: 5px;
     font-weight: 300;
 }
 
 input:focus,
 textarea:focus {
-    caret-color: #ffa2a2;
+    caret-color: #7183f8;
 }
 
 input:focus,
 textarea:focus {
     outline: none;
-    border: 2px solid #e9bcbc;
+    border: 2px solid #bdd2ff;
     border-radius: 7px;
     box-shadow:
-        0 0 8px 2px #e9bcbc66,
-        0 0 16px 4px #d28a8a55;
+        0 0 8px 2px #bdd2ff66,
+        0 0 16px 4px #7183f855;
 }
 
 label {
     font-weight: 300;
     color: black;
+    margin-bottom: 2px;
 }
 </style>

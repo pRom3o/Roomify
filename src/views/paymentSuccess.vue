@@ -47,7 +47,10 @@ onMounted(async () => {
 
 <template>
     <div class="center h-screen w-full">
-        <h1>{{ paymentStatus }}</h1>
-        <router-link to="/">home</router-link>
+        <div class="h-full w-full">
+            <img src="/Images/payment-successful.jpg" alt="payment status" />
+            <h1>{{ paymentStatus }}</h1>
+            <router-link to="/">home</router-link>
+        </div>
     </div>
 </template>

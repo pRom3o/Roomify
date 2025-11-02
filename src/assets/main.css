@@ -79,16 +79,16 @@ button {
 }
 
 .vertical-line {
-    border-left: 2px solid #ebd0d0;
+    border-left: 2px solid #bdd2ff;
     height: 100%;
 }
 
 .under {
-    text-decoration-color: #e9bcbc;
+    text-decoration-color: #8bb0ff;
 }
 
 .under:hover {
-    text-decoration-color: #eda1a1;
+    text-decoration-color: #7183f8;
 }
 
 .btn-1 {
@@ -100,4 +100,9 @@ button {
 
 .home-bg {
     background: linear-gradient(to right, #fffaf5, #f0f4ff);
+}
+
+.cards {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
