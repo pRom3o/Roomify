@@ -2,7 +2,7 @@
 import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { supabase } from '../lib/supabaseClient';
-import { deleteUserCart } from '../services/cartServices';
+import { deleteUserCart, userCart } from '../services/cartServices';
 import { inject } from 'vue';
 
 const paymentStatus = ref('Verifying...');
@@ -46,16 +46,28 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="center h-screen w-full primary-bg p-5">
+    <div class="center h-screen w-full primary-bg p-5 gap-3">
         <div class="col-center h-full w-[90%] md:w-1/2 bg-[#edf3ff]">
             <img
-                src="/Images/payment-success.png"
+                src="/Images/payment-success.gif"
                 alt="Payment success"
                 v-if="paymentStatus == 'Payment successful'"
                 class="w-full h-[90%]"
             />
             <h1 class>{{ paymentStatus }}</h1>
             <router-link to="/" class="btn-3 hover">Home</router-link>
+        </div>
+        <div class="col-center h-full md:w-1/2 w-full" v-for="items in userCart" :key="items.id">
+            <div class="flex items-center gap-5">
+                <img :src="items.img" alt="" class="h-12 w-12 rounded-lg border border-gray-400" />
+                <div class="">
+                    <p class="flex flex-col text-sm mb-1">
+                        {{ items.item_name }}
+                        <span class="text-[10px] font-light">x{{ items.quantity }}</span>
+                    </p>
+                    <p class="text-xs font-light">₦{{ items.item_price.toLocaleString() }}</p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
