@@ -46,15 +46,15 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="center h-screen w-full primary-bg md:pt-20 pt-10 px-3 gap-3">
+    <div class="center h-screen w-full primary-bg py-20 px-3 gap-3">
         <div
-            class="col-center h-full w-[95%] md:w-1/2 bg-[#edf3ff] rounded-2xl border border-gray-50"
+            class="col-center h-full w-[95%] md:w-1/2 bg-[#edf3ff] rounded-2xl border border-gray-50 p-1"
         >
             <img
                 src="/Images/payment-successful.gif"
                 alt="Payment success"
                 v-if="paymentStatus == 'Payment successful'"
-                class="w-full h-[90%]"
+                class="w-full h-[90%] rounded-3xl"
             />
             <h1 class>{{ paymentStatus }}</h1>
             <router-link to="/" class="btn-3 hover">Home</router-link>
