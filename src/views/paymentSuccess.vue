@@ -50,7 +50,7 @@ onMounted(async () => {
         <div class="col-center">
             <h1>{{ paymentStatus }}</h1>
 
-            <router-link to="/" class="btn-3 flex items-center justify-center gap-1"
+            <router-link to="/" class="btn-3 hover flex items-center justify-center gap-1"
                 ><span
                     ><svg
                         xmlns="http://www.w3.org/2000/svg"

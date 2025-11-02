@@ -99,7 +99,7 @@ button {
 }
 
 .btn-3 {
-    @apply px-4 py-2 hover bg-[#8bb0ff] border border-[#7183f8] hover:bg-[#5d72ff];
+    @apply px-4 py-2 bg-[#8bb0ff] border border-[#7183f8] hover:bg-[#5d72ff];
 }
 
 .home-bg {
