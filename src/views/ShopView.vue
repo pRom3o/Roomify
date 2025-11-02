@@ -2,10 +2,12 @@
 import { onMounted, watch, reactive } from 'vue';
 import { getProducts, isLoading, products } from '@/services/productServices';
 import loadingScreen from '@/components/loadingScreen.vue';
-import { addToCart } from '@/services/cartServices';
+// import { addToCart } from '@/services/cartServices';
 import LoadingIcon from '../../public/icons/LoadingIcon.vue';
-
 import { inject, ref } from 'vue';
+import { useCartStore } from '@/store/cart';
+
+const cartStore = useCartStore();
 
 const auth = inject('auth');
 const user = auth.user;
@@ -27,7 +29,13 @@ const handleAddToCart = async (item) => {
     loadingStates[item.id] = true;
 
     try {
-        await addToCart(item.name, item.price, item.image_url, user.value.id, user.value.email);
+        await cartStore.addToCart(
+            item.name,
+            item.price,
+            item.image_url,
+            user.value.id,
+            user.value.email,
+        );
         console.log('Added to cart');
     } catch (error) {
         console.log(error);

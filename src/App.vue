@@ -4,14 +4,18 @@ import { ref, onMounted, provide } from 'vue';
 import userProvider from './components/provider/userProvider.vue';
 import Toast from './components/Toast.vue';
 import { supabase } from './lib/supabaseClient';
+import { useCartStore } from '@/store/cart';
 
 const user = ref(null);
 
 onMounted(async () => {
+    const cartStore = useCartStore();
+    // const cartStore = useCartStore();
     const { data } = await supabase.auth.getSession();
     if (data.session) {
         user.value = data.session.user;
     }
+    cartStore.fetchCart(user.value.id);
 
     supabase.auth.onAuthStateChange((event, session) => {
         user.value = session?.user || null;

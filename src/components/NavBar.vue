@@ -1,16 +1,18 @@
 <script setup>
 import { openClose, switchIcon } from '../functions/functions';
-import { totalQuantity } from '../services/cartServices';
+// import { totalQuantity } from '../services/cartServices';
 import IconHam from '/public/icons/IconHam.vue';
 import IconX from '/public/icons/IconX.vue';
 import HamMenu from './HamMenu.vue';
-
+import { useCartStore } from '../store/cart';
 import { inject, onMounted } from 'vue';
 
 const auth = inject('auth');
 const user = auth.user;
+const cartStore = useCartStore();
 
 onMounted(() => {
+    cartStore.fetchCart(user.value.id);
     console.log(user.value.email);
 });
 </script>
@@ -49,7 +51,7 @@ onMounted(() => {
 
             <RouterLink to="/cart" class="cart hover md:flex hidden" v-if="user"
                 ><i class="fi fi-rr-shopping-cart-notification px-2"></i>cart
-                <p class="p-1 text-xs">({{ totalQuantity }})</p></RouterLink
+                <p class="p-1 text-xs">({{ cartStore.cartCount }})</p></RouterLink
             >
 
             <RouterLink
@@ -60,7 +62,7 @@ onMounted(() => {
                     class="fi fi-rr-shopping-cart-notification text-sm px-1 flex items-center pt-1"
                 ></i
                 >cart
-                <p class="p-1 text-xs">({{ totalQuantity }})</p></RouterLink
+                <p class="p-1 text-xs">({{ cartStore.cartCount }})</p></RouterLink
             >
 
             <RouterLink

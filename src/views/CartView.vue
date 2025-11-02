@@ -5,49 +5,43 @@ import IconDash from '../../public/icons/IconDash.vue';
 import IconPlus from '../../public/icons/IconPlus.vue';
 import { initiatePayment } from '@/services/paystackServices';
 
-import {
-    getUserCart,
-    userCart,
-    deleteItem,
-    updateQuantity,
-    totalQuantity,
-    total,
-    deleteUserCart,
-} from '../services/cartServices';
+// import { userCart, updateQuantity, totalQuantity, total } from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
 import { useRouter } from 'vue-router';
-// import { computed } from 'vue';
+import { useCartStore } from '@/store/cart';
+
+const cartStore = useCartStore();
 
 const auth = inject('auth');
 const user = auth.user;
 
-onMounted(async () => {
-    await getUserCart(user.value.id);
-});
+const refreshCart = async () => {
+    await cartStore.fetchCart(user.value.id);
+};
 
 const handleDelete = async (id) => {
     try {
-        await deleteItem(id);
+        await cartStore.removeItem(id);
     } catch (error) {
         console.log(error);
     } finally {
-        getUserCart(user.value.id);
+        refreshCart();
     }
 };
 
-const refreshCart = async () => {
-    await getUserCart(user.value.id);
-};
-
+onMounted(async () => {
+    refreshCart();
+    console.log('user cart', cartStore.userCart);
+});
 const handleUpdate = async (id, qty) => {
     try {
-        await updateQuantity(id, qty);
+        await cartStore.updateQuantity(id, qty);
         await refreshCart();
-        const item = userCart.value.find((i) => i.id === id);
+        const item = cartStore.userCart.find((i) => i.id === id);
         if (item.quantity === 0) {
             console.log('deleting');
-            await handleDelete(item.id);
+            await cartStore.handleDelete(item.id);
             console.log('deleted');
         }
     } catch (error) {
@@ -61,8 +55,8 @@ const handleProceedToCheckout = async () => {
         const data = await initiatePayment(
             user.value.id,
             user.value.email,
-            total.value,
-            userCart.value,
+            cartStore.total,
+            cartStore.userCart,
         );
         console.log(data);
 
@@ -101,11 +95,11 @@ const handleProceedToCheckout = async () => {
                     mode="out-in"
                     name="items"
                     class="w-full flex flex-col gap-2"
-                    v-if="userCart.length > 0"
+                    v-if="cartStore.cartCount > 0"
                 >
                     <li
                         class="flex items-center justify-between w-full rounded-2xl bg-[#f2f6ff] h-14 gap-2 py-2 px-2"
-                        v-for="items in userCart"
+                        v-for="items in cartStore.userCart"
                         :key="items.id"
                     >
                         <div class="w-1/2 flex items-center justify-items-start gap-3">
@@ -128,7 +122,7 @@ const handleProceedToCheckout = async () => {
                             class="w-1/2 flex items-center justify-evenly sm:justify-around md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
                         >
                             <p class="lg:text-base md:text-[12px] text-[10px]">
-                                ₦{{ items.item_price.toLocaleString() }}
+                                ₦{{ items.item_price }}
                             </p>
                             <div
                                 class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 rounded-2xl text-base"
@@ -154,7 +148,7 @@ const handleProceedToCheckout = async () => {
                         </div>
                         <div class="flex items-center gap-2">
                             <p class="lg:text-base md:text-[12px] text-[10px] px-1">
-                                ₦{{ (items.item_price * items.quantity).toLocaleString() }}
+                                ₦{{ items.item_price * items.quantity }}
                             </p>
                             <button
                                 class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
@@ -171,7 +165,7 @@ const handleProceedToCheckout = async () => {
                 <button
                     class="text-red-400 p-1 px-2 rounded-full bg-red-200 hover hover:bg-red-200 flex items-center justify-center"
                     @click="deleteUserCart(user.id)"
-                    v-if="userCart.length > 1"
+                    v-if="cartStore.total > 1"
                 >
                     <span class="text-[#333]">Clear cart</span> <IconX2 />
                 </button>
@@ -185,17 +179,17 @@ const handleProceedToCheckout = async () => {
                     <div class="space-y-3">
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Items</p>
-                            <p>{{ totalQuantity }}</p>
+                            <p>{{ cartStore.cartCount }}</p>
                         </div>
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Sub Total</p>
-                            <p class="price">₦{{ total.toLocaleString() }}</p>
+                            <p class="price">₦{{ cartStore.total }}</p>
                         </div>
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Total</p>
-                            <p class="price">= ₦{{ total.toLocaleString() }}</p>
+                            <p class="price">= ₦{{ cartStore.total }}</p>
                         </div>
                     </div>
                     <button
