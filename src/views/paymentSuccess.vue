@@ -48,11 +48,13 @@ onMounted(async () => {
 <template>
     <div class="center h-screen w-full primary-bg">
         <div class="col-center">
-            <h1>{{ paymentStatus }}</h1>
-
-            <router-link to="/" class="btn-3 hover flex items-center justify-center gap-1"
-                >Home</router-link
-            >
+            <img
+                src="/Images/payment-success.png"
+                alt="Payment success"
+                v-if="paymentStatus == 'Payment successful'"
+            />
+            <h1 class>{{ paymentStatus }}</h1>
+            <router-link to="/" class="btn-3 hover">Home</router-link>
         </div>
     </div>
 </template>
