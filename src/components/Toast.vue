@@ -23,14 +23,14 @@ import { toast_message, toast_type, toast_visible } from '../services/toastServi
 .toast-enter-from,
 .toast-leave-to {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.2);
     transform: translateY(-30px);
 }
 
 .toast-enter-active,
 .toast-leave-active {
     transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+        opacity 0.5s ease,
+        transform 0.5s ease;
 }
 </style>
