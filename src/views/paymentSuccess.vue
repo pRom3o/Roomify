@@ -49,7 +49,7 @@ onMounted(async () => {
     <div class="center h-screen w-full primary-bg p-5 gap-3">
         <div class="col-center h-full w-[90%] md:w-1/2 bg-[#edf3ff]">
             <img
-                src="/Images/payment-success.gif"
+                src="/Images/payment-successful.gif"
                 alt="Payment success"
                 v-if="paymentStatus == 'Payment successful'"
                 class="w-full h-[90%]"
