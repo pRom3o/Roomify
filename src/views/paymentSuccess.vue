@@ -29,7 +29,7 @@ onMounted(async () => {
         const data = await response.json();
         console.log('PAYSTACK VERIFY DATA:', data);
         if (data.status === 'success') {
-            paymentStatus.value = 'Payment successful!';
+            paymentStatus.value = 'Payment successful';
             deleteUserCart(user.value.id);
             await supabase.from('orders').update({ status: 'paid' }).eq('reference', reference);
         } else {
@@ -46,12 +46,13 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="center h-screen w-full primary-bg">
-        <div class="col-center">
+    <div class="center h-screen w-full primary-bg p-5">
+        <div class="col-center h-full w-[90%] bg-[#edf3ff]">
             <img
                 src="/Images/payment-success.png"
                 alt="Payment success"
                 v-if="paymentStatus == 'Payment successful'"
+                class="w-full h-full"
             />
             <h1 class>{{ paymentStatus }}</h1>
             <router-link to="/" class="btn-3 hover">Home</router-link>
