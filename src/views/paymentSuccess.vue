@@ -47,12 +47,12 @@ onMounted(async () => {
 
 <template>
     <div class="center h-screen w-full primary-bg p-5">
-        <div class="col-center h-full w-[90%] bg-[#edf3ff]">
+        <div class="col-center h-full w-[90%] md:w-1/2 bg-[#edf3ff]">
             <img
                 src="/Images/payment-success.png"
                 alt="Payment success"
                 v-if="paymentStatus == 'Payment successful'"
-                class="w-full h-full"
+                class="w-full h-[90%]"
             />
             <h1 class>{{ paymentStatus }}</h1>
             <router-link to="/" class="btn-3 hover">Home</router-link>
