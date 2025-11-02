@@ -95,7 +95,7 @@ button {
     @apply hover:bg-[#8bb0ff] text-[#fff] hover:text-gray-600 bg-blue-500/90;
 }
 .btn-2 {
-    @apply bg-[#bdd2ff] text-[#33] hover:text-gray-700 hover:bg-blue-300;
+    @apply bg-[#8bb0ff] text-[#33] hover:text-gray-700 hover:bg-blue-300;
 }
 
 .home-bg {

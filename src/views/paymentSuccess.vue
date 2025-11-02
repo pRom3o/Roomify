@@ -49,13 +49,15 @@ onMounted(async () => {
     <div class="center h-screen w-full primary-bg">
         <div class="col-center">
             <h1>{{ paymentStatus }}</h1>
-            <button class="underline hover under">
+            <button
+                class="underline hover under text-[#8bb0ff] flex items-center justify-center gap-3"
+            >
                 <p>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
-                        fill="currentColor"
+                        fill="#8bb0ff"
                         class="bi bi-arrow-left"
                         viewBox="0 0 16 16"
                     >
@@ -65,7 +67,7 @@ onMounted(async () => {
                         />
                     </svg>
                 </p>
-                <router-link to="/">Go tohome</router-link>
+                <router-link to="/">Go to home</router-link>
             </button>
         </div>
     </div>

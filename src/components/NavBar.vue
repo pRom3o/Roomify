@@ -27,7 +27,7 @@ onMounted(() => {
             </button>
             <HamMenu :class="openClose ? 'h-screen' : 'h-0'" />
 
-            <h2 class="font-bold md:text-xl text-[#a1bfff]">CELINE'S TREATS</h2>
+            <h2 class="font-bold md:text-xl text-[#8bb0ff]">CELINE'S TREATS</h2>
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
