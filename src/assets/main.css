@@ -98,6 +98,10 @@ button {
     @apply bg-[#8bb0ff] text-[#33] hover:text-gray-700 hover:bg-blue-300;
 }
 
+.btn-3 {
+    @apply px-4 py-2 hover bg-[#8bb0ff] border border-[#7183f8] hover:bg-[#5d72ff];
+}
+
 .home-bg {
     background: linear-gradient(to right, #fffaf5, #f0f4ff);
 }
