@@ -47,17 +47,17 @@ onMounted(async () => {
 
 <template>
     <div class="center h-screen w-full primary-bg pt-20 pb-10 px-3 gap-3">
-        <div
-            class="col-center h-full w-[95%] md:w-1/2 bg-[#edf3ff] rounded-2xl border border-gray-50 p-1"
-        >
-            <img
-                src="/Images/payment-successful.gif"
-                alt="Payment success"
-                v-if="paymentStatus == 'Payment successful'"
-                class="w-full h-[90%] rounded-3xl pb-5"
-            />
+        <div class="col-center h-full w-[95%] md:w-1/2">
+            <div class="bg-[#eaebee] rounded-3xl border border-gray-100 h-[90%] w-full pb-5">
+                <img
+                    src="/Images/payment-successful.gif"
+                    alt="Payment success"
+                    v-if="paymentStatus == 'Payment successful'"
+                    class="w-full h-full rounded-3xl"
+                />
+            </div>
             <h1 class>{{ paymentStatus }}</h1>
-            <router-link to="/" class="btn-3 hover">Home</router-link>
+            <router-link to="/" class="btn-3 hover text-sm">Home</router-link>
         </div>
     </div>
 </template>
