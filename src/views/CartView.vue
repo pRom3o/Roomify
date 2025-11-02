@@ -74,7 +74,7 @@ const handleProceedToCheckout = async () => {
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col items-center w-full md:p-4 space-y-5 primary-bg">
+    <div class="min-h-screen flex flex-col items-center w-full md:p-4 py-4 space-y-5 primary-bg">
         <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
             <h1 class="text-3xl md:text-5xl font-light">Shopping Cart</h1>
         </div>
