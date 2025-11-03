@@ -31,7 +31,8 @@ const handleDelete = async (id) => {
 };
 
 onMounted(async () => {
-    refreshCart();
+    // refreshCart();
+    cartStore.fetchCart(user.value.id);
     console.log('user cart', cartStore.userCart);
 });
 const handleUpdate = async (id, qty) => {
@@ -43,6 +44,7 @@ const handleUpdate = async (id, qty) => {
             console.log('deleting');
             await cartStore.handleDelete(item.id);
             console.log('deleted');
+            refreshCart();
         }
     } catch (error) {
         console.log(error);
@@ -59,6 +61,7 @@ const handleProceedToCheckout = async () => {
             cartStore.userCart,
         );
         console.log(data);
+        console.log(cartStore.total);
 
         router.push({ name: 'checkout', params: { ref: data.reference } });
     } catch (error) {
@@ -163,11 +166,22 @@ const handleProceedToCheckout = async () => {
                     <h3><i>No items in cart</i></h3>
                 </div>
                 <button
-                    class="text-red-400 p-1 px-2 rounded-full bg-red-200 hover hover:bg-red-200 flex items-center justify-center"
+                    class="text-red-400 p-1 rounded-full text-sm bg-red-200 hover hover:bg-red-100 flex items-center justify-center"
                     @click="deleteUserCart(user.id)"
-                    v-if="cartStore.total > 1"
+                    v-if="cartStore.cartCount > 0"
                 >
-                    <span class="text-[#333]">Clear cart</span> <IconX2 />
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-x-circle-fill"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"
+                        /></svg
+                    ><span class="px-1 text-center">Clear cart</span>
                 </button>
             </div>
             <div class="flex flex-col gap-5 items-center md:w-2/3 w-full px-2 lg:w-[30%] min-h-10">
@@ -184,12 +198,12 @@ const handleProceedToCheckout = async () => {
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Sub Total</p>
-                            <p class="price">₦{{ cartStore.total }}</p>
+                            <p class="price">₦{{ (cartStore.total || 0).toLocaleString() }}</p>
                         </div>
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Total</p>
-                            <p class="price">= ₦{{ cartStore.total }}</p>
+                            <p class="price">= ₦{{ (cartStore.total || 0).toLocaleString() }}</p>
                         </div>
                     </div>
                     <button

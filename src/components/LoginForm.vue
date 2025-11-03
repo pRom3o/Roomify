@@ -101,18 +101,13 @@ textarea {
 input:focus,
 textarea:focus {
     caret-color: #7183f8;
-}
-
-input:focus,
-textarea:focus {
     outline: none;
     border: 2px solid #bdd2ff;
     border-radius: 7px;
     box-shadow:
-        0 0 8px 2px #bdd2ff66,
-        0 0 16px 4px #7183f855;
+        0 0 2px 2px #bdd2ff,
+        0 0 2px 2px #7183f855;
 }
-
 label {
     font-weight: 300;
 }

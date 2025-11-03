@@ -15,9 +15,8 @@ button {
     @apply flex flex-col items-center justify-center;
 }
 
-.nav,
-.cart {
-    @apply px-4 py-2 hover:bg-[#a1bfff] text-center hover:text-white  rounded-3xl bg-[#bdd2ff] text-[#333];
+.nav {
+    @apply px-4 py-2 hover:text-[#3B82F6E6]  text-[#333];
 }
 
 .hover {
@@ -95,7 +94,7 @@ button {
     @apply hover:bg-[#8bb0ff] text-[#fff] hover:text-gray-600 bg-blue-500/90;
 }
 .btn-2 {
-    @apply bg-[#8bb0ff] text-[#33] hover:text-gray-700 hover:bg-blue-300;
+    @apply bg-[#3B82F6E6] text-[#000] hover:text-gray-700 hover:bg-blue-300;
 }
 
 .btn-3 {

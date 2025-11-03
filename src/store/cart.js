@@ -47,13 +47,13 @@ export const useCartStore = defineStore('cart', () => {
             }
 
             if (existing && existing.id) {
-                // 2) If it exists, update quantity (increment by qty)
                 const newQuantity = (existing.quantity || 0) + qty;
                 const { error: updateError } = await supabase
                     .from('carts')
                     .update({ quantity: newQuantity })
                     .eq('id', existing.id);
 
+                fetchCart(userId);
                 showToast('Cart updated', 'success');
                 if (updateError) throw updateError;
             } else {

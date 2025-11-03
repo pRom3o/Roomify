@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, watch, reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import { getProducts, isLoading, products } from '@/services/productServices';
 import loadingScreen from '@/components/loadingScreen.vue';
 // import { addToCart } from '@/services/cartServices';
@@ -19,10 +19,10 @@ onMounted(async () => {
     await getProducts(filter.value);
 });
 
-watch(filter, (newCategory) => {
-    getProducts(newCategory);
-    console.log('Products', products.value);
-});
+const selectFilter = (item) => {
+    filter.value = item;
+    getProducts(filter.value);
+};
 
 const loadingStates = reactive({});
 const handleAddToCart = async (item) => {
@@ -67,29 +67,30 @@ onMounted(() => {
         <div class="h-full w-full col-center space-y-5 mt-20">
             <div class="w-full col-center space-y-3 relative">
                 <h1 class="text-6xl font-kanit">Shop</h1>
-                <select
-                    id="filter"
-                    v-model="filter"
-                    class="rounded-xl px-2 bg-blue-100 text-[#333] focus:outline-none shadow-md border border-[#bdd2ff]"
+                <ul
+                    class="flex items-center gap-3 p-1 bg-[#b7cdfd] border border-blue-500/90 rounded-3xl"
                 >
-                    <option
+                    <li
                         v-for="item in filters"
                         :key="item"
                         :value="item"
-                        class="border-none bg-blue-50 font-sans hover:bg-[#bdd2ff]"
+                        class="py-1 px-3 rounded-3xl hover"
+                        :class="
+                            filter === item
+                                ? 'bg-blue-500/90 text-white hover:text-[#333]'
+                                : 'hover:text-blue-500/90'
+                        "
+                        @click="selectFilter(item)"
                     >
                         {{ item }}
-                    </option>
-                    {{
-                        filter
-                    }}
-                </select>
+                    </li>
+                </ul>
             </div>
             <div class="min-h-96 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="h-[full] md:w-[90%] w-full center md:p-6 p-4" v-else>
+                <div class="h-[full] md:w-[90%] w-full center p-2" v-else>
                     <div
-                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-6"
+                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full md:gap-6 gap-3"
                     >
                         <div
                             v-for="items in products"
@@ -102,7 +103,7 @@ onMounted(() => {
                                 class="h-44 w-full rounded-t-xl"
                             />
 
-                            <div class="md:py-2 flex flex-col justify-between w-full gap-2">
+                            <div class="flex flex-col justify-between w-full gap-2">
                                 <div>
                                     <p class="text-[14px]">
                                         {{ items.name }}
@@ -134,17 +135,17 @@ onMounted(() => {
 </template>
 
 <style scoped>
-select:focus {
-    outline: none;
-    border: 2px solid #bdd2ff;
-}
 .prod-cards {
     background-color: #fff;
-    border: 1px solid #bdd2ff;
+    border: 1px solid #afc8fd;
 }
 
 .prod-cards:hover {
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+li {
+    cursor: pointer;
 }
 </style>

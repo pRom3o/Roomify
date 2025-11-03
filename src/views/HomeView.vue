@@ -116,7 +116,7 @@ onMounted(() => {
                             class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
                             <div
-                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#7183f8] transition-transform duration-700 hover:scale-x-[-1] text-[#7183f8] hover:text-blue-100"
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
                             >
                                 <i
                                     class="fi fi-rr-arrow-left text-4xl mt-2 transition-transform duration-700"
@@ -132,7 +132,7 @@ onMounted(() => {
                             class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
                             <div
-                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#7183f8] transition-transform duration-700 hover:scale-x-[-1] text-[#7183f8] hover:text-blue-100"
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
                             >
                                 <i
                                     class="fi fi-rr-trophy text-4xl mt-2 transition-transform duration-700"
@@ -148,7 +148,7 @@ onMounted(() => {
                             class="prod-cards center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in"
                         >
                             <div
-                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#8091ff] transition-transform duration-700 hover:scale-x-[-1] text-[#7183f8] hover:text-blue-100"
+                                class="group h-20 w-20 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
                             >
                                 <i
                                     class="fi fi-rr-headset text-4xl mt-2 transition-transform duration-700"
@@ -180,7 +180,9 @@ onMounted(() => {
                                 :alt="items.name"
                                 class="h-36 w-full rounded-t-xl"
                             />
-                            <div class="pt-2 pb-1 flex items-center justify-between w-full">
+                            <div
+                                class="pt-2 pb-1 flex lg:flex-row flex-col lg:space-y-0 space-y-2 lg:items-center justify-between w-full"
+                            >
                                 <div>
                                     <p class="text-[14px]">{{ items.name }}</p>
                                     <p class="text-xs font-light">
@@ -202,13 +204,13 @@ onMounted(() => {
 <style scoped>
 .prod-cards {
     background-color: #ffffff;
-    border: 1px solid #bdd2ff;
+    border: 1px solid #98c0ff;
 }
 
 .prod-cards:hover {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #a3afff;
+    border: 1px solid #5b95f2e6;
     transform: translateY(-8px);
 }
 

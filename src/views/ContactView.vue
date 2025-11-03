@@ -3,7 +3,7 @@
 <template>
     <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
         <div
-            class="center w-full lg:w-[90%] min-h-[580px] p-6 bg-[#fff] shadow rounded-xl mt-20 mb-10 md:mb-0 md:my-10"
+            class="center w-full lg:w-[90%] min-h-[580px] p-6 bg-[#fff] shadow rounded-xl mt-20 mb-10"
         >
             <div
                 class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-2 lg:space-x-5 gap-4"
