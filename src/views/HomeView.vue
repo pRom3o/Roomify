@@ -111,7 +111,7 @@ onMounted(() => {
                     <h2 class="md:text-[2.5rem] text-3xl fade-in font-sans font-medium">
                         Why Choose Us?
                     </h2>
-                    <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+                    <section class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                         <div
                             class="center flex-col justify-center space-y-5 max-w-[350px] md:max-w-[280px] p-2 text-center shadow-lg rounded-2xl fade-in prod-cards"
                         >
@@ -204,14 +204,15 @@ onMounted(() => {
 <style scoped>
 .prod-cards {
     background-color: #ffffff;
-    border: 1px solid #98c0ff;
+    /* border: 1px solid #98c0ff; */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .prod-cards:hover {
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #5b95f2e6;
-    transform: translateY(-8px);
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    /* border: 1px solid #5b95f2e6; */
+    transform: translateY(-5px);
 }
 
 .slide-in-left {

@@ -63,18 +63,18 @@
                     <div class="w-full flex items-center justify-end py-3 h-[12%]">
                         <button class="px-8 py-2 btn-2 rounded-md">submit</button>
                     </div>
-                    <p class="md:text-lg">Or contact us through one of our socials:</p>
+                    <p class="">Or contact us through any of our socials:</p>
                     <ul class="flex items-center justify-center gap-5 w-[30%]">
-                        <li class="col-center">
+                        <li class="col-center text-sm">
                             <a
                                 href="https://wa.me/+2348174700749"
                                 aria-label="Chat with Celine's Treats on Whatsapp"
-                                class="p-3 btn-2 rounded-full hover"
+                                class="p-3 rounded-full hover bg-green-200"
                                 ><svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
-                                    fill=""
+                                    fill="#388E3C"
                                     class="bi bi-whatsapp"
                                     viewBox="0 0 16 16"
                                 >
@@ -84,16 +84,16 @@
                             ></a>
                             Whatsapp
                         </li>
-                        <li class="col-center">
+                        <li class="col-center text-sm">
                             <a
                                 href="https://www.tiktok.com/@celinemercy229?_t=ZS-90AgHEckxmK&_r=1"
                                 aria-label="Chat with Celine's Treats on Tiktok"
-                                class="p-3 rounded-full btn-2 hover"
+                                class="p-3 rounded-full bg-[#333]"
                                 ><svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
                                     height="16"
-                                    fill="black"
+                                    fill="#fff"
                                     class="bi bi-tiktok"
                                     viewBox="0 0 16 16"
                                 >
@@ -127,16 +127,12 @@ textarea {
 input:focus,
 textarea:focus {
     caret-color: #7183f8;
-}
-
-input:focus,
-textarea:focus {
     outline: none;
     border: 2px solid #bdd2ff;
     border-radius: 7px;
     box-shadow:
-        0 0 8px 2px #bdd2ff66,
-        0 0 16px 4px #7183f855;
+        0 0 2px 2px #bdd2ff,
+        0 0 2px 2px #7183f855;
 }
 
 label {

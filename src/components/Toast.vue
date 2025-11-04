@@ -8,7 +8,7 @@ import { toast_message, toast_type, toast_visible } from '../services/toastServi
         ><div
             v-if="toast_visible"
             :class="[
-                'fixed top-5 left-24 md:left[50%] z-50 px-4 py-2 rounded-2xl  transition-all',
+                'fixed top-5 left-36 z-50 md:left-[46%] px-4 py-2 rounded-2xl  transition-all',
                 toast_type === 'success'
                     ? 'bg-green-200 border border-green-400'
                     : 'bg-red-200 border border-red-400',

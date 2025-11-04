@@ -1,18 +1,19 @@
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { ref, computed, reactive } from 'vue';
 import { supabase } from '@/lib/supabaseClient';
 import { showToast } from '../services/toastServices';
 
 export const useCartStore = defineStore('cart', () => {
     const userCart = ref([]);
     const loading = ref(false);
+    const loadingStates = reactive({});
 
     const total = computed(() =>
-        userCart.value.reduce((sum, item) => sum + item.price * item.quantity, 0),
+        userCart.value.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0),
     );
 
     const cartCount = computed(() =>
-        userCart.value.reduce((total, item) => total + (item.quantity || 1), 0),
+        userCart.value.reduce((total, item) => Number(total) + (item.quantity || 1), 0),
     );
 
     // ✅ Fetch user cart from Supabase
@@ -33,6 +34,7 @@ export const useCartStore = defineStore('cart', () => {
 
     // ✅ Add item (and save to Supabase)
     const addToCart = async (name, price, img, userId, email, qty = 1) => {
+        loadingStates.value = true;
         try {
             // Check if this user already has this item in cart
             const { data: existing, error: selectError } = await supabase
@@ -81,6 +83,8 @@ export const useCartStore = defineStore('cart', () => {
             console.error('addToCart error:', err);
             showToast(err.message || 'Could not add to cart', 'failed');
             throw err;
+        } finally {
+            loadingStates.value = false;
         }
     };
 
@@ -119,6 +123,7 @@ export const useCartStore = defineStore('cart', () => {
         userCart,
         total,
         loading,
+        loadingStates,
         fetchCart,
         addToCart,
         removeItem,

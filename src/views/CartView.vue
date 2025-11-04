@@ -73,7 +73,7 @@ const handleProceedToCheckout = async () => {
 <template>
     <div class="min-h-screen flex flex-col items-center w-full md:p-4 py-4 space-y-5 primary-bg">
         <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
-            <h1 class="text-3xl md:text-5xl font-light">Shopping Cart</h1>
+            <h1 class="text-3xl md:text-5xl md:font-light">Shopping Cart</h1>
         </div>
         <div
             class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full gap-14 lg:px-10 md:px-4 px-2"
@@ -82,7 +82,7 @@ const handleProceedToCheckout = async () => {
                 class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-gray-200 bg-[#ffffff] shadow py-2 rounded-2xl"
             >
                 <div
-                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-[#bdd2ff] gap-2"
+                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-blue-500/90 gap-2 text-white"
                 >
                     <p class="sm:w-1/2 w-[42%] text-sm md:text-base">Product</p>
                     <div
@@ -101,7 +101,7 @@ const handleProceedToCheckout = async () => {
                     v-if="cartStore.cartCount > 0"
                 >
                     <li
-                        class="flex items-center justify-between w-full rounded-2xl bg-[#f2f6ff] h-14 gap-2 py-2 px-2"
+                        class="flex items-center justify-between w-full rounded-4xl bg-[#f2f6ff] h-14 gap-2 py-2 px-2"
                         v-for="items in cartStore.userCart"
                         :key="items.id"
                     >
@@ -124,7 +124,7 @@ const handleProceedToCheckout = async () => {
                         <div
                             class="w-1/2 flex items-center justify-evenly sm:justify-around md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
                         >
-                            <p class="lg:text-base md:text-[12px] text-[10px]">
+                            <p class="lg:text-base md:text-[12px] text-[11px]">
                                 ₦{{ items.item_price }}
                             </p>
                             <div
@@ -137,7 +137,7 @@ const handleProceedToCheckout = async () => {
                                     <IconDash />
                                 </button>
                                 <p
-                                    class="hover py-1 px-2 rounded-full bg-green-200 text-sm font-light text-green-800"
+                                    class="hover py-1 px-2 rounded-full bg-green-200 text-xs md:text-sm text-green-800"
                                 >
                                     {{ items.quantity }}
                                 </p>
@@ -150,7 +150,7 @@ const handleProceedToCheckout = async () => {
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
-                            <p class="lg:text-base md:text-[12px] text-[10px] px-1">
+                            <p class="lg:text-base md:text-[12px] text-[11px] px-1">
                                 ₦{{ items.item_price * items.quantity }}
                             </p>
                             <button
@@ -167,7 +167,7 @@ const handleProceedToCheckout = async () => {
                 </div>
                 <button
                     class="text-red-400 p-1 rounded-full text-sm bg-red-200 hover hover:bg-red-100 flex items-center justify-center"
-                    @click="deleteUserCart(user.id)"
+                    @click="cartStore.clearCart(user.id)"
                     v-if="cartStore.cartCount > 0"
                 >
                     <svg
@@ -198,12 +198,12 @@ const handleProceedToCheckout = async () => {
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Sub Total</p>
-                            <p class="price">₦{{ (cartStore.total || 0).toLocaleString() }}</p>
+                            <p class="price">₦{{ cartStore.total }}</p>
                         </div>
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Total</p>
-                            <p class="price">= ₦{{ (cartStore.total || 0).toLocaleString() }}</p>
+                            <p class="price">= ₦{{ cartStore.total }}</p>
                         </div>
                     </div>
                     <button

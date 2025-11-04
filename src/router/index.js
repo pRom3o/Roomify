@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import AuthView from '@/views/auth/AuthView.vue';
+import AdminLayout from '../layouts/AdminLayout.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +42,13 @@ const router = createRouter({
                     name: 'confirmation',
                     component: () => import('@/views/auth/ConfirmationView.vue'),
                 },
+            ],
+        },
+        {
+            path: '/admin',
+            component: AdminLayout,
+            children: [
+                { path: '', name: 'admin', component: () => import('@/views/AdminDashboard.vue') },
             ],
         },
     ],

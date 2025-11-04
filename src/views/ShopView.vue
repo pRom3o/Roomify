@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive } from 'vue';
+import { onMounted } from 'vue';
 import { getProducts, isLoading, products } from '@/services/productServices';
 import loadingScreen from '@/components/loadingScreen.vue';
 // import { addToCart } from '@/services/cartServices';
@@ -24,9 +24,8 @@ const selectFilter = (item) => {
     getProducts(filter.value);
 };
 
-const loadingStates = reactive({});
 const handleAddToCart = async (item) => {
-    loadingStates[item.id] = true;
+    cartStore.loadingStates[item.id] = true;
 
     try {
         await cartStore.addToCart(
@@ -40,7 +39,7 @@ const handleAddToCart = async (item) => {
     } catch (error) {
         console.log(error);
     } finally {
-        loadingStates[item.id] = false;
+        cartStore.loadingStates[item.id] = false;
     }
 };
 
@@ -63,8 +62,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-full min-h-screen flex flex-col justify-between bg-blue-50/50">
-        <div class="h-full w-full col-center space-y-5 mt-20">
+    <div class="w-full min-h-screen flex flex-col justify-between primary-bg py-4">
+        <div class="h-full w-full col-center space-y-5 md:mt-20 mt-10">
             <div class="w-full col-center space-y-3 relative">
                 <h1 class="text-6xl font-kanit">Shop</h1>
                 <ul
@@ -88,9 +87,9 @@ onMounted(() => {
             </div>
             <div class="min-h-96 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="h-[full] md:w-[90%] w-full center p-2" v-else>
+                <div class="h-[full] md:w-[95%] lg:w-[60%] w-full center p-2" v-else>
                     <div
-                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full md:gap-6 gap-3"
+                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
                     >
                         <div
                             v-for="items in products"
@@ -114,7 +113,7 @@ onMounted(() => {
                                 </div>
                                 <button
                                     @click="handleAddToCart(items)"
-                                    class="px-3 py-2 rounded-xl btn-1 md:flex items-center justify-center hidden hover"
+                                    class="px-3 py-2 rounded-xl btn-2 md:flex items-center justify-center hidden hover"
                                 >
                                     <p class="text-center">Add to cart</p>
                                 </button>
@@ -122,7 +121,7 @@ onMounted(() => {
                                     @click="handleAddToCart(items)"
                                     class="px-3 py-2 text-[14px] flex items-center justify-center md:hidden rounded-xl btn-1 hover"
                                 >
-                                    <p v-if="!loadingStates[items.id]">Add to cart</p>
+                                    <p v-if="!cartStore.loadingStates[items.id]">Add to cart</p>
                                     <p v-else><LoadingIcon /></p>
                                 </button>
                             </div>
@@ -137,12 +136,12 @@ onMounted(() => {
 <style scoped>
 .prod-cards {
     background-color: #fff;
-    border: 1px solid #afc8fd;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .prod-cards:hover {
     cursor: pointer;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); */
 }
 
 li {

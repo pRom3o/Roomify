@@ -94,11 +94,11 @@ button {
     @apply hover:bg-[#8bb0ff] text-[#fff] hover:text-gray-600 bg-blue-500/90;
 }
 .btn-2 {
-    @apply bg-[#3B82F6E6] text-[#000] hover:text-gray-700 hover:bg-blue-300;
+    @apply bg-[#3B82F6E6] text-[#fff] hover:text-[#333] hover:bg-blue-400;
 }
 
 .btn-3 {
-    @apply px-3 bg-[#8bb0ff] border border-[#7183f8] hover:bg-[#5d72ff] rounded-3xl;
+    @apply px-3 bg-[#8bb0ff] border border-[#7183f8]  hover:bg-[#5d72ff] rounded-3xl;
 }
 
 .home-bg {
