@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router';
 import { supabase } from '@/lib/supabaseClient';
 import LoadingIcon from '../../public/icons/LoadingIcon.vue';
 import { useCartStore } from '../store/cart';
+import { showToast } from '../services/toastServices';
 
 const cartStore = useCartStore();
 const auth = inject('auth');
@@ -12,6 +13,7 @@ const user = auth.user;
 const route = useRoute();
 const reference = route.params.ref;
 const checking = ref(false);
+const agreedToTerms = ref(false);
 
 const getRef = async () => {
     const { data, error } = await supabase
@@ -31,20 +33,25 @@ onMounted(async () => {
 });
 
 const handleCheckout = async () => {
+    if (!agreedToTerms.value) {
+        showToast('Please agree to the terms and conditions before checking out.', 'failed');
+        return;
+    }
+
     checking.value = true;
 
-    const data = await initiatePayment(
-        user.value.id,
-        user.value.email,
-        cartStore.total,
-        cartStore.userCart,
-        'pending',
-    ); // first inserted row
+    try {
+        const data = await initiatePayment(
+            user.value.id,
+            user.value.email,
+            cartStore.total,
+            cartStore.userCart,
+            'pending',
+        );
 
-    // Supabase returns an array of inserted rows
-    if (data) {
-        console.log('after if data:', data.reference);
-        try {
+        if (data) {
+            console.log('after if data:', data.reference);
+
             const response = await fetch('/api/paystack', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -57,18 +64,17 @@ const handleCheckout = async () => {
             });
 
             const paystackResponse = await response.json();
-            console.log(response.text());
 
             if (paystackResponse?.data?.authorization_url) {
                 window.location.href = paystackResponse.data.authorization_url;
             } else {
                 console.error('Paystack init failed:', paystackResponse);
             }
-        } catch (err) {
-            console.error('Error starting payment:', err);
-        } finally {
-            checking.value = false;
         }
+    } catch (err) {
+        console.error('Error starting payment:', err);
+    } finally {
+        checking.value = false;
     }
 };
 </script>
@@ -82,19 +88,6 @@ const handleCheckout = async () => {
                 <div class="flex flex-col space-y-5 h-full w-full lg:w-[80%] py-10 px-3">
                     <h2 class="text-xl">Checkout</h2>
                     <div class="flex flex-col h-full w-full pt-3 space-y-5">
-                        <!-- <div class="flex-col flex">
-                            <h2>Shipping Information</h2>
-                            <div class="flex items-center justify-between gap-3 w-full mt-2">
-                                <div class="w-1/2 p-2 border border-gray-400 rounded-md flex gap-4">
-                                    <input type="checkbox" name="delivery" id="delivery" />
-                                    <p class="text-sm">Delivery</p>
-                                </div>
-                                <div class="w-1/2 p-2 border border-gray-400 rounded-md flex gap-4">
-                                    <input type="checkbox" name="pickUp" id="pickUp" />
-                                    <p class="text-sm">Pick up</p>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="flex flex-col">
                             <label for="fullName" class="text-gray-700 text-sm"
                                 >Full name <span class="text-red-400">*</span></label
@@ -102,6 +95,7 @@ const handleCheckout = async () => {
                             <input
                                 type="text"
                                 id="fullName"
+                                :value="user.user_metadata.name"
                                 class="w-full outline-none border py-1 px-2 rounded-md border-gray-400"
                                 placeholder="Enter full name"
                             />
@@ -111,6 +105,7 @@ const handleCheckout = async () => {
                                 >Email address <span class="text-red-400">*</span></label
                             >
                             <input
+                                :value="user.email"
                                 type="email"
                                 id="email"
                                 class="w-full outline-none border py-1 px-2 rounded-md border-gray-400"
@@ -123,6 +118,7 @@ const handleCheckout = async () => {
                             >
                             <input
                                 type="text"
+                                :value="user.user_metadata.phone"
                                 id="phone"
                                 class="w-full outline-none border py-1 px-2 rounded-md border-gray-400"
                                 placeholder="Enter phone number"
@@ -131,8 +127,9 @@ const handleCheckout = async () => {
                         <div class="w-full flex items-center gap-2">
                             <input
                                 type="checkbox"
-                                name=""
-                                id="agreed"
+                                name="agreedToTerms"
+                                v-model="agreedToTerms"
+                                id="checked"
                                 class="checked:border checked:border-blue-200"
                             />
                             <p class="text-xs text-gray-700">
