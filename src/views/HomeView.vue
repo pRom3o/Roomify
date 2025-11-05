@@ -41,7 +41,7 @@ onMounted(() => {
             class="center md:h-screen w-full h-[500px] relative text-[#e8e8e8] bg-center bg-cover"
             style="background-image: url('/Images/bg-img.jpg')"
         >
-            <div class="inset-0 absolute bg-black/40 z-10"></div>
+            <div class="inset-0 absolute bg-black/30 z-10"></div>
             <!-- <img src="/Images/bg-img.jpg" alt="" class="w-full h-full" /> -->
             <div class="center w-full h-full z-50">
                 <div

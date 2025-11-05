@@ -32,7 +32,10 @@ onMounted(async () => {
         if (data.status === 'success') {
             paymentStatus.value = 'Payment successful';
             cartStore.clearCart(user.value.id);
-            await supabase.from('orders').update({ status: 'paid' }).eq('reference', reference);
+            await supabase
+                .from('orders')
+                .update({ status: 'paid', updated_at: new Date().toISOString() })
+                .eq('reference', reference);
         } else {
             paymentStatus.value = 'Payment failed';
             console.log('verification data failed', data);

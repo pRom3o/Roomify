@@ -103,7 +103,7 @@ export const useCartStore = defineStore('cart', () => {
         if (newQuantity < 0) return;
         const { error: error } = await supabase
             .from('carts')
-            .update({ quantity: newQuantity, updated_at: new Date().toISOString() })
+            .update({ quantity: newQuantity })
             .eq('id', id);
 
         if (error) {

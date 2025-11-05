@@ -4,8 +4,9 @@ import { openClose, switchIcon } from '../functions/functions';
 
 const routeLinks = ref([
     { id: 0, name: 'Home', path: '/' },
-    { id: 1, name: 'shop', path: 'shop' },
-    { id: 2, name: 'contact', path: 'contact' },
+    { id: 1, name: 'Shop', path: 'shop' },
+    { id: 2, name: 'Contact', path: 'contact' },
+    { id: 3, name: 'My orders', path: 'orders' },
 ]);
 
 const auth = inject('auth');
@@ -18,7 +19,7 @@ const user = auth.user;
             ><div
                 v-if="openClose"
                 class="w-full bg-[#e8efff] flex flex-col items-center justify-between p-4"
-                :class="openClose ? 'h-screen' : 'h-0'"
+                :class="openClose ? 'h-screen shadow-md' : 'h-0'"
             >
                 <div class="h-[90%] w-full col-center gap-5" v-if="routeLinks.length > 0">
                     <transition-group
