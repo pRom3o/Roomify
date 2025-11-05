@@ -1,6 +1,7 @@
 <script setup>
 import { inject } from 'vue';
 import { orders, getOrders } from '../services/orderServices';
+import statusPill from '../components/statusPill.vue';
 import { onMounted } from 'vue';
 
 const auth = inject('auth');
@@ -41,33 +42,7 @@ onMounted(async () => {
                             </p>
 
                             <p class="w-62 leading-3 text-start">
-                                <span
-                                    :class="
-                                        order.status === 'pending'
-                                            ? 'bg-yellow-100 text-yellow-600 flex items-center gap-1 px-2 py-1 rounded-3xl'
-                                            : ''
-                                    "
-                                    ><span class="flex w-20"
-                                        ><svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <g
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="4"
-                                            >
-                                                <path d="M12 6v6l4 2" />
-                                                <circle cx="12" cy="12" r="10" />
-                                            </g>
-                                        </svg>
-                                        {{ order.status }}</span
-                                    >
-                                </span>
+                                <statusPill :status="order.status" />
                             </p>
 
                             <p class="w-62 leading-3 text-start text-[10px] md:text-xs lg:text-sm">
