@@ -60,8 +60,8 @@ const handleProceedToCheckout = async () => {
             cartStore.total,
             cartStore.userCart,
         );
-        console.log(data);
-        console.log(cartStore.total);
+
+        console.log('id', data.id);
 
         router.push({ name: 'checkout', params: { ref: data.reference } });
     } catch (error) {
