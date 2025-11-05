@@ -150,7 +150,7 @@ const handleCheckout = async () => {
                     class="flex flex-col space-y-5 h-full lg:w-[80%] xl:w-[70%] w-full md:py-10 py-5 px-3"
                 >
                     <h2 class="text-xl">Review your cart</h2>
-                    <div class="" v-for="items in userCart" :key="items.id">
+                    <div class="" v-for="items in cartStore.userCart" :key="items.id">
                         <div class="flex items-center gap-5">
                             <img
                                 :src="items.img"
@@ -174,7 +174,7 @@ const handleCheckout = async () => {
                     <div class="w-full flex flex-col justify-center text-xs space-y-1">
                         <div class="flex items-center justify-between w-full">
                             <p class="text-gray-400">Subtotal</p>
-                            <p>₦{{ total.toLocaleString() }}</p>
+                            <p>₦{{ cartStore.total }}</p>
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p class="text-gray-400">Shipping</p>
@@ -182,7 +182,7 @@ const handleCheckout = async () => {
                         </div>
                         <div class="flex items-center justify-between w-full">
                             <p>Total</p>
-                            <p>₦{{ total.toLocaleString() }}</p>
+                            <p>₦{{ cartStore.total }}</p>
                         </div>
                     </div>
 

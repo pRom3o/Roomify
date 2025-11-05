@@ -8,14 +8,6 @@ export const useCartStore = defineStore('cart', () => {
     const loading = ref(false);
     const loadingStates = reactive({});
 
-    const total = computed(() =>
-        userCart.value.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0),
-    );
-
-    const cartCount = computed(() =>
-        userCart.value.reduce((total, item) => Number(total) + (item.quantity || 1), 0),
-    );
-
     // ✅ Fetch user cart from Supabase
     const fetchCart = async (user_id) => {
         try {
@@ -119,6 +111,14 @@ export const useCartStore = defineStore('cart', () => {
             throw error;
         }
     };
+    const total = computed(() =>
+        userCart.value.reduce((sum, item) => sum + item.item_price * item.quantity, 0),
+    );
+
+    const cartCount = computed(() =>
+        userCart.value.reduce((total, item) => total + item.quantity, 0),
+    );
+
     return {
         userCart,
         total,

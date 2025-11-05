@@ -39,7 +39,7 @@ onMounted(() => {
                     </p>
                 </div>
                 <div
-                    class="flex items-start md:items-centers md:justify-center justify-evenly w-full fade-in delay-1"
+                    class="flex items-start md:items-centers justify-evenly w-full fade-in delay-1"
                 >
                     <div class="space-y-1 p-4">
                         <h4 class="md:font-medium md:text-md">Shop</h4>
