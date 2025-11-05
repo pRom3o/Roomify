@@ -2,12 +2,13 @@
 import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { supabase } from '../lib/supabaseClient';
-import { deleteUserCart } from '../services/cartServices';
 import { inject } from 'vue';
+import { useCartStore } from '../store/cart';
 
 const paymentStatus = ref('Verifying...');
 const route = useRoute();
 const reference = route.query.reference;
+const cartStore = useCartStore();
 
 const auth = inject('auth');
 const user = auth.user;
@@ -30,7 +31,7 @@ onMounted(async () => {
         console.log('PAYSTACK VERIFY DATA:', data);
         if (data.status === 'success') {
             paymentStatus.value = 'Payment successful';
-            deleteUserCart(user.value.id);
+            cartStore.clearCart(user.value.id);
             await supabase.from('orders').update({ status: 'paid' }).eq('reference', reference);
         } else {
             paymentStatus.value = 'Payment failed';
