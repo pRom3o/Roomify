@@ -1,13 +1,13 @@
 <script setup>
-import { ref, inject } from 'vue';
+import { inject } from 'vue';
 import { openClose, switchIcon } from '../functions/functions';
 
-const routeLinks = ref([
-    { id: 0, name: 'Home', path: '/' },
-    { id: 1, name: 'Shop', path: 'shop' },
-    { id: 2, name: 'Contact', path: 'contact' },
-    { id: 3, name: 'My orders', path: 'orders' },
-]);
+// const routeLinks = ref([
+//     { id: 0, name: 'Home', path: '/' },
+//     { id: 1, name: 'Shop', path: 'shop' },
+//     { id: 2, name: 'Contact', path: 'contact' },
+//     { id: 3, name: 'My orders', path: 'orders' },
+// ]);
 
 const auth = inject('auth');
 const user = auth.user;
@@ -22,17 +22,24 @@ const user = auth.user;
                 :class="openClose ? 'h-screen shadow-md' : 'h-0'"
             >
                 <div class="h-[90%] w-full col-center gap-5" v-if="routeLinks.length > 0">
-                    <transition-group
-                        name="items"
-                        tag="ul"
+                    <ul
                         class="w-full p-3 flex flex-col items-center justify-between space-y-6 text-xl"
                     >
-                        <li v-for="items in routeLinks" :key="items.id" @click="switchIcon">
-                            <router-link :to="items.path" class="px-5 py-2 rounded-2xl">{{
-                                items.name
-                            }}</router-link>
+                        <li @click="switchIcon">
+                            <router-link to="/" class="px-5 py-2 rounded-2xl">Home</router-link>
                         </li>
-                    </transition-group>
+                        <li @click="switchIcon">
+                            <router-link to="shop" class="px-5 py-2 rounded-2xl">Shop</router-link>
+                        </li>
+                        <li @click="switchIcon">
+                            <router-link to="contact" class="px-5 py-2 rounded-2xl"
+                                >Contact</router-link
+                            >
+                        </li>
+                        <li @click="switchIcon" v-if="user">
+                            <router-link to="orders" class="px-5 py-2 rounded-2xl">My</router-link>
+                        </li>
+                    </ul>
                     <button
                         class="py-2 px-4 hover:rounded-2xl rounded-lg text-black btn-2 hover center text-[1em]"
                         @click="auth.logout()"

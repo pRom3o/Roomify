@@ -4,6 +4,10 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import AuthView from '@/views/auth/AuthView.vue';
 import AdminLayout from '../layouts/AdminLayout.vue';
+import { inject } from 'vue';
+
+const auth = inject('auth');
+const user = auth.user;
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +61,18 @@ const router = createRouter({
             ],
         },
     ],
+});
+
+router.beforeEach(async (to, from) => {
+    if (
+        // make sure the user is authenticated
+        !user.value &&
+        // ❗️ Avoid an infinite redirect
+        to.name !== 'Login'
+    ) {
+        // redirect the user to the login page
+        return { name: 'Login' };
+    }
 });
 
 export default router;
