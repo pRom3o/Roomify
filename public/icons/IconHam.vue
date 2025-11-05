@@ -2,7 +2,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 48 48">
         <path
             fill="none"
-            stroke="#558bff"
+            stroke="#000"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="4"

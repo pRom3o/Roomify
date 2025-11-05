@@ -63,9 +63,9 @@ onMounted(() => {
 
 <template>
     <div class="w-full min-h-screen flex flex-col justify-between primary-bg py-4">
-        <div class="h-full w-full col-center space-y-5 md:mt-20 mt-10">
-            <div class="w-full col-center space-y-3 relative">
-                <h1 class="text-6xl font-kanit">Shop</h1>
+        <div class="h-full w-full col-center space-y-2 md:mt-16 mt-10">
+            <div class="w-full col-center space-y-5 relative">
+                <h1 class="text-6xl font-kanit font-light">Shop</h1>
                 <ul
                     class="flex items-center gap-3 p-1 bg-[#b7cdfd] border border-blue-500/90 rounded-3xl"
                 >
@@ -87,7 +87,7 @@ onMounted(() => {
             </div>
             <div class="min-h-96 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="h-[full] md:w-[95%] lg:w-[60%] w-full center p-2" v-else>
+                <div class="h-[full] md:w-[95%] lg:w-[70%] xl:w-[60%] w-full center p-2" v-else>
                     <div
                         class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
                     >

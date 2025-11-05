@@ -17,7 +17,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-full min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-50 backdrop-blur-lg">
+    <div class="w-full min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-99 backdrop-blur-lg">
         <div class="flex items-center md:justify-evenly justify-between space-x-5 w-full px-4 pt-1">
             <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
@@ -26,8 +26,14 @@ onMounted(() => {
             </button>
             <HamMenu :class="openClose ? 'h-screen' : 'h-0'" />
 
-            <h2 class="font-bold md:text-xl text-blue-500/90">
-                <RouterLink to="/" class="">CELINE'S TREATS</RouterLink>
+            <h2 class="">
+                <RouterLink to="/" class="logo-link">
+                    <img
+                        src="/Images/celines-treats-logo-2.svg"
+                        alt="Celine\'s Treats"
+                        class="h-8"
+                    />
+                </RouterLink>
             </h2>
 
             <ul class="md:flex items-center md:space-x-5 hidden">
@@ -48,30 +54,31 @@ onMounted(() => {
                 </li>
             </ul>
 
-            <RouterLink
-                to="/cart"
-                class="hover flex ites-center relative hover:text-[#3B82F6E6]"
-                v-if="user"
+            <RouterLink to="/cart" class="hover flex ites-center relative cart" v-if="user"
                 >Cart
-                <svg
-                    stroke="currentColor"
-                    fill="#3B82F6E6"
-                    stroke-width="0"
-                    viewBox="0 0 16 16"
-                    class="w-6 h-6 text-purpla"
-                    height="1em"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"
-                    ></path>
-                    <path
-                        d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
-                    ></path>
-                </svg>
+                <span class="hover:text-black/50"
+                    ><svg
+                        width="24"
+                        height="20"
+                        viewBox="0 0 24 20"
+                        fill="currentcolor"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M10.974 17.9841C10.974 19.0977 10.0716 20 8.95805 20C7.84447 20 6.94214 19.0977 6.94214 17.9841C6.94214 16.8705 7.84447 15.9682 8.95805 15.9682C10.0716 15.9682 10.974 16.8705 10.974 17.9841Z"
+                            fill="var(--color-header-icons, --color-accent)"
+                        ></path>
+                        <path
+                            d="M19.1436 17.9841C19.1436 19.0977 18.2413 20 17.1277 20C16.0141 20 15.1118 19.0977 15.1118 17.9841C15.1118 16.8705 16.0141 15.9682 17.1277 15.9682C18.2413 15.9682 19.1436 16.8705 19.1436 17.9841Z"
+                            fill="var(--color-header-icons, --color-accent)"
+                        ></path>
+                        <path
+                            d="M22.0614 3.12997H9.51503V5.25199H20.7352L19.462 10.6631C19.3843 11.0141 19.1896 11.3286 18.9102 11.555C18.6307 11.7815 18.283 11.9065 17.9235 11.9098H9.22325C8.859 11.9122 8.50518 11.79 8.22003 11.5631C7.93536 11.3362 7.73689 11.0184 7.65826 10.6631L5.43015 0.822281C5.37615 0.588291 5.24447 0.379879 5.05643 0.230674C4.86885 0.0809966 4.63581 0 4.39566 0H0.947388V2.12202H3.54686L5.5893 11.1406C5.77166 11.9662 6.23206 12.7037 6.89377 13.2304C7.55548 13.7566 8.37776 14.0399 9.22325 14.0323H17.9235C18.7643 14.0342 19.5804 13.7481 20.2369 13.2223C20.8934 12.6966 21.3495 11.9619 21.5309 11.1411L23.0959 4.43018C23.1689 4.11519 23.0936 3.78363 22.8923 3.53069C22.6909 3.27776 22.385 3.12997 22.0614 3.12997Z"
+                            fill="var(--color-header-icons, --color-accent)"
+                        ></path></svg
+                ></span>
                 <span
-                    class="w-5 h-5 text-xs absolute -top-2 -right-2 bg-[#3B82F6E6] rounded-full center text-[#333]"
+                    class="w-4 h-4 text-xs absolute -top-2 -right-2 bg-[#333] rounded-full center text-[#fff]"
                     >{{ cartStore.cartCount }}</span
                 ></RouterLink
             >
@@ -94,6 +101,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.logo-link img {
+    transition: opacity 0.2s ease;
+}
+
+.logo-link:hover img {
+    opacity: 0.7;
+}
+
 .bg-none {
     background-color: none;
 }

@@ -1,0 +1,7 @@
+<svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Big C -->
+  <text x="12" y="32" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#3b82f6" opacity="0.9">C</text>
+  
+  <!-- "eline's treats" bigger and bold -->
+  <text x="40" y="26" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#000000">eline's treats</text>
+</svg>

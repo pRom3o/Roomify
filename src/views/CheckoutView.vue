@@ -1,11 +1,12 @@
 <script setup>
 import { inject, onMounted, ref } from 'vue';
-import { getUserCart, userCart, total } from '@/services/cartServices';
 import { initiatePayment } from '@/services/paystackServices';
 import { useRoute } from 'vue-router';
 import { supabase } from '@/lib/supabaseClient';
 import LoadingIcon from '../../public/icons/LoadingIcon.vue';
+import { useCartStore } from '../store/cart';
 
+const cartStore = useCartStore();
 const auth = inject('auth');
 const user = auth.user;
 const route = useRoute();
@@ -24,19 +25,19 @@ const getRef = async () => {
 };
 
 onMounted(async () => {
-    await getUserCart(user.value.id);
-    console.log('cart: ', userCart.value);
+    await cartStore.fetchCart(user.value.id);
+    console.log('cart: ', cartStore.userCart);
     getRef();
 });
 
 const handleCheckout = async () => {
     checking.value = true;
-    // Insert order first
+
     const data = await initiatePayment(
         user.value.id,
         user.value.email,
-        total.value,
-        userCart.value,
+        cartStore.total,
+        cartStore.userCart,
         'pending',
     ); // first inserted row
 
@@ -49,15 +50,14 @@ const handleCheckout = async () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: user.value.email,
-                    amount: total.value * 100, // in kobo
+                    amount: cartStore.total * 100, // in kobo
                     reference: data.reference, // correct reference
                     callback_url: 'https://roomify-virid.vercel.app/payment-success',
                 }),
             });
 
             const paystackResponse = await response.json();
-            const tex = response.text();
-            console.log('tex', tex);
+            console.log(response.text());
 
             if (paystackResponse?.data?.authorization_url) {
                 window.location.href = paystackResponse.data.authorization_url;

@@ -222,12 +222,12 @@ const handleProceedToCheckout = async () => {
 .cart-enter-from,
 .cart-leave-to {
     opacity: 0;
-    width: 0px;
+    width: 40px;
 }
 
 .cart-enter-active,
 .cart-leave-active {
-    transition: all 0.5s ease-in-out 0.1s;
+    transition: all 0.5s ease-in-out;
 }
 
 h3 {

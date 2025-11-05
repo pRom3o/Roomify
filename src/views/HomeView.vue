@@ -36,31 +36,47 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
-        <div class="center min-h-screen p-6 w-full bg-center bg-cover relative home-bg">
-            <!-- <div class="inset-0 absolute bg-black/40"></div> -->
-            <div class="center w-full h-full">
+    <div class="min-h-screen w-full">
+        <div
+            class="center md:h-screen w-full h-[500px] relative text-[#e8e8e8] bg-center bg-cover"
+            style="background-image: url('/Images/bg-img.jpg')"
+        >
+            <div class="inset-0 absolute bg-black/40 z-10"></div>
+            <!-- <img src="/Images/bg-img.jpg" alt="" class="w-full h-full" /> -->
+            <div class="center w-full h-full z-50">
                 <div
-                    class="col-center text-center text-[#f3f3f3] md:space-y-5 space-y-5 px-4 z-10 absolute md:left-10 lg:left-30 md:top-[35%]"
+                    class="col-center text-center space-y-2 sm:px-4 absolute lg:right-10 xl:right-30 lg:top-[35%]"
                 >
-                    <div class="fade-in space-y-2 text-gray-700">
-                        <h1 class="text-5xl sm:text-7xl lg:text-8xl font-medium mb-1">
+                    <div class="fade-in space-y-2">
+                        <h1 class="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-medium mb-1">
                             Celine's Treats
                         </h1>
                         <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>
-                        <p class="md:text-base text-xs md:px-3 px-6 text-[#777777]">
+                        <p class="md:text-sm text-xs md:px-3 px-6 text-[#a9a9a9]">
                             <i
                                 >Turning simple beginings into timeless flavors, one pastry at a
                                 time...</i
                             >
                         </p>
                     </div>
-                    <button class="cart hover md:flex hidden">
-                        <RouterLink to="/shop">SHOP NOW</RouterLink>
-                    </button>
-                    <button class="px-3 py-1 flex md:hidden cart hover">
-                        <RouterLink to="/shop">SHOP NOW</RouterLink>
-                    </button>
+                    <RouterLink
+                        to="/shop"
+                        class="px-3 py-1 border border-white/30 rounded-lg hover:text-[#000] backdrop-blur-3xl text-xl md:text-base hover flex items-center hover:bg-[#d0d0d032] gap-1"
+                        >SHOP NOW
+                        <span
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentcolor"
+                                class="bi bi-arrow-right"
+                                viewBox="0 0 16 16"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                                /></svg></span
+                    ></RouterLink>
                 </div>
             </div>
         </div>
