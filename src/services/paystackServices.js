@@ -4,12 +4,14 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
     try {
         // Generate unique reference
         const reference = `REF-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+        const orderId = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
         // Insert order into Supabase
         const { data, error } = await supabase
             .from('orders')
             .insert([
                 {
+                    id: orderId,
                     user_id,
                     email,
                     reference: reference,
