@@ -38,7 +38,7 @@ onMounted(() => {
 <template>
     <div class="min-h-screen w-full">
         <div
-            class="center md:h-screen w-full h-[500px] relative text-[#e8e8e8] bg-center bg-cover"
+            class="center lg:h-screen w-full h-[500px] relative text-[#e8e8e8] bg-center bg-cover"
             style="background-image: url('/Images/bg-img.jpg')"
         >
             <div class="inset-0 absolute bg-black/30 z-10"></div>
@@ -97,7 +97,7 @@ onMounted(() => {
                         style="background-image: url('/Images/celine.jpg')"
                     ></div>
                     <div
-                        class="flex md:hidden h-60 w-60 border rounded-2xl bg-cover bg-center"
+                        class="flex md:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
                     ></div>
                 </div>

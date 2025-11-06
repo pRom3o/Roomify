@@ -62,32 +62,40 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-full min-h-screen flex flex-col justify-between primary-bg py-4">
-        <div class="h-full w-full col-center space-y-2 md:mt-16 mt-10">
-            <div class="w-full col-center space-y-5 relative">
-                <h1 class="text-6xl font-kanit font-light">Shop</h1>
-                <ul
-                    class="flex items-center gap-3 p-1 bg-[#b7cdfd] border border-blue-500/90 rounded-3xl"
-                >
-                    <li
-                        v-for="item in filters"
-                        :key="item"
-                        :value="item"
-                        class="py-1 px-3 rounded-3xl hover"
-                        :class="
-                            filter === item
-                                ? 'bg-blue-500/90 text-white hover:text-[#333]'
-                                : 'hover:text-blue-500/90'
-                        "
-                        @click="selectFilter(item)"
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
+    <div
+        class="w-full min-h-screen flex flex-col justify-between primary-bg lg:pb-4 pb-4 md:pb-0 pt-12"
+    >
+        <div class="h-full w-full col-center space-y-2">
+            <div
+                class="center relative h-40 w-full col-center text-white bg-cover mb-8"
+                style="background-image: url('/Images/bg-img.jpg')"
+            >
+                <div class="inset-0 absolute bg-black/40 z-10"></div>
+                <h1 class="text-6xl font-kanit z-50">Shop</h1>
             </div>
-            <div class="min-h-96 w-full flex flex-col items-center justify-center gap-6">
+
+            <ul
+                class="flex items-center gap-3 p-1 bg-[#b7cdfd] border border-blue-500/90 rounded-3xl mb-5"
+            >
+                <li
+                    v-for="item in filters"
+                    :key="item"
+                    :value="item"
+                    class="py-1 px-3 rounded-3xl hover"
+                    :class="
+                        filter === item
+                            ? 'bg-blue-500/90 text-white hover:text-[#333]'
+                            : 'hover:text-blue-500/90'
+                    "
+                    @click="selectFilter(item)"
+                >
+                    {{ item }}
+                </li>
+            </ul>
+
+            <div class="min-h-42 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="h-[full] md:w-[95%] lg:w-[70%] xl:w-[60%] w-full center p-2" v-else>
+                <div class="md:w-[95%] lg:w-[70%] xl:w-[60%] w-full center p-2" v-else>
                     <div
                         class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
                     >

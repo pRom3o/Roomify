@@ -8,20 +8,27 @@ const auth = inject('auth');
 const user = auth.user;
 const capitalizeFirstLetter = (str) => {
     if (typeof str !== 'string' || str.length === 0) {
-        return str; // Handle empty or non-string inputs
+        return str;
     }
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
 onMounted(async () => {
     await getOrders(user.value.id);
 });
 </script>
 
 <template>
-    <div class="col-center w-full primary-bg pt-14 space-y-10">
-        <div class="h-40 w-full col-center bg-blue-600 text-white">
-            <h1 class="text-6xl">My Orders</h1>
-            <p>Home ></p>
+    <div class="col-center w-full primary-bg pt-12 space-y-10">
+        <div
+            class="center relative h-40 w-full col-center text-white bg-cover"
+            style="background-image: url('/Images/bg-img.jpg')"
+        >
+            <div class="inset-0 absolute bg-black/30 z-10"></div>
+            <div class="col-center z-50">
+                <h1 class="text-6xl">My Orders</h1>
+                <!-- <p>Home ></p> -->
+            </div>
         </div>
         <div class="flex flex-col w-full min-h-[640px] p-4">
             <div class="min-h-10 w-full bg-[#fff] border border-gray-200 shadow rounded-xl">

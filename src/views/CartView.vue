@@ -49,9 +49,19 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col items-center w-full md:p-4 py-4 space-y-5 primary-bg">
-        <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
+    <div class="min-h-screen flex flex-col items-center w-full py-4 space-y-5 primary-bg pt-12">
+        <!-- <div class="lg:w-4/5 w-full h-20 col-center p-4 mt-10">
             <h1 class="text-3xl md:text-5xl md:font-light">Shopping Cart</h1>
+
+        </div> -->
+        <div
+            class="center relative h-40 w-full col-center text-white bg-cover"
+            style="background-image: url('/Images/bg-img.jpg')"
+        >
+            <div class="inset-0 absolute bg-black/30 z-10"></div>
+            <div class="col-center z-50">
+                <h1 class="text-3xl md:text-6xl">Shopping Cart</h1>
+            </div>
         </div>
         <div
             class="flex lg:flex-row flex-col items-center lg:items-start justify-center xl:w-4/5 w-full gap-14 lg:px-10 md:px-4 px-2"

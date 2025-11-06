@@ -127,7 +127,7 @@ onMounted(() => {
             >
 
             <!-- <button
-                class="py-2 px-3 rounded-xl text-white bg-[#3B82F6E6] hover:bg-blue-400 hover:text-[#333] hover center text-sm"
+                class="py-2 px-3 rounded-xl text-white bg-[#3b83f6e5] hover:bg-blue-400 hover:text-[#333] hover center text-sm"
                 @click="auth.logout()"
                 v-if="user"
             >
