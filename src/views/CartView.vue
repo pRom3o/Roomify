@@ -3,16 +3,11 @@
 import IconX2 from '../../public/icons/IconX2.vue';
 import IconDash from '../../public/icons/IconDash.vue';
 import IconPlus from '../../public/icons/IconPlus.vue';
-import { initiatePayment } from '@/services/paystackServices';
-
-// import { userCart, updateQuantity, totalQuantity, total } from '../services/cartServices';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
-import { useRouter } from 'vue-router';
 import { useCartStore } from '@/store/cart';
 
 const cartStore = useCartStore();
-
 const auth = inject('auth');
 const user = auth.user;
 
@@ -30,11 +25,6 @@ const handleDelete = async (id) => {
     }
 };
 
-onMounted(async () => {
-    // refreshCart();
-    cartStore.fetchCart(user.value.id);
-    console.log('user cart', cartStore.userCart);
-});
 const handleUpdate = async (id, qty) => {
     try {
         await cartStore.updateQuantity(id, qty);
@@ -51,23 +41,11 @@ const handleUpdate = async (id, qty) => {
     }
 };
 
-const router = useRouter();
-const handleProceedToCheckout = async () => {
-    try {
-        const data = await initiatePayment(
-            user.value.id,
-            user.value.email,
-            cartStore.total,
-            cartStore.userCart,
-        );
-
-        console.log('id', data.id);
-
-        router.push({ name: 'checkout', params: { ref: data.reference } });
-    } catch (error) {
-        console.log(error);
-    }
-};
+onMounted(async () => {
+    // refreshCart();
+    cartStore.fetchCart(user.value.id);
+    console.log('user cart', cartStore.userCart);
+});
 </script>
 
 <template>
@@ -206,12 +184,13 @@ const handleProceedToCheckout = async () => {
                             <p class="price">= ₦{{ cartStore.total }}</p>
                         </div>
                     </div>
-                    <button
-                        class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
-                        @click="handleProceedToCheckout"
+                    <RouterLink to="/checkout"
+                        ><button
+                            class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
+                        >
+                            Proceed to Checkout
+                        </button></RouterLink
                     >
-                        Proceed to Checkout
-                    </button>
                 </div>
             </div>
         </div>

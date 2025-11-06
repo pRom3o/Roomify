@@ -8,7 +8,7 @@
             stroke-width="4"
         >
             <circle cx="12" cy="12" r="10" />
-            <path d="m9 12l2 2l4-4" />
+            <path d="m15 9l-6 6m0-6l6 6" />
         </g>
     </svg>
 </template>

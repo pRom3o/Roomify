@@ -1,6 +1,7 @@
 <script setup>
 import IconClock from '../../public/icons/IconClock.vue';
 import IconCheck from '../../public/icons/IconCheck.vue';
+import IconFailed from '../../public/icons/IconFailed.vue';
 
 import { computed } from 'vue';
 
@@ -25,6 +26,8 @@ const icon = computed(() => {
             return IconCheck;
         case 'pending':
             return IconClock;
+        case 'failed':
+            return IconFailed;
         default:
             return IconClock;
     }
