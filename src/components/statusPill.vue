@@ -34,11 +34,11 @@ const icon = computed(() => {
 <template>
     <span
         :class="[
-            'inline-flex items-center gap-2 px-3 py-1 text-sm font-semibold rounded-full',
+            'inline-flex items-center gap-1 md:gap-2 px-2 py-1 text-xs md:text-sm font-semibold rounded-full',
             statusClass,
         ]"
     >
-        <component :is="icon" class="w-4 h-4" />
+        <component :is="icon" class="md:w-4 md:h-4 w-3 h-3" />
         {{ status }}
     </span>
 </template>

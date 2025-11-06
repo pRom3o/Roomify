@@ -22,11 +22,11 @@ onMounted(async () => {
             <div class="min-h-10 w-full bg-[#fff] border border-gray-200 shadow rounded-xl">
                 <h2 class="text-xl p-4">Your Order History</h2>
                 <hr />
-                <div class="flex items-center justify-between w-full p-3 gap-3">
-                    <p class="w-62 text-start text-xs lg:text-sm">Orders</p>
-                    <p class="w-62 text-start text-xs lg:text-sm">Amount</p>
-                    <p class="w-62 text-start text-xs lg:text-sm">Status</p>
-                    <p class="w-62 text-start text-xs lg:text-sm">Date</p>
+                <div class="flex items-center justify-between w-full p-3">
+                    <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Status</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Date</p>
                 </div>
                 <div v-for="order in orders" :key="order.id" class="w-full h-10">
                     <div class="w-full h-full">
@@ -34,18 +34,18 @@ onMounted(async () => {
                         <div
                             class="py-2 flex items-center h-full w-full px-3 justify-between gap-3"
                         >
-                            <p class="w-62 leading-3 text-start text-[10px] md:text-xs lg:text-sm">
+                            <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">
                                 {{ order.id }}
                             </p>
-                            <p class="w-62 leading-3 text-start text-[10px] md:text-xs lg:text-sm">
+                            <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">
                                 ₦{{ order.total_amount.toLocaleString() }}
                             </p>
 
-                            <p class="w-62 leading-3 text-start">
+                            <p class="w-52 leading-3 text-center">
                                 <statusPill :status="order.status" />
                             </p>
 
-                            <p class="w-62 leading-3 text-start text-[10px] md:text-xs lg:text-sm">
+                            <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">
                                 {{ order.created_at }}
                             </p>
                         </div>
