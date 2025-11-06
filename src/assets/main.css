@@ -16,7 +16,7 @@ button {
 }
 
 .nav {
-    @apply px-4 py-2 hover:text-black/50  text-[#000];
+    @apply px-4 py-1 hover:text-black/50  text-[#000] font-medium text-[17px];
 }
 .cart {
     @apply hover:text-black/50 text-[#000];

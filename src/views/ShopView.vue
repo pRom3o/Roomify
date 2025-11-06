@@ -115,7 +115,13 @@ onMounted(() => {
                                     @click="handleAddToCart(items)"
                                     class="px-3 py-2 rounded-xl btn-2 md:flex items-center justify-center hidden hover"
                                 >
-                                    <p class="text-center">Add to cart</p>
+                                    <p
+                                        v-if="!cartStore.loadingStates[items.id]"
+                                        class="text-center"
+                                    >
+                                        Add to cart
+                                    </p>
+                                    <p v-else><LoadingIcon /></p>
                                 </button>
                                 <button
                                     @click="handleAddToCart(items)"

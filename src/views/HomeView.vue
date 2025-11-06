@@ -42,7 +42,6 @@ onMounted(() => {
             style="background-image: url('/Images/bg-img.jpg')"
         >
             <div class="inset-0 absolute bg-black/30 z-10"></div>
-            <!-- <img src="/Images/bg-img.jpg" alt="" class="w-full h-full" /> -->
             <div class="center w-full h-full z-50">
                 <div
                     class="col-center text-center space-y-2 sm:px-4 absolute lg:right-10 xl:right-30 lg:top-[35%]"
@@ -94,11 +93,11 @@ onMounted(() => {
                     class="h-full flex justify-center md:w-[40%] lg:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <div
-                        class="md:flex hidden h-80 w-80 border rounded-full bg-cover bg-center"
+                        class="md:flex hidden h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
                     ></div>
                     <div
-                        class="flex md:hidden h-60 w-60 border rounded-full bg-cover bg-center"
+                        class="flex md:hidden h-60 w-60 border rounded-2xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
                     ></div>
                 </div>
