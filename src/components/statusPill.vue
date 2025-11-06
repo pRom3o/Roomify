@@ -26,7 +26,7 @@ const icon = computed(() => {
             return IconCheck;
         case 'pending':
             return IconClock;
-        case 'failed':
+        case 'false':
             return IconFailed;
         default:
             return IconClock;

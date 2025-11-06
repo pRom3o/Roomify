@@ -184,12 +184,10 @@ onMounted(async () => {
                             <p class="price">= ₦{{ cartStore.total }}</p>
                         </div>
                     </div>
-                    <RouterLink to="/checkout"
-                        ><button
-                            class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
-                        >
-                            Proceed to Checkout
-                        </button></RouterLink
+                    <RouterLink
+                        to="/checkout"
+                        class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
+                        ><button>Proceed to Checkout</button></RouterLink
                     >
                 </div>
             </div>
