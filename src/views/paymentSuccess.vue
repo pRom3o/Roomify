@@ -62,7 +62,7 @@ onMounted(async () => {
             </div>
             <div class="mt-3 col-center">
                 <h1 class>{{ paymentStatus }}</h1>
-                <router-link to="/" class="btn-3 hover text-sm">Home</router-link>
+                <router-link to="/orders" class="btn-3 hover text-sm">View orders</router-link>
             </div>
         </div>
     </div>
