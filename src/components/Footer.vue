@@ -5,7 +5,7 @@
     <footer class="min-h-22 w-full p-3 primary-bg center">
         <div class="h-full w-full col-center bg-[#fff] rounded-xl p-2 shadow">
             <div
-                class="flex md:flex-row flex-col md:items-center md:justify-around md:w-[70%] w-full h-full"
+                class="flex sm:flex-row flex-col sm:items-center md:justify-around md:w-[70%] w-full h-full"
             >
                 <div class="flex flex-col items-start justify-start md:w-1/2 h-full">
                     <RouterLink to="/" class="logo-link">
@@ -19,7 +19,7 @@
                         Complete your order with awesome flavors from us.
                     </p>
                 </div>
-                <div class="flex items-start md:items-centers justify-evenly w-full">
+                <div class="flex flex-col sm:flex-row md:items-centers justify-evenly w-full">
                     <div class="space-y-1 p-4">
                         <h4 class="md:font-medium md:text-md">Shop</h4>
                         <RouterLink

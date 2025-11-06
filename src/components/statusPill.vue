@@ -1,5 +1,5 @@
 <script setup>
-import IconClock from '../../public/icons/IconClock.vue';
+import IconPend from '../../public/icons/IconPend.vue';
 import IconCheck from '../../public/icons/IconCheck.vue';
 import IconFailed from '../../public/icons/IconFailed.vue';
 
@@ -25,11 +25,11 @@ const icon = computed(() => {
         case 'Paid':
             return IconCheck;
         case 'Pending':
-            return IconClock;
+            return IconPend;
         case 'False':
             return IconFailed;
         default:
-            return IconClock;
+            return IconPend;
     }
 });
 </script>
