@@ -6,7 +6,12 @@ import { onMounted } from 'vue';
 
 const auth = inject('auth');
 const user = auth.user;
-
+const capitalizeFirstLetter = (str) => {
+    if (typeof str !== 'string' || str.length === 0) {
+        return str; // Handle empty or non-string inputs
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
 onMounted(async () => {
     await getOrders(user.value.id);
 });
@@ -18,7 +23,7 @@ onMounted(async () => {
             <h1 class="text-6xl">My Orders</h1>
             <p>Home ></p>
         </div>
-        <div class="flex flex-col w-full min-h-96 p-4">
+        <div class="flex flex-col w-full min-h-[640px] p-4">
             <div class="min-h-10 w-full bg-[#fff] border border-gray-200 shadow rounded-xl">
                 <h2 class="text-xl p-4">Your Order History</h2>
                 <hr />
@@ -42,7 +47,7 @@ onMounted(async () => {
                             </p>
 
                             <p class="w-52 leading-3 text-center">
-                                <statusPill :status="order.status" />
+                                <statusPill :status="capitalizeFirstLetter(order.status)" />
                             </p>
 
                             <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">

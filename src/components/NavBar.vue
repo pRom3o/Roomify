@@ -18,8 +18,8 @@ onMounted(() => {
 
 <template>
     <div class="w-full min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-99 backdrop-blur-lg">
-        <div class="flex items-center md:justify-evenly justify-between space-x-5 w-full px-4 pt-1">
-            <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
+        <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4 pt-1">
+            <button class="h-full w-[20px] lg:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
                 </Transition>
@@ -36,7 +36,7 @@ onMounted(() => {
                 </RouterLink>
             </h2>
 
-            <ul class="md:flex items-center md:space-x-5 hidden">
+            <ul class="lg:flex items-center md:space-x-5 hidden">
                 <li class="">
                     <RouterLink to="/" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Home</RouterLink
@@ -85,7 +85,7 @@ onMounted(() => {
                 <RouterLink
                     to="/orders"
                     class="nav hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
-                    ><i>My orders</i></RouterLink
+                    >My Orders</RouterLink
                 >
             </ul>
             <ul v-if="user" class="flex md:hidden items-center gap-6">
@@ -126,13 +126,13 @@ onMounted(() => {
                 ><i>Login/Signup</i></RouterLink
             >
 
-            <button
+            <!-- <button
                 class="py-2 px-3 rounded-xl text-white bg-[#3B82F6E6] hover:bg-blue-400 hover:text-[#333] hover center text-sm"
                 @click="auth.logout()"
                 v-if="user"
             >
                 Logout
-            </button>
+            </button> -->
         </div>
     </div>
 </template>

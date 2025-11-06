@@ -11,9 +11,9 @@ const props = defineProps({
 
 const statusClass = computed(() => {
     switch (props.status) {
-        case 'paid':
+        case 'Paid':
             return 'bg-green-100 text-green-700';
-        case 'pending':
+        case 'Pending':
             return 'bg-yellow-100 text-yellow-700';
         default:
             return 'bg-gray-100 text-gray-700';
@@ -22,11 +22,11 @@ const statusClass = computed(() => {
 
 const icon = computed(() => {
     switch (props.status) {
-        case 'paid':
+        case 'Paid':
             return IconCheck;
-        case 'pending':
+        case 'Pending':
             return IconClock;
-        case 'false':
+        case 'False':
             return IconFailed;
         default:
             return IconClock;
@@ -37,7 +37,7 @@ const icon = computed(() => {
 <template>
     <span
         :class="[
-            'inline-flex items-center gap-1 md:gap-2 px-2 py-1 text-xs md:text-sm font-semibold rounded-full',
+            'inline-flex items-center gap-1 px-2 py-1 text-xs md:text-sm rounded-full',
             statusClass,
         ]"
     >
@@ -45,3 +45,9 @@ const icon = computed(() => {
         {{ status }}
     </span>
 </template>
+
+<style scoped>
+span {
+    font-weight: 500;
+}
+</style>
