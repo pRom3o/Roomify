@@ -43,7 +43,6 @@ const handleConfirm = async () => {
 
         showToast('inserted', 'success');
 
-        // Redirect to homepage
         router.push('/');
     } catch (err) {
         console.error('Error:', err.message);
@@ -52,10 +51,10 @@ const handleConfirm = async () => {
 </script>
 
 <template>
-    <div class="w-full min-h-screen center flex-col main-bg px-4">
+    <div class="w-full min-h-screen center flex-col primary-bg px-4">
         <div
             id="form"
-            class="col-center w-full md:w-xl py-6 section-bg shadow-xl rounded-xl text-center space-y-4"
+            class="col-center w-full md:w-xl py-6 bg-[#fff] shadow-xl rounded-xl text-center space-y-4"
         >
             <div class="col-center space-y-1">
                 <h1 class="md:text-4xl text-3xl headers font-light">Welcome to Roomify</h1>
