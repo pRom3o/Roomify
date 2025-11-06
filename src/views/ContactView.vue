@@ -2,7 +2,9 @@
 
 <template>
     <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
-        <div class="center w-full lg:w-[90%] p-6 bg-[#fff] shadow rounded-xl lg:mt-20 lg:mb-10">
+        <div
+            class="center w-full lg:w-[90%] p-6 bg-[#fff] shadow rounded-xl lg:mt-20 mt-20 lg:mb-10"
+        >
             <div
                 class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-2 lg:space-x-5 gap-4"
             >
@@ -18,7 +20,7 @@
                     <img src="/Images/contact-us.png" alt="contact" class="md:flex hidden" />
                 </div>
 
-                <div class="vertical-line md:block hidden"></div>
+                <div class="vertical-line md:flex hidden"></div>
                 <form
                     class="flex flex-col items-center space-y-5 md:h-[70%] h-[70%] lg:w-[50%] md:w-full w-full"
                 >
