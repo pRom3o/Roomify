@@ -12,7 +12,7 @@
                     class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%] md:mb-0 mb-5"
                 >
                     <h1 class="lg:text-4xl text-2xl mb-1 headers">
-                        <i>Get in Touch with Roomify.</i>
+                        <i>Get in Touch with us.</i>
                     </h1>
                     <p class="font-light text-[12px] lg:text-base">
                         <i>If you have any inquires, please use the contact form...</i>

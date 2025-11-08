@@ -38,7 +38,7 @@ const handleSignin = async () => {
             class="flex items-center justify-center md:flex-row flex-col w-full md:w-[90%] md:h-[550px] md:p-6 pt-4 lg:gap-6 gap-4 xl:gap-0 bg-[#fffcfc] shadow rounded-xl"
         >
             <div class="text-center col-center md:w-[50%] h-[20%] md:h-full">
-                <h1 class="lg:text-4xl text-2xl headers text-[#7183f8]">Welcome back to Roomify</h1>
+                <h1 class="lg:text-4xl text-2xl headers text-[#7183f8]">Welcome back</h1>
                 <p class="font-light text-[12px] lg:text-base text-[#333]">
                     <i>we're happy to have you back...</i>
                 </p>

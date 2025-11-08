@@ -49,8 +49,6 @@ onMounted(() => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
                 }
             });
         },
@@ -95,7 +93,7 @@ onMounted(() => {
 
             <div class="min-h-42 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="md:w-[95%] lg:w-[70%] xl:w-[60%] w-full center p-2" v-else>
+                <div class="md:w-[95%] lg:w-[80%] xl:w-[70%] w-full center p-2" v-else>
                     <div
                         class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
                     >

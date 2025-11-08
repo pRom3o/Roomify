@@ -33,7 +33,7 @@ const handleSignup = async () => {
             v-if="confirming == false"
         >
             <div class="text-center col-center md:w-1/2 xl:w-[40%] space-y-2 md:h-full">
-                <h1 class="md:text-4xl text-2xl headers text-[#7183f8]">New to Roomify?</h1>
+                <h1 class="md:text-4xl text-2xl headers text-[#7183f8]">New here?</h1>
                 <p class="font-light text-[12px] lg:text-base text-[#333]">
                     <i>Fill in the details to become a customer...</i>
                 </p>
