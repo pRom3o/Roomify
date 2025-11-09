@@ -36,7 +36,7 @@ onMounted(() => {
                 </RouterLink>
             </h2>
 
-            <ul class="lg:flex items-center md:space-x-5 hidden">
+            <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
                     <RouterLink to="/" class="px-3 py-1 text-sm rounded-2xl hover nav"
                         >Home</RouterLink

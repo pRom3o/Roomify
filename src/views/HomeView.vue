@@ -126,12 +126,14 @@ onMounted(() => {
                     </h2>
                     <section class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                         <div
+                            id="trd"
                             class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
                         >
                             <div
                                 class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
+                                id="trdd"
                             >
-                                <span class="text-4xl mt-2 transition-transform duration-700"
+                                <span class="text-4xl mt-2 transition-transform duration-700 in"
                                     ><svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="45"
@@ -151,19 +153,21 @@ onMounted(() => {
                             </div>
                             <div class="space-y-2">
                                 <h3 class="text-[1.5rem]">Fresh Out the Oven</h3>
-                                <p class="text-[0.8rem] text-[#666666]">
+                                <p class="text-[0.8rem]">
                                     We don't do day-old. Every pastry is baked the same day you get
                                     it — soft, warm, and full of flavor.
                                 </p>
                             </div>
                         </div>
                         <div
-                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 text-[#fff]"
+                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] hover md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 hover:bg-white hover:text-neutral-600 text-[#fff]"
+                            id="sec"
                         >
                             <div
-                                class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-blue-100 transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6]"
+                                id="secd"
+                                class="group h-24 w-24 rounded-full flex items-center justify-center bg-[#FFF] hover:bg-blue-100 transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6]"
                             >
-                                <span class="text-4xl mt-2 transition-transform duration-700"
+                                <span class="text-4xl mt-2 transition-transform duration-700 in"
                                     ><svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="45"
@@ -183,19 +187,21 @@ onMounted(() => {
                             </div>
                             <div class="space-y-2">
                                 <h3 class="text-[1.5rem]">Quality You Can Taste</h3>
-                                <p class="text-[0.8rem] text-[#fff]">
+                                <p class="text-[0.8rem]">
                                     From real butter to rich chocolate, we use ingredients that
                                     actually make a difference in every bite.
                                 </p>
                             </div>
                         </div>
                         <div
+                            id="trd"
                             class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
                         >
                             <div
-                                class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
+                                class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6]"
+                                id="trdd"
                             >
-                                <span class="transition-transform duration-700 text-4xl mt-2"
+                                <span class="transition-transform duration-700 text-4xl mt-2 in"
                                     ><svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="45"
@@ -215,7 +221,7 @@ onMounted(() => {
                             </div>
                             <div class="space-y-2">
                                 <h3 class="text-[1.5rem]">Made with Love</h3>
-                                <p class="text-[0.8rem] text-[#666666]">
+                                <p class="text-[0.8rem]">
                                     We love what we bake — and it shows. Every pastry's made to
                                     bring a little happiness your way.
                                 </p>
@@ -263,10 +269,40 @@ onMounted(() => {
 </template>
 
 <style scoped>
+#sec {
+    background: #60a5fa;
+}
+
+#sec:hover {
+    background: #fff;
+}
+
+#sec:hover > #secd {
+    background: #60a5fa;
+}
+#sec:hover > #secd > .in {
+    color: #fff;
+}
+#trd {
+    background: #fff;
+}
+
+#trd:hover {
+    background: #60a5fa;
+    color: #fff;
+}
+
+#trd:hover > #trdd {
+    background: #fff;
+}
+#trd:hover > #trdd > .in {
+    color: #60a5fa;
+}
+
 .prod-cards {
-    /* background-color: #ffffff; */
-    /* border: 1px solid #98c0ff; */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    border: 2px solid #dfdfdf;
+    /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
 }
 
 .prod-cards:hover {
