@@ -1,5 +1,5 @@
 <template>
-    <p class="px-3 border border-[#ffcdcd] rounded-full bg-[#ffdddd]">
+    <p class="px-3 border border-blue-200 rounded-full bg-blue-100">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="80"

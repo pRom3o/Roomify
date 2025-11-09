@@ -87,7 +87,7 @@ const handleSignup = async () => {
 
         <div
             id="form"
-            class="col-center w-full md:w-xl py-6 bg-[#ffebeb] my-10 shadow-xl rounded-xl text-center space-y-4"
+            class="col-center w-full md:w-xl py-6 bg-[#fff] my-10 shadow-md rounded-xl text-center space-y-4"
             v-else
         >
             <div class="col-center space-y-1">
