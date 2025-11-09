@@ -14,7 +14,7 @@ export const signUpUser = async (email, password) => {
         email,
         password,
         options: {
-            emailRedirectTo: 'https://roomify-virid.vercel.app/auth',
+            emailRedirectTo: 'http://localhost:5174/auth',
             data: {
                 name: userName.value,
                 phone: userPhone.value,
