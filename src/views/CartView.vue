@@ -113,7 +113,7 @@ onMounted(async () => {
                             class="w-1/2 flex items-center justify-evenly sm:justify-around md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
                         >
                             <p class="lg:text-base md:text-[12px] text-[11px]">
-                                ₦{{ items.item_price }}
+                                ₦{{ items.item_price.toLocaleString() }}
                             </p>
                             <div
                                 class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 rounded-2xl text-base"
@@ -139,7 +139,7 @@ onMounted(async () => {
                         </div>
                         <div class="flex items-center gap-2">
                             <p class="lg:text-base md:text-[12px] text-[11px] px-1">
-                                ₦{{ items.item_price * items.quantity }}
+                                ₦{{ (items.item_price * items.quantity).toLocaleString() }}
                             </p>
                             <button
                                 class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
@@ -186,12 +186,12 @@ onMounted(async () => {
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Sub Total</p>
-                            <p class="price">₦{{ cartStore.total }}</p>
+                            <p class="price">₦{{ cartStore.total.toLocaleString() }}</p>
                         </div>
                         <hr class="text-[#dae6ff]" />
                         <div class="flex w-full justify-between">
                             <p class="text-[#424242]">Total</p>
-                            <p class="price">= ₦{{ cartStore.total }}</p>
+                            <p class="price">= ₦{{ cartStore.total.toLocaleString() }}</p>
                         </div>
                     </div>
                     <RouterLink

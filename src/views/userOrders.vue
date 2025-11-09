@@ -40,7 +40,7 @@ onMounted(async () => {
                     <p class="w-52 text-center text-xs lg:text-sm">Status</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Date</p>
                 </div>
-                <div v-for="order in orders" :key="order.id" class="w-full h-10">
+                <div v-for="order in orders" :key="order.id" class="w-full h-12">
                     <div class="w-full h-full">
                         <hr class="" />
                         <div
