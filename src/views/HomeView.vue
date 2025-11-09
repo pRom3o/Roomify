@@ -158,10 +158,10 @@ onMounted(() => {
                             </div>
                         </div>
                         <div
-                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
+                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 text-[#fff]"
                         >
                             <div
-                                class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
+                                class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-blue-100 transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6]"
                             >
                                 <span class="text-4xl mt-2 transition-transform duration-700"
                                     ><svg
@@ -183,7 +183,7 @@ onMounted(() => {
                             </div>
                             <div class="space-y-2">
                                 <h3 class="text-[1.5rem]">Quality You Can Taste</h3>
-                                <p class="text-[0.8rem] text-[#666666]">
+                                <p class="text-[0.8rem] text-[#fff]">
                                     From real butter to rich chocolate, we use ingredients that
                                     actually make a difference in every bite.
                                 </p>
@@ -264,9 +264,9 @@ onMounted(() => {
 
 <style scoped>
 .prod-cards {
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     /* border: 1px solid #98c0ff; */
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .prod-cards:hover {
