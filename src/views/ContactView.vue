@@ -11,10 +11,10 @@
                 <div
                     class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%] md:mb-0 mb-5"
                 >
-                    <h1 class="lg:text-4xl text-2xl mb-1 headers">
-                        <i>Get in Touch with us.</i>
+                    <h1 class="lg:text-4xl text-2xl text-[#3B82F6E6] mb-1 headers">
+                        Get in Touch with us.
                     </h1>
-                    <p class="font-light text-[12px] lg:text-base">
+                    <p class="font-light text-[12px]">
                         <i>If you have any inquires, please use the contact form...</i>
                     </p>
                     <img src="/Images/contact-us.png" alt="contact" class="md:flex hidden" />

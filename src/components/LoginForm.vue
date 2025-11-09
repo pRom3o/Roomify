@@ -35,18 +35,16 @@ const handleSignin = async () => {
 <template>
     <div class="w-full min-h-screen center flex-col primary-bg px-4">
         <div
-            class="flex items-center justify-center md:flex-row flex-col w-full md:w-[90%] md:h-[550px] md:p-6 pt-4 lg:gap-6 gap-4 xl:gap-0 bg-[#fffcfc] shadow rounded-xl"
+            class="col-center w-full sm:w-[65%] md:w-[55%] lg:w-[40%] xl:w-[35%] md:py-6 pt-4 bg-[#fffcfc] shadow rounded-xl"
         >
-            <div class="text-center col-center md:w-[50%] h-[20%] md:h-full">
-                <h1 class="lg:text-4xl text-2xl headers text-[#7183f8]">Welcome back</h1>
-                <p class="font-light text-[12px] lg:text-base text-[#333]">
+            <div class="text-center col-center">
+                <h1 class="lg:text-4xl text-2xl headers text-[#3B82F6E6]">Welcome back</h1>
+                <p class="font-light text-[12px] text-[#333]">
                     <i>we're happy to have you back...</i>
                 </p>
-                <img src="/Images/login.png" alt="" class="md:flex hidden h-[80%]" />
             </div>
-            <div class="vertical-line md:block hidden"></div>
-            <form class="center md:w-1/2 h-[80%] lg:h-full w-full p-6 md:px-0">
-                <div class="xl:w-2/3 w-full h-full col-center space-y-5">
+            <form class="center h-[80%] lg:h-full w-full p-6">
+                <div class="w-full h-full col-center space-y-5">
                     <div class="flex flex-col w-full space-y-3">
                         <label for="userEmail" class="text-xs lg:text-sm xl:text-base"
                             >Email *</label
@@ -78,7 +76,7 @@ const handleSignin = async () => {
                     </button>
                     <button
                         @click.prevent="emit('switch-form', 'signup')"
-                        class="underline under text-[#7183f8] hover:text-[#bdd2ff] hover text-sm"
+                        class="underline under text-[#3B82F6E6] hover:text-[#7183f8] hover text-sm"
                     >
                         <i>New user?</i> Signup here..
                     </button>

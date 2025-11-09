@@ -60,8 +60,10 @@ onMounted(async () => {
                     class="w-full h-full rounded-3xl"
                 />
             </div> -->
+            <div class="h-26 w-26 bg-green-100 rounded-full"></div>
             <div class="mt-3 col-center">
-                <h1 class>{{ paymentStatus }}</h1>
+                <h1>Thanks for your purchase</h1>
+                <h2>{{ paymentStatus }}</h2>
                 <router-link to="/orders" class="btn-3 hover text-sm">View orders</router-link>
             </div>
         </div>
