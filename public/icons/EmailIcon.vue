@@ -11,10 +11,18 @@
             <title id="sentCheckTitle">Email sent</title>
             <!-- envelope -->
             <g fill="none" fill-rule="evenodd">
-                <rect x="8" y="18" width="124" height="64" rx="8" fill="#ffffff" stroke="#ffcece" />
-                <path d="M12 22 L70 54 L128 22" stroke="#ffcece" stroke-width="2" fill="none" />
+                <rect
+                    x="8"
+                    y="18"
+                    width="124"
+                    height="64"
+                    rx="8"
+                    fill="#ffffff"
+                    stroke="#3B82F6E6"
+                />
+                <path d="M12 22 L70 54 L128 22" stroke="#3B82F6E6" stroke-width="2" fill="none" />
                 <!-- badge with check -->
-                <circle cx="110" cy="30" r="14" fill="#ffcece" />
+                <circle cx="110" cy="30" r="14" fill="#3B82F6E6" />
                 <path
                     d="M104 30 l3.6 4 6-7.2"
                     stroke="#fff"
