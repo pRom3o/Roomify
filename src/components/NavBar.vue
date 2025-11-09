@@ -19,7 +19,7 @@ onMounted(() => {
 <template>
     <div class="w-full min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-99 backdrop-blur-lg">
         <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4 pt-1">
-            <button class="h-full w-[20px] lg:hidden flex z-90" @click="switchIcon">
+            <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
                 </Transition>
@@ -127,7 +127,7 @@ onMounted(() => {
             >
 
             <button
-                class="py-2 px-3 rounded-xl text-white bg-[#3b83f6e5] hover:bg-blue-400 hover:text-[#333] hover center text-sm"
+                class="hidden md:flex py-2 px-3 rounded-xl text-white bg-[#3b83f6e5] hover:bg-blue-400 hover:text-[#333] hover text-sm"
                 @click="auth.logout()"
                 v-if="user"
             >
