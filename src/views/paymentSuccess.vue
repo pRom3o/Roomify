@@ -60,7 +60,7 @@ onMounted(async () => {
                     class="w-full h-full rounded-3xl"
                 />
             </div> -->
-            <div class="h-26 w-26 bg-green-200 center">
+            <div class="h-26 w-26 bg-green-200 rounded-full center">
                 <span
                     ><svg
                         xmlns="http://www.w3.org/2000/svg"
