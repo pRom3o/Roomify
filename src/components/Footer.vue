@@ -10,7 +10,7 @@
                 <div class="flex flex-col items-start justify-start md:w-1/2 h-full">
                     <RouterLink to="/" class="logo-link">
                         <img
-                            src="/Images/celines-treats-logo-2.svg"
+                            src="/Images/celines-treats-logo.svg"
                             alt="Celine\'s Treats"
                             class="h-10"
                         />
