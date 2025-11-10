@@ -1,4 +1,37 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+import emailjs from '@emailjs/browser';
+
+const form = ref(null);
+const failed = ref(false);
+const success = ref(false);
+const sendEmail = () => {
+    // loading.value = true;
+    setTimeout(() => {
+        emailjs
+            .sendForm(
+                import.meta.env.VITE_SERVICE_ID,
+                import.meta.env.VITE_TEMPLATE_ID,
+                form.value,
+                import.meta.env.VITE_PUBLIC_KEY,
+            )
+            .then(
+                (response) => {
+                    console.log(response.text, response.status);
+                    // loading.value = false;
+                    success.value = true;
+                    console.log('form working');
+                    form.value.reset();
+                },
+                (error) => {
+                    console.log('Failed', error);
+                    failed.value = true;
+                },
+            );
+    }, 300);
+    success.value = false;
+};
+</script>
 
 <template>
     <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
@@ -22,6 +55,8 @@
 
                 <div class="vertical-line md:flex hidden"></div>
                 <form
+                    ref="form"
+                    @submit.prevent="sendEmail"
                     class="flex flex-col items-center space-y-5 md:h-[70%] h-[70%] lg:w-[50%] md:w-full w-full"
                 >
                     <div class="col-center w-full h-[88%] space-y-5">
@@ -31,7 +66,7 @@
                             <div class="flex flex-col w-full">
                                 <label for="name" class="text-sm xl:text-base">Name *</label>
                                 <div class="w-full">
-                                    <input type="text" name="name" id="name" class="w-full" />
+                                    <input type="text" name="from_name" id="name" class="w-full" />
                                 </div>
                             </div>
                         </div>
@@ -40,7 +75,7 @@
                             <div class="w-full">
                                 <input
                                     type="email"
-                                    name="userEmail"
+                                    name="from_email"
                                     id="userEmail"
                                     class="w-full"
                                 />
@@ -50,14 +85,15 @@
                         <div class="flex flex-col w-full">
                             <label for="userMessage" class="text-sm xl:text-base">Message *</label>
                             <textarea
-                                name="userMessage"
+                                name="message"
                                 id="userMessage"
+                                required
                                 class="resize-none h-24"
                             ></textarea>
                         </div>
                     </div>
                     <div class="w-full flex items-center justify-end py-3 h-[12%]">
-                        <button class="px-8 py-2 btn-2 rounded-md">submit</button>
+                        <button class="px-8 py-2 btn-2 rounded-md" @click="submit">submit</button>
                     </div>
                     <p class="">Or contact us through any of our socials:</p>
                     <ul class="flex items-center justify-center gap-5 w-[30%]">

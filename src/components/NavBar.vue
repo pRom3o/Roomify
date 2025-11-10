@@ -17,8 +17,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-full min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-99 backdrop-blur-lg">
-        <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4 pt-1">
+    <div class="w-full min-h-8 py-2 center shadow-lg font-kanit fixed top-0 z-99 bg-[#f4f4f4]">
+        <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4">
             <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
@@ -28,11 +28,7 @@ onMounted(() => {
 
             <h2 class="">
                 <RouterLink to="/" class="logo-link">
-                    <img
-                        src="/Images/celines-treats-logo-2.svg"
-                        alt="Celine\'s Treats"
-                        class="h-8"
-                    />
+                    <img src="/Images/celines-treats-logo.svg" alt="Celine\'s Treats" class="h-8" />
                 </RouterLink>
             </h2>
 
