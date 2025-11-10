@@ -49,7 +49,7 @@ onMounted(() => {
                             Celine's Treats
                         </h1>
                         <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>
-                        <p class="md:text-sm text-xs md:px-3 px-6 text-[#a9a9a9]">
+                        <p class="md:text-sm text-xs md:px-3 px-6 text-[#f4f4f4]">
                             <i
                                 >Turning simple beginings into timeless flavors, one pastry at a
                                 time...</i
