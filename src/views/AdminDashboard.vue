@@ -8,7 +8,7 @@
                     <h2 class="font-medium">
                         <RouterLink to="/" class=""
                             ><img
-                                src="/Images/celines-treats-logo-2.svg"
+                                src="/Images/celines-treats-logo.svg"
                                 alt="Celine\'s Treats"
                                 class="h-8"
                         /></RouterLink>
