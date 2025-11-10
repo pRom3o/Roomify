@@ -151,6 +151,7 @@ const handleCheckout = async () => {
                         <div class="flex items-center gap-5">
                             <img
                                 :src="items.img"
+                                loading="lazy"
                                 alt=""
                                 class="h-12 w-12 rounded-lg border border-gray-400"
                             />

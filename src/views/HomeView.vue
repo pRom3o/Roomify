@@ -245,6 +245,7 @@ onMounted(() => {
                             <img
                                 :src="items.img"
                                 :alt="items.name"
+                                loading="lazy"
                                 class="h-52 w-full rounded-t-xl"
                             />
                             <div
