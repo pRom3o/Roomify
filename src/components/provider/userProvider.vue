@@ -21,7 +21,6 @@ const logout = () => {
     supabase.auth.signOut();
     user.value = null;
     router.push({ path: '/auth', query: { form: 'signup' } });
-    console.log(user.value);
 };
 
 onMounted(async () => {
@@ -31,7 +30,6 @@ onMounted(async () => {
         userDetails.email = data.session.user.email;
         userDetails.name = data.session.user.user_metadata.name;
         userDetails.id = data.session.user.id;
-        console.log(user.value);
     } else {
         user.value = data;
     }

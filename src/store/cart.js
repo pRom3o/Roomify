@@ -15,7 +15,7 @@ export const useCartStore = defineStore('cart', () => {
             const { data, error } = await supabase.from('carts').select('*').eq('user_id', user_id);
 
             if (error) throw error;
-            console.log('data from fetchcart', data);
+
             userCart.value = data || [];
         } catch (err) {
             console.error('Error fetching cart:', err.message);
@@ -107,7 +107,6 @@ export const useCartStore = defineStore('cart', () => {
             .eq('id', id);
 
         if (error) {
-            console.log('error', error);
             throw error;
         }
     };

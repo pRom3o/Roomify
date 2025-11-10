@@ -13,12 +13,12 @@ export const getProducts = async (category) => {
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         if (error) {
-            console.log('error: ', error.message);
+            throw error;
         } else {
             products.value = data;
         }
     } catch (error) {
-        console.log(error);
+        console.error(error);
     } finally {
         isLoading.value = false;
     }

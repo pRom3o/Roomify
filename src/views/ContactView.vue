@@ -18,9 +18,7 @@ const sendEmail = () => {
             .then(
                 (response) => {
                     console.log(response.text, response.status);
-                    // loading.value = false;
                     success.value = true;
-                    console.log('form working');
                     form.value.reset();
                 },
                 (error) => {

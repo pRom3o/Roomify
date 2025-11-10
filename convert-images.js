@@ -19,7 +19,6 @@ async function convertImages() {
                 imageminWebp({ quality: 80 }), // adjust quality if needed
             ],
         });
-        console.log(`Converted ${file} → WebP`);
     }
 }
 

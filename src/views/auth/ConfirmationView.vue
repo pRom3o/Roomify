@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { onMounted, inject, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { supabase } from '@/lib/supabaseClient';
 import { showToast } from '@/services/toastServices';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const auth = inject('auth');
+// const auth = inject('auth');
 const user = ref({});
 
 onMounted(async () => {
@@ -22,7 +22,6 @@ onMounted(async () => {
 });
 
 const handleConfirm = async () => {
-    console.log(auth.user.id);
     try {
         if (!user.value) {
             throw new Error('No user available');
@@ -38,7 +37,6 @@ const handleConfirm = async () => {
             },
         ]);
 
-        console.log(user.value.user_metadata.email);
         if (insertError) throw insertError;
 
         showToast('inserted', 'success');

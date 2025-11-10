@@ -31,9 +31,7 @@ const handleUpdate = async (id, qty) => {
         await refreshCart();
         const item = cartStore.userCart.find((i) => i.id === id);
         if (item.quantity === 0) {
-            console.log('deleting');
             await cartStore.handleDelete(item.id);
-            console.log('deleted');
             refreshCart();
         }
     } catch (error) {
@@ -42,9 +40,7 @@ const handleUpdate = async (id, qty) => {
 };
 
 onMounted(async () => {
-    // refreshCart();
     cartStore.fetchCart(user.value.id);
-    console.log('user cart', cartStore.userCart);
 });
 </script>
 

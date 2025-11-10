@@ -24,8 +24,6 @@ export const initiatePayment = async (user_id, email, total_amount, items, statu
             .single();
         if (error) {
             throw error;
-        } else {
-            console.log('inserted:', data.reference);
         }
         return data;
 

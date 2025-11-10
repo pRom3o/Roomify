@@ -22,13 +22,11 @@ const getRef = async () => {
         .eq('reference', reference)
         .single();
     if (error) console.log('error', error);
-    else console.log('order by ref:', data);
-    return data;
+    else return data;
 };
 
 onMounted(async () => {
     await cartStore.fetchCart(user.value.id);
-    console.log('cart: ', cartStore.userCart);
     getRef();
 });
 
@@ -50,8 +48,6 @@ const handleCheckout = async () => {
         );
 
         if (data) {
-            console.log('after if data:', data.reference);
-
             const response = await fetch('/api/paystack', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

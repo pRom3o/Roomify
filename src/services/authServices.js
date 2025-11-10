@@ -46,7 +46,5 @@ export const insertProfiles = async (id, name, phone, email) => {
             },
         ])
         .select();
-    if (error) {
-        console.log(error.message);
-    }
+    if (error) throw error;
 };

@@ -1,18 +1,14 @@
 <script setup>
-import { inject, onMounted, computed } from 'vue';
+import { onMounted, computed } from 'vue';
 
 import pastries from '@/data/pastries.json';
 
-const auth = inject('auth');
+// const auth = inject('auth');
 
-const user = auth.user;
+// const user = auth.user;
 
 const currentPasteries = computed(() => {
     return pastries['items'] || [];
-});
-
-onMounted(() => {
-    console.log('user', user.value);
 });
 
 onMounted(() => {

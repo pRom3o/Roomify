@@ -17,7 +17,6 @@ export default async function handler(req, res) {
         });
 
         const verifyData = await verifyRes.json();
-        console.log('Paystack verify response:', verifyData);
 
         if (verifyData.status) {
             return res.status(200).json({ status: 'success', data: verifyData.data });

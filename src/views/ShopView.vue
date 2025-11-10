@@ -35,7 +35,6 @@ const handleAddToCart = async (item) => {
             user.value.id,
             user.value.email,
         );
-        console.log('Added to cart');
     } catch (error) {
         console.log(error);
     } finally {

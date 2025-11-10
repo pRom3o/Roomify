@@ -12,7 +12,6 @@ const cartStore = useCartStore();
 
 onMounted(() => {
     cartStore.fetchCart(user.value.id);
-    console.log(user.value.email);
 });
 </script>
 

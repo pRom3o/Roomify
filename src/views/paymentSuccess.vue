@@ -41,10 +41,8 @@ onMounted(async () => {
             console.log('verification data failed', data);
         }
     } catch (error) {
-        console.log('payment success error:', error);
+        console.log('payment error:', error);
         paymentStatus.value = 'verification error';
-    } finally {
-        console.log(paymentStatus.value);
     }
 });
 </script>

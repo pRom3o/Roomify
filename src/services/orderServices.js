@@ -9,7 +9,6 @@ export const getOrders = async (user_id) => {
 
         if (data) {
             orders.value = data;
-            console.log(`orders for ${user_id}`, orders.value);
         }
         if (error) throw error;
     } catch (err) {
