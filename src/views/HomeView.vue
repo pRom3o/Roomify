@@ -37,7 +37,7 @@ onMounted(() => {
     <div class="min-h-screen w-full">
         <div
             class="center lg:h-screen w-full h-[500px] relative text-[#e8e8e8] bg-center bg-cover"
-            style="background-image: url('/Images/bg-img.jpg')"
+            style="background-image: url('/Images/bg-img.webp')"
         >
             <div class="inset-0 absolute bg-black/30 z-10"></div>
             <div class="center w-full h-full z-50">
