@@ -59,7 +59,7 @@ const handleCheckout = async () => {
                     callback_url: 'https://celines-treats.vercel.app/payment-success',
                 }),
             });
-            console.log('res', await response.json());
+            console.log('res', response.json());
 
             const paystackResponse = await response.json();
             console.log('response', paystackResponse.data);
