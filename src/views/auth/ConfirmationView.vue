@@ -28,7 +28,7 @@ const handleConfirm = async () => {
         }
 
         // Insert profile
-        const { error: insertError } = await supabase.from('').insert([
+        const { error: insertError } = await supabase.from('profiles').insert([
             {
                 id: user.value.id,
                 name: user.value.user_metadata.name,
@@ -52,7 +52,7 @@ const handleConfirm = async () => {
     <div class="w-full min-h-screen center flex-col primary-bg px-4">
         <div
             id="form"
-            class="col-center w-full md:w-xl py-6 bg-[#fff] shadow-xl rounded-xl text-center space-y-4"
+            class="col-center w-full md:w-xl py-6 bg-white shadow-xl rounded-xl text-center space-y-4"
         >
             <div class="col-center space-y-1">
                 <h1 class="md:text-4xl text-3xl headers font-light">Welcome to Roomify</h1>
