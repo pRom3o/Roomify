@@ -52,7 +52,7 @@ onMounted(async () => {
         </div> -->
         <div
             class="center relative h-40 w-full col-center text-white bg-cover"
-            style="background-image: url('/Images/bg-img.jpg')"
+            style="background-image: url('/ImagesWebp/bg-img.webp')"
         >
             <div class="inset-0 absolute bg-black/30 z-10"></div>
             <div class="col-center z-50">

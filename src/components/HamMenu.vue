@@ -19,20 +19,16 @@ const user = auth.user;
                         class="w-full p-3 flex flex-col items-center justify-between space-y-6 text-xl"
                     >
                         <li @click="switchIcon">
-                            <router-link to="/" class="px-5 py-2 rounded-2xl">Home</router-link>
+                            <router-link to="/" class="px-5 py-2">Home</router-link>
                         </li>
                         <li @click="switchIcon">
-                            <router-link to="/shop" class="px-5 py-2 rounded-2xl">Shop</router-link>
+                            <router-link to="/shop" class="px-5 py-2">Shop</router-link>
                         </li>
                         <li @click="switchIcon">
-                            <router-link to="/contact" class="px-5 py-2 rounded-2xl"
-                                >Contact</router-link
-                            >
+                            <router-link to="/contact" class="px-5 py-2">Contact</router-link>
                         </li>
                         <li @click="switchIcon" v-if="user">
-                            <router-link to="/orders" class="px-5 py-2 rounded-2xl"
-                                >My Orders</router-link
-                            >
+                            <router-link to="/orders" class="px-5 py-2">My Orders</router-link>
                         </li>
                     </ul>
                     <button

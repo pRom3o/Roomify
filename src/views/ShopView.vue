@@ -65,7 +65,7 @@ onMounted(() => {
         <div class="h-full w-full col-center space-y-2">
             <div
                 class="center relative h-40 w-full col-center text-white bg-cover mb-8"
-                style="background-image: url('/Images/bg-img.jpg')"
+                style="background-image: url('/ImagesWebp/bg-img.webp')"
             >
                 <div class="inset-0 absolute bg-black/40 z-10"></div>
                 <h1 class="text-6xl font-kanit z-50">Shop</h1>
