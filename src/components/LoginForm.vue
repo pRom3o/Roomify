@@ -23,7 +23,7 @@ const handleSignin = async () => {
 
         // Check if profile already exists
         const { data: existingProfile, error: profileError } = await supabase
-            .from('roomify_profiles')
+            .from('profiles')
             .select('id')
             .eq('id', user.id)
             .maybeSingle(); // returns null if not found

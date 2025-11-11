@@ -28,7 +28,7 @@ const handleConfirm = async () => {
         }
 
         // Insert profile
-        const { error: insertError } = await supabase.from('roomify_profiles').insert([
+        const { error: insertError } = await supabase.from('').insert([
             {
                 id: user.value.id,
                 name: user.value.user_metadata.name,
