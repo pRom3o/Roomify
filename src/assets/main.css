@@ -94,10 +94,10 @@ button {
 }
 
 .btn-1 {
-    @apply hover:bg-[#8bb0ff] text-[#fff] hover:text-gray-600 bg-blue-500/90;
+    @apply hover:bg-[#8bb0ff] text-white hover:text-gray-600 bg-blue-500/90;
 }
 .btn-2 {
-    @apply bg-[#3B82F6E6] text-[#fff] hover:text-[#333] hover:bg-blue-400;
+    @apply bg-[#3B82F6E6] text-white hover:text-[#333] hover:bg-blue-400;
 }
 
 .btn-3 {
