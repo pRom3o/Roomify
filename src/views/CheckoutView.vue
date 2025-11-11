@@ -48,6 +48,7 @@ const handleCheckout = async () => {
         );
 
         if (data) {
+            console.log('data init', data);
             const response = await fetch('/api/paystack', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
