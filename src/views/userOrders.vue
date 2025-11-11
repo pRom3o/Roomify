@@ -30,8 +30,8 @@ onMounted(async () => {
                 <!-- <p>Home ></p> -->
             </div>
         </div>
-        <div class="flex flex-col w-full min-h-[640px] p-4">
-            <div class="min-h-10 w-full bg-[#fff] border border-gray-200 shadow rounded-xl">
+        <div class="flex flex-col w-full min-h-[640px] p-4" v-if="orders.length > 0">
+            <div class="min-h-10 w-full bg-white border border-gray-200 shadow rounded-xl">
                 <h2 class="text-xl p-4">Your Order History</h2>
                 <hr />
                 <div class="flex items-center justify-between w-full p-3">
@@ -64,6 +64,25 @@ onMounted(async () => {
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="w-full col-center min-h-[379px]" v-else>
+            <p>No orders yet — check out our store to place your first order.</p>
+            <button class="center border-b gap-1 text-neutral-700 hover hover:text-neutral-500">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentcolor"
+                    class="bi bi-arrow-left"
+                    viewBox="0 0 16 16"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+                    />
+                </svg>
+                <RouterLink to="/shop">Shop</RouterLink>
+            </button>
         </div>
     </div>
 </template>

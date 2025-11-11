@@ -33,19 +33,13 @@ onMounted(() => {
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
-                    <RouterLink to="/" class="px-3 py-1 text-sm rounded-2xl hover nav"
-                        >Home</RouterLink
-                    >
+                    <RouterLink to="/" class="px-3 py-1 text-sm nav">Home</RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/shop" class="px-3 py-1 text-sm rounded-2xl hover nav"
-                        >Shop</RouterLink
-                    >
+                    <RouterLink to="/shop" class="px-3 py-1 text-sm nav">Shop</RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/contact" class="px-3 py-1 text-sm rounded-2xl hover nav"
-                        >Contact</RouterLink
-                    >
+                    <RouterLink to="/contact" class="px-3 py-1 text-sm nav">Contact</RouterLink>
                 </li>
             </ul>
             <ul v-if="user" class="md:flex hidden items-center gap-6">
@@ -77,9 +71,7 @@ onMounted(() => {
                         >{{ cartStore.cartCount }}</span
                     ></RouterLink
                 >
-                <RouterLink
-                    to="/orders"
-                    class="nav hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
+                <RouterLink to="/orders" class="nav text-black hover center text-[1em]"
                     >My Orders</RouterLink
                 >
             </ul>
@@ -114,10 +106,7 @@ onMounted(() => {
                 >
             </ul>
 
-            <RouterLink
-                to="/auth"
-                class="nav hover:rounded-2xl rounded-lg text-black hover center text-[1em]"
-                v-else
+            <RouterLink to="/auth" class="nav text-black hover center text-[1em]" v-else
                 ><i>Login/Signup</i></RouterLink
             >
 

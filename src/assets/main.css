@@ -16,10 +16,10 @@ button {
 }
 
 .nav {
-    @apply px-4 py-1 hover:text-neutral-700  text-neutral-900 text-base;
+    @apply px-4 py-1 hover:text-neutral-700 hover:border-b-2 hover:border-b-[#3B82F6E6]  text-neutral-900 text-base;
 }
 .cart {
-    @apply hover:text-black/50 text-[#000];
+    @apply hover:text-black/50 text-black;
 }
 
 .hover {
@@ -111,4 +111,8 @@ button {
 .cards {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.router-link-exact-active {
+    border-bottom: 2px solid #3b82f6e6;
 }
