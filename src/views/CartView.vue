@@ -192,7 +192,7 @@ onMounted(async () => {
                     </div>
                     <RouterLink
                         to="/checkout"
-                        class="text-center px-6 font-light text-[0.9rem] py-2 rounded-xl btn-2 hover"
+                        class="text-center px-6 text-[0.9rem] py-2 rounded-xl @apply bg-[#3B82F6E6] text-white hover:text-neutral-700 hover:bg-blue-400 hover"
                         ><button>Proceed to Checkout</button></RouterLink
                     >
                 </div>
