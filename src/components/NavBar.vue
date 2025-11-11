@@ -18,7 +18,7 @@ onMounted(() => {
 <template>
     <div class="w-full min-h-8 py-2 center shadow-lg font-kanit fixed top-0 z-99 bg-[#f4f4f4]">
         <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4">
-            <button class="h-full w-[20px] md:hidden flex z-90" @click="switchIcon">
+            <button class="h-full w-5 md:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
                 </Transition>
@@ -73,7 +73,7 @@ onMounted(() => {
                             ></path></svg
                     ></span>
                     <span
-                        class="w-4 h-4 text-xs absolute -top-2 -right-2 bg-[#333] rounded-full center text-[#fff]"
+                        class="w-4 h-4 text-xs absolute -top-2 -right-2 bg-[#333] rounded-full center text-white"
                         >{{ cartStore.cartCount }}</span
                     ></RouterLink
                 >
@@ -108,7 +108,7 @@ onMounted(() => {
                             ></path></svg
                     ></span>
                     <span
-                        class="w-4 h-4 text-xs absolute -top-2 -right-2 bg-[#333] rounded-full center text-[#fff]"
+                        class="w-4 h-4 text-xs absolute -top-2 -right-2 bg-[#333] rounded-full center text-white"
                         >{{ cartStore.cartCount }}</span
                     ></RouterLink
                 >

@@ -14,7 +14,7 @@ export const signUpUser = async (email, password) => {
         email,
         password,
         options: {
-            emailRedirectTo: 'http://localhost:5174/auth',
+            emailRedirectTo: 'https://celines-treats.vercel.app/auth',
             data: {
                 name: userName.value,
                 phone: userPhone.value,
@@ -31,7 +31,7 @@ export const signinUser = async (email, password) => {
 
     if (error) throw error;
 
-    return data;
+    return { data, error };
 };
 
 export const insertProfiles = async (id, name, phone, email) => {

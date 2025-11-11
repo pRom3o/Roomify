@@ -95,7 +95,6 @@ onMounted(async () => {
                             >
                                 <img
                                     :src="items.img"
-                                    loading="lazy"
                                     alt="img"
                                     class="h-full w-full rounded-full absolute inset-0"
                                 />

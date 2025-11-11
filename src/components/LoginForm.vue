@@ -12,29 +12,41 @@ const router = useRouter();
 const loading = ref(false);
 const handleSignin = async () => {
     loading.value = true;
+
     try {
-        if (data?.user) {
-            const { exist } = await supabase
-                .from('roomify_profiles')
-                .select('*')
-                .eq('id', data.user.id);
-            if (exist) {
-                const data = await signinUser(userEmail.value, userPassword.value);
-                if (data) {
-                    showToast(`Welcome back ${data.user.user_metadata.name}`, 'success');
-                    router.push('/');
-                }
-            } else {
-                await insertProfiles(
-                    data.user.id,
-                    data.user.user_metadata.name,
-                    data.user.user_metadata.phone,
-                    data.user.email,
-                );
-            }
+        const { data, error } = await signinUser(userEmail.value, userPassword.value);
+        console.log('data', data);
+        if (error) throw error;
+
+        const user = data.user;
+        if (!user) throw new Error('No user data returned');
+
+        // Check if profile already exists
+        const { data: existingProfile, error: profileError } = await supabase
+            .from('roomify_profiles')
+            .select('id')
+            .eq('id', user.id)
+            .maybeSingle(); // returns null if not found
+
+        if (profileError) throw profileError;
+
+        // Only insert if missing
+        if (!existingProfile) {
+            const { error: insertError } = await insertProfiles(
+                user.id,
+                user.user_metadata?.name || '',
+                user.user_metadata?.phone || '',
+                user.email || '',
+            );
+
+            if (insertError) throw insertError;
         }
+
+        showToast(`Welcome back ${user.user_metadata?.name}`, 'success');
+        router.push('/');
     } catch (error) {
-        showToast(`${error.message}`, 'failed');
+        console.error(error);
+        showToast(error.message || 'Something went wrong', 'failed');
     } finally {
         loading.value = false;
     }

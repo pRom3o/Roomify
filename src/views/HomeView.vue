@@ -54,7 +54,7 @@ onMounted(() => {
                     </div>
                     <RouterLink
                         to="/shop"
-                        class="px-3 py-1 border border-white/30 rounded-lg hover:text-[#000] backdrop-blur-3xl text-xl md:text-base hover flex items-center hover:bg-[#d0d0d032] gap-1"
+                        class="px-3 py-1 border border-white/30 rounded-lg hover:text-black backdrop-blur-3xl text-xl md:text-base hover flex items-center hover:bg-[#d0d0d032] gap-1"
                         >SHOP NOW
                         <span
                             ><svg
@@ -87,11 +87,11 @@ onMounted(() => {
                     class="h-full flex justify-center md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <div
-                        class="md:flex hidden h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
+                        class="sm:flex hidden h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
                     ></div>
                     <div
-                        class="flex md:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
+                        class="flex sm:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
                     ></div>
                 </div>
@@ -156,7 +156,7 @@ onMounted(() => {
                             </div>
                         </div>
                         <div
-                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] hover md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 hover:bg-white hover:text-neutral-600 text-[#fff]"
+                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] hover md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 hover:bg-white hover:text-neutral-600 text-white"
                             id="sec"
                         >
                             <div
@@ -241,7 +241,6 @@ onMounted(() => {
                             <img
                                 :src="items.img"
                                 :alt="items.name"
-                                loading="lazy"
                                 class="h-52 w-full rounded-t-xl"
                             />
                             <div

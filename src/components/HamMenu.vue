@@ -2,13 +2,6 @@
 import { inject } from 'vue';
 import { openClose, switchIcon } from '../functions/functions';
 
-// const routeLinks = ref([
-//     { id: 0, name: 'Home', path: '/' },
-//     { id: 1, name: 'Shop', path: 'shop' },
-//     { id: 2, name: 'Contact', path: 'contact' },
-//     { id: 3, name: 'My orders', path: 'orders' },
-// ]);
-
 const auth = inject('auth');
 const user = auth.user;
 </script>
