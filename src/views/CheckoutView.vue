@@ -60,6 +60,7 @@ const handleCheckout = async () => {
             });
 
             const paystackResponse = await response.json();
+            console.log('response', paystackResponse.data);
 
             if (paystackResponse?.data?.authorization_url) {
                 window.location.href = paystackResponse.data.authorization_url;
