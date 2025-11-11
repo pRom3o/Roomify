@@ -13,16 +13,17 @@ const loading = ref(false);
 const handleSignin = async () => {
     loading.value = true;
     try {
-        const data = await signinUser(userEmail.value, userPassword.value);
-
         if (data?.user) {
-            showToast(`Welcome back ${data.user.user_metadata.name}`, 'success');
             const { exist } = await supabase
                 .from('roomify_profiles')
                 .select('*')
                 .eq('id', data.user.id);
             if (exist) {
-                router.push('/');
+                const data = await signinUser(userEmail.value, userPassword.value);
+                if (data) {
+                    showToast(`Welcome back ${data.user.user_metadata.name}`, 'success');
+                    router.push('/');
+                }
             } else {
                 await insertProfiles(
                     data.user.id,
