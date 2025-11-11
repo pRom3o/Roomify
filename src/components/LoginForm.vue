@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { userEmail, userPassword, signinUser, insertProfiles } from '../services/authServices';
 import LoadingIcon from '/public/icons/LoadingIcon.vue';
 import { ref } from 'vue';
+import { supabase } from '../lib/supabaseClient';
 const emit = defineEmits(['switch-form']);
 
 const router = useRouter();
@@ -16,13 +17,20 @@ const handleSignin = async () => {
 
         if (data?.user) {
             showToast(`Welcome back ${data.user.user_metadata.name}`, 'success');
-            await insertProfiles(
-                data.user.id,
-                data.user.user_metadata.name,
-                data.user.user_metadata.phone,
-                data.user.email,
-            );
-            router.push('/');
+            const { exist } = await supabase
+                .from('roomify_profiles')
+                .select('*')
+                .eq('id', data.user.id);
+            if (exist) {
+                router.push('/');
+            } else {
+                await insertProfiles(
+                    data.user.id,
+                    data.user.user_metadata.name,
+                    data.user.user_metadata.phone,
+                    data.user.email,
+                );
+            }
         }
     } catch (error) {
         showToast(`${error.message}`, 'failed');
