@@ -37,9 +37,7 @@ onMounted(() => {
         >
             <div class="inset-0 absolute bg-black/30 z-10"></div>
             <div class="center w-full h-full z-50">
-                <div
-                    class="col-center text-center space-y-2 sm:px-4 absolute lg:right-10 xl:right-30 lg:top-[35%]"
-                >
+                <div class="col-center text-center space-y-2">
                     <div class="fade-in space-y-2">
                         <h1 class="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-medium mb-1">
                             Celine's Treats
@@ -77,19 +75,20 @@ onMounted(() => {
             id="About"
             class="fade-in min-h-[300px] w-full flex flex-col items-center gap-3 p-4 secondary-bg"
         >
-            <h1 class="items-start text-3xl md:text-5xl lg:text-6xl py-4 fade-in font-sans">
+            <h1 class="text-center text-4xl md:text-5xl lg:text-6xl py-4 fade-in font-sans">
                 About Celine's treats
             </h1>
             <div
-                class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-8 w-full lg:w-[80%] xl:w-[60%] py-4 px-2 h-full"
+                class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 px-2 h-full"
             >
                 <div
-                    class="h-full flex justify-center md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
+                    class="h-full flex justify-center w-3/4 md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
-                    <div
-                        class="h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
-                        style="background-image: url('/ImagesWebp/celine-2.webp')"
-                    ></div>
+                    <img
+                        src="/ImagesWebp/celine-2.webp"
+                        alt="CEO"
+                        class="h-80 w-3/4 border rounded-br-3xl rounded-tl-3xl"
+                    />
                     <!-- <div
                         class="flex sm:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
