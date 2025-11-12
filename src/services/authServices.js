@@ -36,7 +36,7 @@ export const signinUser = async (email, password) => {
 
 export const insertProfiles = async (id, name, phone, email) => {
     const { error } = await supabase
-        .from('roomify_profiles')
+        .from('profiles')
         .insert([
             {
                 id,
