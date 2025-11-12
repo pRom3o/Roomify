@@ -4,7 +4,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import AuthView from '@/views/auth/AuthView.vue';
 import AdminLayout from '../layouts/AdminLayout.vue';
-import { useUserStore } from '../store/user';
+// import { useUserStore } from '../store/user';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -59,17 +59,17 @@ const router = createRouter({
         },
     ],
 });
-router.beforeEach(async (to) => {
-    const userStore = useUserStore();
+// router.beforeEach(async (to) => {
+//     const userStore = useUserStore();
 
-    // Wait to get current user if not already loaded
-    if (userStore.user === null) {
-        await userStore.getUser();
-    }
+//     // Wait to get current user if not already loaded
+//     if (userStore.user === null) {
+//         await userStore.getUser();
+//     }
 
-    // Redirect if not logged in
-    if (!userStore.user && to.name !== 'auth') {
-        return { name: 'auth' };
-    }
-});
+//     // Redirect if not logged in
+//     if (!userStore.user && to.name !== 'auth') {
+//         return { name: 'auth' };
+//     }
+// });
 export default router;
