@@ -6,8 +6,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Optional API key check
-    if (req.headers.authorization !== `Bearer ${process.env.API_SECRET_KEY}`) {
+    if (req.headers.authorization !== `Bearer ${process.env.API_NODE_KEY}`) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
 
@@ -25,8 +24,8 @@ export default async function handler(req, res) {
         });
 
         await transporter.sendMail({
-            from: process.env.EMAIL_USER, // your Gmail
-            to: process.env.EMAIL_USER, // you receive the contact form
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
             subject,
             text: `Message from: ${from}\n\n${message}`,
         });

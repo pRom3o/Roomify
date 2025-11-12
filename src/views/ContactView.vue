@@ -1,7 +1,6 @@
 <!-- eslint-disable no-undef -->
 <script setup>
 import { ref } from 'vue';
-// import emailjs from '@emailjs/browser';
 
 const form = ref(null);
 const userEmail = ref('');
@@ -12,7 +11,7 @@ async function sendEmail() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${import.meta.env.VITE_API_SECRET_KEY}`, // must match API_SECRET_KEY
+            Authorization: `Bearer ${import.meta.env.VITE_API_NODE_KEY}`,
         },
         body: JSON.stringify({
             from: userEmail.value,
@@ -32,7 +31,7 @@ async function sendEmail() {
 <template>
     <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
         <div
-            class="center w-full lg:w-[90%] p-6 bg-[#fff] shadow rounded-xl lg:mt-20 mt-20 lg:mb-10"
+            class="center w-full lg:w-[90%] p-6 bg-white shadow rounded-xl lg:mt-20 mt-20 lg:mb-10"
         >
             <div
                 class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-2 lg:space-x-5 gap-4"
