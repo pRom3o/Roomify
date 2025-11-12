@@ -88,7 +88,7 @@ onMounted(() => {
                 >
                     <div
                         class="h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
-                        style="background-image: url('/ImagesWebp/celine.webp')"
+                        style="background-image: url('/ImagesWebp/celine-2.webp')"
                     ></div>
                     <!-- <div
                         class="flex sm:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"

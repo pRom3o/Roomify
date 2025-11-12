@@ -1,34 +1,32 @@
+<!-- eslint-disable no-undef -->
 <script setup>
 import { ref } from 'vue';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 const form = ref(null);
-const failed = ref(false);
-const success = ref(false);
-const sendEmail = () => {
-    // loading.value = true;
-    setTimeout(() => {
-        emailjs
-            .sendForm(
-                import.meta.env.VITE_SERVICE_ID,
-                import.meta.env.VITE_TEMPLATE_ID,
-                form.value,
-                import.meta.env.VITE_PUBLIC_KEY,
-            )
-            .then(
-                (response) => {
-                    console.log(response.text, response.status);
-                    success.value = true;
-                    form.value.reset();
-                },
-                (error) => {
-                    console.log('Failed', error);
-                    failed.value = true;
-                },
-            );
-    }, 300);
-    success.value = false;
-};
+const userEmail = ref('');
+const userMessage = ref('');
+
+async function sendEmail() {
+    const res = await fetch('https://celines-treats.vercel.app/api/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_API_SECRET_KEY}`, // must match API_SECRET_KEY
+        },
+        body: JSON.stringify({
+            from: userEmail.value,
+            subject: 'New request',
+            message: userMessage.value,
+        }),
+    });
+
+    const data = await res.json();
+    userEmail.value = '';
+    userMessage.value = '';
+    console.log(data);
+    alert('Message sent');
+}
 </script>
 
 <template>
@@ -58,24 +56,15 @@ const sendEmail = () => {
                     class="flex flex-col items-center space-y-5 md:h-[70%] h-[70%] lg:w-[50%] md:w-full w-full"
                 >
                     <div class="col-center w-full h-[88%] space-y-5">
-                        <div
-                            class="flex lg:flex-row flex-col items-center justify-center w-full space-x-0 lg:space-y-0 space-y-3 gap-x-2"
-                        >
-                            <div class="flex flex-col w-full">
-                                <label for="name" class="text-sm xl:text-base">Name *</label>
-                                <div class="w-full">
-                                    <input type="text" name="from_name" id="name" class="w-full" />
-                                </div>
-                            </div>
-                        </div>
                         <div class="flex flex-col w-full">
                             <label for="userEmail" class="text-sm xl:text-base">Email *</label>
                             <div class="w-full">
                                 <input
                                     type="email"
-                                    name="from_email"
+                                    v-model="userEmail"
                                     id="userEmail"
                                     class="w-full"
+                                    required
                                 />
                             </div>
                         </div>
@@ -83,7 +72,7 @@ const sendEmail = () => {
                         <div class="flex flex-col w-full">
                             <label for="userMessage" class="text-sm xl:text-base">Message *</label>
                             <textarea
-                                name="message"
+                                v-model="userMessage"
                                 id="userMessage"
                                 required
                                 class="resize-none h-24"
@@ -91,7 +80,7 @@ const sendEmail = () => {
                         </div>
                     </div>
                     <div class="w-full flex items-center justify-end py-3 h-[12%]">
-                        <button class="px-8 py-2 btn-2 rounded-md" @click="submit">submit</button>
+                        <button class="px-8 py-2 btn-2 rounded-md" type="submit">submit</button>
                     </div>
                     <p class="">Or contact us through any of our socials:</p>
                     <ul class="flex items-center justify-center gap-5 w-[30%]">
