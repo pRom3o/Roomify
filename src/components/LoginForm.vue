@@ -32,7 +32,7 @@ const handleSignin = async () => {
 
         // Only insert if missing
         if (!existingProfile) {
-            const { error } = await insertProfiles(
+            const { data, error } = await insertProfiles(
                 user.id,
                 user.user_metadata?.name || '',
                 user.user_metadata?.phone || '',
@@ -41,6 +41,7 @@ const handleSignin = async () => {
 
             if (error) throw error;
             console.log('error from insert', error);
+            console.log('data from insert', data);
         }
 
         showToast(`Welcome back ${user.user_metadata?.name}`, 'success');

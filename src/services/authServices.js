@@ -35,7 +35,7 @@ export const signinUser = async (email, password) => {
 };
 
 export const insertProfiles = async (id, name, phone, email) => {
-    const { error } = await supabase
+    const { data, error } = await supabase
         .from('profiles')
         .insert([
             {
@@ -47,4 +47,5 @@ export const insertProfiles = async (id, name, phone, email) => {
         ])
         .select();
     if (error) throw error;
+    return { data, error };
 };
