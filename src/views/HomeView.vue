@@ -87,13 +87,13 @@ onMounted(() => {
                     class="h-full flex justify-center md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <div
-                        class="sm:flex hidden h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
-                        style="background-image: url('/Images/celine.jpg')"
+                        class="h-80 w-80 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
+                        style="background-image: url('/ImagesWebp/celine.webp')"
                     ></div>
-                    <div
+                    <!-- <div
                         class="flex sm:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
                         style="background-image: url('/Images/celine.jpg')"
-                    ></div>
+                    ></div> -->
                 </div>
                 <div class="w-full md:w-1/2 slide-in-right">
                     <p class="md:text-base text-sm text-center">
