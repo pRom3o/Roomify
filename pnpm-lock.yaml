@@ -26,6 +26,9 @@ importers:
       motion:
         specifier: ^12.23.24
         version: 12.23.24
+      nodemailer:
+        specifier: ^7.0.10
+        version: 7.0.10
       pinia:
         specifier: ^3.0.3
         version: 3.0.4(vue@3.5.24)
@@ -1954,6 +1957,10 @@ packages:
 
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
+
+  nodemailer@7.0.10:
+    resolution: {integrity: sha512-Us/Se1WtT0ylXgNFfyFSx4LElllVLJXQjWi2Xz17xWw7amDKO2MLtFnVp1WACy7GkVGs+oBlRopVNUzlrGSw1w==}
+    engines: {node: '>=6.0.0'}
 
   normalize-url@2.0.1:
     resolution: {integrity: sha512-D6MUW4K/VzoJ4rJ01JFKxDrtY1v9wrgzCX5f2qj/lzH1m/lW6MhUZFKerVsnyjOhOsYzI9Kqqak+10l4LvLpMw==}
@@ -4567,6 +4574,8 @@ snapshots:
   nice-try@1.0.5: {}
 
   node-releases@2.0.27: {}
+
+  nodemailer@7.0.10: {}
 
   normalize-url@2.0.1:
     dependencies:
