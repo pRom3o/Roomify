@@ -39,7 +39,7 @@ onMounted(() => {
             <div class="center w-full h-full z-50">
                 <div class="col-center text-center space-y-2">
                     <div class="fade-in space-y-2">
-                        <h1 class="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-medium mb-1">
+                        <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-medium mb-1">
                             Celine's Treats
                         </h1>
                         <h2 class="text-xl md:text-3xl">Simple. Quality. Essential</h2>
@@ -52,7 +52,7 @@ onMounted(() => {
                     </div>
                     <RouterLink
                         to="/shop"
-                        class="px-3 py-1 border border-white/30 rounded-lg hover:text-black backdrop-blur-3xl text-xl md:text-base hover flex items-center hover:bg-[#d0d0d032] gap-1"
+                        class="md:px-3 px-2 py-1 border border-white/30 rounded-lg hover:text-black backdrop-blur-3xl md:text-base hover flex items-center hover:bg-[#d0d0d032] gap-1"
                         >SHOP NOW
                         <span
                             ><svg
@@ -79,20 +79,16 @@ onMounted(() => {
                 About Celine's treats
             </h1>
             <div
-                class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 px-2 h-full"
+                class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 px-1 h-full"
             >
                 <div
-                    class="h-full flex justify-center w-3/4 md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
+                    class="h-full flex justify-center w-full md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <img
                         src="/ImagesWebp/celine-2.webp"
                         alt="CEO"
-                        class="h-80 w-3/4 border rounded-br-3xl rounded-tl-3xl"
+                        class="h-80 w-full border rounded-br-3xl rounded-tl-3xl"
                     />
-                    <!-- <div
-                        class="flex sm:hidden h-60 w-60 border rounded-br-3xl rounded-tl-3xl bg-cover bg-center"
-                        style="background-image: url('/Images/celine.jpg')"
-                    ></div> -->
                 </div>
                 <div class="w-full md:w-1/2 slide-in-right">
                     <p class="md:text-base text-sm text-center">
@@ -114,7 +110,7 @@ onMounted(() => {
             </div>
         </section>
         <div class="col-center w-full min-h-96 primary-bg">
-            <section class="min-h-96 w-full px-3 py-5 md:py-16">
+            <section class="min-h-96 w-full py-5 md:py-16">
                 <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-8">
                     <h2 class="md:text-[2.5rem] text-3xl fade-in font-sans font-medium">
                         Why Choose Us?

@@ -14,7 +14,7 @@
                         class="h-10"
                     />
 
-                    <p class="text-[10px] w-52 font-light pl-3">
+                    <p class="text-[10px] font-light pl-3">
                         Complete your order with awesome flavors from us.
                     </p>
                 </div>

@@ -32,7 +32,7 @@ onMounted(async () => {
         </div>
         <div class="flex flex-col w-full min-h-[640px] p-4" v-if="orders.length > 0">
             <div class="min-h-10 w-full bg-white border border-gray-200 shadow rounded-xl">
-                <h2 class="text-xl p-4">Your Order History</h2>
+                <h2 class="text-2xl p-4 text-center">Your Order History</h2>
                 <hr />
                 <div class="flex items-center justify-between w-full p-3">
                     <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
@@ -89,6 +89,6 @@ onMounted(async () => {
 
 <style scoped>
 hr {
-    color: #cfcdcd;
+    color: #dddddd;
 }
 </style>

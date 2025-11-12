@@ -71,30 +71,32 @@ onMounted(() => {
                 <h1 class="text-6xl font-kanit z-50">Shop</h1>
             </div>
 
-            <ul
-                class="flex items-center gap-3 p-1 bg-[#b7cdfd] border border-blue-500/90 rounded-3xl mb-5"
-            >
-                <li
-                    v-for="item in filters"
-                    :key="item"
-                    :value="item"
-                    class="py-1 px-3 rounded-3xl hover"
-                    :class="
-                        filter === item
-                            ? 'bg-blue-500/90 text-white hover:text-[#333]'
-                            : 'hover:text-blue-500/90'
-                    "
-                    @click="selectFilter(item)"
+            <div class="min-h-10 px-1 text-center">
+                <ul
+                    class="flex flex-wrap items-center jus gap-3 p-1 bg-[#b7cdfd] border border-blue-500/90 rounded-3xl mb-5"
                 >
-                    {{ item }}
-                </li>
-            </ul>
+                    <li
+                        v-for="item in filters"
+                        :key="item"
+                        :value="item"
+                        class="py-1 px-3 rounded-3xl hover"
+                        :class="
+                            filter === item
+                                ? 'bg-blue-500/90 text-white hover:text-[#333]'
+                                : 'hover:text-blue-500/90'
+                        "
+                        @click="selectFilter(item)"
+                    >
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
 
             <div class="min-h-42 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
                 <div class="md:w-[95%] lg:w-[80%] xl:w-[70%] w-full center p-2" v-else>
                     <div
-                        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
                     >
                         <div
                             v-for="items in products"
