@@ -82,7 +82,7 @@ onMounted(() => {
                 class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 px-1 h-full"
             >
                 <div
-                    class="h-full flex justify-center w-full md:w-1/2 transition-transform duration-500 ease-in-out transform hover:scale-105"
+                    class="h-full flex justify-center w-full md:w-[35%] transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <img
                         src="/ImagesWebp/celine-2.webp"
