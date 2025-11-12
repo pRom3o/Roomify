@@ -1,12 +1,16 @@
 <!-- eslint-disable no-undef -->
 <script setup>
 import { ref } from 'vue';
+import { showToast } from '../services/toastServices';
 
 const form = ref(null);
 const userEmail = ref('');
 const userMessage = ref('');
+const loading = ref(false);
+const successMessage = ref('');
 
 async function sendEmail() {
+    loading.value = true;
     const res = await fetch('https://celines-treats.vercel.app/api/send-email', {
         method: 'POST',
         headers: {
@@ -21,15 +25,18 @@ async function sendEmail() {
     });
 
     const data = await res.json();
-    userEmail.value = '';
-    userMessage.value = '';
-    console.log(data);
-    if (data) {
-        alert('Message sent');
+    loading.value = false;
+
+    if (data?.success) {
+        successMessage.value = 'Message sent!';
+        userEmail.value = '';
+        userMessage.value = '';
+        showToast(`${successMessage.value}`, 'success');
+    } else {
+        showToast(`${successMessage.value}`, 'failed');
     }
 }
 </script>
-
 <template>
     <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
         <div
@@ -81,7 +88,13 @@ async function sendEmail() {
                         </div>
                     </div>
                     <div class="w-full flex items-center justify-end py-3 h-[12%]">
-                        <button class="px-8 py-2 btn-2 rounded-md" type="submit">submit</button>
+                        <button
+                            type="submit"
+                            class="px-8 py-2 btn-2 rounded-md"
+                            :disabled="loading"
+                        >
+                            {{ loading ? 'Sending...' : 'Submit' }}
+                        </button>
                     </div>
                     <p class="">Or contact us through any of our socials:</p>
                     <ul class="flex items-center justify-center gap-5 w-[30%]">
