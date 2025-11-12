@@ -21,7 +21,6 @@ const handleSignin = async () => {
         const user = data.user;
         if (!user) throw new Error('No user data returned');
 
-        // Check if profile already exists
         const { data: existingProfile, error: profileError } = await supabase
             .from('profiles')
             .select('id')
@@ -29,17 +28,19 @@ const handleSignin = async () => {
             .maybeSingle();
 
         if (profileError) throw profileError;
+        console.log('profile error', profileError);
 
         // Only insert if missing
         if (!existingProfile) {
-            const { error: insertError } = await insertProfiles(
+            const { error } = await insertProfiles(
                 user.id,
                 user.user_metadata?.name || '',
                 user.user_metadata?.phone || '',
                 user.email || '',
             );
 
-            if (insertError) throw insertError;
+            if (error) throw error;
+            console.log('error from insert', error);
         }
 
         showToast(`Welcome back ${user.user_metadata?.name}`, 'success');
