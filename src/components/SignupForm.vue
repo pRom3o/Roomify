@@ -87,21 +87,21 @@ const handleSignup = async () => {
 
         <div
             id="form"
-            class="col-center w-full md:w-xl py-6 px-3 bg-[#fff] my-10 shadow-md rounded-xl text-center space-y-4"
+            class="col-center w-full md:w-xl py-6 px-3 bg-white my-10 shadow-md rounded-xl text-center space-y-4"
             v-else
         >
             <div class="col-center space-y-1">
                 <div class="mb-3"><EmailIcon /></div>
                 <h1 class="md:text-4xl text-2xl font-light">
-                    Confirmation link sent to your email
+                    Confirmation link sent to your email.
                 </h1>
                 <p class="leading-5 font-light text-sm md:text-base p-text">
                     click the link sent to
-                    <strong>{{ userEmail }} to confirm signup upon login.</strong>
+                    <strong>{{ userEmail }} to confirm your signup before logging in.</strong>
                 </p>
             </div>
 
-            <p class="font-light text-xs">Can't find the email?Check your spam folder</p>
+            <p class="font-light text-xs">Can't find the email? Check your spam folder</p>
         </div>
     </div>
 </template>
