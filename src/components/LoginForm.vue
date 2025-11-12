@@ -26,7 +26,7 @@ const handleSignin = async () => {
             .from('profiles')
             .select('id')
             .eq('id', user.id)
-            .maybeSingle(); // returns null if not found
+            .maybeSingle();
 
         if (profileError) throw profileError;
 
