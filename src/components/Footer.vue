@@ -30,11 +30,13 @@
                     </div>
                     <div class="space-y-1 p-4">
                         <h4 class="md:font-medium md:text-md">Contact</h4>
-                        <RouterLink
-                            to="/contact"
+                        <a
                             class="text-[12px] font-light hover hover:text-blue-500/90"
-                            >Contact Us</RouterLink
+                            href="https://celines-treats.vercel.app/contact"
+                            target="_self"
+                            >Contact us</a
                         >
+
                         <p class="text-[12px] font-light hover:text-blue-500/90">FAQ</p>
                     </div>
 
