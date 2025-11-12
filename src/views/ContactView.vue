@@ -24,7 +24,9 @@ async function sendEmail() {
     userEmail.value = '';
     userMessage.value = '';
     console.log(data);
-    alert('Message sent');
+    if (data) {
+        alert('Message sent');
+    }
 }
 </script>
 
