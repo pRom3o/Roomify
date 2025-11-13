@@ -13,6 +13,10 @@ const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+const toggle = (order) => {
+    order.showDetails = !order.showDetails;
+};
+
 onMounted(async () => {
     await getOrders(user.value.id);
 });
@@ -34,33 +38,69 @@ onMounted(async () => {
             <div class="min-h-10 w-full bg-white border border-gray-200 shadow rounded-xl">
                 <h2 class="text-2xl p-4 text-center">Your Order History</h2>
                 <hr />
-                <div class="flex items-center justify-between w-full p-3">
+                <div class="sm:flex items-center justify-between w-full p-3 hidden">
                     <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Status</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Date</p>
                 </div>
-                <div v-for="order in orders" :key="order.id" class="w-full h-12">
-                    <div class="w-full h-full">
-                        <hr class="" />
-                        <div
-                            class="py-2 flex items-center h-full w-full px-3 justify-between gap-3"
-                        >
-                            <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">
-                                {{ order.id }}
-                            </p>
-                            <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">
-                                ₦{{ order.total_amount.toLocaleString() }}
-                            </p>
 
-                            <p class="w-52 leading-3 text-center">
+                <div
+                    v-for="order in orders"
+                    :key="order.id"
+                    class="mb-2 bg-white shadow-sm overflow-hidden"
+                >
+                    <!-- Header (always visible) -->
+                    <div
+                        class="sm:hidden flex justify-between items-center px-3 py-2 cursor-pointer md:cursor-default"
+                        @click="toggle(order)"
+                    >
+                        <p class="text-sm font-medium truncate">{{ order.id }}</p>
+
+                        <!-- Dropdown Arrow (mobile only) -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-4 h-4 transition-transform duration-200 md:hidden"
+                            :class="{ 'rotate-180': order.showDetails }"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"
+                            />
+                        </svg>
+                    </div>
+
+                    <!-- Expanded Details (mobile only) -->
+                    <transition name="slide">
+                        <div v-if="order.showDetails" class="px-4 pb-3 text-xs sm:hidden space-y-1">
+                            <p>
+                                <span class="text-[14px]">Amount:</span> ₦{{
+                                    order.total_amount.toLocaleString()
+                                }}
+                            </p>
+                            <p class="flex items-center gap-1">
+                                <span class="text-[14px]">Status:</span>
                                 <statusPill :status="capitalizeFirstLetter(order.status)" />
                             </p>
-
-                            <p class="w-52 leading-3 text-center text-[10px] md:text-xs lg:text-sm">
-                                {{ order.created_at }}
-                            </p>
+                            <p><span class="text-[14px]">Date: </span>{{ order.created_at }}</p>
                         </div>
+                    </transition>
+
+                    <!-- Full row view for medium+ screens -->
+                    <div
+                        class="hidden sm:flex items-center justify-between py-2 px-3 text-xs lg:text-sm"
+                    >
+                        <p class="w-52 text-center truncate">{{ order.id }}</p>
+                        <p class="w-52 text-center">₦{{ order.total_amount.toLocaleString() }}</p>
+                        <p class="w-52 text-center">
+                            <statusPill :status="capitalizeFirstLetter(order.status)" />
+                        </p>
+                        <p class="w-52 text-center">{{ order.created_at }}</p>
                     </div>
                 </div>
             </div>
@@ -90,5 +130,21 @@ onMounted(async () => {
 <style scoped>
 hr {
     color: #dddddd;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.slide-enter-from,
+.slide-leave-to {
+    max-height: 0;
+    opacity: 0;
+}
+.slide-enter-to,
+.slide-leave-from {
+    max-height: 100px;
+    opacity: 1;
 }
 </style>

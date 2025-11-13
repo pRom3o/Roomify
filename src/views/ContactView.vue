@@ -38,12 +38,12 @@ async function sendEmail() {
 }
 </script>
 <template>
-    <div class="w-full min-h-screen center primary-bg md:px-16 px-8 text-[#424242]">
+    <div class="w-full min-h-screen center primary-bg md:px-16 px-2 text-[#424242]">
         <div
-            class="center w-full lg:w-[90%] p-6 bg-white shadow rounded-xl lg:mt-20 mt-20 lg:mb-10"
+            class="center w-full lg:w-[90%] md:p-6 p-3 bg-white shadow rounded-xl lg:mt-20 mt-20 lg:mb-10"
         >
             <div
-                class="lg:w-[85%] h-full w-full md:flex items-center justify-between sm:col-center py-2 lg:space-x-5 gap-4"
+                class="lg:w-[85%] h-full w-full sm:flex items-center justify-between sm:col-center py-2 lg:space-x-5 gap-4"
             >
                 <div
                     class="h-[30%] md:h-full col-center text-center w-full lg:w-[50%] md:mb-0 mb-5"
@@ -54,14 +54,14 @@ async function sendEmail() {
                     <p class="font-light text-[12px]">
                         <i>If you have any inquires, please use the contact form...</i>
                     </p>
-                    <img src="/Images/contact-us.png" alt="contact" class="md:flex hidden" />
+                    <img src="/Images/contact-us.png" alt="contact" class="sm:flex hidden" />
                 </div>
 
-                <div class="vertical-line md:flex hidden"></div>
+                <div class="vertical-line sm:flex hidden"></div>
                 <form
                     ref="form"
                     @submit.prevent="sendEmail"
-                    class="flex flex-col items-center space-y-5 md:h-[70%] h-[70%] lg:w-[50%] md:w-full w-full"
+                    class="flex flex-col items-center space-y-5 md:h-[70%] h-[70%] lg:w-[50%] w-full"
                 >
                     <div class="col-center w-full h-[88%] space-y-5">
                         <div class="flex flex-col w-full">
@@ -96,7 +96,7 @@ async function sendEmail() {
                             {{ loading ? 'Sending...' : 'Submit' }}
                         </button>
                     </div>
-                    <p class="">Or contact us through any of our socials:</p>
+                    <p class="text-center w-full">Or contact us through any of our socials:</p>
                     <ul class="flex items-center justify-center gap-5 w-[30%]">
                         <li class="col-center text-sm">
                             <a

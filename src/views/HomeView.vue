@@ -79,10 +79,10 @@ onMounted(() => {
                 About Celine's treats
             </h1>
             <div
-                class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 px-1 h-full"
+                class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 h-full"
             >
                 <div
-                    class="h-full flex justify-center w-full md:w-[35%] transition-transform duration-500 ease-in-out transform hover:scale-105"
+                    class="h-full flex justify-center w-[80%] sm:w-[50%] md:w-[35%] transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <img
                         src="/ImagesWebp/celine-2.webp"
@@ -110,9 +110,9 @@ onMounted(() => {
             </div>
         </section>
         <div class="col-center w-full min-h-96 primary-bg">
-            <section class="min-h-96 w-full py-5 md:py-16">
+            <section class="min-h-96 w-full py-5 md:py-16 px-1">
                 <div class="col-center h-full md:p-5 md:py-0 px-0 py-5 space-y-8">
-                    <h2 class="md:text-[2.5rem] text-3xl fade-in font-sans font-medium">
+                    <h2 class="sm:text-[2.5rem] text-2xl fade-in font-sans font-medium">
                         Why Choose Us?
                     </h2>
                     <section class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
@@ -222,9 +222,9 @@ onMounted(() => {
                 </div>
             </section>
 
-            <section class="min-h-92 w-full px-3 center py-5 md:py-10 secondary-bg">
-                <div class="col-center w-full lg:w-[80%] 2xl:w-[70%] h-full space-y-5 p-2">
-                    <h3 class="md:text-[2.5rem] text-3xl font-medium text-center font-sans">
+            <section class="min-h-92 w-full center py-5 md:py-10 secondary-bg">
+                <div class="col-center w-full lg:w-[90%] xl:w-[80%] h-full space-y-5 p-2">
+                    <h3 class="sm:text-[2.5rem] text-2xl font-medium text-center font-sans">
                         Featured Products
                     </h3>
                     <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 w-full">

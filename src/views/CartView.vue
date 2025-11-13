@@ -66,16 +66,9 @@ onMounted(async () => {
                 class="flex flex-col gap-5 items-center w-full sm:w-[80%] px-2 border border-gray-200 bg-[#ffffff] shadow py-2 rounded-2xl"
             >
                 <div
-                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex items-center justify-between rounded-xl w-full bg-blue-500/90 gap-2 text-white"
+                    class="px-2 lg:px-6 py-2 border border-gray-400/10 flex rounded-xl w-full bg-blue-500/90 text-white"
                 >
-                    <p class="sm:w-1/2 w-[42%] text-sm md:text-base">Product</p>
-                    <div
-                        class="flex sm:w-1/2 w-[58%] items-center justify-between text-[12px] lg:text-base pr-3"
-                    >
-                        <p class="">Price</p>
-                        <p>Quantity</p>
-                        <p>Subtotal</p>
-                    </div>
+                    <h2 class="w-full text-center">Your Items</h2>
                 </div>
                 <transition-group
                     tag="ul"
@@ -85,60 +78,54 @@ onMounted(async () => {
                     v-if="cartStore.cartCount > 0"
                 >
                     <li
-                        class="flex items-center justify-between w-full rounded-4xl bg-[#f2f6ff] h-14 gap-2 py-2 px-2"
+                        class="flex flex-col sm:flex-row items-center sm:justify-between w-full rounded-2xl bg-[#f2f6ff] p-3 gap-3"
                         v-for="items in cartStore.userCart"
                         :key="items.id"
                     >
-                        <div class="w-1/2 flex items-center justify-items-start gap-3">
-                            <div
-                                class="md:h-12 md:w-12 h-10 w-8 rounded-full items-center relative"
-                            >
+                        <!-- Product -->
+                        <div class="flex items-center w-full sm:w-1/2 gap-3">
+                            <div class="h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden">
                                 <img
                                     :src="items.img"
                                     alt="img"
-                                    class="h-full w-full rounded-full absolute inset-0"
+                                    class="h-full w-full object-cover rounded-full"
                                 />
                             </div>
-                            <div class="flex flex-col">
-                                <p class="md:text-[12px] lg:text-base text-[12px] md:font-light">
-                                    {{ items.item_name }}
-                                </p>
-                            </div>
+                            <p class="text-sm md:text-base truncate">{{ items.item_name }}</p>
                         </div>
+
+                        <!-- Details -->
                         <div
-                            class="w-1/2 flex items-center justify-evenly sm:justify-around md:justify-evenly md:gap-0 gap-3 md:text-base text-[9px]"
+                            class="flex flex-wrap sm:flex-nowrap items-center justify-evenly w-full sm:w-1/2 text-xs md:text-sm gap-3"
                         >
-                            <p class="lg:text-base md:text-[12px] text-[11px]">
-                                ₦{{ items.item_price.toLocaleString() }}
-                            </p>
-                            <div
-                                class="flex items-center gap-1 md:gap-2 lg:gap-5 md:px-3 rounded-2xl text-base"
-                            >
+                            <p>₦{{ items.item_price.toLocaleString() }}</p>
+
+                            <div class="flex items-center gap-2">
                                 <button
-                                    class="hover hover:bg-red-100 bg-red-200 text-red-400 p-1 rounded-full"
+                                    class="bg-red-200 text-red-500 p-1 rounded-full hover:bg-red-100"
                                     @click="handleUpdate(items.id, items.quantity - 1)"
                                 >
                                     <IconDash />
                                 </button>
-                                <p
-                                    class="hover py-1 px-2 rounded-full bg-green-200 text-xs md:text-sm text-green-800"
+                                <span
+                                    class="bg-green-200 text-green-800 px-2 py-1 rounded-full text-xs md:text-sm"
                                 >
                                     {{ items.quantity }}
-                                </p>
+                                </span>
                                 <button
-                                    class="hover hover:bg-blue-100 bg-blue-200 text-blue-400 p-1 rounded-full"
+                                    class="bg-blue-200 text-blue-500 p-1 rounded-full hover:bg-blue-100"
                                     @click="handleUpdate(items.id, items.quantity + 1)"
                                 >
                                     <IconPlus />
                                 </button>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <p class="lg:text-base md:text-[12px] text-[11px] px-1">
+
+                            <p class="whitespace-nowrap">
                                 ₦{{ (items.item_price * items.quantity).toLocaleString() }}
                             </p>
+
                             <button
-                                class="text-red-600 p-1 rounded-full bg-red-300 hover hover:bg-red-200"
+                                class="bg-red-200 text-red-600 p-1 rounded-full hover:bg-red-100"
                                 @click="handleDelete(items.id)"
                             >
                                 <IconX2 />

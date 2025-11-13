@@ -14,6 +14,7 @@ onMounted(async () => {
     const { data } = await supabase.auth.getSession();
     if (data.session) {
         user.value = data.session.user;
+        console.log(user.value);
     }
     cartStore.fetchCart(user.value.id);
 
