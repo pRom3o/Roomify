@@ -16,7 +16,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-full min-h-8 py-2 center shadow-lg font-kanit fixed top-0 z-99 bg-[#f4f4f4]">
+    <div
+        class="w-full md:min-h-8 min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-99 bg-[#f4f4f4]"
+    >
         <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4">
             <button class="h-full w-5 md:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
