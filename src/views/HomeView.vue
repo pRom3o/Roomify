@@ -82,7 +82,7 @@ onMounted(() => {
                 class="flex md:flex-row gap-5 flex-col items-center justify-evenly space-y-4 w-full lg:w-[80%] xl:w-[70%] py-4 h-full"
             >
                 <div
-                    class="h-full flex justify-center w-[80%] sm:w-[50%] md:w-[35%] transition-transform duration-500 ease-in-out transform hover:scale-105"
+                    class="h-full flex justify-center w-[70%] sm:w-[50%] md:w-[35%] transition-transform duration-500 ease-in-out transform hover:scale-105"
                 >
                     <img
                         src="/ImagesWebp/celine-2.webp"
@@ -118,7 +118,7 @@ onMounted(() => {
                     <section class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                         <div
                             id="trd"
-                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
+                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[380px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
                         >
                             <div
                                 class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6] hover:text-blue-100"
@@ -151,7 +151,7 @@ onMounted(() => {
                             </div>
                         </div>
                         <div
-                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] hover md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 hover:bg-white hover:text-neutral-600 text-white"
+                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[380px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards bg-blue-400 hover:bg-white hover:text-neutral-600 text-white"
                             id="sec"
                         >
                             <div
@@ -186,7 +186,7 @@ onMounted(() => {
                         </div>
                         <div
                             id="trd"
-                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[350px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
+                            class="h-72 flex flex-col justify-between items-center space-y-5 max-w-[380px] md:max-w-[320px] px-2 py-4 text-center shadow-xs rounded-2xl fade-in prod-cards"
                         >
                             <div
                                 class="group h-24 w-24 rounded-full flex items-center justify-center bg-blue-100 hover:bg-[#3B82F6E6] transition-transform duration-700 hover:scale-x-[-1] text-[#3B82F6E6]"
@@ -223,7 +223,7 @@ onMounted(() => {
             </section>
 
             <section class="min-h-92 w-full center py-5 md:py-10 secondary-bg">
-                <div class="col-center w-full lg:w-[90%] xl:w-[80%] h-full space-y-5 p-2">
+                <div class="col-center sm:w-[90%] xl:w-[80%] h-full space-y-5 p-2">
                     <h3 class="sm:text-[2.5rem] text-2xl font-medium text-center font-sans">
                         Featured Products
                     </h3>
