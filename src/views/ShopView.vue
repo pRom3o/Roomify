@@ -94,7 +94,7 @@ onMounted(() => {
 
             <div class="min-h-42 w-full flex flex-col items-center justify-center gap-6">
                 <loadingScreen v-if="isLoading" />
-                <div class="md:w-[95%] lg:w-[80%] xl:w-[70%] w-full center p-2" v-else>
+                <div class="md:w-[95%] lg:w-[80%] xl:w-[70%] w-[88%] center p-2" v-else>
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full md:gap-6 gap-3"
                     >

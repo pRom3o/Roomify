@@ -5,6 +5,9 @@ import { userEmail, userPassword, signinUser, insertProfiles } from '../services
 import LoadingIcon from '/public/icons/LoadingIcon.vue';
 import { ref } from 'vue';
 import { supabase } from '../lib/supabaseClient';
+import { useUserStore } from '../store/user';
+
+const userStore = useUserStore();
 const emit = defineEmits(['switch-form']);
 
 const router = useRouter();
@@ -44,8 +47,23 @@ const handleSignin = async () => {
             console.log('data from insert', data);
         }
 
-        showToast(`Welcome back ${user.user_metadata?.name}`, 'success');
-        router.push('/');
+        const { data: profile, error: errorProfile } = await supabase
+            .from('profiles')
+            .select('is_admin')
+            .eq('id', user.id)
+            .single();
+
+        if (errorProfile) throw errorProfile;
+        userStore.user = user;
+        userStore.isAdmin = profile?.is_admin || false;
+        console.log('profile: ', profile);
+        console.log('admin status: ', userStore.isAdmin);
+        if (!userStore.isAdmin) {
+            router.push('/');
+            showToast(`Welcome back ${user.user_metadata?.name}`, 'success');
+        }
+        showToast(`Welcome back Admin`, 'success');
+        router.push('/admin');
     } catch (error) {
         console.error(error);
         showToast(error.message || 'Something went wrong', 'failed');

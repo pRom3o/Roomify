@@ -4,7 +4,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
 import AuthView from '@/views/auth/AuthView.vue';
 import AdminLayout from '../layouts/AdminLayout.vue';
-// import { useUserStore } from '../store/user';
+import { useUserStore } from '../store/user';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,22 +54,27 @@ const router = createRouter({
             path: '/admin',
             component: AdminLayout,
             children: [
-                { path: '', name: 'admin', component: () => import('@/views/AdminDashboard.vue') },
+                {
+                    path: '',
+                    name: 'admin',
+                    component: () => import('@/views/AdminDashboard.vue'),
+                    meta: { requiresAdmin: true },
+                },
             ],
         },
     ],
 });
-// router.beforeEach(async (to) => {
-//     const userStore = useUserStore();
 
-//     // Wait to get current user if not already loaded
-//     if (userStore.user === null) {
-//         await userStore.getUser();
-//     }
+router.beforeEach(async (to, from, next) => {
+    const userStore = useUserStore();
+    await userStore.getUser();
+    await userStore.getUserRole();
 
-//     // Redirect if not logged in
-//     if (!userStore.user && to.name !== 'auth') {
-//         return { name: 'auth' };
-//     }
-// });
+    if (to.meta.requiresAdmin && !userStore.isAdmin) {
+        return next('/');
+    }
+
+    next();
+});
+
 export default router;
