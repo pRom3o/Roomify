@@ -1,11 +1,12 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <g
             fill="none"
-            stroke="currentColor"
+            stroke="#3B82F6E6"
             stroke-linecap="round"
             stroke-linejoin="round"
-            stroke-width="1.5"
+            stroke-width="2"
         >
             <path d="M7 6a3 3 0 1 0 6 0" />
             <path

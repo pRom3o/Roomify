@@ -1,11 +1,11 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
-import { inject } from 'vue';
-import { orders, getOrders } from '../services/orderServices';
-import statusPill from '../components/statusPill.vue';
-import { onMounted } from 'vue';
+import { useAdminStore } from '../../store/admin';
 
-const auth = inject('auth');
-const user = auth.user;
+import statusPill from '../../components/statusPill.vue';
+
+const adminStore = useAdminStore();
+
 const capitalizeFirstLetter = (str) => {
     if (typeof str !== 'string' || str.length === 0) {
         return str;
@@ -16,38 +16,20 @@ const capitalizeFirstLetter = (str) => {
 const toggle = (order) => {
     order.showDetails = !order.showDetails;
 };
-
-onMounted(async () => {
-    await getOrders(user.value.id);
-});
 </script>
 
 <template>
-    <div class="col-center w-full primary-bg pt-12 space-y-10">
-        <div
-            class="center relative h-40 w-full col-center text-white bg-cover"
-            style="background-image: url('/ImagesWebp/bg-img.webp')"
-        >
-            <div class="inset-0 absolute bg-black/30 z-10"></div>
-            <div class="col-center z-50">
-                <h1 class="text-6xl">My Orders</h1>
-            </div>
-        </div>
-        <div class="flex flex-col w-full min-h-[640px] p-4" v-if="orders.length > 0">
-            <div class="min-h-10 w-full bg-white border border-gray-200 shadow rounded-xl">
-                <h2 class="text-2xl p-4 text-center">Your Order History</h2>
-                <hr />
-                <div class="sm:flex items-center justify-between w-full p-3 hidden">
-                    <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
-                    <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
-                    <p class="w-52 text-center text-xs lg:text-sm">Status</p>
-                    <p class="w-52 text-center text-xs lg:text-sm">Date</p>
+    <div class="flex flex-col">
+        <div class="flex flex-col w-full min-h-[640px] p-4" v-if="adminStore.allOrders.length > 0">
+            <div class="min-h-10 w-full bg-white border border-gray-200 shadow">
+                <div class="w-full p-3">
+                    <p class="text-center text-sm">Orders History</p>
                 </div>
-
+                <hr class="text-[#707070]" />
                 <div
-                    v-for="order in orders"
+                    v-for="order in adminStore.allOrders"
                     :key="order.id"
-                    class="mb-2 bg-white shadow-sm overflow-hidden"
+                    class="mb-2 bg-white shadow-sm overflow-hidden w-full"
                 >
                     <!-- Header (always visible) -->
                     <div
@@ -104,46 +86,5 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
-        <div class="w-full col-center min-h-[379px]" v-else>
-            <p>No orders yet — check out our store to place your first order.</p>
-            <button class="center border-b gap-1 text-neutral-700 hover hover:text-neutral-500">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentcolor"
-                    class="bi bi-arrow-left"
-                    viewBox="0 0 16 16"
-                >
-                    <path
-                        fill-rule="evenodd"
-                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
-                    />
-                </svg>
-                <RouterLink to="/shop">Shop</RouterLink>
-            </button>
-        </div>
     </div>
 </template>
-
-<style scoped>
-hr {
-    color: #dddddd;
-}
-
-.slide-enter-active,
-.slide-leave-active {
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-.slide-enter-from,
-.slide-leave-to {
-    max-height: 0;
-    opacity: 0;
-}
-.slide-enter-to,
-.slide-leave-from {
-    max-height: 100px;
-    opacity: 1;
-}
-</style>

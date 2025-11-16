@@ -5,7 +5,15 @@ import userProvider from './components/provider/userProvider.vue';
 import Toast from './components/Toast.vue';
 import { supabase } from './lib/supabaseClient';
 import { useCartStore } from '@/store/cart';
+import { useAdminStore } from './store/admin';
 
+const adminStore = useAdminStore();
+
+onMounted(async () => {
+    await adminStore.fetchProfiles();
+    await adminStore.fetchOrders();
+    await adminStore.fetchProducts();
+});
 const user = ref(null);
 
 onMounted(async () => {

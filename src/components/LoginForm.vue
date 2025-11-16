@@ -60,9 +60,8 @@ const handleSignin = async () => {
         console.log('admin status: ', userStore.isAdmin);
         if (!userStore.isAdmin) {
             router.push('/');
-            showToast(`Welcome back ${user.user_metadata?.name}`, 'success');
         }
-        showToast(`Welcome back Admin`, 'success');
+        showToast(`Welcome back ${user.user_metadata?.name}`, 'success');
         router.push('/admin');
     } catch (error) {
         console.error(error);

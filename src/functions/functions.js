@@ -9,6 +9,7 @@ export const switchIcon = () => {
 export const sideNav = ref(false);
 export const openSideNav = () => {
     sideNav.value = !sideNav.value;
+    console.log(sideNav.value);
 };
 
 export const isMobile = ref(window.innerWidth < 640); // sm breakpoint
