@@ -116,3 +116,7 @@ button {
 .router-link-exact-active {
     border-bottom: 2px solid #3b82f6e6;
 }
+
+/* .router-link-exact-active {
+  @apply bg-linear-to-br from-blue-400 to-blue-50 rounded-xl text-[#3b82f6] px-3 py-3;
+} */

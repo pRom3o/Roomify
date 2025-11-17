@@ -21,10 +21,10 @@ watch(
 
 <template>
     <aside
-        class="min-h-full bg-white transition-all border-r border-gray-200 duration-300 shrink-0 sm:flex w-10% flex-col hidden"
+        class="min-h-full bg-white transition-all border-r border-gray-200 duration-300 shrink-0 sm:flex min-w-[12%] flex-col hidden"
     >
         <!-- Logo -->
-        <div class="h-10 w-full center border-b border-gray-200">
+        <div class="h-14 w-full center">
             <div class="">
                 <h2 class="font-medium">
                     <RouterLink to="/">
@@ -39,41 +39,45 @@ watch(
         </div>
 
         <!-- Links -->
-        <div class="w-full">
-            <div class="flex items-center gap-3 py-3 px-4 w-full">
+        <div class="w-full p-2">
+            <RouterLink
+                to="/admin"
+                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+            >
                 <homeIcon class="shrink-0" />
-                <RouterLink to="/admin" class="transition-opacity duration-300">
-                    Dashboard
-                </RouterLink>
-            </div>
+                Dashboard
+            </RouterLink>
 
-            <div class="flex items-center gap-3 py-3 px-4 w-full">
+            <RouterLink
+                to="/admin/Orders"
+                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+            >
                 <ordersIcon class="shrink-0" />
-                <RouterLink to="/admin/Orders" class="transition-opacity duration-300">
-                    Orders
-                </RouterLink>
-            </div>
+                Orders
+            </RouterLink>
 
-            <div class="flex items-center gap-3 py-3 px-4 w-full">
+            <RouterLink
+                to="/admin/products"
+                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+            >
                 <productsIcon class="shrink-0" />
-                <RouterLink to="/admin/products" class="transition-opacity duration-300">
-                    Products
-                </RouterLink>
-            </div>
+                Products
+            </RouterLink>
 
-            <div class="flex items-center gap-3 py-3 px-4 w-full">
+            <RouterLink
+                to="/admin/users"
+                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+            >
                 <userIcon class="shrink-0" />
-                <RouterLink to="/admin/users" class="transition-opacity duration-300">
-                    Users
-                </RouterLink>
-            </div>
-
-            <div class="flex items-center gap-3 py-3 px-4 w-full">
+                Users
+            </RouterLink>
+            <RouterLink
+                to="/admin/messages"
+                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+            >
                 <messageIcon class="shrink-0" />
-                <RouterLink to="/admin/messages" class="transition-opacity duration-300">
-                    Messages
-                </RouterLink>
-            </div>
+                Messages
+            </RouterLink>
         </div>
     </aside>
     <aside
@@ -101,40 +105,45 @@ watch(
 
             <!-- Links -->
             <div class="w-full">
-                <div class="flex items-center gap-3 py-3 px-4 w-full">
+                <RouterLink
+                    to="/admin"
+                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                >
                     <homeIcon class="shrink-0" />
-                    <RouterLink to="/admin" class="transition-opacity duration-300">
-                        Dashboard
-                    </RouterLink>
-                </div>
+                    Dashboard
+                </RouterLink>
 
-                <div class="flex items-center gap-3 py-3 px-4 w-full">
+                <RouterLink
+                    to="/admin/Orders"
+                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                >
                     <ordersIcon class="shrink-0" />
-                    <RouterLink to="/admin/Orders" class="transition-opacity duration-300">
-                        Orders
-                    </RouterLink>
-                </div>
+                    Orders
+                </RouterLink>
 
-                <div class="flex items-center gap-3 py-3 px-4 w-full">
+                <RouterLink
+                    to="/admin/products"
+                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                >
                     <productsIcon class="shrink-0" />
-                    <RouterLink to="/admin/products" class="transition-opacity duration-300">
-                        Products
-                    </RouterLink>
-                </div>
+                    Products
+                </RouterLink>
 
-                <div class="flex items-center gap-3 py-3 px-4 w-full">
+                <RouterLink
+                    to="/admin/users"
+                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                >
                     <userIcon class="shrink-0" />
-                    <RouterLink to="/admin/users" class="transition-opacity duration-300">
-                        Users
-                    </RouterLink>
-                </div>
+                    Users
+                </RouterLink>
 
-                <div class="flex items-center gap-3 py-3 px-4 w-full">
+                <RouterLink
+                    to="/admin/messages"
+                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                >
                     <messageIcon class="shrink-0" />
-                    <RouterLink to="/admin/messages" class="transition-opacity duration-300">
-                        Messages
-                    </RouterLink>
-                </div>
+                    Messages
+                </RouterLink>
             </div>
         </div>
     </aside>

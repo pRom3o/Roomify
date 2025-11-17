@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { useAdminStore } from '../../store/admin';
-
 import statusPill from '../../components/statusPill.vue';
+import deliveryStatus from '../../components/deliveryStatus.vue';
 
 const adminStore = useAdminStore();
 
@@ -16,29 +16,34 @@ const capitalizeFirstLetter = (str) => {
 const toggle = (order) => {
     order.showDetails = !order.showDetails;
 };
+
+const deliveryOptions = ['Pending', 'Shipped', 'Delivered'];
+
+const handleDeliveryChange = async (orderId, newStatus) => {
+    await adminStore.updateDeliveryStatus(orderId, newStatus);
+};
 </script>
 
 <template>
-    <div class="flex flex-col">
-        <div class="flex flex-col w-full min-h-[640px] p-4" v-if="adminStore.allOrders.length > 0">
+    <div class="flex flex-col w-full">
+        <div class="flex flex-col w-full p-4" v-if="adminStore.allOrders.length > 0">
             <div class="min-h-10 w-full bg-white border border-gray-200 shadow">
-                <div class="w-full p-3">
+                <div class="w-full p-3 border-b border-gray-200">
                     <p class="text-center text-sm">Orders History</p>
                 </div>
-                <hr class="text-[#707070]" />
+
                 <div
                     v-for="order in adminStore.allOrders"
                     :key="order.id"
-                    class="mb-2 bg-white shadow-sm overflow-hidden w-full"
+                    class="mb-2 bg-white shadow-sm w-full overflow-hidden"
                 >
-                    <!-- Header (always visible) -->
+                    <!-- Mobile accordion -->
                     <div
-                        class="sm:hidden flex justify-between items-center px-3 py-2 cursor-pointer md:cursor-default"
+                        class="sm:hidden flex justify-between items-center px-3 py-2 cursor-pointer"
                         @click="toggle(order)"
                     >
                         <p class="text-sm font-medium truncate">{{ order.id }}</p>
 
-                        <!-- Dropdown Arrow (mobile only) -->
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="w-4 h-4 transition-transform duration-200 md:hidden"
@@ -56,32 +61,48 @@ const toggle = (order) => {
                         </svg>
                     </div>
 
-                    <!-- Expanded Details (mobile only) -->
                     <transition name="slide">
                         <div v-if="order.showDetails" class="px-4 pb-3 text-xs sm:hidden space-y-1">
                             <p>
-                                <span class="text-[14px]">Amount:</span> ₦{{
-                                    order.total_amount.toLocaleString()
-                                }}
+                                <span class="text-[14px]">Amount:</span>
+                                ₦{{ order.total_amount.toLocaleString() }}
                             </p>
                             <p class="flex items-center gap-1">
-                                <span class="text-[14px]">Status:</span>
+                                <span class="text-[14px]">Payment Status:</span>
                                 <statusPill :status="capitalizeFirstLetter(order.status)" />
                             </p>
-                            <p><span class="text-[14px]">Date: </span>{{ order.created_at }}</p>
+                            <p class="flex items-center gap-1">
+                                <span class="text-[14px]">Delivery Status:</span>
+                                <deliveryStatus
+                                    :model-value="order.delivery_status"
+                                    :options="deliveryOptions"
+                                    :loading="order.updating"
+                                    @update:modelValue="handleDeliveryChange(order.id, $event)"
+                                />
+                            </p>
                         </div>
                     </transition>
 
-                    <!-- Full row view for medium+ screens -->
+                    <!-- Desktop row -->
                     <div
-                        class="hidden sm:flex items-center justify-between py-2 px-3 text-xs lg:text-sm"
+                        class="hidden sm:grid grid-cols-5 items-center py-2 px-3 text-xs lg:text-sm gap-2"
                     >
-                        <p class="w-52 text-center truncate">{{ order.id }}</p>
-                        <p class="w-52 text-center">₦{{ order.total_amount.toLocaleString() }}</p>
-                        <p class="w-52 text-center">
+                        <p class="truncate text-center">{{ order.id }}</p>
+                        <p class="truncate text-center">
+                            ₦{{ order.total_amount.toLocaleString() }}
+                        </p>
+                        <p class="text-center">
                             <statusPill :status="capitalizeFirstLetter(order.status)" />
                         </p>
-                        <p class="w-52 text-center">{{ order.created_at }}</p>
+                        <p class="text-center">
+                            <deliveryStatus
+                                :model-value="order.delivery_status"
+                                :options="deliveryOptions"
+                                :loading="order.updating"
+                                @update:modelValue="handleDeliveryChange(order.id, $event)"
+                            />
+                        </p>
+                        <p class="truncate text-center">{{ order.created_at }}</p>
                     </div>
                 </div>
             </div>

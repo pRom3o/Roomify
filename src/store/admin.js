@@ -22,6 +22,11 @@ export const useAdminStore = defineStore('admin', () => {
         if (data) {
             allOrders.value = data;
             console.log('orders: ', allOrders.value);
+            allOrders.value = data.map((o) => ({
+                ...o,
+                showDetails: false,
+                updating: false,
+            }));
         } else {
             if (error) throw error;
         }
@@ -45,7 +50,27 @@ export const useAdminStore = defineStore('admin', () => {
     const pending = computed(() => allOrders.value.filter((o) => o.status === 'pending'));
     const completed = computed(() => allOrders.value.filter((o) => o.status === 'paid'));
 
+    const updateDeliveryStatus = async (orderId, newStatus) => {
+        const order = allOrders.value.find((o) => o.id === orderId);
+        if (order) order.updating = true;
+
+        const { error } = await supabase
+            .from('orders')
+            .update({ delivery_status: newStatus })
+            .eq('id', orderId);
+
+        if (error) {
+            console.error('Delivery update failed:', error);
+            if (order) order.updating = false;
+            return false;
+        }
+
+        await fetchOrders();
+        return true;
+    };
+
     return {
+        updateDeliveryStatus,
         profiles,
         fetchProfiles,
         allOrders,

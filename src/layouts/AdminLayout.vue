@@ -19,7 +19,8 @@ watch(
         <adminNav />
         <div class="flex flex-col flex-1 min-h-screen w-[90%]">
             <!-- header -->
-            <header class="h-10 w-full border-b border-gray-200 bg-white flex">
+            <header class="h-14 w-full border-b border-gray-200 bg-white flex justify-between">
+                <div class="h-1 sm:flex hidden w-1/2"></div>
                 <button class="flex sm:hidden items-center pl-2 text-black" @click="openSideNav">
                     <svg
                         width="30"
@@ -35,12 +36,10 @@ watch(
                         ></path>
                     </svg>
                 </button>
-                <div class="flex items-center h-full gap-2 px-3">
+                <div class="flex justify-end items-center h-full gap-2 px-3 w-1/2">
+                    <h3 class="text-sm">Ayorinde Celine</h3>
+
                     <div class="h-7 w-7 bg-gray-300 rounded-full"></div>
-                    <div class="flex-col">
-                        <p class="font-light text-[10px]">Welcome</p>
-                        <h3 class="text-sm">Ayorinde, CELINE</h3>
-                    </div>
                 </div>
             </header>
 

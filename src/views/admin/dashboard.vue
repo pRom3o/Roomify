@@ -1,7 +1,9 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { useAdminStore } from '../../store/admin';
 import statusPill from '../../components/statusPill.vue';
 import adminGrids from '../../components/adminGrids.vue';
+import IconLeft from '../../../public/icons/IconLeft.vue';
 
 const adminStore = useAdminStore();
 
@@ -12,33 +14,42 @@ const capitalizeFirstLetter = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+const dashOrders = adminStore.allOrders.splice(0, 5);
+
 const toggle = (order) => {
     order.showDetails = !order.showDetails;
 };
 </script>
 
 <template>
-    <div class="w-full min-h-screen flex flex-col flex-1">
-        <div class="w-full px-3 pt-2">
-            <h1 class="text-sm">Hi, Celine</h1>
-            <p class="text-[12px] text-[#4c4c4c]">Welcome back to celine's treats dashboard.</p>
+    <div class="w-full min-h-screen flex flex-col flex-1 p-3 space-y-5">
+        <div
+            class="w-full px-3 md:pl-10 py-3 min-h-34 bg-linear-to-br flex items-center justify-between from-blue-500 to-blue-100 rounded-xl text-white shadow"
+        >
+            <div>
+                <h1 class="sm:text-5xl text-3xl">Hi, Celine</h1>
+                <p class="text-[#4c4c4c] sm:text-sm text-xs">
+                    Welcome back to celine's treats dashboard.
+                </p>
+            </div>
+            <div class="h-full">
+                <img src="/Images/Welcome-rafiki.svg" alt="" class="h-full" />
+            </div>
         </div>
 
         <div class="w-full center font-sans">
             <adminGrids />
         </div>
 
-        <div class="w-full min-h-10 px-4">
-            <div class="flex flex-col w-full" v-if="adminStore.allOrders.length > 0">
-                <div class="min-h-10 w-full bg-white border border-gray-200 shadow">
-                    <div class="w-full p-3">
+        <div class="w-full min-h-10">
+            <div class="flex flex-col w-full" v-if="dashOrders.length > 0">
+                <div class="min-h-10 w-full bg-white shadow rounded-xl">
+                    <div class="w-full p-3 border-b border-gray-200">
                         <p class="text-center text-sm">Orders History</p>
                     </div>
 
-                    <hr class="text-[#707070]" />
-
                     <div
-                        v-for="order in adminStore.allOrders"
+                        v-for="order in dashOrders"
                         :key="order.id"
                         class="mb-2 bg-white shadow-sm w-full"
                     >
@@ -75,11 +86,6 @@ const toggle = (order) => {
                                     <span class="text-[14px]">Amount:</span>
                                     ₦{{ order.total_amount.toLocaleString() }}
                                 </p>
-                                <p class="flex items-center gap-1">
-                                    <span class="text-[14px]">Status:</span>
-                                    <statusPill :status="capitalizeFirstLetter(order.status)" />
-                                </p>
-                                <p><span class="text-[14px]">Date: </span>{{ order.created_at }}</p>
                             </div>
                         </transition>
 
@@ -97,6 +103,9 @@ const toggle = (order) => {
                             <p class="text-center truncate">{{ order.created_at }}</p>
                         </div>
                     </div>
+                    <RouterLink class="flex center w-full gap-1" to="/admin/Orders"
+                        ><IconLeft /><i>View all orders</i>
+                    </RouterLink>
                 </div>
             </div>
         </div>
