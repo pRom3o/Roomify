@@ -21,6 +21,7 @@ const deliveryOptions = ['Pending', 'Shipped', 'Delivered'];
 
 const handleDeliveryChange = async (orderId, newStatus) => {
     await adminStore.updateDeliveryStatus(orderId, newStatus);
+    console.log('a', adminStore.allOrders);
 };
 </script>
 
@@ -63,15 +64,15 @@ const handleDeliveryChange = async (orderId, newStatus) => {
 
                     <transition name="slide">
                         <div v-if="order.showDetails" class="px-4 pb-3 text-xs sm:hidden space-y-1">
-                            <p>
+                            <p class="flex items-center justify-between">
                                 <span class="text-[14px]">Amount:</span>
                                 ₦{{ order.total_amount.toLocaleString() }}
                             </p>
-                            <p class="flex items-center gap-1">
+                            <p class="flex items-center justify-between gap-1">
                                 <span class="text-[14px]">Payment Status:</span>
                                 <statusPill :status="capitalizeFirstLetter(order.status)" />
                             </p>
-                            <p class="flex items-center gap-1">
+                            <p class="flex items-center justify-between gap-1">
                                 <span class="text-[14px]">Delivery Status:</span>
                                 <deliveryStatus
                                     :model-value="order.delivery_status"

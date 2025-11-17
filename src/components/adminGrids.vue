@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue';
 import { useAdminStore } from '../store/admin';
 import Icon1 from '../../public/icons/IconA.vue';
 import Icon2 from '../../public/icons/Icon2.vue';
@@ -18,17 +19,17 @@ const features = [
     {
         icon: Icon2,
         title: 'Total users',
-        text: `${adminStore.profiles.length} Users`,
+        text: `${adminStore.profilesCount} Users`,
     },
     {
         icon: Icon3,
         title: 'Total products',
-        text: `${adminStore.products.length} Products`,
+        text: `${adminStore.productsCount} Products`,
     },
     {
         icon: Icon4,
         title: 'Total orders',
-        text: `${adminStore.allOrders.length} Orders`,
+        text: `${adminStore.ordersCount} Orders`,
     },
     {
         icon: Icon5,
@@ -41,6 +42,12 @@ const features = [
         text: `${adminStore.completed.length} Orders`,
     },
 ];
+
+onMounted(async () => {
+    await adminStore.fetchAll();
+    console.log(typeof adminStore.allOrders);
+    console.log(typeof adminStore.products.length);
+});
 </script>
 
 <template>

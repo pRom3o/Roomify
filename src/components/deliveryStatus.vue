@@ -7,7 +7,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue']);
 
-// Map delivery status to Tailwind color classes
 const statusColors = {
     Pending: 'bg-yellow-100 text-yellow-800 border border-yellow-300',
     Shipped: 'bg-blue-100 text-blue-800 border border-blue-300',
@@ -21,7 +20,7 @@ const handleChange = (e) => {
 </script>
 
 <template>
-    <div class="relative w-full">
+    <div class="relative w-1/2">
         <select
             :class="[
                 'w-full rounded px-2 py-1 text-xs focus:outline-none',
