@@ -20,7 +20,7 @@ const handleChange = (e) => {
 </script>
 
 <template>
-    <div class="relative w-1/2">
+    <div class="relative w-1/2 sm:w-full">
         <select
             :class="[
                 'w-full rounded px-2 py-1 text-xs focus:outline-none',

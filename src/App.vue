@@ -9,14 +9,11 @@ import { useAdminStore } from './store/admin';
 
 const adminStore = useAdminStore();
 
-onMounted(async () => {
-    await adminStore.fetchProfiles();
-    await adminStore.fetchOrders();
-    await adminStore.fetchProducts();
-});
 const user = ref(null);
 
 onMounted(async () => {
+    await adminStore.fetchAll();
+    console.log(adminStore.pending);
     const cartStore = useCartStore();
     // const cartStore = useCartStore();
     const { data } = await supabase.auth.getSession();

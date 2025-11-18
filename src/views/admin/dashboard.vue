@@ -47,7 +47,14 @@ const toggle = (order) => {
                     <div class="w-full p-3 border-b border-gray-200">
                         <p class="text-center text-sm">Orders History</p>
                     </div>
-
+                    <div
+                        class="sm:flex items-center justify-between w-full p-3 hidden border-b border-gray-200"
+                    >
+                        <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
+                        <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
+                        <p class="w-52 text-center text-xs lg:text-sm">Status</p>
+                        <p class="w-52 text-center text-xs lg:text-sm">Date</p>
+                    </div>
                     <div
                         v-for="order in dashOrders"
                         :key="order.id"
@@ -82,6 +89,10 @@ const toggle = (order) => {
                                 v-if="order.showDetails"
                                 class="px-4 pb-3 text-xs sm:hidden space-y-1"
                             >
+                                <p class="">
+                                    <span class="text-[14px]">Status: </span>
+                                    <statusPill :status="capitalizeFirstLetter(order.status)" />
+                                </p>
                                 <p>
                                     <span class="text-[14px]">Amount:</span>
                                     ₦{{ order.total_amount.toLocaleString() }}

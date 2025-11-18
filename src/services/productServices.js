@@ -16,6 +16,7 @@ export const getProducts = async (category) => {
             throw error;
         } else {
             products.value = data;
+            console.log('pro', products.value);
         }
     } catch (error) {
         console.error(error);

@@ -17,7 +17,7 @@ watch(
 <template>
     <div class="min-h-screen w-full primary-bg flex">
         <adminNav />
-        <div class="flex flex-col flex-1 min-h-screen w-[90%]">
+        <div class="flex flex-col flex-1 min-h-screen w-[90%] overflow-y-auto">
             <!-- header -->
             <header class="h-14 w-full border-b border-gray-200 bg-white flex justify-between">
                 <div class="h-1 sm:flex hidden w-1/2"></div>

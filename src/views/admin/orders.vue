@@ -32,7 +32,12 @@ const handleDeliveryChange = async (orderId, newStatus) => {
                 <div class="w-full p-3 border-b border-gray-200">
                     <p class="text-center text-sm">Orders History</p>
                 </div>
-
+                <div class="sm:flex items-center justify-between w-full p-3 hidden">
+                    <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Status</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Date</p>
+                </div>
                 <div
                     v-for="order in adminStore.allOrders"
                     :key="order.id"

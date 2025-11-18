@@ -16,7 +16,7 @@ export const useAdminStore = defineStore('admin', () => {
     const error = ref(null);
 
     // --- helpers ---
-    const normalizeRows = (data) => (Array.isArray(data) ? data : Object.values(data || {}));
+    // const normalizeRows = (data) => (Array.isArray(data) ? data : Object.values(data || {}));
 
     // --- fetchers ---
     const fetchProfiles = async () => {
@@ -25,7 +25,7 @@ export const useAdminStore = defineStore('admin', () => {
         try {
             const { data, error: e } = await supabase.from('profiles').select('*');
             if (e) throw e;
-            profiles.value = normalizeRows(data);
+            profiles.value = data;
             console.log(profiles.value);
             return profiles.value;
         } catch (err) {
@@ -42,7 +42,7 @@ export const useAdminStore = defineStore('admin', () => {
         try {
             const { data, error: e } = await supabase.from('products').select('*');
             if (e) throw e;
-            products.value = normalizeRows(data);
+            products.value = data;
             console.log('p', products.value);
             return products.value;
         } catch (err) {
@@ -57,17 +57,14 @@ export const useAdminStore = defineStore('admin', () => {
         loadingOrders.value = true;
         error.value = null;
         try {
-            const { data, error: e } = await supabase
-                .from('orders')
-                .select('*')
-                .order('created_at', { ascending: false });
+            const { data, error } = await supabase.from('orders').select('*');
 
-            if (e) throw e;
+            if (error) throw error;
 
-            const rows = normalizeRows(data);
+            // const rows = data;
 
             // attach UI helpers (showDetails and updating)
-            allOrders.value = rows.map((o) => ({
+            allOrders.value = data.map((o) => ({
                 ...o,
                 showDetails: false,
                 updating: false,
@@ -82,25 +79,37 @@ export const useAdminStore = defineStore('admin', () => {
             loadingOrders.value = false;
         }
     };
+    const fetchPending = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('orders')
+                .select('*')
+                .eq('delivery_status', 'Pending');
 
-    // convenience: fetch everything needed on dashboard load
-    const fetchAll = async () => {
-        // fetch in parallel, but let each report its own errors
-        await Promise.allSettled([fetchProfiles(), fetchProducts(), fetchOrders()]);
+            if (!error) {
+                console.log('data p', data);
+            }
+        } catch (error) {
+            console.log('error d', error);
+        }
     };
 
     // --- computed values ---
     const totalRevenue = computed(() => {
         // sum numeric total_amount (guard if it's string)
-        const sum = allOrders.value.reduce(
-            (acc, item) => acc + (Number(item.total_amount) || 0),
-            0,
-        );
+        const sum = allOrders.value.reduce((acc, item) => acc + Number(item.total_amount), 0);
         return sum.toLocaleString();
     });
 
+    // convenience: fetch everything needed on dashboard load
+    const fetchAll = async () => {
+        // fetch in parallel, but let each report its own errors
+        await Promise.allSettled([fetchProfiles(), fetchProducts(), fetchOrders(), fetchPending()]);
+        console.log('revenue', totalRevenue.value);
+    };
+
     const pending = computed(() =>
-        allOrders.value.filter((o) => String(o.delivery_status) === 'Pending'),
+        allOrders.value.filter((o) => String(o.delivery_status) === 'Shipped'),
     );
 
     const completed = computed(() =>
@@ -168,6 +177,7 @@ export const useAdminStore = defineStore('admin', () => {
         error,
 
         // fetchers
+        fetchPending,
         fetchProfiles,
         fetchProducts,
         fetchOrders,

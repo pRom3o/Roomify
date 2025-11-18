@@ -12,11 +12,11 @@ const props = defineProps({
 const statusClass = computed(() => {
     switch (props.status) {
         case 'Paid':
-            return 'bg-green-100/80 text-green-700';
+            return 'bg-green-100/80 text-green-700 border border-green-200';
         case 'Pending':
-            return 'bg-yellow-100/80 text-yellow-700';
+            return 'bg-yellow-100/80 text-yellow-700 border border-yellow-200';
         default:
-            return 'bg-gray-100/80 text-gray-700';
+            return 'bg-gray-100/80 text-gray-700 border border-gray-200';
     }
 });
 

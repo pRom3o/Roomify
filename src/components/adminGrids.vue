@@ -1,5 +1,4 @@
 <script setup>
-import { onMounted } from 'vue';
 import { useAdminStore } from '../store/admin';
 import Icon1 from '../../public/icons/IconA.vue';
 import Icon2 from '../../public/icons/Icon2.vue';
@@ -42,12 +41,6 @@ const features = [
         text: `${adminStore.completed.length} Orders`,
     },
 ];
-
-onMounted(async () => {
-    await adminStore.fetchAll();
-    console.log(typeof adminStore.allOrders);
-    console.log(typeof adminStore.products.length);
-});
 </script>
 
 <template>
