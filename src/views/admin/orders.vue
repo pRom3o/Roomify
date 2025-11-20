@@ -30,9 +30,14 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="flex flex-col w-full">
-        <div class="flex flex-col w-full p-4" v-if="adminStore.allOrders.length > 0">
-            <div class="min-h-10 w-full bg-white border border-gray-200 shadow">
+    <div class="flex flex-col w-full p-3 space-y-5">
+        <div
+            class="w-full px-3 md:pl-10 py-3 min-h-14 bg-linear-to-br center from-blue-500 to-blue-100 rounded-xl text-white shadow"
+        >
+            <h1 class="text-3xl">All Orders</h1>
+        </div>
+        <div class="flex flex-col w-full" v-if="adminStore.allOrders.length > 0">
+            <div class="min-h-10 w-full bg-white border border-gray-200 shadow rounded-xl">
                 <div class="w-full p-3 border-b border-gray-200">
                     <p class="text-center text-sm">Orders History</p>
                 </div>

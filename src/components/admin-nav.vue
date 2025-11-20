@@ -64,7 +64,7 @@ watch(
         </div>
     </aside>
     <aside
-        class="min-h-full fixed inset-0 backdrop-blur-xs transition-all duration-300 sm:hidden"
+        class="min-h-full fixed inset-0 backdrop-blur-xs transition-all duration-300 sm:hidden z-50"
         @click.self="openSideNav"
         :class="sideNav ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
     >

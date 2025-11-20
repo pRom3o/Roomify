@@ -36,6 +36,7 @@ export const useAdminStore = defineStore('admin', () => {
         try {
             const { data, error: e } = await supabase.from('products').select('*');
             if (e) throw e;
+            await new Promise((resolve) => setTimeout(resolve, 2000));
 
             products.value = data;
         } catch (err) {

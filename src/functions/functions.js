@@ -25,3 +25,9 @@ export const edit = ref(false);
 export const toggleEdit = () => {
     edit.value = !edit.value;
 };
+export const uploadModal = ref(false);
+
+export const toggleUploadModal = () => {
+    uploadModal.value = !uploadModal.value;
+    console.log(uploadModal.value);
+};
