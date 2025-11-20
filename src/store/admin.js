@@ -36,7 +36,7 @@ export const useAdminStore = defineStore('admin', () => {
         try {
             const { data, error: e } = await supabase.from('products').select('*');
             if (e) throw e;
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 1000));
 
             products.value = data;
         } catch (err) {
@@ -54,7 +54,7 @@ export const useAdminStore = defineStore('admin', () => {
         try {
             const { data, error: e } = await supabase.from('orders').select('*');
             if (e) throw e;
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 1000));
 
             allOrders.value = data.map((o) => ({
                 ...o,
@@ -85,7 +85,7 @@ export const useAdminStore = defineStore('admin', () => {
         error.value = null;
 
         // Delay 2 seconds before fetching
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
         const results = await Promise.allSettled([
             fetchProfiles(),
