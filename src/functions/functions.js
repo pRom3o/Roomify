@@ -19,3 +19,9 @@ export const handleResize = () => {
     isMobile.value = window.innerWidth < 640;
     if (!isMobile.value) sideNav.value = true; // auto expand on sm+
 };
+
+export const edit = ref(false);
+
+export const toggleEdit = () => {
+    edit.value = !edit.value;
+};

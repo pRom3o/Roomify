@@ -6,14 +6,15 @@ import Icon3 from '../../public/icons/Icon3.vue';
 import Icon4 from '../../public/icons/Icon4.vue';
 import Icon5 from '../../public/icons/Icon5.vue';
 import Icon6 from '../../public/icons/Icon6.vue';
+import { computed } from 'vue';
 
 const adminStore = useAdminStore();
 
-const features = [
+const features = computed(() => [
     {
         icon: Icon1,
         title: 'Total revenue',
-        text: `₦${adminStore.totalRevenue}`,
+        text: `₦${adminStore.totalRevenue.toLocaleString()}`,
     },
     {
         icon: Icon2,
@@ -28,7 +29,7 @@ const features = [
     {
         icon: Icon4,
         title: 'Total orders',
-        text: `${adminStore.ordersCount} Orders`,
+        text: `${adminStore.allOrders.length} Orders`,
     },
     {
         icon: Icon5,
@@ -40,7 +41,7 @@ const features = [
         title: 'Completed orders',
         text: `${adminStore.completed.length} Orders`,
     },
-];
+]);
 </script>
 
 <template>

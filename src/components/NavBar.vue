@@ -35,13 +35,15 @@ onMounted(() => {
 
             <ul class="md:flex items-center md:space-x-5 hidden">
                 <li class="">
-                    <RouterLink to="/" class="px-3 py-1 text-sm nav">Home</RouterLink>
+                    <RouterLink to="/" class="px-3 py-1 text-sm main-nav">Home</RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/shop" class="px-3 py-1 text-sm nav">Shop</RouterLink>
+                    <RouterLink to="/shop" class="px-3 py-1 text-sm main-nav">Shop</RouterLink>
                 </li>
                 <li>
-                    <RouterLink to="/contact" class="px-3 py-1 text-sm nav">Contact</RouterLink>
+                    <RouterLink to="/contact" class="px-3 py-1 text-sm main-nav"
+                        >Contact</RouterLink
+                    >
                 </li>
             </ul>
             <ul v-if="user" class="md:flex hidden items-center gap-6">

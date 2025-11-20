@@ -4,6 +4,8 @@ import { useAdminStore } from '../../store/admin';
 import statusPill from '../../components/statusPill.vue';
 import adminGrids from '../../components/adminGrids.vue';
 import IconLeft from '../../../public/icons/IconLeft.vue';
+import loadingScreen from '../../components/loadingScreen.vue';
+import { onMounted } from 'vue';
 
 const adminStore = useAdminStore();
 
@@ -19,104 +21,111 @@ const dashOrders = adminStore.allOrders.splice(0, 5);
 const toggle = (order) => {
     order.showDetails = !order.showDetails;
 };
+
+onMounted(async () => {
+    await adminStore.fetchAll();
+});
 </script>
 
 <template>
     <div class="w-full min-h-screen flex flex-col flex-1 p-3 space-y-5">
-        <div
-            class="w-full px-3 md:pl-10 py-3 min-h-34 bg-linear-to-br flex items-center justify-between from-blue-500 to-blue-100 rounded-xl text-white shadow"
-        >
-            <div>
-                <h1 class="sm:text-5xl text-3xl">Hi, Celine</h1>
-                <p class="text-[#4c4c4c] sm:text-sm text-xs">
-                    Welcome back to celine's treats dashboard.
-                </p>
+        <div class="h-full w-full center" v-if="adminStore.loadingAll"><loadingScreen /></div>
+        <div class="w-full h-full flex flex-col flex-1 space-y-5" v-else>
+            <div
+                class="w-full px-3 md:pl-10 py-3 min-h-34 bg-linear-to-br flex items-center justify-between from-blue-500 to-blue-100 rounded-xl text-white shadow"
+            >
+                <div>
+                    <h1 class="sm:text-5xl text-3xl">Hi, Celine</h1>
+                    <p class="text-[#4c4c4c] sm:text-sm text-xs">
+                        Welcome back to celine's treats dashboard.
+                    </p>
+                </div>
+                <div class="h-full">
+                    <img src="/Images/Welcome-rafiki.svg" alt="" class="h-full" />
+                </div>
             </div>
-            <div class="h-full">
-                <img src="/Images/Welcome-rafiki.svg" alt="" class="h-full" />
+
+            <div class="w-full center font-sans">
+                <adminGrids />
             </div>
-        </div>
 
-        <div class="w-full center font-sans">
-            <adminGrids />
-        </div>
-
-        <div class="w-full min-h-10">
-            <div class="flex flex-col w-full" v-if="dashOrders.length > 0">
-                <div class="min-h-10 w-full bg-white shadow rounded-xl">
-                    <div class="w-full p-3 border-b border-gray-200">
-                        <p class="text-center text-sm">Orders History</p>
-                    </div>
-                    <div
-                        class="sm:flex items-center justify-between w-full p-3 hidden border-b border-gray-200"
-                    >
-                        <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
-                        <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
-                        <p class="w-52 text-center text-xs lg:text-sm">Status</p>
-                        <p class="w-52 text-center text-xs lg:text-sm">Date</p>
-                    </div>
-                    <div
-                        v-for="order in dashOrders"
-                        :key="order.id"
-                        class="mb-2 bg-white shadow-sm w-full"
-                    >
-                        <!-- Mobile accordion -->
-                        <div
-                            class="sm:hidden flex justify-between items-center px-3 py-2 cursor-pointer md:cursor-default"
-                            @click="toggle(order)"
-                        >
-                            <p class="text-sm font-medium truncate">{{ order.id }}</p>
-
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="w-4 h-4 transition-transform duration-200 md:hidden"
-                                :class="{ 'rotate-180': order.showDetails }"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M19 9l-7 7-7-7"
-                                />
-                            </svg>
+            <div class="w-full min-h-10">
+                <div class="flex flex-col w-full" v-if="dashOrders.length > 0">
+                    <div class="min-h-10 w-full bg-white shadow rounded-xl">
+                        <div class="w-full p-3 border-b border-gray-200">
+                            <p class="text-center text-sm">Orders History</p>
                         </div>
-
-                        <transition name="slide">
+                        <div
+                            class="sm:flex items-center justify-between w-full p-3 hidden border-b border-gray-200"
+                        >
+                            <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
+                            <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
+                            <p class="w-52 text-center text-xs lg:text-sm">Status</p>
+                            <p class="w-52 text-center text-xs lg:text-sm">Date</p>
+                        </div>
+                        <div
+                            v-for="order in dashOrders"
+                            :key="order.id"
+                            class="mb-2 bg-white shadow-sm w-full"
+                        >
+                            <!-- Mobile accordion -->
                             <div
-                                v-if="order.showDetails"
-                                class="px-4 pb-3 text-xs sm:hidden space-y-1"
+                                class="sm:hidden flex justify-between items-center px-3 py-2 cursor-pointer md:cursor-default"
+                                @click="toggle(order)"
                             >
-                                <p class="">
-                                    <span class="text-[14px]">Status: </span>
-                                    <statusPill :status="capitalizeFirstLetter(order.status)" />
-                                </p>
-                                <p>
-                                    <span class="text-[14px]">Amount:</span>
+                                <p class="text-sm font-medium truncate">{{ order.id }}</p>
+
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="w-4 h-4 transition-transform duration-200 md:hidden"
+                                    :class="{ 'rotate-180': order.showDetails }"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
+                            </div>
+
+                            <transition name="slide">
+                                <div
+                                    v-if="order.showDetails"
+                                    class="px-4 pb-3 text-xs sm:hidden space-y-1"
+                                >
+                                    <p class="">
+                                        <span class="text-[14px]">Status: </span>
+                                        <statusPill :status="capitalizeFirstLetter(order.status)" />
+                                    </p>
+                                    <p>
+                                        <span class="text-[14px]">Amount:</span>
+                                        ₦{{ order.total_amount.toLocaleString() }}
+                                    </p>
+                                </div>
+                            </transition>
+
+                            <!-- Desktop row -->
+                            <div
+                                class="hidden sm:grid grid-cols-4 items-center py-2 px-3 text-xs lg:text-sm gap-2"
+                            >
+                                <p class="text-center truncate">{{ order.id }}</p>
+                                <p class="text-center truncate">
                                     ₦{{ order.total_amount.toLocaleString() }}
                                 </p>
+                                <p class="text-center">
+                                    <statusPill :status="capitalizeFirstLetter(order.status)" />
+                                </p>
+                                <p class="text-center truncate">{{ order.created_at }}</p>
                             </div>
-                        </transition>
-
-                        <!-- Desktop row -->
-                        <div
-                            class="hidden sm:grid grid-cols-4 items-center py-2 px-3 text-xs lg:text-sm gap-2"
-                        >
-                            <p class="text-center truncate">{{ order.id }}</p>
-                            <p class="text-center truncate">
-                                ₦{{ order.total_amount.toLocaleString() }}
-                            </p>
-                            <p class="text-center">
-                                <statusPill :status="capitalizeFirstLetter(order.status)" />
-                            </p>
-                            <p class="text-center truncate">{{ order.created_at }}</p>
                         </div>
+                        <RouterLink class="flex center w-full gap-1" to="/admin/Orders"
+                            ><IconLeft /><i>View all orders</i>
+                        </RouterLink>
                     </div>
-                    <RouterLink class="flex center w-full gap-1" to="/admin/Orders"
-                        ><IconLeft /><i>View all orders</i>
-                    </RouterLink>
                 </div>
             </div>
         </div>

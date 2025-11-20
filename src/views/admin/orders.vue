@@ -21,7 +21,6 @@ const deliveryOptions = ['Pending', 'Shipped', 'Delivered'];
 
 const handleDeliveryChange = async (orderId, newStatus) => {
     await adminStore.updateDeliveryStatus(orderId, newStatus);
-    console.log('a', adminStore.allOrders);
 };
 </script>
 
@@ -36,6 +35,7 @@ const handleDeliveryChange = async (orderId, newStatus) => {
                     <p class="w-52 text-center text-xs lg:text-sm">Orders</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Amount</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Status</p>
+                    <p class="w-52 text-center text-xs lg:text-sm">Delivery status</p>
                     <p class="w-52 text-center text-xs lg:text-sm">Date</p>
                 </div>
                 <div

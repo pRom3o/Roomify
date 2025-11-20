@@ -2,8 +2,6 @@
 import homeIcon from '../../public/icons/homeIcon.vue';
 import ordersIcon from '../../public/icons/ordersIcon.vue';
 import productsIcon from '../../public/icons/productsIcon.vue';
-import userIcon from '../../public/icons/userIcon.vue';
-import messageIcon from '../../public/icons/messageIcon.vue';
 
 import { useRoute } from 'vue-router';
 
@@ -39,10 +37,10 @@ watch(
         </div>
 
         <!-- Links -->
-        <div class="w-full p-2">
+        <div class="w-full p-2 flex flex-col space-y-2">
             <RouterLink
                 to="/admin"
-                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+                class="flex items-center gap-1 py-2 px-4 w-full transition-opacity duration-300 admin-nav hover"
             >
                 <homeIcon class="shrink-0" />
                 Dashboard
@@ -50,7 +48,7 @@ watch(
 
             <RouterLink
                 to="/admin/Orders"
-                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+                class="flex items-center gap-1 py-2 px-4 w-full transition-opacity duration-300 admin-nav hover"
             >
                 <ordersIcon class="shrink-0" />
                 Orders
@@ -58,25 +56,10 @@ watch(
 
             <RouterLink
                 to="/admin/products"
-                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
+                class="flex items-center gap-1 py-2 px-4 w-full transition-opacity duration-300 admin-nav hover"
             >
                 <productsIcon class="shrink-0" />
                 Products
-            </RouterLink>
-
-            <RouterLink
-                to="/admin/users"
-                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
-            >
-                <userIcon class="shrink-0" />
-                Users
-            </RouterLink>
-            <RouterLink
-                to="/admin/messages"
-                class="flex items-center gap-1 py-3 px-3 w-full transition-opacity duration-300"
-            >
-                <messageIcon class="shrink-0" />
-                Messages
             </RouterLink>
         </div>
     </aside>
@@ -104,10 +87,10 @@ watch(
             </div>
 
             <!-- Links -->
-            <div class="w-full">
+            <div class="w-full p-2 flex flex-col space-y-2">
                 <RouterLink
                     to="/admin"
-                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                    class="flex items-center gap-1 py-2 px-4 w-full transition-opacity duration-300 admin-nav"
                 >
                     <homeIcon class="shrink-0" />
                     Dashboard
@@ -115,7 +98,7 @@ watch(
 
                 <RouterLink
                     to="/admin/Orders"
-                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                    class="flex items-center gap-1 py-2 px-4 w-full transition-opacity duration-300 admin-nav"
                 >
                     <ordersIcon class="shrink-0" />
                     Orders
@@ -123,28 +106,14 @@ watch(
 
                 <RouterLink
                     to="/admin/products"
-                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
+                    class="flex items-center gap-1 py-2 px-4 w-full transition-opacity duration-300 admin-nav"
                 >
                     <productsIcon class="shrink-0" />
                     Products
-                </RouterLink>
-
-                <RouterLink
-                    to="/admin/users"
-                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
-                >
-                    <userIcon class="shrink-0" />
-                    Users
-                </RouterLink>
-
-                <RouterLink
-                    to="/admin/messages"
-                    class="flex items-center gap-1 py-3 px-4 w-full transition-opacity duration-300"
-                >
-                    <messageIcon class="shrink-0" />
-                    Messages
                 </RouterLink>
             </div>
         </div>
     </aside>
 </template>
+
+<style scoped></style>

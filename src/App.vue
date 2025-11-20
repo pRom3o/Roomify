@@ -5,15 +5,13 @@ import userProvider from './components/provider/userProvider.vue';
 import Toast from './components/Toast.vue';
 import { supabase } from './lib/supabaseClient';
 import { useCartStore } from '@/store/cart';
-import { useAdminStore } from './store/admin';
+// import { useAdminStore } from './store/admin';
 
-const adminStore = useAdminStore();
+// const adminStore = useAdminStore();
 
 const user = ref(null);
 
 onMounted(async () => {
-    await adminStore.fetchAll();
-    console.log(adminStore.pending);
     const cartStore = useCartStore();
     // const cartStore = useCartStore();
     const { data } = await supabase.auth.getSession();

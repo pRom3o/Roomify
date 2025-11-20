@@ -113,10 +113,18 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.router-link-exact-active {
-    border-bottom: 2px solid #3b82f6e6;
+.admin-nav.router-link-exact-active {
+    @apply bg-blue-200 text-blue-500 rounded-lg py-2 px-4;
 }
 
-/* .router-link-exact-active {
-  @apply bg-linear-to-br from-blue-400 to-blue-50 rounded-xl text-[#3b82f6] px-3 py-3;
-} */
+.admin-nav {
+    @apply hover:bg-blue-200 hover:text-blue-500 hover:rounded-lg hover:py-2 hover:px-4;
+}
+
+.main-nav.router-link-exact-active {
+    @apply border-b border-blue-400 text-blue-400;
+}
+
+.main-nav {
+    @apply hover:border-b;
+}
