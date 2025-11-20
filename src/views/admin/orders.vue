@@ -3,6 +3,7 @@
 import { useAdminStore } from '../../store/admin';
 import statusPill from '../../components/statusPill.vue';
 import deliveryStatus from '../../components/deliveryStatus.vue';
+import { onMounted } from 'vue';
 
 const adminStore = useAdminStore();
 
@@ -22,6 +23,10 @@ const deliveryOptions = ['Pending', 'Shipped', 'Delivered'];
 const handleDeliveryChange = async (orderId, newStatus) => {
     await adminStore.updateDeliveryStatus(orderId, newStatus);
 };
+
+onMounted(async () => {
+    await adminStore.fetchOrders();
+});
 </script>
 
 <template>

@@ -38,7 +38,7 @@ const features = computed(() => [
     },
     {
         icon: Icon6,
-        title: 'Completed orders',
+        title: 'Delivered orders',
         text: `${adminStore.completed.length} Orders`,
     },
 ]);

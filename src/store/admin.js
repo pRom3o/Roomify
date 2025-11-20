@@ -123,8 +123,10 @@ export const useAdminStore = defineStore('admin', () => {
 
     const updateDeliveryStatus = async (orderId, newStatus) => {
         const order = allOrders.value.find((o) => o.id === orderId);
-        if (order) order.updating = true;
-        // console.log(order.updating);
+        if (order) {
+            console.log(order);
+            order.updating = true;
+        }
 
         try {
             const { error: e } = await supabase

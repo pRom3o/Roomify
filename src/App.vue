@@ -13,7 +13,7 @@ const user = ref(null);
 
 onMounted(async () => {
     const cartStore = useCartStore();
-    // const cartStore = useCartStore();
+
     const { data } = await supabase.auth.getSession();
     if (data.session) {
         user.value = data.session.user;
