@@ -20,14 +20,19 @@ export const handleResize = () => {
     if (!isMobile.value) sideNav.value = true; // auto expand on sm+
 };
 
-export const edit = ref(false);
+export const deleteProduct = ref(false);
 
-export const toggleEdit = () => {
-    edit.value = !edit.value;
+export const toggleDeleteProduct = () => {
+    deleteProduct.value = !deleteProduct.value;
 };
 export const uploadModal = ref(false);
 
 export const toggleUploadModal = () => {
     uploadModal.value = !uploadModal.value;
     console.log(uploadModal.value);
+};
+
+export const confirmDelete = ref(false);
+export const showConfirm = () => {
+    confirmDelete.value = !confirmDelete.value;
 };

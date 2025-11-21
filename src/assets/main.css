@@ -27,7 +27,7 @@ button {
 }
 
 .primary-bg {
-    @apply bg-blue-100/50;
+    @apply bg-blue-50;
 }
 
 .secondary-bg {

@@ -171,6 +171,7 @@ export const useAdminStore = defineStore('admin', () => {
         fetchPending,
         fetchAll,
         loadingOrders,
+        loadingProducts,
         loadingAll,
         updateDeliveryStatus,
     };

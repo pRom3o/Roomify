@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, computed } from 'vue';
+import { supabase } from '../lib/supabaseClient';
 
 import pastries from '@/data/pastries.json';
 
@@ -11,6 +12,10 @@ const currentPasteries = computed(() => {
     return pastries['items'] || [];
 });
 
+onMounted(async () => {
+    const { data, error } = await supabase.rpc('is_admin_products');
+    console.log('is admin?', data, 'error', error);
+});
 onMounted(() => {
     const observer = new IntersectionObserver(
         (entries) => {

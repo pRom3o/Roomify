@@ -30,7 +30,7 @@ onMounted(async () => {
 <template>
     <div class="w-full min-h-screen flex flex-col flex-1 p-3 space-y-5">
         <div class="h-full w-full center" v-if="adminStore.loadingAll"><loadingScreen /></div>
-        <div class="w-full h-full flex flex-col flex-1 space-y-5" v-else>
+        <div class="w-full h-full flex flex-col flex-1 space-y-5 overflow-auto" v-else>
             <div
                 class="w-full px-3 md:pl-10 py-3 min-h-34 bg-linear-to-br flex items-center justify-between from-blue-500 to-blue-100 rounded-xl text-white shadow"
             >
