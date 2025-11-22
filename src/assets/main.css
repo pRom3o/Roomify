@@ -94,7 +94,7 @@ button {
 }
 
 .btn-1 {
-    @apply hover:bg-[#8bb0ff] text-white hover:text-gray-600 bg-blue-500/90;
+    @apply hover:bg-blue-400/70 text-white  bg-blue-400;
 }
 .btn-2 {
     @apply bg-[#3B82F6E6] text-white hover:text-[#333] hover:bg-blue-400;
@@ -126,5 +126,5 @@ button {
 }
 
 .main-nav {
-    @apply hover:border-b;
+    @apply hover:border-b hover:border-blue-400 hover:text-blue-400;
 }

@@ -32,7 +32,40 @@ export const toggleUploadModal = () => {
     console.log(uploadModal.value);
 };
 
+export const options = ref(false);
+
+//delete or upload option
+export const showOptions = () => {
+    options.value = !options.value;
+};
+// confirm delete modal
 export const confirmDelete = ref(false);
-export const showConfirm = () => {
+
+export const selectedProductId = ref(null);
+
+export const showConfirm = (id) => {
+    selectedProductId.value = id;
+    console.log(selectedProductId.value);
     confirmDelete.value = !confirmDelete.value;
+    showOptions();
+    toggleDeleteProduct();
+};
+
+export const editProduct = ref(false);
+export const toggleEditProduct = () => {
+    editProduct.value = !editProduct.value;
+};
+
+export const editButton = ref(false);
+
+export const showEditButton = () => {
+    editButton.value = !editButton.value;
+};
+
+export const showModal = ref(false);
+export const toggleEditModal = (id) => {
+    selectedProductId.value = id;
+    showModal.value = !showModal.value;
+    editButton.value = false;
+    console.log(editButton.value);
 };

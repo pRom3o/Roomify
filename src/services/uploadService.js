@@ -1,6 +1,7 @@
 import { supabase } from '../lib/supabaseClient';
 import { ref } from 'vue';
 import { showToast } from './toastServices';
+// import selectedProductId from '../../functions/functions';
 
 export const capitalizeFirstLetter = (str) => {
     if (typeof str !== 'string' || str.length === 0) {
@@ -97,5 +98,53 @@ export const uploadFileNow = async () => {
         showToast(`${error.message}`, 'failed');
     } finally {
         uploading.value = false;
+    }
+};
+
+export const updating = ref(false);
+export async function updateProduct(productId, payload) {
+    updating.value = true;
+    try {
+        const { data, error } = await supabase
+            .from('products')
+            .update({
+                name: payload.name,
+                price: payload.price,
+                description: payload.description,
+                category: payload.category,
+                image_url: payload.image_url ?? undefined, // update only
+            })
+            .eq('id', productId)
+            .select();
+
+        if (error) throw error;
+
+        return data[0];
+    } catch (err) {
+        console.log('Update error:', err.message);
+        return err;
+    } finally {
+        updating.value = false;
+    }
+}
+
+export const productById = ref(null);
+
+export const getProductById = async (productId) => {
+    try {
+        const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .eq('id', productId)
+            .single();
+
+        if (error) {
+            throw error;
+        } else {
+            productById.value = data;
+            console.log(productById.value);
+        }
+    } catch (error) {
+        console.log('get error', error);
     }
 };

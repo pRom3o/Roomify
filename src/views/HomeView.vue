@@ -297,7 +297,7 @@ onMounted(() => {
 
 .prod-cards {
     background-color: #ffffff;
-    border: 2px solid #dfdfdf;
+    /* border: 2px solid #dfdfdf;*/
     /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
 }
 

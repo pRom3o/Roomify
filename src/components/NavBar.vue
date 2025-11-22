@@ -20,7 +20,7 @@ onMounted(() => {
         class="w-full md:min-h-8 min-h-10 py-2 center shadow-lg font-kanit fixed top-0 z-99 bg-[#f4f4f4]"
     >
         <div class="flex items-center lg:justify-evenly justify-between space-x-5 w-full px-4">
-            <button class="h-full w-5 md:hidden flex z-90" @click="switchIcon">
+            <button class="h-full w-5 sm:hidden flex z-90" @click="switchIcon">
                 <Transition name="fade" mode="out-in">
                     <component :is="!openClose ? IconHam : IconX" />
                 </Transition>
@@ -33,7 +33,7 @@ onMounted(() => {
                 </RouterLink>
             </h2>
 
-            <ul class="md:flex items-center md:space-x-5 hidden">
+            <ul class="sm:flex items-center md:space-x-5 hidden">
                 <li class="">
                     <RouterLink to="/" class="px-3 py-1 text-sm main-nav">Home</RouterLink>
                 </li>
@@ -46,7 +46,7 @@ onMounted(() => {
                     >
                 </li>
             </ul>
-            <ul v-if="user" class="md:flex hidden items-center gap-6">
+            <ul v-if="user" class="sm:flex hidden items-center gap-6">
                 <RouterLink to="/cart" class="hover flex ites-center relative cart"
                     >Cart
                     <span class="hover:text-black/50"
@@ -79,7 +79,7 @@ onMounted(() => {
                     >My Orders</RouterLink
                 >
             </ul>
-            <ul v-if="user" class="flex md:hidden items-center gap-6">
+            <ul v-if="user" class="flex sm:hidden items-center gap-6">
                 <RouterLink to="/cart" class="hover flex ites-center relative cart"
                     >Cart
                     <span class="hover:text-black/50"
@@ -114,13 +114,13 @@ onMounted(() => {
                 ><i>Login/Signup</i></RouterLink
             >
 
-            <!-- <button
+            <button
                 class="hidden md:flex py-2 px-3 rounded-xl text-white bg-[#3b83f6e5] hover:bg-blue-400 hover:text-[#333] hover text-sm"
                 @click="auth.logout()"
                 v-if="user"
             >
                 Logout
-            </button> -->
+            </button>
         </div>
     </div>
 </template>
